@@ -1,0 +1,34 @@
+.register {
+    align-self: center;
+    width:50%;
+    align-content: center;
+    border:10 px solid black;
+    display: flex;
+    flex-direction: column;
+    .register-field {
+       
+       flex: 1;
+
+    }
+    .register-field2 {
+     
+       
+        flex: 2;
+ 
+     }
+     .register-button{
+         border:black;
+         display: inline-block;
+  font-size: 16px;
+
+         color: red;
+        
+     }
+}
+@media(min-width:600px){
+    .register{
+        background-color: lightgreen;
+        font-size:1 cm;
+        line-height: 2 cm;
+    }
+}
