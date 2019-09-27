@@ -1,24 +1,53 @@
-<div class="register">
-  <mat-form-field floatLabel="never" class="register-field">
-    first name <input matInput placeholder="enter first name">
-  </mat-form-field>
+<mat-card class="register" fxLayout="column" fxLayoutAlign="center center">
 
-  <mat-form-field floatLabel="never" class="register-field">
-    last name <input matInput placeholder="enter last name">
-  </mat-form-field>
 
-  <mat-form-field floatLabel="never" class="register-field2">
-    email <input matInput type="email" placeholder="enter email">
-  </mat-form-field>
+  <h1>Fundoo Notes App<small>Register to continue to Fundoo</small></h1>
+  <img src="favicon.jpg" width=80px height=120px>
 
-  <mat-form-field floatLabel="never" class="register-field">
-    password <input matInput type="password" placeholder="enter password">
-  </mat-form-field>
+
+
+         <mat-form-field class="register-field" appearance="outline">
+          <mat-label>First Name </mat-label>
+          <input matInput placeholder="First Name">
+        </mat-form-field>
+      
+        <mat-form-field class="register-field" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name">
+        </mat-form-field>
+  
+  
+        <mat-form-field class="register-field" appearance="outline"> 
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email">
+        </mat-form-field>
+      
+       <mat-form-field class="register-field" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
+            </button>
+          <mat-hint>Password must be 8 characters long</mat-hint>
+        </mat-form-field> 
+   
+     
+  
+  <div class="register-space-horizontal"></div>
+
 
   <button class="register-button" mat-button (click)=onCLick()>Register</button>
-
-  <a routerLink="/login">Already an exisiting user?</a>
-</div>
+  <p class="link"> <a routerLink="/login">Already an exisiting user?</a></p>
 
 
+</mat-card>
 
+
+
+        <!-- <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field> -->

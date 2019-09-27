@@ -1,34 +1,93 @@
-.register {
-    align-self: center;
-    width:50%;
-    align-content: center;
-    border:10 px solid black;
-    display: flex;
-    flex-direction: column;
-    .register-field {
-       
-       flex: 1;
+@import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
 
-    }
-    .register-field2 {
+   
+.register     
+ { 
      
-       
-        flex: 2;
- 
-     }
-     .register-button{
-         border:black;
-         display: inline-block;
-  font-size: 16px;
-
-         color: red;
-        
-     }
+  font-family:'Roboto';
+  width:600px; 
+  margin:20px auto 0; 
+  margin-bottom: 5px;
+  display:block; 
+  background:#FFF;
+  padding:10px 50px 50px;
+  border:20 px solid black;
 }
+
+.register-field{
+    width:100%;
+}
+h1     
+  { 
+  text-align:center; 
+  font-weight: bold;
+  margin-bottom:5px; 
+  font-size:36px;
+  color:$green
+}
+h1 small 
+{ 
+  font-weight:normal;  
+  display:block; 
+  font-size: 22px;
+  color:$green
+}
+.register-space-horizontal
+{
+    margin:10px;
+   
+}
+
+
+.register-button {
+    text-align:center;
+    background-color:$green; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+   
+    display: inline-block;
+    font-size: 15px;
+    width: 100%;
+    
+  }
+  button{
+      background-color:$green;
+  }
+  button:hover{
+    background-color: #0d1a00;
+    
+  }
+
+.link{
+    font-weight: bold;
+    width:100%;
+    text-align:center;
+    
+    color:magenta;
+}
+mat-form-field {
+    width: 100%;
+    //height:74px;
+    }
+   
+    mat-grid-tile {
+        background: lightblue;
+      }
 @media(min-width:600px){
-    .register{
-        background-color: lightgreen;
-        font-size:1 cm;
-        line-height: 2 cm;
+    .register-field{   
+        font-size:1.25 rem;
     }
 }
+
+@media(min-width:800px){
+    .register-field{   
+        font-size:1.5 rem;
+        line-height: 1.5;
+    }
+}
+
+
+
+
