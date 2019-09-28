@@ -1,93 +1,221 @@
-@import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
-
-   
-.register     
- { 
-     
-  font-family:'Roboto';
-  width:600px; 
-  margin:20px auto 0; 
-  margin-bottom: 5px;
-  display:block; 
-  background:#FFF;
-  padding:10px 50px 50px;
-  border:20 px solid black;
+.register{
+  background-image: url('../../../../background-pic.jpeg');
+  height: 98%;
+width: 98%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
 }
 
-.register-field{
-    width:100%;
-}
-h1     
-  { 
-  text-align:center; 
+.register-title{
+
+  
   font-weight: bold;
-  margin-bottom:5px; 
-  font-size:36px;
-  color:$green
-}
-h1 small 
-{ 
-  font-weight:normal;  
-  display:block; 
-  font-size: 22px;
-  color:$green
-}
-.register-space-horizontal
-{
-    margin:10px;
-   
+ 
+  
+  color:rgb(35, 100, 143);
 }
 
+.register-subtitle{  
+  align-self: center;
+  font-family: "Times New Roman", Times, serif;
+    font-weight:normal;   
+  color:darkgray;
+}
+.register-avatar-img{
+  position:relative;
+  height:80px;
+  width:80px;
 
-.register-button {
-    text-align:center;
-    background-color:$green; 
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-   
-    display: inline-block;
-    font-size: 15px;
-    width: 100%;
-    
-  }
+}
+.register-field{
+ 
+
+  height:65px;
+ 
+}
   button{
-      background-color:$green;
+    font-weight: bold;
+    height:40px;
+    font-size:16px;
+    border-radius: 12px;
+    color:white;
+      background-color:rgb(21, 82, 122);
   }
   button:hover{
-    background-color: #0d1a00;
-    
+    background-color:rgb(3, 65, 107);
+
   }
 
-.link{
-    font-weight: bold;
-    width:100%;
-    text-align:center;
+// @media(min-width:600px){
     
-    color:magenta;
-}
-mat-form-field {
-    width: 100%;
-    //height:74px;
-    }
-   
-    mat-grid-tile {
-        background: lightblue;
-      }
-@media(min-width:600px){
-    .register-field{   
-        font-size:1.25 rem;
-    }
-}
+//   .register-title{
+//     font-size:1.30rem;
+//   }
+//   .register-subtitle{
+//     font-size:1.25rem;
+//   }
+//   .register-field{   
+//     font-size:1rem;
+// }
+// }
 
 @media(min-width:800px){
-    .register-field{   
-        font-size:1.5 rem;
-        line-height: 1.5;
-    }
+
+.register-title{
+  font-size:1.5rem;
+  line-height: 1;
+}
+.register-subtitle{
+  font-size:1.25rem;
+  line-height: 1;
+}
+.register-field{   
+  font-size:1rem;
+      line-height: 1;
+}
+
+  
+}
+@media(max-width:500px){
+    
+  .register-title{
+    font-size:1rem;
+    line-height: 0.75;
+  }
+  .register-subtitle{
+    font-size:0.75rem;
+    line-height: 0.75;
+  }
+  .register-field{   
+    font-size:0.7rem;
+        line-height: 0.75;
+}
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
+
+// .main-image {
+//   background-image: url("../../../../background.jpg");
+
+//   height: 100%;
+//   width: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+// .register     
+//  { 
+//     text-align: center;
+//     position: absolute;
+//     height:80%;
+//     width:50%;
+//     top:20%;
+//     left:20%;
+
+
+//   font-family:'Roboto';
+// //   width:600px; 
+// //   margin:20px auto 0; 
+// //   margin-bottom: 5px;
+// //   display:block; 
+// //   background:#FFF;
+// //   //padding:10px 50px 50px;
+// //   border:20 px solid black;
+// }
+
+// .register-field{
+//     width:100%;
+// }
+// h1     
+//   { 
+//   text-align:center; 
+//   font-weight: bold;
+//   margin-bottom:5px; 
+//   font-size:36px;
+//   color:$green
+// }
+// h1 small 
+// { 
+//   font-weight:normal;  
+//   display:block; 
+//   font-size: 22px;
+//   color:$green
+// }
+// .register-space-horizontal
+// {
+//     margin:10px;
+
+// }
+
+
+// .register-button {
+//     text-align:center;
+//     background-color:$green; 
+//     border: none;
+//     color: white;
+//     padding: 10px 20px;
+//     border-radius: 10px;
+
+//     display: inline-block;
+//     font-size: 15px;
+//     width: 100%;
+
+//   }
+
+
+// .link{
+//     font-weight: bold;
+//     width:100%;
+//     text-align:center;
+
+//     color:magenta;
+// }
+// mat-form-field {
+//     width: 100%;
+//     //height:74px;
+//     }
+
+//     mat-grid-tile {
+//         background: lightblue;
+//       }
 
 

@@ -1,14 +1,101 @@
-<mat-card class="login" fxLayout="column" fxLayoutAlign="center center">
+<div class="login"  fxLayoutAlign="center center">
+    <mat-card fxFlex="40" fxFlex.xs="100" class="login-card"  >
+     <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+         <img mat-card-avatar src="../../../../user.png" class="login-avatar-img">
+     <mat-card-title class="login-title">Fundoo Notes</mat-card-title>
+     <mat-card-subtitle class="login-subtitle">Login as an existing user</mat-card-subtitle>
+   </mat-card-header>  
+  
+   <div fxFlex="50" fxLayout="column" >
+    
+   
+       <mat-form-field class="login-field" appearance="outline">
+         <mat-label>Email</mat-label>
+         <input matInput placeholder="Email">
+       </mat-form-field>
+   
+       <mat-form-field class="login-field" appearance="outline">
+         <mat-label>Password</mat-label>
+         <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+         <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+           [attr.aria-pressed]="hide">
+           <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
+         </button>
+         <mat-hint>Password must be 8 characters long</mat-hint>
+       </mat-form-field>
+     
+
+       
+       <button mat-button (click)=onCLick()>Login</button>
+    <p class="link"> <a routerLink="/register">New user? Register</a></p>
+    <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
+     
+     </div>
+   
+ </mat-card>  
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
   
 
-    <!-- <h1>Fundoo Notes App<small>Login to continue to Fundoo</small></h1> -->
-    
-      <img src="login.png" width=100px height=200px>
-     
+
+
+   <div class="register-space-horizontal"></div>
+
+
    
 
+
+ </mat-card>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card class="login" fxLayout="column" fxLayoutAlign="center center">
+     <h1>Fundoo Notes App<small>Login to continue to Fundoo</small></h1>
     
-      
+      <img src="login.png" width=100px height=200px>
   
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
@@ -28,7 +115,7 @@
   
     <button mat-button (click)=onCLick()>Login</button>
     <p class="link"> <a routerLink="/register">New user? Register</a></p>
+    <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
   
-  
-  </mat-card>
+  </mat-card> -->
   

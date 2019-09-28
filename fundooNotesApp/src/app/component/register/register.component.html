@@ -1,53 +1,74 @@
-<mat-card class="register" fxLayout="column" fxLayoutAlign="center center">
-
-
-  <h1>Fundoo Notes App<small>Register to continue to Fundoo</small></h1>
-  <img src="favicon.jpg" width=80px height=120px>
-
-
-
-         <mat-form-field class="register-field" appearance="outline">
+<div class="register"  fxLayoutAlign="center center">
+     <mat-card fxFlex="40" fxFlex.xs="100" class="register-card"  >
+      <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+          <img mat-card-avatar src="../../../favicon.jpg" class="register-avatar-img">
+      <mat-card-title class="register-title">Fundoo Notes</mat-card-title>
+      <mat-card-subtitle class="register-subtitle">Register new user</mat-card-subtitle>
+    </mat-card-header>  
+   
+    <div fxFlex="50" fxLayout="column" >
+      <mat-form-field class="register-field" appearance="outline">
           <mat-label>First Name </mat-label>
           <input matInput placeholder="First Name">
         </mat-form-field>
-      
+    
         <mat-form-field class="register-field" appearance="outline">
           <mat-label>Last Name</mat-label>
           <input matInput placeholder="Last Name">
         </mat-form-field>
-  
-  
-        <mat-form-field class="register-field" appearance="outline"> 
+      
+    
+        <mat-form-field class="register-field" appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Email">
         </mat-form-field>
-      
-       <mat-form-field class="register-field" appearance="outline">
+    
+        <mat-form-field class="register-field" appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
-            </button>
+          </button>
           <mat-hint>Password must be 8 characters long</mat-hint>
-        </mat-form-field> 
+        </mat-form-field>
+      
+
+        <button class="register-button" mat-button (click)=onCLick()>Register</button>
+        <p class="link"> <a routerLink="/login">Already an exisiting user?</a></p>
+        <!-- <button class="register-button" mat-button (click)=onCLick()>login</button> -->
+      
+      </div>
+    
+  </mat-card>  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
    
-     
-  
-  <div class="register-space-horizontal"></div>
-
-
-  <button class="register-button" mat-button (click)=onCLick()>Register</button>
-  <p class="link"> <a routerLink="/login">Already an exisiting user?</a></p>
-
-
-</mat-card>
 
 
 
-        <!-- <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field> -->
+    <div class="register-space-horizontal"></div>
+
+
+    
+
+
+  </mat-card>
+
+</div> -->
