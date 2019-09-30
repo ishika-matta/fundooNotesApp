@@ -1,173 +1,83 @@
 @import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
 @import '/home/user/projects/fundooNotesApp/src/app/app.styles/constant.scss';
 
-.login{
+.login {
   @include main-class-div;
 }
 
-.login-title{
+.login-title {
   @include title;
 }
 
-.login-subtitle{  
-  @include subtitle;  
+.login-subtitle {
+  @include subtitle;
 }
 
-.login-avatar-img{
+.login-avatar-img {
   @include avatar-img;
-  height:100px;
-  width:100px;
+  height: 100px;
+  width: 100px;
 }
 
-.login-field{
+.login-field {
   @include field;
 }
 
-button{
-  @include button;   
+button {
+  @include button;
 }
 
-button:hover{
+button:hover {
   @include button-hover;
 }
 
 
 
-@media(min-width:800px){
+@media(min-width:800px) {
 
-.login-title{
-  font-size:1.5rem;
-  line-height: 1;
-}
-.login-subtitle{
-  font-size:1.25rem;
-  line-height: 1;
-}
-.login-field{   
-  font-size:1rem;
-      line-height: 1;
+  .login-title {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .login-subtitle {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .login-field {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .link {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+
 }
 
-  
-}
-@media(max-width:500px){
-    
-  .login-title{
-    font-size:1rem;
+@media(max-width:500px) {
+
+  .login-title {
+    font-size: 1rem;
     line-height: 0.75;
   }
-  .login-subtitle{
-    font-size:0.75rem;
+
+  .login-subtitle {
+    font-size: 0.75rem;
     line-height: 0.75;
   }
-  .login-field{   
-    font-size:0.7rem;
-        line-height: 0.75;
+
+  .login-field {
+    font-size: 0.7rem;
+    line-height: 0.75;
+  }
+
+  .link {
+    font-size: 0.7rem;
+    line-height: 0.75;
+
+  }
 }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// @import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
-// mat-form-field {
-//     width: 100%;
-//     }
-   
-// .login     { 
-//      flex-direction: row;
-//   font-family:'Roboto';
-//   width:600px; 
-//   margin:30px auto 0; 
-//   display:block; 
-//   background:#FFF;
-//   padding:10px 50px 50px;
-//   border:20 px solid black;
-// }
-
-// h1       { 
-//   text-align:center; 
-//   font-weight: bold;
-//   margin-bottom:50px; 
-//   font-size:36px;
-//   color:$green
-// }
-// h1 small { 
-//   font-weight:normal;  
-//   display:block; 
-//   font-size: 22px;
-//   color:$green
-// }
-// .login-space-horizontal{
-//     margin:10px;
-   
-// }
-// .space-vertical{
-//     padding-left:100px;
-// }
-
-
-
-
-// button {
-//     text-align:center;
-//     background-color:$green; 
-//     border: none;
-//     color: white;
-//     padding: 10px 20px;
-//     border-radius: 10px;
-   
-//     display: inline-block;
-//     font-size: 15px;
-//     width: 100%;
-    
-//   }
-//   button:hover{
-//     background-color: #0d1a00;
-    
-//   }
-
-// .link{
-//     font-weight: bold;
-//     width:100%;
-//     text-align:center;
-    
-//     color:magenta;
-// }
-
-
-
-
-
-

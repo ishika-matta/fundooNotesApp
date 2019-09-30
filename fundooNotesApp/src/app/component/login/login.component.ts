@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
 
     if (this.email.hasError("email"))
       return "Enter a valid email"
-
   }
 
   PasswordInvalidMessage() {
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
     if (this.password.hasError("minlength")) {
       return "Password must be 8 characters"
     }
-
   }
 
   
@@ -49,10 +47,6 @@ export class LoginComponent implements OnInit {
 
     }
     this.svc.loginUser(this.userObj);
-
-
-    
-
   }
 
 }

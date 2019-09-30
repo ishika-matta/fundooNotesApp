@@ -49,6 +49,4 @@ export class ResetPasswordComponent implements OnInit {
     }
     this.svc.forgotPassword(this.userObj);
   }
-
-
 }

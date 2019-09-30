@@ -41,7 +41,7 @@ export class ConnectService {
   }
 
   resetPassword(userObj){
-    this.http.post('http://fundoonotes.incubation.bridgelabz.com/api/user/reset-password', userObj)
+    this.http.post('http://fundoonotes.incubation.bridgelabz.com/api/user/reset-password/:token', userObj)
       .subscribe((response) => {
         this.response = response;
         console.log(this.response);

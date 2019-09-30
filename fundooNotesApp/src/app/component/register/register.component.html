@@ -6,17 +6,13 @@
       <mat-card-subtitle class="register-subtitle">Register new user</mat-card-subtitle>
     </mat-card-header>  
 
-   
-
-   
     <mat-card-content fxFlex="50" fxLayout="column" >
       <mat-form-field class="register-field" appearance="outline">
           <mat-label>First Name </mat-label>
           <input matInput placeholder="First Name" [formControl]="firstName" required> 
           <mat-error *ngIf="firstName.invalid">{{FirstNameInvalidMessage()}}</mat-error>
         </mat-form-field>
-        
-    
+          
          <mat-form-field class="register-field" appearance="outline">
           <mat-label>Last Name</mat-label>
           <input matInput placeholder="Last Name" [formControl]="lastName" required>
@@ -36,7 +32,7 @@
           <mat-error *ngIf="password.invalid">{{PasswordInvalidMessage()}} </mat-error>
           <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
           <mat-hint>Password must be 8 characters long</mat-hint>
         </mat-form-field>
@@ -46,37 +42,6 @@
         <p class="link"> <a routerLink="/login">Existing user? Login</a></p>
         
       
-    </mat-card-content>
-    
+    </mat-card-content>   
   </mat-card>  
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-
-
-   
-
-
-
-    <div class="register-space-horizontal"></div>
-
-
-    
-
-
-  </mat-card>
-
-</div> -->

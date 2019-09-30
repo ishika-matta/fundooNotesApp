@@ -11,13 +11,10 @@ export class AppComponent {
   title = 'fundooNotesApp';
 
   constructor(private svc:ConnectService, private http:HttpClient){
-    this.svc.print("service got");
+    this.svc.print("service working");
 
   }
 
   ngOnInit(){
-    let obs= this.http.get('https://api.github.com/users/ishika-matta');
-    obs.subscribe((response)=>
-    console.log(response));
   }
 }

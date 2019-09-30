@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-page-not-found',
@@ -10,19 +10,10 @@ export class PageNotFoundComponent implements OnInit {
   username:string=" ";
   response:any;
 
-  constructor(private http:HttpClient) { 
-
+  constructor() { 
   }
 
   ngOnInit() {
-  }
-  search(){
-    this.http.get('https://api.github.com/users/'+ this.username)
-    .subscribe((response)=>{
-      this.response=response;
-      console.log(this.response);
-    }
-    )
   }
 
 }

@@ -22,13 +22,13 @@
           <mat-error *ngIf="password.invalid">{{PasswordInvalidMessage()}}</mat-error>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
 
 
 
-        <button class="login-button" mat-button (click)="onLogin()">Login</button>
+        <button mat-button (click)="onLogin()">Login</button>
         <p class="link"> <a routerLink="/register">New user? Register</a></p>
         <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
       
@@ -36,87 +36,3 @@
 
   </mat-card>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-
-
-  
-
-
-
-   <div class="register-space-horizontal"></div>
-
-
-   
-
-
- </mat-card>
-
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <mat-card class="login" fxLayout="column" fxLayoutAlign="center center">
-     <h1>Fundoo Notes App<small>Login to continue to Fundoo</small></h1>
-    
-      <img src="login.png" width=100px height=200px>
-  
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email">
-              </mat-form-field>
-           
-  
-    <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput placeholder="Enter your password" type="password">
-      <mat-hint>Password must be 8 characters long</mat-hint>
-  
-    </mat-form-field>
-  
-    <div class="login-space-horizontal"></div>
-  
-  
-    <button mat-button (click)=onCLick()>Login</button>
-    <p class="link"> <a routerLink="/register">New user? Register</a></p>
-    <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
-  
-  </mat-card> -->

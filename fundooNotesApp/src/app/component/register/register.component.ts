@@ -44,19 +44,16 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  
 
   constructor(private svc: ConnectService) {
     this.svc.print("inside register");
   }
 
-
-
   ngOnInit() {
   }
 
   onRegister() {
-   
+
     this.userObj = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
