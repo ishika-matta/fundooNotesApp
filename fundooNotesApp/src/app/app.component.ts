@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ConnectService } from '../app/services/connect.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fundooNotesApp';
+
+  constructor(private svc:ConnectService, private http:HttpClient){
+    this.svc.print("service got");
+
+  }
+
+  ngOnInit(){
+    let obs= this.http.get('https://api.github.com/users/ishika-matta');
+    obs.subscribe((response)=>
+    console.log(response));
+  }
 }

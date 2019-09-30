@@ -1,0 +1,47 @@
+@import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
+
+@mixin main-class-div{
+
+background-image:url("/../../assets/background-image.jpg");
+height: 98%;
+width: 98%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
+}
+
+@mixin title{
+font-weight: bold;
+color:$light-midnight-blue;
+}
+
+@mixin subtitle{
+align-self: center;
+font-family: "Times New Roman", Times, serif;
+font-weight:normal; 
+color:$charcoal-gray; 
+}
+
+@mixin avatar-img{
+position:relative;    
+}
+
+@mixin field{
+height:65px;
+padding:10px;
+}
+
+@mixin button{
+font-weight: bold;
+height:40px;
+font-size:16px;
+border-radius: 12px;
+margin-top:10px;
+color:$white;
+background-color:$variant-1-midnight-blue;
+}
+
+@mixin button-hover{
+background-color:$variant-2-midnight-blue;
+}

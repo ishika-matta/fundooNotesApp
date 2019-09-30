@@ -1,52 +1,35 @@
+@import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
+@import '/home/user/projects/fundooNotesApp/src/app/app.styles/constant.scss';
+
 .login{
-  background-image: url('../../../../background-pic.jpeg');
-  height: 98%;
-width: 98%;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-position: absolute;
+  @include main-class-div;
 }
 
 .login-title{
-
-  
-  font-weight: bold;
- 
-  
-  color:rgb(35, 100, 143);
+  @include title;
 }
 
 .login-subtitle{  
-  align-self: center;
-  font-family: "Times New Roman", Times, serif;
-    font-weight:normal;   
-  color:darkgray;
+  @include subtitle;  
 }
+
 .login-avatar-img{
-  position:relative;
-  height:80px;
-  width:80px;
-
+  @include avatar-img;
+  height:100px;
+  width:100px;
 }
+
 .login-field{
- 
-
-  height:65px;
- 
+  @include field;
 }
-  button{
-    font-weight: bold;
-    height:40px;
-    font-size:16px;
-    border-radius: 12px;
-    color:white;
-      background-color:rgb(21, 82, 122);
-  }
-  button:hover{
-    background-color:rgb(3, 65, 107);
 
-  }
+button{
+  @include button;   
+}
+
+button:hover{
+  @include button-hover;
+}
 
 
 

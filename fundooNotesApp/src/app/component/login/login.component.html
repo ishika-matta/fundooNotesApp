@@ -1,39 +1,41 @@
-<div class="login"  fxLayoutAlign="center center">
-    <mat-card fxFlex="40" fxFlex.xs="100" class="login-card"  >
-     <mat-card-header fxLayout="column" fxLayoutAlign="center center">
-         <img mat-card-avatar src="../../../../user.png" class="login-avatar-img">
-     <mat-card-title class="login-title">Fundoo Notes</mat-card-title>
-     <mat-card-subtitle class="login-subtitle">Login as an existing user</mat-card-subtitle>
-   </mat-card-header>  
-  
-   <div fxFlex="50" fxLayout="column" >
-    
-   
-       <mat-form-field class="login-field" appearance="outline">
-         <mat-label>Email</mat-label>
-         <input matInput placeholder="Email">
-       </mat-form-field>
-   
-       <mat-form-field class="login-field" appearance="outline">
-         <mat-label>Password</mat-label>
-         <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-         <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-           [attr.aria-pressed]="hide">
-           <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
-         </button>
-         <mat-hint>Password must be 8 characters long</mat-hint>
-       </mat-form-field>
-     
+<div class="login" fxLayoutAlign="center center">
+  <mat-card fxFlex="50" fxFlex.xs="100" class="login-card">
+    <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+      <img mat-card-avatar src="../../../../src/assets/user.png" class="login-avatar-img">
+      <mat-card-title class="login-title">Fundoo Notes</mat-card-title>
+      <mat-card-subtitle class="login-subtitle">Login as an existing user</mat-card-subtitle>
+    </mat-card-header>
 
-       
-       <button mat-button (click)=onCLick()>Login</button>
-    <p class="link"> <a routerLink="/register">New user? Register</a></p>
-    <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
+
+    <div fxFlex="50" fxLayout="column">
      
-     </div>
-   
- </mat-card>  
- </div>
+        <mat-form-field class="login-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" [formControl]="email" required type="email">
+          <mat-error *ngIf="email.invalid">{{EmailInvalidMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="login-field" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter your password" [formControl]="password"
+            [type]="hide ? 'password' : 'text'" required minlength="8">
+          <mat-error *ngIf="password.invalid">{{PasswordInvalidMessage()}}</mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'off' : 'on'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+
+
+        <button class="login-button" mat-button (click)="onLogin()">Login</button>
+        <p class="link"> <a routerLink="/register">New user? Register</a></p>
+        <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
+      
+    </div>
+
+  </mat-card>
+</div>
 
 
 
@@ -118,4 +120,3 @@
     <p class="link"> <a routerLink="/forgotPassword">Forgot Password?</a></p>
   
   </mat-card> -->
-  

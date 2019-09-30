@@ -1,8 +1,13 @@
-<p>
-  page-not-found works!
-</p>
+
+
+username <input type="text" [(ngModel)]="username">
+<button (click)="search()">Search</button>
+<div *ngIf="response">
+{{response.login}}
+</div>
+<!-- 
 <div fxLayout="column" fxLayoutAlign="center end" >
     <img src="../../../../green.jpeg" >
     <img src="../../../../blue.jpg" >
     <img src="../../../../red.jpg" >
-</div>
+</div> -->

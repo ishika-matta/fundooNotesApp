@@ -11,6 +11,9 @@ import { AppMaterialModule } from './angular-material/app.material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { ConnectService } from '../app/services/connect.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -29,12 +32,15 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    
-  
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
 
     
   ],
-  providers: [],
+  providers: [
+    ConnectService,
+  ],
   bootstrap: [AppComponent]
 })
 
