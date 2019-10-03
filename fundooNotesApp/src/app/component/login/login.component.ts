@@ -9,14 +9,16 @@ import { User } from '../login/login.model';
 })
 export class LoginComponent implements OnInit {
   userObj: User = new User();
+  result:any;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
   constructor(private svc: ConnectService) { 
-    this.svc.print("inside login");
+    
   }
 
   ngOnInit() {
+    this.svc.print("inside login");
   }
 
   EmailInvalidMessage() {
@@ -44,9 +46,19 @@ export class LoginComponent implements OnInit {
       email: this.email.value,
       password: this.password.value,
       service: "basic"
-
     }
-    this.svc.loginUser(this.userObj);
+    let options = {
+      data: this.userObj,
+      purpose: 'login',
+    }
+    this.result=this.svc.postWithoutToken(options);
+
+    this.svc.postWithoutToken(options).subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText);
+    })
+  }
   }
 
-}
+

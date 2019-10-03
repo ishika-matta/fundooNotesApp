@@ -5,14 +5,22 @@ import { LoginComponent } from './component/login/login.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { TakeNoteComponent } from './component/take-note/take-note.component';
+import { IconComponent } from './component/icon/icon.component';
+import { DisplayComponent } from './component/display/display.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/resetPassword', pathMatch:'full'},
+  {path:'', redirectTo:'/register', pathMatch:'full'},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
   {path:'forgotPassword', component:ForgotPasswordComponent},
-  {path:'resetPassword', component:ResetPasswordComponent},
-  {path:'**', redirectTo:'/resetPassword'}
+  {path:'resetpassword/:token', component:ResetPasswordComponent},
+  {path:'dashboard', component:DashboardComponent},
+  {path:'take-note', component:TakeNoteComponent},
+  {path:'icon', component:IconComponent},
+  {path:'display-content', component:DisplayComponent},
+  {path:'**', redirectTo:'/register'}
 
 ];
 

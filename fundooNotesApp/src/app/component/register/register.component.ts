@@ -10,6 +10,7 @@ import { User } from '../register/register.model';
 export class RegisterComponent implements OnInit {
 
   userObj: User = new User();
+  result:any;
 
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
@@ -46,10 +47,11 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private svc: ConnectService) {
-    this.svc.print("inside register");
+    
   }
 
   ngOnInit() {
+    this.svc.print("inside register");
   }
 
   onRegister() {
@@ -61,7 +63,17 @@ export class RegisterComponent implements OnInit {
       password: this.password.value,
       service: "basic"
     }
-    this.svc.registration(this.userObj);
+    let options = {
+      data: this.userObj,
+      purpose: 'userSignUp',
+    }
+    this.result=this.svc.postWithoutToken(options);
+
+    this.svc.postWithoutToken(options).subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText);
+    })
   }
 }
 

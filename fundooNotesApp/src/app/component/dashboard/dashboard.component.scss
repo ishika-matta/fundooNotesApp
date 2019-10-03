@@ -1,0 +1,144 @@
+.dashboard-icon {
+  padding: 0 14px;
+}
+
+.dashboard-spacer {
+  flex: 1 1 auto;
+}
+
+.dashboard-container {
+  
+  width: 100%;
+  height: 600px; 
+  //border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+
+.dashboard-sidenav {
+  padding: 20px; 
+  width:20%;
+  height:98%;
+  background-color:rgb(191, 240, 240);
+  //border: 2px dashed rgba(0, 0, 0, 0.5);
+}
+
+.searchbar{
+  padding-right:5%;
+  width:370px;
+  height:50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
+// @import '/home/user/projects/fundooNotesApp/src/app/app.styles/constant.scss';
+
+// .dashboard{
+//   @include main-class-div;
+// }
+  
+// .dashboard-title{
+//   @include title;
+// }
+  
+// .dashboard-subtitle{  
+//   @include subtitle; 
+// }
+
+// .dashboard-avatar-img{
+//   @include avatar-img;
+//   height:80px;
+//   width:80px;
+// }
+
+// .dashboard-field{
+//   @include field;   
+// }
+
+// .dashboard-container {
+//     width: 500px;
+//     height: 300px;
+//     border: 1px solid rgba(0, 0, 0, 0.5);
+//   }
+  
+//   .dashboard-sidenav-content {
+//     display: flex;
+//     height: 100%;
+//     align-items: center;
+//     justify-content: center;
+//   }
+  
+//   .dashboard-sidenav {
+//     padding: 20px;
+//   }
+
+// button{
+//   @include button;   
+// }
+
+// button:hover{
+//   @include button-hover;
+// }
+  
+  // @media(min-width:600px){
+      
+  //   .register-title{
+  //     font-size:1.30rem;
+  //   }
+  //   .register-subtitle{
+  //     font-size:1.25rem;
+  //   }
+  //   .register-field{   
+  //     font-size:1rem;
+  // }
+  // }
+  
+//   @media(min-width:800px){
+  
+//   .forgot-password-title{
+//     font-size:1.5rem;
+//     line-height: 1;
+//   }
+//   .forgot-password-subtitle{
+//     font-size:1.25rem;
+//     line-height: 1;
+//   }
+//   .forgot-password-field{   
+//     font-size:1rem;
+//         line-height: 1;
+//   }
+  
+  
+    
+//   }
+//   @media(max-width:500px){
+      
+//     .forgot-password-title{
+//       font-size:1rem;
+//       line-height: 0.75;
+//     }
+//     .forgot-password-subtitle{
+//       font-size:0.75rem;
+//       line-height: 0.75;
+//     }
+//     .forgot-password-field{   
+//       font-size:0.7rem;
+//           line-height: 0.75;
+//   }
+//   }

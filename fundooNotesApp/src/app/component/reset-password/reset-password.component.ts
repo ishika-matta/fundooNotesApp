@@ -47,6 +47,16 @@ export class ResetPasswordComponent implements OnInit {
       confirmPassword: this.confirmPassword.value,
       service: "basic"
     }
-    this.svc.forgotPassword(this.userObj);
+    let options = {
+      data: this.userObj,
+      purpose: 'reset-password/:token',
+    }
+    this.svc.postWithoutToken(options).subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText);
+    })
   }
-}
+
+  }
+

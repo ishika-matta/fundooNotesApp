@@ -14,6 +14,11 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
 import { ConnectService } from '../app/services/connect.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { TakeNoteComponent } from './component/take-note/take-note.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { IconComponent } from './component/icon/icon.component';
+import { DisplayComponent } from './component/display/display.component';
 
 
 
@@ -24,7 +29,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     PageNotFoundComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    DashboardComponent,
+    TakeNoteComponent,
+    IconComponent,
+    DisplayComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -34,8 +43,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppMaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    ColorPickerModule
+    
     
   ],
   providers: [

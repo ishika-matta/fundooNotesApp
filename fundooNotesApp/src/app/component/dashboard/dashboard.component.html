@@ -1,0 +1,74 @@
+<!-- <div class="dashboard"  fxLayoutAlign="center center">
+
+  <mat-card fxFlex="70" fxFlex.xs="100" class="dashboard-password-card"  >
+     <mat-drawer-container class="dashboard-container" autosize>
+      <mat-drawer #drawer class="dashboard-sidenav" mode="side">
+        <p>
+        
+            <mat-list>
+                <mat-list-item >
+
+                  <h4 mat-line>user1</h4>
+                  <h4 mat-line>user2</h4>
+                  <h4 mat-line>user3</h4>
+                </mat-list-item>
+              </mat-list>
+            </p>
+        <p *ngIf="showFiller"> 
+          
+        
+        </p>
+        
+      </mat-drawer>
+    
+      <div class="dashboard-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          View Users
+        </button>
+      </div>
+    
+    </mat-drawer-container> 
+
+ 
+</mat-card>  
+</div> -->
+
+
+
+<mat-toolbar color="primary" class="dashboard-toolbar">
+    <mat-toolbar-row>
+        <mat-icon class="dashboard-icon" aria-hidden="false" aria-label="Example heart icon"
+        type="button" mat-button (click)="drawer.toggle()">
+            menu
+          </mat-icon>
+          <img src="../../../assets/favicon.jpg" width=30px height=30px>
+          <p>FUNDOO NOTES</p>
+          <!-- <input type="search" class="searchbar" placeholder="Search"> -->
+        </mat-toolbar-row>
+      </mat-toolbar>
+      
+      
+      <span class="dashboard-spacer"></span>
+      <mat-drawer-container class="dashboard-container" autosize>
+          <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened>
+              <mat-list>
+                  
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>notes</mat-icon>
+                    
+                    <p mat-line> Notes </p>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                  
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>notifications</mat-icon>
+                    
+                    <p mat-line> Reminder</p>
+                  </mat-list-item>
+                </mat-list>
+          </mat-drawer>
+          <app-take-note></app-take-note>
+        </mat-drawer-container>
+
+        
+        

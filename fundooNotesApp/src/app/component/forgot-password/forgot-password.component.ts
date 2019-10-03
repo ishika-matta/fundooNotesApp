@@ -12,10 +12,11 @@ export class ForgotPasswordComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private svc: ConnectService) {
-    this.svc.print("inside forgot password");
+    
   }
 
   ngOnInit() {
+    this.svc.print("inside forgot password");
   }
   EmailInvalidMessage() {
     if (this.email.hasError("required"))
@@ -31,7 +32,17 @@ export class ForgotPasswordComponent implements OnInit {
       email: this.email.value,
       service: "basic"
     }
-    this.svc.forgotPassword(this.userObj);
+    let options = {
+      data: this.userObj,
+      purpose: 'reset',
+    }
+   this.svc.postWithoutToken(options).subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText);
+    })
+  }
+  
   }
 
-}
+
