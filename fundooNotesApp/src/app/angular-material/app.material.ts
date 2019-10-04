@@ -9,9 +9,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { MatChipsModule } from '@angular/material/chips';
-import { TextFieldModule } from '@angular/cdk/text-field';
+import {MatChipsModule} from '@angular/material/chips';
+import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
       MatExpansionModule,
       MatChipsModule,
       TextFieldModule,
-      MatTooltipModule
+      MatTooltipModule,
+      MatMenuModule
       
    
     ],
@@ -49,7 +51,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
       MatExpansionModule,
       MatChipsModule,
       TextFieldModule,
-      MatTooltipModule
+      MatTooltipModule,
+      MatMenuModule
       
    
     ],

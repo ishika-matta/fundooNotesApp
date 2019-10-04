@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ConnectService } from '../../services/connect.service';
 import { User } from '../login/login.model';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
-  constructor(private svc: ConnectService) { 
+  constructor(private svc: ConnectService, private router: Router) { 
     
   }
 
@@ -53,8 +55,10 @@ export class LoginComponent implements OnInit {
     }
     this.result=this.svc.postWithoutToken(options);
 
-    this.svc.postWithoutToken(options).subscribe((response) => {
+    this.svc.postWithoutToken(options).subscribe((response:any) => {
       console.log(response);
+      localStorage.setItem('id',response.id);
+      this.router.navigate(['/dashboard']);
     },(error)=>{
       console.log(error.statusText);
     })

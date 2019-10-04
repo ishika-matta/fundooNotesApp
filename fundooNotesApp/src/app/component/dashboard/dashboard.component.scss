@@ -1,3 +1,8 @@
+.dashboard-toolbar{
+  color:black;
+  background-color:white ;
+}
+
 .dashboard-icon {
   padding: 0 14px;
 }
@@ -8,7 +13,7 @@
 
 .dashboard-container {
   
-  width: 100%;
+  //width: 20%;
   height: 600px; 
   //border: 1px solid rgba(0, 0, 0, 0.5);
 }
@@ -16,21 +21,33 @@
 
 
 .dashboard-sidenav {
-  padding: 20px; 
+  padding: 5px; 
   width:20%;
   height:98%;
   background-color:rgb(191, 240, 240);
   //border: 2px dashed rgba(0, 0, 0, 0.5);
 }
 
-.searchbar{
-  padding-right:5%;
-  width:370px;
-  height:50px;
+.dashboard-searchbar{
+  padding-top:5%;
+  //  width:700px;
+  // height:20%;
+  transform: translateY(-1.1em) scale(.75);
 }
 
+.toolbar-refresh{
+  color:black;
+}
 
-
+.dashboard-image{
+  height:50%;
+  width:8%;
+}
+.avatar-image{
+  height: 80px;
+  width: 80px;
+  position:relative;
+}
 
 
 

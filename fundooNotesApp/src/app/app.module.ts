@@ -19,7 +19,7 @@ import { TakeNoteComponent } from './component/take-note/take-note.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { IconComponent } from './component/icon/icon.component';
 import { DisplayComponent } from './component/display/display.component';
-
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -44,7 +44,8 @@ import { DisplayComponent } from './component/display/display.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule
     
     
   ],

@@ -1,29 +1,49 @@
-<mat-card>
-    <mat-icon class="info-button" mat-raised-button
-    matTooltip="attachments"
-    aria-label="Button that displays a tooltip when focused or hovered over">
-    attachment</mat-icon>
-    <mat-icon class="info-button" at-raised-button
-    matTooltip="notes"
-    aria-label="Button that displays a tooltip when focused or hovered over">
-    note</mat-icon>
-    <mat-icon class="info-button" at-raised-button
-    matTooltip="color palette"
-    aria-label="Button that displays a tooltip when focused or hovered over">
-    palette</mat-icon>
-    <mat-icon class="info-button" at-raised-button
-    matTooltip="archive"
-    aria-label="Button that displays a tooltip when focused or hovered over">
-    archive</mat-icon>
-    <mat-icon class="info-button" at-raised-button
-    matTooltip="image"
-    aria-label="Button that displays a tooltip when focused or hovered over">
-    image</mat-icon>
-    <mat-icon class="info-button" at-raised-button
-    matTooltip="more options"
-    aria-label="Button that displays a tooltip when focused or hovered over">
-    more</mat-icon>
+<mat-card fxFlex.xs="100" fxLayout="row" fxLayoutAlign="space-around center" class="icon-mat-card">
+    <mat-icon matTooltip="Remind me">notifications</mat-icon>
+    <mat-icon matTooltip="Collaborator">person_add</mat-icon>
+    <button (click)="onColors()"></button>
+    <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon matTooltip="Change color">color_lens</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+
+      <div class="icon-color">
+            <button mat-mini-fab color="#ECEEEE"></button>
+            <button mat-mini-fab color="#F28B82"></button>
+            <button mat-mini-fab color="#F7BC04"></button>
+            <button mat-mini-fab color="#FAF474"></button>
+      </div>
+
+      <div class="icon-color">
+            <button mat-mini-fab color="primary"></button>
+            <button mat-mini-fab color="primary"></button>
+            <button mat-mini-fab color="accent"></button>
+            <button mat-mini-fab color="#F7BC04"></button>
+      </div>
+      <div class="icon-color">
+            <button mat-mini-fab color="primary"></button>
+            <button mat-mini-fab color="primary"></button>
+            <button mat-mini-fab color="accent"></button>
+            <button mat-mini-fab color="#F7BC04"></button>
+      </div>
+    </mat-menu>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <mat-icon matTooltip="Add image">panorama</mat-icon>
+    <mat-icon matTooltip="Archive">archive</mat-icon>
+    <mat-icon matTooltip="More">more_vert</mat-icon>
+    <button class="info-button" (click)="onClose()">Close</button>
     <button class="info-button" (click)="onSave()">Save</button>
-   
 
 </mat-card>

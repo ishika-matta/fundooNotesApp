@@ -1,30 +1,23 @@
 
-  <mat-accordion>
-      <mat-expansion-panel class="take-note">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Create a note
-          </mat-panel-title>
-        
+     <div>
+     <mat-expansion-panel  fxLayout="column" fxLayoutAlign="space-evenly start" 
+      >
+
+        <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+                <input matInput placeholder="title" [formControl]="title">      
         </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="title">
-        </mat-form-field>
-    <div></div>
-        <mat-form-field>
+ 
             <textarea matInput
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="10" placeholder="take a note"></textarea>
-        </mat-form-field>
-         
+            cdkAutosizeMaxRows="10" [formControl]="description" placeholder="take a note">
+          </textarea>
 
     <app-icon></app-icon>
       </mat-expansion-panel>
-      
-    </mat-accordion>
 
+    <app-display></app-display>
 
+  </div>
   

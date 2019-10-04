@@ -7,7 +7,8 @@ import { environment  } from '../../environments/environment';
 })
 export class ConnectService {
   response: any;
-  baseUrl = environment.baseUrl;
+  baseUrlUser = environment.baseUrlUser;
+  
 
   constructor(private http: HttpClient){
   }
@@ -18,7 +19,9 @@ export class ConnectService {
   }
   
   postWithoutToken(obj){
-    return (this.http.post(this.baseUrl+obj.purpose, obj.data));
+    return (this.http.post(this.baseUrlUser+obj.purpose, obj.data));
   }
+
+ 
  
 }

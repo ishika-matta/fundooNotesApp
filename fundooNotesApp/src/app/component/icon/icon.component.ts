@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-icon',
@@ -6,14 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
+  message:string="Saved";
+  @Output() MessageEvent=new EventEmitter<string>();
+  
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSave() {
-    
 
+  onSave() {
+    this.MessageEvent.emit(this.message);
+    console.log(this.message);
   }
+
+
 }

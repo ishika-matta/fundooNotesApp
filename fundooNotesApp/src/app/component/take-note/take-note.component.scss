@@ -1,4 +1,10 @@
 .take-note{
-    width:70%;
-    border-radius:20px;
+    width:700px;
+    border-radius:10px;
+    padding:5px;
 }
+mat-expansion-panel {
+    mat-expansion-panel-header {
+      height: auto!important; 
+    }
+  }

@@ -1,74 +1,80 @@
-<!-- <div class="dashboard"  fxLayoutAlign="center center">
+<div class="container" fxLayout="column" fxLayoutAlign="space-around">
 
-  <mat-card fxFlex="70" fxFlex.xs="100" class="dashboard-password-card"  >
-     <mat-drawer-container class="dashboard-container" autosize>
-      <mat-drawer #drawer class="dashboard-sidenav" mode="side">
-        <p>
-        
-            <mat-list>
-                <mat-list-item >
-
-                  <h4 mat-line>user1</h4>
-                  <h4 mat-line>user2</h4>
-                  <h4 mat-line>user3</h4>
-                </mat-list-item>
-              </mat-list>
-            </p>
-        <p *ngIf="showFiller"> 
-          
-        
-        </p>
-        
-      </mat-drawer>
-    
-      <div class="dashboard-sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()">
-          View Users
-        </button>
-      </div>
-    
-    </mat-drawer-container> 
-
- 
-</mat-card>  
-</div> -->
-
-
-
-<mat-toolbar color="primary" class="dashboard-toolbar">
+<mat-toolbar  class="dashboard-toolbar">
     <mat-toolbar-row>
         <mat-icon class="dashboard-icon" aria-hidden="false" aria-label="Example heart icon"
         type="button" mat-button (click)="drawer.toggle()">
             menu
           </mat-icon>
-          <img src="../../../assets/favicon.jpg" width=30px height=30px>
+          <img src="../../../assets/favicon.jpg" class="dashboard-image">
           <p>FUNDOO NOTES</p>
-          <!-- <input type="search" class="searchbar" placeholder="Search"> -->
+          <mat-form-field class="dashboard-searchbar" appearance="outline" fxHide.xs="true" fxShow="true" fxFlex="70">
+              <mat-icon matPrefix>search</mat-icon>
+              <input matInput placeholder="Search">
+              </mat-form-field>
+
+              <button mat-button class="toolbar-refresh" matTooltip="Refresh">
+                  <mat-icon >refresh</mat-icon>
+                  </button>
+                  <button mat-button class="toolbar-list" matTooltip="List View">
+                  <mat-icon>list</mat-icon>
+                  </button>
+                  <button mat-button class="toolbar-settings" matTooltip="Settings">
+                  <mat-icon>settings</mat-icon>
+                  </button>
+                  <button mat-button [matMenuTriggerFor]="belowMenu">
+                  <img mat-card-avatar src="../../../../src/assets/favicon.jpg" class="avatar-img">
+
+                  </button>
+                  <mat-menu #belowMenu="matMenu" yPosition="below">
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
+                  </mat-menu>
+
+                  
+                  <!-- <button mat-button class="toolbar-apps"  matTooltip="Apps">
+                  <mat-icon>apps</mat-icon>
+                  </button> -->
         </mat-toolbar-row>
       </mat-toolbar>
       
       
       <span class="dashboard-spacer"></span>
-      <mat-drawer-container class="dashboard-container" autosize>
+      <mat-drawer-container class="dashboard-container" autosize fxHide.xs="true" fxShow="true" fxLayout="column" fxLayoutAlign="start start">
           <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened>
               <mat-list>
                   
                   <mat-list-item >
-                    <mat-icon mat-list-icon>notes</mat-icon>
-                    
+                    <mat-icon mat-list-icon>exit_to_app</mat-icon>
                     <p mat-line> Notes </p>
                   </mat-list-item>
-                  <mat-divider></mat-divider>
-                  
+
                   <mat-list-item >
-                    <mat-icon mat-list-icon>notifications</mat-icon>
-                    
-                    <p mat-line> Reminder</p>
-                  </mat-list-item>
+                      <mat-icon mat-list-icon>notifications</mat-icon>
+                      <p mat-line> Reminder</p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item >
+                        <mat-icon mat-list-icon>folder</mat-icon>
+                        <p mat-line> Label1 </p>
+                      </mat-list-item>
+                      <mat-list-item >
+                          <mat-icon mat-list-icon>folder</mat-icon>
+                          <p mat-line> Label2 </p>
+                        </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item >
+                      <mat-icon mat-list-icon>archive</mat-icon>
+                      <p mat-line> Archive </p>
+                    </mat-list-item>
+                    <mat-list-item >
+                        <mat-icon mat-list-icon>delete</mat-icon>
+                        <p mat-line> Trash </p>
+                      </mat-list-item>
+                  
                 </mat-list>
           </mat-drawer>
-          <app-take-note></app-take-note>
+          <app-take-note></app-take-note> 
         </mat-drawer-container>
-
-        
-        
+      </div> 
+   

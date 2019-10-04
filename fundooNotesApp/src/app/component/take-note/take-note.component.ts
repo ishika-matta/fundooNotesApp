@@ -1,4 +1,7 @@
 import { Component, OnInit,Output, EventEmitter } from '@angular/core';
+import { NoteService } from '../../services/note.service';
+import { FormControl } from '@angular/forms';
+import { TakeNote } from 'src/app/models/take-note.model';
 
 @Component({
   selector: 'app-take-note',
@@ -6,16 +9,38 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
   styleUrls: ['./take-note.component.scss']
 })
 export class TakeNoteComponent implements OnInit {
-  //message: string = "Hola Mundo!"
+  takeNoteObj:TakeNote=new TakeNote();
+  title=new FormControl();
+  description=new FormControl();
 
-  // @Output() messageEvent = new EventEmitter<string>();
 
-  constructor() { }
+  
+
+  constructor(private noteService: NoteService) { }
 
   ngOnInit() {
+   
   }
-  // sendMessage() {
-  //   this.messageEvent.emit(this.message)
-  // }
+  
+  getMessage($event){
+    this.takeNoteObj={
+      title:this.title.value,
+      description:this.description.value,
+    }
+    let options = {
+      data: this.takeNoteObj,
+      purpose: 'addNotes',
+    }
+
+    this.noteService.postWithToken(options).subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText);
+    })
+
+
+
+
+  }
 
 }
