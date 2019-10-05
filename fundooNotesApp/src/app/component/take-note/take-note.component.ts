@@ -10,8 +10,10 @@ import { TakeNote } from 'src/app/models/take-note.model';
 })
 export class TakeNoteComponent implements OnInit {
   takeNoteObj:TakeNote=new TakeNote();
+  message:string;
   title=new FormControl();
   description=new FormControl();
+  show: boolean = true;
 
 
   
@@ -21,8 +23,12 @@ export class TakeNoteComponent implements OnInit {
   ngOnInit() {
    
   }
-  
-  getMessage($event){
+  toggle() { 
+    this.show= !this.show;
+  }
+  receiveMessage($event){
+    console.log("27......");
+    this.message=$event;
     this.takeNoteObj={
       title:this.title.value,
       description:this.description.value,
@@ -31,6 +37,7 @@ export class TakeNoteComponent implements OnInit {
       data: this.takeNoteObj,
       purpose: 'addNotes',
     }
+    console.log(this.takeNoteObj);
 
     this.noteService.postWithToken(options).subscribe((response) => {
       console.log(response);

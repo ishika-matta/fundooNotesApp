@@ -8,7 +8,7 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class IconComponent implements OnInit {
   message:string="Saved";
-  @Output() MessageEvent=new EventEmitter<string>();
+  @Output() messageEvent=new EventEmitter<string>();
   
 
   constructor() { }
@@ -18,7 +18,7 @@ export class IconComponent implements OnInit {
 
 
   onSave() {
-    this.MessageEvent.emit(this.message);
+    this.messageEvent.emit(this.message);
     console.log(this.message);
   }
 

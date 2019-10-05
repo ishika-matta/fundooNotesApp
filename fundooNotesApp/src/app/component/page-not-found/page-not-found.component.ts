@@ -7,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
-  username:string=" ";
-  response:any;
+  collapsed:boolean=false;
 
   constructor() { 
   }
 
   ngOnInit() {
   }
+  collapsedFn(){
+    this.collapsed=!this.collapsed;
+  }
+  
 
 }

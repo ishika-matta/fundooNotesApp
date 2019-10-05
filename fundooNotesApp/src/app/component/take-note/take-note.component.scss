@@ -1,10 +1,12 @@
-.take-note{
-    width:700px;
-    border-radius:10px;
-    padding:5px;
+
+.mat-card{
+    //margin: 30px;
+    border-radius: 12px;
+    //padding:1% 2%;
 }
-mat-expansion-panel {
-    mat-expansion-panel-header {
-      height: auto!important; 
-    }
-  }
+.mat-form-field{
+    width:100%;
+    outline:none;
+}
+
+

@@ -13,6 +13,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatMenuModule} from '@angular/material/menu';
       MatChipsModule,
       TextFieldModule,
       MatTooltipModule,
-      MatMenuModule
+      MatMenuModule,
+      MatGridListModule
       
    
     ],
@@ -52,7 +54,8 @@ import {MatMenuModule} from '@angular/material/menu';
       MatChipsModule,
       TextFieldModule,
       MatTooltipModule,
-      MatMenuModule
+      MatMenuModule,
+      MatGridListModule
       
    
     ],

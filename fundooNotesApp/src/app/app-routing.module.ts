@@ -20,6 +20,7 @@ const routes: Routes = [
   {path:'take-note', component:TakeNoteComponent},
   {path:'icon', component:IconComponent},
   {path:'display-content', component:DisplayComponent},
+  {path:'page-not-found', component:PageNotFoundComponent},
   {path:'**', redirectTo:'/register'}
 
 ];

@@ -1,11 +1,11 @@
-<mat-card fxFlex.xs="100" fxLayout="row" fxLayoutAlign="space-around center" class="icon-mat-card">
+<mat-card class="icon-mat-card">
     <mat-icon matTooltip="Remind me">notifications</mat-icon>
     <mat-icon matTooltip="Collaborator">person_add</mat-icon>
-    <button (click)="onColors()"></button>
+    
     <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon matTooltip="Change color">color_lens</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
+    <mat-menu #menu_color="matMenu">
 
       <div class="icon-color">
             <button mat-mini-fab color="#ECEEEE"></button>
@@ -31,18 +31,19 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
     <mat-icon matTooltip="Add image">panorama</mat-icon>
     <mat-icon matTooltip="Archive">archive</mat-icon>
-    <mat-icon matTooltip="More">more_vert</mat-icon>
+    
+
+    <button mat-button matTooltip="More" [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu>
+            <button mat-menu-item>Change Labels</button>
+            <button mat-menu-item>Add drawing</button>
+            <button mat-menu-item>Show checkboxes</button>
+          </mat-menu>
+
     <button class="info-button" (click)="onClose()">Close</button>
     <button class="info-button" (click)="onSave()">Save</button>
 

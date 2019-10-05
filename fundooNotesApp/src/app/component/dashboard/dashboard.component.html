@@ -1,17 +1,18 @@
-<div class="container" fxLayout="column" fxLayoutAlign="space-around">
+<div class="main-container">
 
 <mat-toolbar  class="dashboard-toolbar">
     <mat-toolbar-row>
-        <mat-icon class="dashboard-icon" aria-hidden="false" aria-label="Example heart icon"
+        <mat-icon class="dashboard-icon" aria-hidden="false" 
         type="button" mat-button (click)="drawer.toggle()">
             menu
           </mat-icon>
-          <img src="../../../assets/favicon.jpg" class="dashboard-image">
+          <img src="../../../assets/keep.png" class="dashboard-image">
           <p>FUNDOO NOTES</p>
-          <mat-form-field class="dashboard-searchbar" appearance="outline" fxHide.xs="true" fxShow="true" fxFlex="70">
+          <div class="dashboard-searchbar">
               <mat-icon matPrefix>search</mat-icon>
               <input matInput placeholder="Search">
-              </mat-form-field>
+          </div>
+              
 
               <button mat-button class="toolbar-refresh" matTooltip="Refresh">
                   <mat-icon >refresh</mat-icon>
@@ -22,25 +23,22 @@
                   <button mat-button class="toolbar-settings" matTooltip="Settings">
                   <mat-icon>settings</mat-icon>
                   </button>
+                  
                   <button mat-button [matMenuTriggerFor]="belowMenu">
-                  <img mat-card-avatar src="../../../../src/assets/favicon.jpg" class="avatar-img">
+                  <img mat-card-avatar src="../../../../src/assets/user.png" class="avatar-img" height="20px" width="20px">
 
                   </button>
-                  <mat-menu #belowMenu="matMenu" yPosition="below">
-                    <button mat-menu-item>Item 1</button>
-                    <button mat-menu-item>Item 2</button>
+                 <mat-menu #belowMenu="matMenu" yPosition="below">
+                    <button mat-menu-item>Settings</button>
+                    <button mat-menu-item>LogOut</button>
                   </mat-menu>
 
-                  
-                  <!-- <button mat-button class="toolbar-apps"  matTooltip="Apps">
-                  <mat-icon>apps</mat-icon>
-                  </button> -->
         </mat-toolbar-row>
       </mat-toolbar>
       
       
       <span class="dashboard-spacer"></span>
-      <mat-drawer-container class="dashboard-container" autosize fxHide.xs="true" fxShow="true" fxLayout="column" fxLayoutAlign="start start">
+      <mat-drawer-container class="dashboard-container" autosize fxShow="true" fxLayout="column" fxLayoutAlign="start start">
           <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened>
               <mat-list>
                   
@@ -74,7 +72,10 @@
                   
                 </mat-list>
           </mat-drawer>
+    
           <app-take-note></app-take-note> 
+          <app-display></app-display>
         </mat-drawer-container>
+        
       </div> 
    
