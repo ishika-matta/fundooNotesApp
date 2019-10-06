@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ConnectService } from '../../services/connect.service';
-import { User } from '../reset-password/reset-password-model';
+import { ResetPassword } from '../../models/reset-password-model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -9,15 +10,18 @@ import { User } from '../reset-password/reset-password-model';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-  userObj: any=new User();
+  userObj: any=new ResetPassword();
+  token:string;
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.password.value)]);
 
-  constructor(private svc: ConnectService) {
-    this.svc.print("inside reset password");
+  constructor(private userService: UserService, private routing:Router,private route:ActivatedRoute) {
+  
   }
 
   ngOnInit() {
+    this.token=this.route.snapshot.paramMap.get('token');
+    localStorage.setItem('token',this.token);
   }
   PasswordInvalidMessage() {
     if (this.password.hasError("required")) {
@@ -43,15 +47,15 @@ export class ResetPasswordComponent implements OnInit {
 
   onResetPassword() {
     this.userObj = {
-      password: this.password.value,
-      confirmPassword: this.confirmPassword.value,
-      service: "basic"
+      newPassword: this.password.value,
+      // confirmPassword: this.confirmPassword.value,
+      // service: "basic"
     }
     let options = {
       data: this.userObj,
-      purpose: 'reset-password/:token',
+      purpose: 'reset-password',
     }
-    this.svc.postWithoutToken(options).subscribe((response) => {
+    this.userService.postWithToken(options).subscribe((response) => {
       console.log(response);
     },(error)=>{
       console.log(error.statusText);

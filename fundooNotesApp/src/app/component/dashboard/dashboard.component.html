@@ -1,14 +1,14 @@
-<div class="main-container">
+<div class="main-container" fxFlex="100">
 
-<mat-toolbar  class="dashboard-toolbar">
-    <mat-toolbar-row>
+<mat-toolbar  class="dashboard-toolbar" fxflex="100">
+    <mat-toolbar-row autosize>
         <mat-icon class="dashboard-icon" aria-hidden="false" 
         type="button" mat-button (click)="drawer.toggle()">
             menu
           </mat-icon>
           <img src="../../../assets/keep.png" class="dashboard-image">
           <p>FUNDOO NOTES</p>
-          <div class="dashboard-searchbar">
+          <div class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
               <mat-icon matPrefix>search</mat-icon>
               <input matInput placeholder="Search">
           </div>
@@ -32,14 +32,14 @@
                     <button mat-menu-item>Settings</button>
                     <button mat-menu-item>LogOut</button>
                   </mat-menu>
-
-        </mat-toolbar-row>
+                </mat-toolbar-row>
+        
       </mat-toolbar>
       
       
       <span class="dashboard-spacer"></span>
       <mat-drawer-container class="dashboard-container" autosize fxShow="true" fxLayout="column" fxLayoutAlign="start start">
-          <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened>
+          <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened autosize fxShow="true">
               <mat-list>
                   
                   <mat-list-item >

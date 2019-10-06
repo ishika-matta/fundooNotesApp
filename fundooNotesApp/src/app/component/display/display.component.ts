@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../../services/note.service';
+import { DialogCardComponent } from '../dialog-card/dialog-card.component';
+import { TakeNote } from 'src/app/models/take-note.model';
+import {MatDialog, MatDialogConfig} from "@angular/material";
 
 @Component({
   selector: 'app-display',
@@ -8,8 +11,10 @@ import { NoteService } from '../../services/note.service';
 })
 export class DisplayComponent implements OnInit {
   notes:any;
+  note:any=new TakeNote();
+
   
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -24,7 +29,21 @@ export class DisplayComponent implements OnInit {
       })
       }
 
+      openDialog(notes):void {
 
+        const dialogConfig = new MatDialogConfig();
+    
+        dialogConfig.autoFocus = true;  
+        dialogConfig.data={
+          title:notes.title,
+          description:notes.description
+        }
+      
+      const dialogRef = this.dialog.open(DialogCardComponent, dialogConfig);
+    
+      dialogRef.afterClosed().subscribe(
+        result => console.log("Dialog output:", result)
+    ); 
 
-
+      }
 }

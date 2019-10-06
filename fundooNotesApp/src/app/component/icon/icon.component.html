@@ -1,32 +1,22 @@
-<mat-card class="icon-mat-card">
+
+<mat-card class="icon-mat-card" fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+    
     <mat-icon matTooltip="Remind me">notifications</mat-icon>
     <mat-icon matTooltip="Collaborator">person_add</mat-icon>
     
-    <button mat-button [matMenuTriggerFor]="menu">
+    <button mat-button [matMenuTriggerFor]="menu_color">
             <mat-icon matTooltip="Change color">color_lens</mat-icon>
     </button>
-    <mat-menu #menu_color="matMenu">
+    <mat-menu #menu_color>
 
-      <div class="icon-color">
-            <button mat-mini-fab color="#ECEEEE"></button>
-            <button mat-mini-fab color="#F28B82"></button>
-            <button mat-mini-fab color="#F7BC04"></button>
-            <button mat-mini-fab color="#FAF474"></button>
-      </div>
+      <div *ngFor="let color1 of colorArray" 
+             [ngStyle]="{'background':color1.color}" class="icon-palette" (click)="changeColor(color1.color,card)">
+             .
 
-      <div class="icon-color">
-            <button mat-mini-fab color="primary"></button>
-            <button mat-mini-fab color="primary"></button>
-            <button mat-mini-fab color="accent"></button>
-            <button mat-mini-fab color="#F7BC04"></button>
-      </div>
-      <div class="icon-color">
-            <button mat-mini-fab color="primary"></button>
-            <button mat-mini-fab color="primary"></button>
-            <button mat-mini-fab color="accent"></button>
-            <button mat-mini-fab color="#F7BC04"></button>
+     
       </div>
     </mat-menu>
+    
   
   
   

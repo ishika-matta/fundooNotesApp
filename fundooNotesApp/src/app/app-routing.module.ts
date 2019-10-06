@@ -9,6 +9,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { TakeNoteComponent } from './component/take-note/take-note.component';
 import { IconComponent } from './component/icon/icon.component';
 import { DisplayComponent } from './component/display/display.component';
+import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/register', pathMatch:'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'take-note', component:TakeNoteComponent},
   {path:'icon', component:IconComponent},
   {path:'display-content', component:DisplayComponent},
+  {path:'dialog-card', component:DialogCardComponent},
   {path:'page-not-found', component:PageNotFoundComponent},
   {path:'**', redirectTo:'/register'}
 

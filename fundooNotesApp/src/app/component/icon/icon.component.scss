@@ -1,16 +1,15 @@
 .icon-mat-card{
     transform: translateY(-1.1em) scale(.75);
+    height:10%;
     border: none !important;
     transition: none !important;
     box-shadow: none !important;
 }
 
 
-// .icon-color{
-//     margin-right: 8px;
-// }
-
-.mini-fab-icon{
-    transform: translateY(-1.1em) scale(.75);
-
+.icon-palette{
+    border-radius:50%;
+}
+.icon-color{
+    width:20px;
 }

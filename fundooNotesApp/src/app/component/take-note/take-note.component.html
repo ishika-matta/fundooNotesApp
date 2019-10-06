@@ -1,6 +1,6 @@
  
- <div *ngIf="!show">
-      <mat-card>
+ <div *ngIf="!show" fxLayoutAlign="center start">
+      <mat-card fxFlex="70" fxLayout="column">
         <mat-form-field>
           <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" 
           cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>

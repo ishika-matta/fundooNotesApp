@@ -1,11 +1,14 @@
 
         <!-- <mat-grid-list cols="2"> -->
     <!-- <mat-grid-tile class="display-container" *ngFor="let notes of notes"> -->
-            <div   fxLayoutGap="14px" fxLayout="row wrap" >
+            <div class="display-container" fxLayout="row wrap" fxFlex="100">
 
-   <mat-card *ngFor="let notes of notes" fxFlex="25">
+   <mat-card class="display-mat-card" *ngFor="let notes of notes" fxFlex="25">
        <p>{{notes.title}}</p>
        <p>{{notes.description}}</p>
+       <div fxLayoutAlign="start start">
+       <app-icon [card]=notes.id></app-icon>
+    </div>
 
    </mat-card>
    </div>

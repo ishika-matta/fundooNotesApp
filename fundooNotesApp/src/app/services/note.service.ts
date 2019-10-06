@@ -12,9 +12,7 @@ export class NoteService {
   constructor(private httpSvc: HttpService) { }
 
 
-  postWithoutToken(options) {
-    return this.httpSvc.postCall(this.baseUrlNotes + options.purpose, options.data);
-  }
+  
   getWithToken(options){
     let httpOptions = {
       headers: new HttpHeaders({

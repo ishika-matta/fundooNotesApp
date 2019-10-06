@@ -20,6 +20,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { IconComponent } from './component/icon/icon.component';
 import { DisplayComponent } from './component/display/display.component';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
+import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
     DashboardComponent,
     TakeNoteComponent,
     IconComponent,
-    DisplayComponent
+    DisplayComponent,
+    DialogCardComponent
   ],
   imports: [
     FlexLayoutModule,
