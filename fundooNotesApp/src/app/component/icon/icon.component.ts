@@ -32,10 +32,10 @@ export class IconComponent implements OnInit {
   }
 
 
-  onSave() {
-    this.messageEvent.emit(this.message);
-    console.log(this.message);
-  }
+  // onSave() {
+  //   this.messageEvent.emit(this.message);
+  //   console.log(this.message);
+  // }
   onDelete() {
     console.log(this.card)
     this.messageEvent.emit(this.card);

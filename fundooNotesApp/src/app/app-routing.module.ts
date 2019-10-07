@@ -12,7 +12,7 @@ import { DisplayComponent } from './component/display/display.component';
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 import { AuthGuard } from './component/auth.guard';
 import { AuthService } from './services/auth.service';
-import { DashComponent } from './component/dash/dash.component';
+// import { DashComponent } from './component/dash/dash.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/register', pathMatch:'full'},
@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'display-content', component:DisplayComponent},
   {path:'dialog-card', component:DialogCardComponent},
   {path:'page-not-found', component:PageNotFoundComponent},
-  {path:'dash', component:DashComponent},
+  // {path:'dash', component:DashComponent},
   
   {path:'**', redirectTo:'/register'}
 

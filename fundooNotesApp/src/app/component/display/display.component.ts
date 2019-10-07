@@ -4,6 +4,7 @@ import { DialogCardComponent } from '../dialog-card/dialog-card.component';
 import { TakeNote } from 'src/app/models/take-note.model';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { FormControl } from '@angular/forms';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-display',
@@ -19,20 +20,30 @@ export class DisplayComponent implements OnInit {
 
 
 
-  constructor(private noteService: NoteService, public dialog: MatDialog) { }
+  constructor(private noteService: NoteService, public dialog: MatDialog, private data:DataService) { }
 
-  ngOnInit() {
-
-    let options = {
-      purpose: 'getNotesList',
-    }
-    this.noteService.getWithToken(options).subscribe((response: any) => {
-      this.notes = response.data.data.reverse();
-      console.log(response);
-    }, (error) => {
-      console.log(error.statusText);
+  ngOnInit(){
+    this.receiveNotes();
+    this.data.currentMessage.subscribe((res)=>{
+      this.receiveNotes();
     })
+
   }
+
+  receiveNotes(){
+    let options = {
+          purpose: 'getNotesList',
+        }
+      this.noteService.getWithToken(options).subscribe((response: any) => {
+            this.notes = response.data.data.reverse();
+            console.log(response);
+          }, (error) => {
+            console.log(error.statusText);
+          })
+
+  }
+
+  
 
 
   receiveMessage($event) {
