@@ -42,7 +42,7 @@ export class DialogCardComponent implements OnInit {
     }
 
 
-this.noteService.postWithToken(this.options).subscribe((response)=>{
+this.noteService.postWithTokenWithEncoded(this.options).subscribe((response)=>{
   console.log(response);
 },(error)=>{
   console.log(error);

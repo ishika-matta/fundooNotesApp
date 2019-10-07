@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { ConnectService } from '../app/services/connect.service';
+import { HttpService } from './services/http.service';
+import { UserService } from './services/user.service';
+import { NoteService } from './services/note.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -21,7 +24,9 @@ import { IconComponent } from './component/icon/icon.component';
 import { DisplayComponent } from './component/display/display.component';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
-
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './component/auth.guard';
+import { DashComponent } from './component/dash/dash.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { DialogCardComponent } from './component/dialog-card/dialog-card.compone
     TakeNoteComponent,
     IconComponent,
     DisplayComponent,
-    DialogCardComponent
+    DialogCardComponent,
+    DashComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -53,6 +59,11 @@ import { DialogCardComponent } from './component/dialog-card/dialog-card.compone
   ],
   providers: [
     ConnectService,
+    AuthGuard,
+    AuthService,
+    HttpService,
+    UserService,
+    NoteService
   ],
   bootstrap: [AppComponent]
 })

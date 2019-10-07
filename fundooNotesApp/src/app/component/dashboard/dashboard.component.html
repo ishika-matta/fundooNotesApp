@@ -3,15 +3,16 @@
 <mat-toolbar  class="dashboard-toolbar" fxflex="100">
     <mat-toolbar-row autosize>
         <mat-icon class="dashboard-icon" aria-hidden="false" 
-        type="button" mat-button (click)="drawer.toggle()">
+        type="button" mat-icon-button (click)="drawer.toggle()">
             menu
           </mat-icon>
           <img src="../../../assets/keep.png" class="dashboard-image">
           <p>FUNDOO NOTES</p>
-          <div class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
+          <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
               <mat-icon matPrefix>search</mat-icon>
-              <input matInput placeholder="Search">
-          </div>
+              
+              <textarea matInput type="text" cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype" ></textarea>
+          </mat-card>
               
 
               <button mat-button class="toolbar-refresh" matTooltip="Refresh">
@@ -29,8 +30,11 @@
 
                   </button>
                  <mat-menu #belowMenu="matMenu" yPosition="below">
-                    <button mat-menu-item>Settings</button>
-                    <button mat-menu-item>LogOut</button>
+                    <!-- <button mat-menu-item>Settings</button> -->
+                    <button mat-menu-item *ngIf="!auth.isLoggednIn()" routerLink="/login">Login</button>
+
+                    
+                    <button mat-menu-item *ngIf="auth.isLoggednIn()" (click)="auth.logout()">LogOut</button>
                   </mat-menu>
                 </mat-toolbar-row>
         

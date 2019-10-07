@@ -39,15 +39,31 @@ export class TakeNoteComponent implements OnInit {
     }
     console.log(this.takeNoteObj);
 
-    this.noteService.postWithToken(options).subscribe((response) => {
+    this.noteService.postWithTokenWithEncoded(options).subscribe((response) => {
       console.log(response);
     },(error)=>{
       console.log(error.statusText);
     })
 
-
-
-
   }
+  // receive()
+  // {
+  //   this.takeNoteObj={
+  //     title:this.title.value,
+  //     description:this.description.value
+  //   }
+  //   console.log(this.takeNoteObj);
+  //   let  options={
+  //       data:this.takeNoteObj,
+  //       url:'addNotes'
+  //     }
+  //     this.noteService.postWithTokenWithEncoded(options).subscribe((response)=>{
+  //       console.log(response);
+  //       this.toggle();
+  //     },(error)=>{
+  //       console.log(error);
+  //     }); 
+
+  // }
 
 }

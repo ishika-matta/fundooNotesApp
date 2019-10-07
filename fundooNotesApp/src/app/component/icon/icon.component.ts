@@ -10,6 +10,8 @@ import { NoteService } from '../../services/note.service';
 })
 export class IconComponent implements OnInit {
   message:string="Saved";
+  messageDel:string="Trash";
+  messageDelFor:string="Deleted Forever";
   notes:any;
   noteObj:any;
   @Output() messageEvent=new EventEmitter<string>();
@@ -34,14 +36,26 @@ export class IconComponent implements OnInit {
     this.messageEvent.emit(this.message);
     console.log(this.message);
   }
+  onDelete() {
+    console.log(this.card)
+    this.messageEvent.emit(this.card);
+    console.log(this.messageDel);
+  }
+  onDeleteForever() {
+    console.log(this.card)
+    this.messageEvent.emit(this.card);
+    console.log(this.messageDelFor);
+  }
+
 
   changeColor(colors,card){
    
 
     try{
+
     
       this.noteObj={
-        "noteListId": card.id,
+        "noteIdList": [card],
         "color":colors,
       }
       let options={
@@ -49,7 +63,7 @@ export class IconComponent implements OnInit {
       purpose: 'changesColorNotes',
 
       }
-      this.noteService.postWithToken(options).subscribe((response:any) => {
+      this.noteService.postWithTokenNotEncoded(options).subscribe((response:any) => {
         this.notes=response.data.data;
         console.log(response);
       },(error)=>{

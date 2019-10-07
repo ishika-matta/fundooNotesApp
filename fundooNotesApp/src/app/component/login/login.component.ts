@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ConnectService } from '../../services/connect.service';
 import { User } from '../login/login.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
-  constructor(private svc: ConnectService, private router: Router) { 
+  constructor(private svc: ConnectService, private router: Router, private auth: AuthService) { 
     
   }
 
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
     this.svc.postWithoutToken(options).subscribe((response:any) => {
       console.log(response);
       localStorage.setItem('id',response.id);
+      this.auth.sendToken(response.id);
       this.router.navigate(['/dashboard']);
     },(error)=>{
       console.log(error.statusText);

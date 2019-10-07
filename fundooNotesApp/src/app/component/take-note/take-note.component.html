@@ -1,14 +1,14 @@
  
  <div *ngIf="!show" fxLayoutAlign="center start">
-      <mat-card fxFlex="70" fxLayout="column">
-        <mat-form-field>
+      <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px">
+        
           <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" 
           cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
-        </mat-form-field>
-        <mat-form-field>
+        
+        
           <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
             placeholder="Take a note..." [formControl]="description"></textarea>
-        </mat-form-field>
+       
          <app-icon (messageEvent)="receiveMessage($event)"></app-icon> 
       </mat-card>
     </div>
@@ -23,3 +23,4 @@
 
 
 
+ 
