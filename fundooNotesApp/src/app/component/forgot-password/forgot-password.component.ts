@@ -32,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.userObj = {
       email: this.email.value,
-      service: 'basic'
+      service: 'advance'
     };
     const options = {
       data: this.userObj,

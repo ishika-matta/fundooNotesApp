@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DisplayComponent } from '../display/display.component';
 import { Inject } from '@angular/core';
 import { NoteService } from '../../services/note.service';
@@ -22,10 +22,11 @@ export class DialogCardComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DisplayComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData, private noteService: NoteService) {
-      this.noteObj = {
-        title: dialogData.title,
-        description: dialogData.description};
-    }
+    this.noteObj = {
+      title: dialogData.title,
+      description: dialogData.description
+    };
+  }
 
   ngOnInit() {
   }
@@ -42,11 +43,12 @@ export class DialogCardComponent implements OnInit {
     };
 
 
-this.noteService.postWithTokenWithEncoded(this.options).subscribe((response) => {
-  console.log(response);
-}, (error) => {
-  console.log(error);
-});
+    this.noteService.postWithTokenWithEncoded(this.options).subscribe((response) => {
+      console.log("inside dailog box....47");
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }
 

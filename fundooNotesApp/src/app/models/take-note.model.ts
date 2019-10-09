@@ -4,7 +4,7 @@ export class TakeNote {
     // isPined:"boolean";
     // isArchived: "boolean";
     isDeleted?: Boolean;
-    // color: "string";
+    color?: "string";
     id?: String;
     // userId: "string";
     service?: String;

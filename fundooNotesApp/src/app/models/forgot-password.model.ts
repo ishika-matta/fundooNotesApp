@@ -1,4 +1,4 @@
 export class User {
     email: 'string';
-    service: 'basic';
+    service: 'advance';
 }

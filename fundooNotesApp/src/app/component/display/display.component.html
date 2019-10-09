@@ -1,5 +1,6 @@
-<div class="display-container" fxLayout="row wrap" fxFlex="100">
-   <mat-card class="display-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="28" >
+<div class="display-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
+   <mat-card class="display-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="28"
+   (click)="openDialog(this.note)" (mouseover)="hover=true" (mouseleave)="hover=false" >
        <p>{{note.title}}</p>
        <p>{{note.description}}</p>
        <div fxLayoutAlign="start start">

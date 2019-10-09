@@ -27,7 +27,7 @@ export class DisplayComponent implements OnInit {
     this.data.currentMessage.subscribe((res) => {
       this.receiveNotes();
     });
-    
+
 
   }
 
@@ -48,11 +48,9 @@ export class DisplayComponent implements OnInit {
 
 
   receiveMessage($event) {
+    this.receiveNotes();
 
     this.message = $event;
-
-
-
     this.noteObj = {
       'isDeleted': false,
       'noteIdList': [this.message]
@@ -67,15 +65,12 @@ export class DisplayComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
-
-
   }
 
 
   openDialog(notes): void {
 
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       title: notes.title,
@@ -83,7 +78,6 @@ export class DisplayComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(DialogCardComponent, dialogConfig);
-
     dialogRef.afterClosed().subscribe(
       result => console.log('Dialog output:', result)
     );
