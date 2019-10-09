@@ -21,7 +21,7 @@ export class DialogCardComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DisplayComponent>,
-    @Inject(MAT_DIALOG_DATA) dialogData, private noteService: NoteService) {
+    @Inject(MAT_DIALOG_DATA) private  dialogData: any , private noteService: NoteService) {
     this.noteObj = {
       title: dialogData.title,
       description: dialogData.description
@@ -44,7 +44,7 @@ export class DialogCardComponent implements OnInit {
 
 
     this.noteService.postWithTokenWithEncoded(this.options).subscribe((response) => {
-      console.log("inside dailog box....47");
+      console.log('inside dailog box....47');
       console.log(response);
     }, (error) => {
       console.log(error);

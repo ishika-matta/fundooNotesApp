@@ -12,10 +12,13 @@ export class IconComponent implements OnInit {
   message = 'Saved';
   messageTrash = 'Trash';
   messageDelFor = 'Deleted Forever';
-  messageGetNotes='Get notes';
+  messageGetNotes = 'Get notes';
+  messageArchive = 'Archive notes';
   notes: any;
   noteObj: any;
-  options:any;
+  options: any;
+  result1: any;
+  filttered: any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
@@ -66,7 +69,7 @@ export class IconComponent implements OnInit {
   //   }
   // }
 
-  
+
   onDeleteForever(card) {
 
     this.noteObj = {
@@ -86,11 +89,11 @@ export class IconComponent implements OnInit {
     });
 
   }
-    
+
 
   onTrash(card) {
     this.noteObj = {
-      'isDeleted': false,
+      'isDeleted': true,
       'noteIdList': [card]
       };
     this.options = {
@@ -98,13 +101,35 @@ export class IconComponent implements OnInit {
       purpose: 'trashNotes',
 
     };
+
     this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-      console.log(response);
-      this.messageEvent.emit(this.messageTrash);
+       console.log(response);
+        this.messageEvent.emit(this.messageTrash);
     }, (error) => {
       console.log(error);
     });
   }
+
+  onArchive(card) {
+    this.noteObj = {
+      'isArchived': true,
+      'noteIdList': [card]
+      };
+    this.options = {
+      data: this.noteObj,
+      purpose: 'archiveNotes',
+
+    };
+
+    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+       console.log(response);
+        this.messageEvent.emit(this.messageArchive);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+
 
 
   changeColor(colors, card) {

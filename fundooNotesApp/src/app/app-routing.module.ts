@@ -15,6 +15,7 @@ import { AuthService } from './services/auth.service';
 // import { TrashComponent } from './component/trash/trash.component';
 import { GotoNotesComponent } from './component/goto-notes/goto-notes.component';
 import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
+import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
@@ -23,17 +24,20 @@ const routes: Routes = [
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'resetpassword/:token', component: ResetPasswordComponent},
   {path: '', component: DashboardComponent, canActivate: [AuthGuard],
-  children:[
+  children: [
     {
-      path:'goto-notes', component:GotoNotesComponent
+      path: 'goto-notes', component: GotoNotesComponent
     },
     {
-      path:'goto-trash', component:GotoTrashComponent
+      path: 'goto-trash', component: GotoTrashComponent
+    },
+    {
+      path: 'goto-archive', component: GotoArchiveComponent
     }
    ]
 },
- 
-  // {path: 'icon', component: IconComponent}, 
+
+  // {path: 'icon', component: IconComponent},
   // {path: 'dialog-card', component: DialogCardComponent},
   {path: 'page-not-found', component: PageNotFoundComponent},
   // {path:'dash', component:DashComponent},
@@ -41,7 +45,7 @@ const routes: Routes = [
   {path: '**', redirectTo: '/register'}
 ];
 
- 
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

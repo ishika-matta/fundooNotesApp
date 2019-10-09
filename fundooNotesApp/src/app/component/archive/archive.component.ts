@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../../services/note.service';
-
 @Component({
-  selector: 'app-trash',
-  templateUrl: './trash.component.html',
-  styleUrls: ['./trash.component.scss']
+  selector: 'app-archive',
+  templateUrl: './archive.component.html',
+  styleUrls: ['./archive.component.scss']
 })
-export class TrashComponent implements OnInit {
+export class ArchiveComponent implements OnInit {
   notes: any;
 
   constructor(private noteService: NoteService) { }
 
   ngOnInit() {
-    this.getTrashNotes();
+    this.getArchiveNotes();
+
   }
 
-  getTrashNotes() {
-    console.log('inside trash notes');
+  getArchiveNotes() {
+    console.log('inside archive notes');
     const options = {
-          purpose: 'getTrashNotesList',
+          purpose: 'getArchiveNotesList',
         };
       this.noteService.getWithToken(options).subscribe((response: any) => {
             this.notes = response.data.data.reverse();
@@ -28,5 +28,4 @@ export class TrashComponent implements OnInit {
           });
 
   }
-
 }

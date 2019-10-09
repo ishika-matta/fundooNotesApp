@@ -29,6 +29,8 @@ import { AuthGuard } from './component/auth.guard';
 import { TrashComponent } from './component/trash/trash.component';
 import { GotoNotesComponent } from './component/goto-notes/goto-notes.component';
 import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
+import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
+import { ArchiveComponent } from './component/archive/archive.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { GotoTrashComponent } from './component/goto-trash/goto-trash.component'
     TrashComponent,
     GotoNotesComponent,
     GotoTrashComponent,
-   
+    GotoArchiveComponent,
+    ArchiveComponent,
+
   ],
   imports: [
     FlexLayoutModule,
@@ -71,6 +75,7 @@ import { GotoTrashComponent } from './component/goto-trash/goto-trash.component'
     UserService,
     NoteService
   ],
+  entryComponents: [DialogCardComponent],
   bootstrap: [AppComponent]
 })
 

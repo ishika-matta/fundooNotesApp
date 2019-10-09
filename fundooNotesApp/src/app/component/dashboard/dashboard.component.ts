@@ -10,16 +10,19 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private auth: AuthService,private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  gotoNotes(){
+  gotoNotes() {
     this.router.navigate(['/goto-notes']);
   }
-  gotoTrash(){
+  gotoTrash() {
     this.router.navigate(['/goto-trash']);
+  }
+  gotoArchive() {
+    this.router.navigate(['/goto-archive']);
   }
 }
 

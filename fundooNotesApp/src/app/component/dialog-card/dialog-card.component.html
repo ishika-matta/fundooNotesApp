@@ -1,5 +1,5 @@
 
- <div mat-dialog-content fxLayout="row" fxLayoutGap="10px">
+ <!-- <div mat-dialog-content fxLayout="column" fxLayoutGap="10px" class="dialog-box">
     <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value=" {{note.title}}"></textarea>
     <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="description" value="{{note.description}}"></textarea>
     
@@ -7,4 +7,13 @@
          <app-icon fxLayoutAlign="start start"></app-icon>  
         <button mat-button (click)="onSave(card)">Close</button>
     </div>
-  </div> 
+  </div>  -->
+
+  <div>
+    
+    <textarea matInput>{{dialogData.title}}</textarea>
+    <textarea matInput>{{dialogData.description}}</textarea>
+    <div>
+    <app-icon></app-icon>
+    </div>
+    </div>

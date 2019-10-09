@@ -13,11 +13,13 @@ import { DataService } from '../../services/data.service';
 })
 export class DisplayComponent implements OnInit {
   notes: any;
+
   note: any = new TakeNote();
   message: any;
   noteObj: any;
   options: any;
-  hover:false;
+  hover: false;
+  result1: any;
 
 
 
@@ -37,7 +39,9 @@ export class DisplayComponent implements OnInit {
           purpose: 'getNotesList',
         };
       this.noteService.getWithToken(options).subscribe((response: any) => {
-            this.notes = response.data.data.reverse();
+        this.result1 = this.getFilter(response.data.data);
+
+            this.notes = this.result1.reverse();
             console.log(response);
           }, (error) => {
             console.log(error.statusText);
@@ -45,69 +49,36 @@ export class DisplayComponent implements OnInit {
 
   }
 
-  // trashNotes($event){
-
-  //   this.message = $event;
-  //   this.noteObj = {
-  //     'isDeleted': false,
-  //     'noteIdList': [this.message]
-  //     };
-  //   this.options = {
-  //     data: this.noteObj,
-  //     purpose: 'trashNotes',
-
-  //   };
-  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-  //     console.log(response);
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-
-  // }
-
-
-  // deleteNotes($event){
-
-  //   this.message = $event;
-  //   this.noteObj = {
-  //     'isDeleted': false,
-  //     'noteIdList': [this.message]
-  //     };
-  //   this.options = {
-  //     data: this.noteObj,
-  //     purpose: 'deleteForeverNotes',
-
-  //   };
-  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-  //     console.log(response);
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-
-  // }
-
-
+  getFilter(result) {
+    const pass = result.filter(function(result) {
+      return (result.isDeleted == false && result.isArchived == false);
+    });
+    return pass;
+  }
 
 
   receiveMessage($event) {
     this.getNotes();
-    //this.trashNotes($event);
-    // this.deleteNotes($event);
-
   }
 
 
 
   openDialog(notes): void {
 
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      title: notes.title,
-      description: notes.description
-    };
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.data = {
+    //   title: notes.title,
+    //   description: notes.description
+    // };
 
-    const dialogRef = this.dialog.open(DialogCardComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DialogCardComponent,
+      {data:
+      {
+        title: notes.title,
+      description: notes.description
+      }
+      });
     dialogRef.afterClosed().subscribe(
       result => console.log('Dialog output:', result)
     );
