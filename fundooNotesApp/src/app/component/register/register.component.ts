@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectService } from '../../services/connect.service';
+import { UserService } from '../../services/user.service';
 import { FormControl, Validators } from '@angular/forms';
-import { User } from '../register/register.model';
+import { User } from '../../models/register.model';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +9,7 @@ import { User } from '../register/register.model';
 })
 export class RegisterComponent implements OnInit {
 
-  userObj: User = new User();
+  userObj: User;
   result:any;
 
   firstName = new FormControl('', [Validators.required]);
@@ -46,12 +46,12 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  constructor(private svc: ConnectService) {
+  constructor(private userService: UserService) {
     
   }
 
   ngOnInit() {
-    this.svc.print("inside register");
+    
   }
 
   onRegister() {
@@ -67,9 +67,9 @@ export class RegisterComponent implements OnInit {
       data: this.userObj,
       purpose: 'userSignUp',
     }
-    this.result=this.svc.postWithoutToken(options);
+    this.result=this.userService.postWithoutToken(options);
 
-    this.svc.postWithoutToken(options).subscribe((response) => {
+    this.userService.postWithoutToken(options).subscribe((response) => {
       console.log(response);
     },(error)=>{
       console.log(error.statusText);

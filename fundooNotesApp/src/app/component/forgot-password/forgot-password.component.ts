@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ConnectService } from '../../services/connect.service';
-import { User } from '../forgot-password/forgot-password.model';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/forgot-password.model';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -11,12 +11,12 @@ export class ForgotPasswordComponent implements OnInit {
   userObj: User = new User();
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private svc: ConnectService) {
+  constructor(private userService: UserService) {
     
   }
 
   ngOnInit() {
-    this.svc.print("inside forgot password");
+
   }
   EmailInvalidMessage() {
     if (this.email.hasError("required"))
@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
       data: this.userObj,
       purpose: 'reset',
     }
-   this.svc.postWithoutToken(options).subscribe((response) => {
+   this.userService.postWithoutToken(options).subscribe((response) => {
       console.log(response);
     },(error)=>{
       console.log(error.statusText);

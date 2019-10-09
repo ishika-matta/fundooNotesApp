@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ConnectService } from '../../services/connect.service';
-import { User } from '../login/login.model';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/login.model';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -16,12 +16,12 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
-  constructor(private svc: ConnectService, private router: Router, private auth: AuthService) { 
+  constructor(private router: Router, private auth: AuthService,private userService: UserService) { 
     
   }
 
   ngOnInit() {
-    this.svc.print("inside login");
+    
   }
 
   EmailInvalidMessage() {
@@ -54,9 +54,9 @@ export class LoginComponent implements OnInit {
       data: this.userObj,
       purpose: 'login',
     }
-    this.result=this.svc.postWithoutToken(options);
+    this.result=this.userService.postWithoutToken(options);
 
-    this.svc.postWithoutToken(options).subscribe((response:any) => {
+    this.userService.postWithoutToken(options).subscribe((response:any) => {
       console.log(response);
       localStorage.setItem('id',response.id);
       this.auth.sendToken(response.id);
