@@ -12,37 +12,39 @@ export class ForgotPasswordComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private userService: UserService) {
-    
+
   }
 
   ngOnInit() {
 
   }
   EmailInvalidMessage() {
-    if (this.email.hasError("required"))
-      return "Email is required"
+    if (this.email.hasError('required')) {
+      return 'Email is required';
+    }
 
-    if (this.email.hasError("email"))
-      return "Enter a valid email"
+    if (this.email.hasError('email')) {
+      return 'Enter a valid email';
+    }
 
   }
   onForgotPassword() {
-   
+
     this.userObj = {
       email: this.email.value,
-      service: "basic"
-    }
-    let options = {
+      service: 'basic'
+    };
+    const options = {
       data: this.userObj,
       purpose: 'reset',
-    }
+    };
    this.userService.postWithoutToken(options).subscribe((response) => {
       console.log(response);
-    },(error)=>{
+    }, (error) => {
       console.log(error.statusText);
-    })
+    });
   }
-  
+
   }
 
 

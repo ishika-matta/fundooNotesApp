@@ -9,16 +9,16 @@ export class AuthService {
   constructor(private router: Router) { }
 
   sendToken(token: string) {
-    localStorage.setItem("LoggedInUser", token)
+    localStorage.setItem('LoggedInUser', token);
   }
   getToken() {
-    return localStorage.getItem("LoggedInUser")
+    return localStorage.getItem('LoggedInUser');
   }
   isLoggednIn() {
     return this.getToken() !== null;
   }
   logout() {
-    localStorage.removeItem("LoggedInUser");
-    this.router.navigate(["login"]);
+    localStorage.removeItem('LoggedInUser');
+    this.router.navigate(['login']);
   }
 }

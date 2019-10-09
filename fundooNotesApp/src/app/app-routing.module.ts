@@ -15,20 +15,20 @@ import { AuthService } from './services/auth.service';
 // import { DashComponent } from './component/dash/dash.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/register', pathMatch:'full'},
-  {path:'register', component:RegisterComponent},
-  {path:'login', component:LoginComponent},
-  {path:'forgotPassword', component:ForgotPasswordComponent},
-  {path:'resetpassword/:token', component:ResetPasswordComponent},
-  {path:'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
-  {path:'take-note', component:TakeNoteComponent},
-  {path:'icon', component:IconComponent},
-  {path:'display-content', component:DisplayComponent},
-  {path:'dialog-card', component:DialogCardComponent},
-  {path:'page-not-found', component:PageNotFoundComponent},
+  {path: '', redirectTo: '/register', pathMatch: 'full'},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path: 'resetpassword/:token', component: ResetPasswordComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'take-note', component: TakeNoteComponent},
+  {path: 'icon', component: IconComponent},
+  {path: 'display-content', component: DisplayComponent},
+  {path: 'dialog-card', component: DialogCardComponent},
+  {path: 'page-not-found', component: PageNotFoundComponent},
   // {path:'dash', component:DashComponent},
-  
-  {path:'**', redirectTo:'/register'}
+
+  {path: '**', redirectTo: '/register'}
 
 ];
 

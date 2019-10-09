@@ -10,38 +10,38 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-  userObj: any=new ResetPassword();
-  token:string;
+  userObj: any = new ResetPassword();
+  token: string;
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.password.value)]);
 
-  constructor(private userService: UserService, private routing:Router,private route:ActivatedRoute) {
-  
+  constructor(private userService: UserService, private routing: Router, private route: ActivatedRoute) {
+
   }
 
   ngOnInit() {
-    this.token=this.route.snapshot.paramMap.get('token');
-    localStorage.setItem('token',this.token);
+    this.token = this.route.snapshot.paramMap.get('token');
+    localStorage.setItem('token', this.token);
   }
   PasswordInvalidMessage() {
-    if (this.password.hasError("required")) {
-      return "Password is required"
+    if (this.password.hasError('required')) {
+      return 'Password is required';
     }
-    if (this.password.hasError("minlength")) {
-      return "Password must be 8 characters"
+    if (this.password.hasError('minlength')) {
+      return 'Password must be 8 characters';
     }
 
   }
 
   ConfirmPasswordInvalidMessage() {
-    if (this.confirmPassword.hasError("required")) {
-      return "Password is required"
+    if (this.confirmPassword.hasError('required')) {
+      return 'Password is required';
     }
-    if (this.confirmPassword.hasError("minlength")) {
-      return "Password must be 8 characters"
+    if (this.confirmPassword.hasError('minlength')) {
+      return 'Password must be 8 characters';
     }
-    if (this.confirmPassword.hasError("pattern")) {
-      return "Password did not match"
+    if (this.confirmPassword.hasError('pattern')) {
+      return 'Password did not match';
     }
   }
 
@@ -50,16 +50,16 @@ export class ResetPasswordComponent implements OnInit {
       newPassword: this.password.value,
       // confirmPassword: this.confirmPassword.value,
       // service: "basic"
-    }
-    let options = {
+    };
+    const options = {
       data: this.userObj,
       purpose: 'reset-password',
-    }
+    };
     this.userService.postWithToken(options).subscribe((response) => {
       console.log(response);
-    },(error)=>{
+    }, (error) => {
       console.log(error.statusText);
-    })
+    });
   }
 
   }

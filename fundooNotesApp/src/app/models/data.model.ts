@@ -1,4 +1,4 @@
-export class Data{
-    title:"string";
-    description:"string";
+export class Data {
+    title: 'string';
+    description: 'string';
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NoteService } from '../../services/note.service';
 import { FormControl } from '@angular/forms';
 import { TakeNote } from 'src/app/models/take-note.model';
@@ -10,22 +10,22 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./take-note.component.scss']
 })
 export class TakeNoteComponent implements OnInit {
-  takeNoteObj:TakeNote=new TakeNote();
-  message:string;
-  title=new FormControl();
-  description=new FormControl();
-  show: boolean = true;
+  takeNoteObj: TakeNote = new TakeNote();
+  message: string;
+  title = new FormControl();
+  description = new FormControl();
+  show = true;
 
 
-  
 
-  constructor(private noteService: NoteService,private data:DataService) { }
+
+  constructor(private noteService: NoteService, private data: DataService) { }
 
   ngOnInit() {
-   
+
   }
-  toggle() { 
-    this.show= !this.show;
+  toggle() {
+    this.show = !this.show;
   }
   // receiveMessage($event){
   //   console.log("27......");
@@ -47,24 +47,23 @@ export class TakeNoteComponent implements OnInit {
   //   })
 
   // }
-  receiveNotes()
-  {
-    this.takeNoteObj={
-      title:this.title.value,
-      description:this.description.value
-    }
+  receiveNotes() {
+    this.takeNoteObj = {
+      title: this.title.value,
+      description: this.description.value
+    };
     console.log(this.takeNoteObj);
-    let  options={
-        data:this.takeNoteObj,
-        purpose:'addNotes'
-      }
-      this.noteService.postWithTokenWithEncoded(options).subscribe((response:any)=>{
+    const  options = {
+        data: this.takeNoteObj,
+        purpose: 'addNotes'
+      };
+      this.noteService.postWithTokenWithEncoded(options).subscribe((response: any) => {
         console.log(response);
         this.toggle();
-        this.data.changeMessage("saved");
-      },(error)=>{
+        this.data.changeMessage('saved');
+      }, (error) => {
         console.log(error);
-      }); 
+      });
 
   }
 

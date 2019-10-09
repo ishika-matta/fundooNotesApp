@@ -10,7 +10,7 @@ import { User } from '../../models/register.model';
 export class RegisterComponent implements OnInit {
 
   userObj: User;
-  result:any;
+  result: any;
 
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
@@ -18,40 +18,44 @@ export class RegisterComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
   FirstNameInvalidMessage() {
-    if (this.firstName.hasError("required"))
-      return "First Name is required"
+    if (this.firstName.hasError('required')) {
+      return 'First Name is required';
+    }
   }
 
   LastNameInvalidMessage() {
-    if (this.lastName.hasError("required"))
-      return "Last Name is required"
+    if (this.lastName.hasError('required')) {
+      return 'Last Name is required';
+    }
   }
   EmailInvalidMessage() {
-    if (this.email.hasError("required"))
-      return "Email is required"
+    if (this.email.hasError('required')) {
+      return 'Email is required';
+    }
 
-    if (this.email.hasError("email"))
-      return "Enter a valid email"
+    if (this.email.hasError('email')) {
+      return 'Enter a valid email';
+    }
 
   }
 
   PasswordInvalidMessage() {
-    if (this.password.hasError("required")) {
-      return "Password is required"
+    if (this.password.hasError('required')) {
+      return 'Password is required';
     }
-    if (this.password.hasError("minlength")) {
-      return "Password must be 8 characters"
+    if (this.password.hasError('minlength')) {
+      return 'Password must be 8 characters';
     }
 
   }
 
 
   constructor(private userService: UserService) {
-    
+
   }
 
   ngOnInit() {
-    
+
   }
 
   onRegister() {
@@ -61,19 +65,19 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastName.value,
       email: this.email.value,
       password: this.password.value,
-      service: "basic"
-    }
-    let options = {
+      service: 'basic'
+    };
+    const options = {
       data: this.userObj,
       purpose: 'userSignUp',
-    }
-    this.result=this.userService.postWithoutToken(options);
+    };
+    this.result = this.userService.postWithoutToken(options);
 
     this.userService.postWithoutToken(options).subscribe((response) => {
       console.log(response);
-    },(error)=>{
+    }, (error) => {
       console.log(error.statusText);
-    })
+    });
   }
 }
 

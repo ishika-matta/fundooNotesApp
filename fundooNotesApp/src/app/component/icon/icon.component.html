@@ -3,7 +3,7 @@
  <div> <button mat-icon-button><mat-icon matTooltip="Remind me">notifications</mat-icon></button></div>
  <div><button mat-icon-button><mat-icon matTooltip="Collaborator">person_add</mat-icon></button></div>
 
-  <div><button mat-icon-button [matMenuTriggerFor]="menu_color">
+  <div><button mat-icon-button [matMenuTriggerFor]="menu_color" fxLayout="row-wrap">
     <mat-icon matTooltip="Change color">color_lens</mat-icon>
   </button></div>
  <div><button mat-icon-button><mat-icon matTooltip="Add image">panorama</mat-icon></button></div>
@@ -21,9 +21,9 @@
       <button mat-menu-item>Show checkboxes</button>
     </mat-menu>
 
-    <mat-menu #menu_color>
+    <mat-menu #menu_color class="pallete" fxLayout="row wrap">
 
-        <div fxLayoutAlign="grid"*ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" class="icon-palette"
+        <div fxLayout="row wrap" fxLayoutAlign="grid"*ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" class="icon-palette"
           (click)="changeColor(color1.color,card)">
           <div ><button mat-button></button></div>
     

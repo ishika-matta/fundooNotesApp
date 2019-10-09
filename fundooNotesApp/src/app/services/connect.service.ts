@@ -8,20 +8,20 @@ import { environment  } from '../../environments/environment';
 export class ConnectService {
   response: any;
   baseUrlUser = environment.baseUrlUser;
-  
 
-  constructor(private http: HttpClient){
+
+  constructor(private http: HttpClient) {
   }
 
-  
-  print(arg){
+
+  print(arg) {
     console.log(arg);
   }
-  
-  postWithoutToken(obj){
-    return (this.http.post(this.baseUrlUser+obj.purpose, obj.data));
+
+  postWithoutToken(obj) {
+    return (this.http.post(this.baseUrlUser + obj.purpose, obj.data));
   }
 
- 
- 
+
+
 }

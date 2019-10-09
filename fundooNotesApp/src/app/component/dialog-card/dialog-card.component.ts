@@ -12,39 +12,39 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./dialog-card.component.scss']
 })
 export class DialogCardComponent implements OnInit {
-  options:any;
-  noteObj:any=new TakeNote();
-  title:any=new FormControl();
-  description:any=new FormControl();
-  
- 
+  options: any;
+  noteObj: any = new TakeNote();
+  title: any = new FormControl();
+  description: any = new FormControl();
+
+
 
   constructor(
     public dialogRef: MatDialogRef<DisplayComponent>,
-    @Inject(MAT_DIALOG_DATA) dialogData, private noteService:NoteService) { 
-      this.noteObj={
-        title:dialogData.title,
-        description:dialogData.description}
+    @Inject(MAT_DIALOG_DATA) dialogData, private noteService: NoteService) {
+      this.noteObj = {
+        title: dialogData.title,
+        description: dialogData.description};
     }
 
   ngOnInit() {
   }
-  
+
   onSave() {
-    this.noteObj={
-      title:this.title.value,
-      description:this.description.value
-    }
+    this.noteObj = {
+      title: this.title.value,
+      description: this.description.value
+    };
     this.dialogRef.close(this.noteObj);
-    this.options={
-      data:this.noteObj,
-      purpose:'updateNotes'
-    }
+    this.options = {
+      data: this.noteObj,
+      purpose: 'updateNotes'
+    };
 
 
-this.noteService.postWithTokenWithEncoded(this.options).subscribe((response)=>{
+this.noteService.postWithTokenWithEncoded(this.options).subscribe((response) => {
   console.log(response);
-},(error)=>{
+}, (error) => {
   console.log(error);
 });
   }

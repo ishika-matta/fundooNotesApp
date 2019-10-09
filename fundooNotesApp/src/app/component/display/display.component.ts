@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../../services/note.service';
 import { DialogCardComponent } from '../dialog-card/dialog-card.component';
 import { TakeNote } from 'src/app/models/take-note.model';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 
@@ -20,52 +20,52 @@ export class DisplayComponent implements OnInit {
 
 
 
-  constructor(private noteService: NoteService, public dialog: MatDialog, private data:DataService) { }
+  constructor(private noteService: NoteService, public dialog: MatDialog, private data: DataService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.receiveNotes();
-    this.data.currentMessage.subscribe((res)=>{
+    this.data.currentMessage.subscribe((res) => {
       this.receiveNotes();
-    })
+    });
 
   }
 
-  receiveNotes(){
-    let options = {
+  receiveNotes() {
+    const options = {
           purpose: 'getNotesList',
-        }
+        };
       this.noteService.getWithToken(options).subscribe((response: any) => {
             this.notes = response.data.data.reverse();
             console.log(response);
           }, (error) => {
             console.log(error.statusText);
-          })
+          });
 
   }
 
-  
+
 
 
   receiveMessage($event) {
-    console.log($event, "36 inside display......");
+    console.log($event, '36 inside display......');
     this.message = $event;
 
 
 
     this.noteObj = {
-      "isDeleted":false,
-      "noteIdList": [this.message]
-      }
+      'isDeleted': false,
+      'noteIdList': [this.message]
+      };
     this.options = {
       data: this.noteObj,
       purpose: 'trashNotes',
 
-    }
+    };
     this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
       console.log(response);
     }, (error) => {
       console.log(error);
-    })
+    });
 
 
   }
@@ -79,12 +79,12 @@ export class DisplayComponent implements OnInit {
     dialogConfig.data = {
       title: notes.title,
       description: notes.description
-    }
+    };
 
     const dialogRef = this.dialog.open(DialogCardComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      result => console.log("Dialog output:", result)
+      result => console.log('Dialog output:', result)
     );
 
   }

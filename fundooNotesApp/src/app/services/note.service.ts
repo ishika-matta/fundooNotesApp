@@ -12,34 +12,34 @@ export class NoteService {
   constructor(private httpSvc: HttpService) { }
 
 
-  
-  getWithToken(options){
-    let httpOptions = {
+
+  getWithToken(options) {
+    const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/x-www-form-urlencoded',
         'Authorization': localStorage.getItem('id')
       })
-    }
-    return this.httpSvc.getCallWithToken(this.baseUrlNotes+options.purpose,httpOptions);
+    };
+    return this.httpSvc.getCallWithToken(this.baseUrlNotes + options.purpose, httpOptions);
 
   }
   postWithTokenNotEncoded(options) {
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': localStorage.getItem('id')
       })
-    }
+    };
     return this.httpSvc.postCallWithToken(this.baseUrlNotes + options.purpose, options.data, httpOptions);
   }
 
   postWithTokenWithEncoded(options) {
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/x-www-form-urlencoded',
         'Authorization': localStorage.getItem('id')
       })
-    }
+    };
     return this.httpSvc.postCallWithToken(this.baseUrlNotes + options.purpose, this.getEncodedData(options.data), httpOptions);
   }
 

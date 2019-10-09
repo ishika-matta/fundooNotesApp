@@ -18,9 +18,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
-    
+
     imports: [
-     
+
       MatButtonModule,
       MatInputModule,
       MatDividerModule,
@@ -37,12 +37,12 @@ import {MatDialogModule} from '@angular/material/dialog';
       MatMenuModule,
       MatGridListModule,
       MatDialogModule
-      
-   
+
+
     ],
 
     exports: [
-     
+
       MatButtonModule,
       MatInputModule,
       MatDividerModule,
@@ -59,10 +59,10 @@ import {MatDialogModule} from '@angular/material/dialog';
       MatMenuModule,
       MatGridListModule,
       MatDialogModule
-      
-   
+
+
     ],
-    
+
   })
   export class AppMaterialModule { }
-  
+

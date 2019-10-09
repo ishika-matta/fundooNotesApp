@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DialogCardComponent } from '../dialog-card/dialog-card.component';
 import { NoteService } from '../../services/note.service';
 
@@ -9,20 +9,20 @@ import { NoteService } from '../../services/note.service';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
-  message:string="Saved";
-  messageDel:string="Trash";
-  messageDelFor:string="Deleted Forever";
-  notes:any;
-  noteObj:any;
-  @Output() messageEvent=new EventEmitter<string>();
+  message = 'Saved';
+  messageDel = 'Trash';
+  messageDelFor = 'Deleted Forever';
+  notes: any;
+  noteObj: any;
+  @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
    colorArray: any = [
-    {color:'#ECEEEE'}, {color:'#F28B82'}, {color:'#F7BC04'}, {color:'#FAF474'}, 
-    {color:'#CBFF90'}, {color:'#AAFEEB'}, {color:'#CBF0F8'},{color: '#ADCBFA'},
-    {color:'#D7AEFB'}, {color:'#FDCFE8'}, {color:'#E6C9A8'},{color: '#FFFFFF'}];
-  
- 
+    {color: '#ECEEEE'}, {color: '#F28B82'}, {color: '#F7BC04'}, {color: '#FAF474'},
+    {color: '#CBFF90'}, {color: '#AAFEEB'}, {color: '#CBF0F8'}, {color: '#ADCBFA'},
+    {color: '#D7AEFB'}, {color: '#FDCFE8'}, {color: '#E6C9A8'}, {color: '#FFFFFF'}];
+
+
 
   constructor(private noteService: NoteService) {
 
@@ -37,49 +37,49 @@ export class IconComponent implements OnInit {
   //   console.log(this.message);
   // }
   onDelete() {
-    console.log(this.card)
+    console.log(this.card);
     this.messageEvent.emit(this.card);
     console.log(this.messageDel);
   }
   onDeleteForever() {
-    console.log(this.card)
+    console.log(this.card);
     this.messageEvent.emit(this.card);
     console.log(this.messageDelFor);
   }
 
 
-  changeColor(colors,card){
-   
+  changeColor(colors, card) {
 
-    try{
 
-    
-      this.noteObj={
-        "noteIdList": [card],
-        "color":colors,
-      }
-      let options={
+    try {
+
+
+      this.noteObj = {
+        'noteIdList': [card],
+        'color': colors,
+      };
+      const options = {
         data: this.noteObj,
       purpose: 'changesColorNotes',
 
-      }
-      this.noteService.postWithTokenNotEncoded(options).subscribe((response:any) => {
-        this.notes=response.data.data;
+      };
+      this.noteService.postWithTokenNotEncoded(options).subscribe((response: any) => {
+        this.notes = response.data.data;
         console.log(response);
-      },(error)=>{
+      }, (error) => {
         console.log(error);
-      })
+      });
 
-      
 
-    }catch(err){
-      return err
+
+    } catch (err) {
+      return err;
     }
 
   }
 
-  
-  
+
+
 
 
 }

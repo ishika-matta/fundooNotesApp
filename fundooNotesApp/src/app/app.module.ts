@@ -1,7 +1,7 @@
 import  'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -26,7 +26,7 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './component/auth.guard';
-import { DashComponent } from './component/dash/dash.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { DashComponent } from './component/dash/dash.component';
     IconComponent,
     DisplayComponent,
     DialogCardComponent,
-    DashComponent
+   
   ],
   imports: [
     FlexLayoutModule,
@@ -54,8 +54,8 @@ import { DashComponent } from './component/dash/dash.component';
     ReactiveFormsModule,
     ColorPickerModule,
     MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule
-    
-    
+
+
   ],
   providers: [
     ConnectService,

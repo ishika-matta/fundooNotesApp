@@ -1,11 +1,11 @@
-export class TakeNote{
+export class TakeNote {
     title: String;
-    description:"string";
+    description: 'string';
     // isPined:"boolean";
     // isArchived: "boolean";
     isDeleted?: Boolean;
     // color: "string";
     id?: String;
     // userId: "string";
-    service?:String;
+    service?: String;
 }
