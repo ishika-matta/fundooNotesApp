@@ -27,6 +27,7 @@ export class DisplayComponent implements OnInit {
     this.data.currentMessage.subscribe((res) => {
       this.receiveNotes();
     });
+    
 
   }
 
@@ -47,7 +48,7 @@ export class DisplayComponent implements OnInit {
 
 
   receiveMessage($event) {
-    console.log($event, '36 inside display......');
+
     this.message = $event;
 
 

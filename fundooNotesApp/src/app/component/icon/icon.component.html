@@ -21,12 +21,19 @@
       <button mat-menu-item>Show checkboxes</button>
     </mat-menu>
 
-    <mat-menu #menu_color class="pallete" fxLayout="row wrap">
+    <!-- <mat-menu #menu_color class="pallete" fxLayout="row wrap">
 
         <div fxLayout="row wrap" fxLayoutAlign="grid"*ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" class="icon-palette"
           (click)="changeColor(color1.color,card)">
-          <div ><button mat-button></button></div>
+          <div><button mat-button></button></div>
     
         </div>
+      </mat-menu> -->
+
+      <mat-menu #menu_color>
+
+        <div class="pallete" >
+            <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" (click)="changeColor(color1.color,card)" class= "icon-palette"></button>
+        </div>  
       </mat-menu>
 <!-- </mat-card> -->
