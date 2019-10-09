@@ -15,6 +15,7 @@ export class IconComponent implements OnInit {
   messageGetNotes='Get notes';
   notes: any;
   noteObj: any;
+  options:any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
@@ -38,13 +39,56 @@ export class IconComponent implements OnInit {
   //   this.messageEvent.emit(this.message);
   //   console.log(this.message);
   // }
-  onDelete() {
-    console.log(this.card);
-    this.messageEvent.emit(this.card);
-    console.log(this.messageDel);
-  }
+  // onTrash(card) {
+  //   console.log()
+  //   try {
+  //     this.noteObj = {
+  //       'isDeleted': false,
+  //       'noteIdList': [card],
+  //     };
+  //     const options = {
+  //       data: this.noteObj,
+  //       purpose: 'trashNotes',
 
-  onDeleteForever() {
+  //     };
+  //     this.noteService.postWithTokenNotEncoded(options).subscribe((response: any) => {
+  //       console.log(response);
+  //       //delete notes
+  //       this.messageEvent.emit(this.messageDel);
+
+
+  //     }, (error) => {
+  //       console.log(error);
+  //     });
+
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
+
+  
+  onDeleteForever(card) {
+
+    this.noteObj = {
+      'isDeleted': false,
+      'noteIdList': [card]
+      };
+    this.options = {
+      data: this.noteObj,
+      purpose: 'deleteForeverNotes',
+
+    };
+    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.messageDelFor);
+    }, (error) => {
+      console.log(error);
+    });
+
+  }
+    
+
+  onDelete() {
     console.log(this.card);
     this.messageEvent.emit(this.card);
     console.log(this.messageDelFor);

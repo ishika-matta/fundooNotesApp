@@ -17,21 +17,22 @@ export class DisplayComponent implements OnInit {
   message: any;
   noteObj: any;
   options: any;
+  hover:false;
 
 
 
   constructor(private noteService: NoteService, public dialog: MatDialog, private data: DataService) { }
 
   ngOnInit() {
-    this.receiveNotes();
+    this.getNotes();
     this.data.currentMessage.subscribe((res) => {
-      this.receiveNotes();
+      this.getNotes();
     });
 
 
   }
 
-  receiveNotes() {
+  getNotes() {
     const options = {
           purpose: 'getNotesList',
         };
@@ -44,11 +45,7 @@ export class DisplayComponent implements OnInit {
 
   }
 
-
-
-
-  receiveMessage($event) {
-    this.receiveNotes();
+  trashNotes($event){
 
     this.message = $event;
     this.noteObj = {
@@ -65,7 +62,40 @@ export class DisplayComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+
   }
+
+
+  // deleteNotes($event){
+
+  //   this.message = $event;
+  //   this.noteObj = {
+  //     'isDeleted': false,
+  //     'noteIdList': [this.message]
+  //     };
+  //   this.options = {
+  //     data: this.noteObj,
+  //     purpose: 'deleteForeverNotes',
+
+  //   };
+  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+  //     console.log(response);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+
+  // }
+
+
+
+
+  receiveMessage($event) {
+    this.getNotes();
+    //this.trashNotes($event);
+    // this.deleteNotes($event);
+
+  }
+
 
 
   openDialog(notes): void {
