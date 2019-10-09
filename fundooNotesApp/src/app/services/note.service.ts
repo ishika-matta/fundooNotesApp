@@ -23,6 +23,17 @@ export class NoteService {
     return this.httpSvc.getCallWithToken(this.baseUrlNotes + options.purpose, httpOptions);
 
   }
+
+  getWithTokenNotEncoded(options) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('id')
+      })
+    };
+    return this.httpSvc.getCallWithToken(this.baseUrlNotes + options.purpose, httpOptions);
+
+  }
   postWithTokenNotEncoded(options) {
     const httpOptions = {
       headers: new HttpHeaders({

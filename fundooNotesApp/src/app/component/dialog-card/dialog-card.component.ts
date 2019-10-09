@@ -34,7 +34,7 @@ export class DialogCardComponent implements OnInit {
   onSave() {
     this.noteObj = {
       title: this.title.value,
-      description: this.description.value
+      description: this.description.value,
     };
     this.dialogRef.close(this.noteObj);
     this.options = {

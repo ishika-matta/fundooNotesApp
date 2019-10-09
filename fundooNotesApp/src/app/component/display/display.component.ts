@@ -45,25 +45,25 @@ export class DisplayComponent implements OnInit {
 
   }
 
-  trashNotes($event){
+  // trashNotes($event){
 
-    this.message = $event;
-    this.noteObj = {
-      'isDeleted': false,
-      'noteIdList': [this.message]
-      };
-    this.options = {
-      data: this.noteObj,
-      purpose: 'trashNotes',
+  //   this.message = $event;
+  //   this.noteObj = {
+  //     'isDeleted': false,
+  //     'noteIdList': [this.message]
+  //     };
+  //   this.options = {
+  //     data: this.noteObj,
+  //     purpose: 'trashNotes',
 
-    };
-    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error);
-    });
+  //   };
+  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+  //     console.log(response);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
 
-  }
+  // }
 
 
   // deleteNotes($event){

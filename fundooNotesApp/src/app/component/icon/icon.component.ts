@@ -10,7 +10,7 @@ import { NoteService } from '../../services/note.service';
 })
 export class IconComponent implements OnInit {
   message = 'Saved';
-  messageDel = 'Trash';
+  messageTrash = 'Trash';
   messageDelFor = 'Deleted Forever';
   messageGetNotes='Get notes';
   notes: any;
@@ -88,10 +88,22 @@ export class IconComponent implements OnInit {
   }
     
 
-  onDelete() {
-    console.log(this.card);
-    this.messageEvent.emit(this.card);
-    console.log(this.messageDelFor);
+  onTrash(card) {
+    this.noteObj = {
+      'isDeleted': false,
+      'noteIdList': [card]
+      };
+    this.options = {
+      data: this.noteObj,
+      purpose: 'trashNotes',
+
+    };
+    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.messageTrash);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 

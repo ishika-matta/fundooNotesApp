@@ -12,7 +12,9 @@ import { DisplayComponent } from './component/display/display.component';
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 import { AuthGuard } from './component/auth.guard';
 import { AuthService } from './services/auth.service';
-// import { DashComponent } from './component/dash/dash.component';
+// import { TrashComponent } from './component/trash/trash.component';
+import { GotoNotesComponent } from './component/goto-notes/goto-notes.component';
+import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
@@ -20,17 +22,26 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'resetpassword/:token', component: ResetPasswordComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'take-note', component: TakeNoteComponent},
-  {path: 'icon', component: IconComponent},
-  {path: 'display-content', component: DisplayComponent},
-  {path: 'dialog-card', component: DialogCardComponent},
+  {path: '', component: DashboardComponent, canActivate: [AuthGuard],
+  children:[
+    {
+      path:'goto-notes', component:GotoNotesComponent
+    },
+    {
+      path:'goto-trash', component:GotoTrashComponent
+    }
+   ]
+},
+ 
+  // {path: 'icon', component: IconComponent}, 
+  // {path: 'dialog-card', component: DialogCardComponent},
   {path: 'page-not-found', component: PageNotFoundComponent},
   // {path:'dash', component:DashComponent},
 
   {path: '**', redirectTo: '/register'}
-
 ];
+
+ 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

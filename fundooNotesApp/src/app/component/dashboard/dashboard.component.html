@@ -30,7 +30,7 @@
 
                   </button>
                  <mat-menu #belowMenu="matMenu" yPosition="below">
-                    <!-- <button mat-menu-item>Settings</bu  tton> -->
+                   
                     <button mat-menu-item *ngIf="!auth.isLoggednIn()" routerLink="/login">Login</button>
 
                     
@@ -45,11 +45,12 @@
       <mat-drawer-container class="dashboard-container" autosize fxShow="true" fxLayout="column" fxLayoutAlign="start start">
           <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened autosize fxShow="true">
               <mat-list>
-                  
-                  <mat-list-item >
+                  <button mat-button (click)="gotoNotes()">
+                  <mat-list-item>
                     <mat-icon mat-list-icon>exit_to_app</mat-icon>
                     <p mat-line> Notes </p>
                   </mat-list-item>
+                </button>
 
                   <mat-list-item >
                       <mat-icon mat-list-icon>notifications</mat-icon>
@@ -69,16 +70,19 @@
                       <mat-icon mat-list-icon>archive</mat-icon>
                       <p mat-line> Archive </p>
                     </mat-list-item>
-                    <mat-list-item >
+                    <button mat-button (click)="gotoTrash()">
+                    <mat-list-item>
                         <mat-icon mat-list-icon>delete</mat-icon>
                         <p mat-line> Trash </p>
                       </mat-list-item>
+                    </button>
                   
                 </mat-list>
           </mat-drawer>
+          <router-outlet></router-outlet>
     
-          <app-take-note></app-take-note> 
-          <app-display></app-display>
+          <!-- <app-take-note></app-take-note> 
+          <app-display></app-display> -->
         </mat-drawer-container>
         
       </div> 

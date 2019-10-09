@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,16 +10,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,private router: Router) { }
 
   ngOnInit() {
   }
 
-  // message:string;
-
-  // receiveMessage($event) {
-  //   this.message = $event
-  // }
-
+  gotoNotes(){
+    this.router.navigate(['/goto-notes']);
+  }
+  gotoTrash(){
+    this.router.navigate(['/goto-trash']);
+  }
 }
 

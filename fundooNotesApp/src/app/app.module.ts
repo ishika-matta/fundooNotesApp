@@ -26,6 +26,9 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './component/auth.guard';
+import { TrashComponent } from './component/trash/trash.component';
+import { GotoNotesComponent } from './component/goto-notes/goto-notes.component';
+import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
 
 
 @NgModule({
@@ -41,6 +44,9 @@ import { AuthGuard } from './component/auth.guard';
     IconComponent,
     DisplayComponent,
     DialogCardComponent,
+    TrashComponent,
+    GotoNotesComponent,
+    GotoTrashComponent,
    
   ],
   imports: [

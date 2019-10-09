@@ -1,5 +1,6 @@
 .main-container{
-  width:100%;
+  width:100vw;
+  height:100vh;
 }
 
 .dashboard-toolbar{
@@ -19,8 +20,8 @@
 .dashboard-container {
   
   //width: 20%;
-  width:100%;
-  height: 100%; 
+  width: 100vw; 
+  height: 100vh;
   //border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -29,7 +30,7 @@
 .dashboard-sidenav {
   padding: 5px; 
   width:20%;
-  height:98%;
+  height:100%;
   //background-color:rgb(191, 240, 240);
 
   //border: 2px dashed rgba(0, 0, 0, 0.5);

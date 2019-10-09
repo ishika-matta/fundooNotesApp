@@ -1,10 +1,7 @@
- <div *ngIf="!show" fxLayoutAlign="center start">
-   <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px">
-
+ <div *ngIf="!show" fxLayoutAlign="start center" class="takeNote">
+   <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px" >
      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        [formControl]="title" placeholder="Title"></textarea>
-
-
      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        placeholder="Take a note..." [formControl]="description"></textarea>
      <div fxLayout="row" fxLayoutAlign="space-between">
@@ -13,7 +10,7 @@
      </div>
    </mat-card>
  </div>
- <div *ngIf="show" (click)="toggle()" fxLayoutAlign="center start">
+ <div *ngIf="show" (click)="toggle()" fxLayoutAlign="start center">
    <mat-card fxFlex="70" fxLayout="column">
      <mat-form-field>
        <textarea input type="text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
