@@ -6,7 +6,7 @@
     <mat-icon matTooltip="Change color">color_lens</mat-icon>
   </button></div>
  <div><button mat-icon-button><mat-icon matTooltip="Add image">panorama</mat-icon></button></div>
-  <div><button mat-icon-button><mat-icon matTooltip="Archive">archive</mat-icon></button></div>
+  <div><button mat-icon-button><mat-icon matTooltip="Archive" (click)="onArchive(card)">archive</mat-icon></button></div>
 <div><button mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu">
     <mat-icon>more_vert</mat-icon>
   </button></div>

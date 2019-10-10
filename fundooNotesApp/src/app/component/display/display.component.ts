@@ -58,12 +58,14 @@ export class DisplayComponent implements OnInit {
 
 
   receiveMessage($event) {
+    console.log($event);
+
     this.getNotes();
   }
 
 
 
-  openDialog(notes): void {
+  openDialog(note): void {
 
     // const dialogConfig = new MatDialogConfig();
     // dialogConfig.autoFocus = true;
@@ -75,12 +77,16 @@ export class DisplayComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogCardComponent,
       {data:
       {
-        title: notes.title,
-      description: notes.description
+        card: note.id,
+        title: note.title,
+      description: note.description
       }
       });
     dialogRef.afterClosed().subscribe(
-      result => console.log('Dialog output:', result)
+      result => {
+        console.log('Dialog output:', result);
+        this.getNotes();
+      }
     );
 
   }
