@@ -7,10 +7,10 @@ import { NoteService } from '../../services/note.service';
 })
 export class ArchiveComponent implements OnInit {
   notes: any;
-  noteObj:any;
-  options:any;
-  result1:any;
-  messageTrash:string = 'Note Trash';
+  noteObj: any;
+  options: any;
+  result1: any;
+  messageTrash = 'Note Trash';
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private noteService: NoteService) { }
@@ -24,7 +24,7 @@ export class ArchiveComponent implements OnInit {
     console.log($event);
     this.getArchiveNotes();
 
-    
+
   }
 
   getArchiveNotes() {

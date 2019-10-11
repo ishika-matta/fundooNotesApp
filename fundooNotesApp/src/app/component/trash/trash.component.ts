@@ -9,8 +9,8 @@ import { NoteService } from '../../services/note.service';
 export class TrashComponent implements OnInit {
   notes: any;
   noteObj: any;
-  messageDelFor: string = 'Deleted Forever';
-  messageTrash: string = 'Note Trash';
+  messageDelFor = 'Deleted Forever';
+  messageTrash = 'Note Trash';
   options: any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
@@ -62,13 +62,13 @@ export class TrashComponent implements OnInit {
 
 
   onDeleteForever(card) {
-    console.log("id", card);
+    console.log('id', card);
 
     this.noteObj = {
       'isDeleted': true,
       'noteIdList': [card]
     };
-    let options = {
+    const options = {
       data: this.noteObj,
       purpose: 'deleteForeverNotes',
 
