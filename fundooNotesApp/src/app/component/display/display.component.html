@@ -6,7 +6,7 @@
        <p style=" word-break: break-all">{{note.description}}</p>
       </div>
        <div fxLayoutAlign="start start">
-       <app-icon [card]=note.id (messageEvent)="receiveMessage($event)"></app-icon>
+       <app-icon [card]=note.id [archive]=flag (messageEvent)="receiveMessage($event)"></app-icon>
     </div>
    </mat-card>
    </div>

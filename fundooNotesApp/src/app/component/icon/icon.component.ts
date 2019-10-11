@@ -21,6 +21,7 @@ export class IconComponent implements OnInit {
   filttered: any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
+  @Input() archive: any;
 
   colorArray: any = [
     { color: '#ECEEEE' }, { color: '#F28B82' }, { color: '#F7BC04' }, { color: '#FAF474' },
@@ -113,6 +114,25 @@ export class IconComponent implements OnInit {
   onArchive(card) {
     this.noteObj = {
       'isArchived': true,
+      'noteIdList': [card]
+      };
+    this.options = {
+      data: this.noteObj,
+      purpose: 'archiveNotes',
+
+    };
+
+    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+       console.log(response);
+        this.messageEvent.emit(this.messageArchive);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  
+  onUnArchive(card) {
+    this.noteObj = {
+      'isArchived': false,
       'noteIdList': [card]
       };
     this.options = {

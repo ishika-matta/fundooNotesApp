@@ -11,6 +11,8 @@ export class ArchiveComponent implements OnInit {
   options: any;
   result1: any;
   messageTrash = 'Note Trash';
+  messageUnArchive='Note Unarchive';
+  flag='false';
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private noteService: NoteService) { }
@@ -23,8 +25,6 @@ export class ArchiveComponent implements OnInit {
   receiveMessage($event) {
     console.log($event);
     this.getArchiveNotes();
-
-
   }
 
   getArchiveNotes() {
@@ -80,6 +80,26 @@ export class ArchiveComponent implements OnInit {
        console.log(response);
         this.messageEvent.emit(this.messageTrash);
         this.getArchiveNotes();
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+
+  onUnArchive(card) {
+    this.noteObj = {
+      'isArchived': false,
+      'noteIdList': [card]
+      };
+    this.options = {
+      data: this.noteObj,
+      purpose: 'archiveNotes',
+
+    };
+
+    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+       console.log(response);
+        this.messageEvent.emit(this.messageUnArchive);
     }, (error) => {
       console.log(error);
     });

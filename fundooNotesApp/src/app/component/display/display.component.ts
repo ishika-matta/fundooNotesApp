@@ -19,6 +19,7 @@ export class DisplayComponent implements OnInit {
   noteObj: any;
   options: any;
   hover: false;
+  flag: any='true';
   result1: any;
 
 
