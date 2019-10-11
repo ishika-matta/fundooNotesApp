@@ -1,13 +1,13 @@
 
 <div class="archive-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
-  <mat-card class="archive-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="28"
+  <mat-card class="archive-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="25"
    (mouseover)="hover=true" (mouseleave)="hover=false">
   <div (click)="openDialog(note)">
       <p>{{note.title}}</p>
       <p>{{note.description}}</p>
      </div>
       <div fxLayoutAlign="start start">
-      <app-icon></app-icon>
+      <app-icon [card]=note.id (messageEvent)="receiveMessage($event)"></app-icon>
    </div>
   </mat-card>
   </div>

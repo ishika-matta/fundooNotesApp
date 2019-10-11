@@ -9,9 +9,9 @@ import { NoteService } from '../../services/note.service';
 export class TrashComponent implements OnInit {
   notes: any;
   noteObj: any;
-  messageDelFor:string = 'Deleted Forever';
-  messageTrash:string = 'Note Trash';
-  options:any;
+  messageDelFor: string = 'Deleted Forever';
+  messageTrash: string = 'Note Trash';
+  options: any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
@@ -24,84 +24,84 @@ export class TrashComponent implements OnInit {
   getTrashNotes() {
     console.log('inside trash notes');
     const options = {
-          purpose: 'getTrashNotesList',
-        };
-      this.noteService.getWithToken(options).subscribe((response: any) => {
-            this.notes = response.data.data.reverse();
-            console.log(response);
-            
-          }, (error) => {
-            console.log(error.statusText);
-          });
+      purpose: 'getTrashNotesList',
+    };
+    this.noteService.getWithToken(options).subscribe((response: any) => {
+      this.notes = response.data.data.reverse();
+      console.log(response);
+
+    }, (error) => {
+      console.log(error.statusText);
+    });
 
   }
 
   getNotes() {
     const options = {
-          purpose: 'getNotesList',
-        };
-      this.noteService.getWithToken(options).subscribe((response: any) => {
+      purpose: 'getNotesList',
+    };
+    this.noteService.getWithToken(options).subscribe((response: any) => {
 
-            this.notes = response.data.data.reverse();
-            console.log(response);
-          }, (error) => {
-            console.log(error.statusText);
-          });
+      this.notes = response.data.data.reverse();
+      console.log(response);
+    }, (error) => {
+      console.log(error.statusText);
+    });
 
   }
 
- 
+
 
 
   receiveMessage($event) {
     console.log($event);
-
-    this.getNotes();
+    this.getTrashNotes();
   }
 
+
+
+
   onDeleteForever(card) {
-console.log("id",card);
+    console.log("id", card);
 
     this.noteObj = {
       'isDeleted': true,
       'noteIdList': [card]
-      };
+    };
     let options = {
-      data: this.noteObj, 
+      data: this.noteObj,
       purpose: 'deleteForeverNotes',
 
     };
     this.noteService.postWithTokenNotEncoded(options).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.messageDelFor);
-  this.getTrashNotes();
+      this.getTrashNotes();
     }, (error) => {
       console.log(error);
     });
 
   }
 
-  onRestore(card){
+  onRestore(card) {
     this.noteObj = {
       'isDeleted': false,
       'noteIdList': [card]
-      };
+    };
 
-      this.options = {
-        data: this.noteObj,
-        purpose: 'trashNotes',
-  
-      };
-  
-      this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-         console.log(response);
-          this.messageEvent.emit(this.messageTrash);
-          this.getTrashNotes();
-      }, (error) => {
-        console.log(error);
-      });
+    this.options = {
+      data: this.noteObj,
+      purpose: 'trashNotes',
 
+    };
 
+    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.messageTrash);
+      this.getTrashNotes();
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 }
