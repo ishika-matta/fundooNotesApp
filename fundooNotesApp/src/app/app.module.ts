@@ -15,6 +15,7 @@ import { ConnectService } from '../app/services/connect.service';
 import { HttpService } from './services/http.service';
 import { UserService } from './services/user.service';
 import { NoteService } from './services/note.service';
+import { NoteLabelService } from './services/note-label.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -31,6 +32,7 @@ import { GotoNotesComponent } from './component/goto-notes/goto-notes.component'
 import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
 import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
 import { ArchiveComponent } from './component/archive/archive.component';
+import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { ArchiveComponent } from './component/archive/archive.component';
     GotoTrashComponent,
     GotoArchiveComponent,
     ArchiveComponent,
+    DialogBoxComponent,
 
   ],
   imports: [
@@ -73,7 +76,8 @@ import { ArchiveComponent } from './component/archive/archive.component';
     AuthService,
     HttpService,
     UserService,
-    NoteService
+    NoteService,
+    NoteLabelService
   ],
   entryComponents: [DialogCardComponent],
   bootstrap: [AppComponent]

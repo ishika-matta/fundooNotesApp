@@ -39,15 +39,15 @@
                 </mat-toolbar-row>
         
       </mat-toolbar>
-      
+
       
       <span class="dashboard-spacer"></span>
       <mat-drawer-container class="dashboard-container" autosize fxShow="true" fxLayout="column" fxLayoutAlign="start start">
-          <mat-drawer #drawer class="dashboard-sidenav" mode="side" opened autosize fxShow="true">
+          <mat-drawer #drawer class="dashboard-sidenav"  fxShow="true"  mode="side" opened >
               <mat-list>
                   <button mat-button (click)="gotoNotes()">
                   <mat-list-item>
-                    <mat-icon mat-list-icon>exit_to_app</mat-icon>
+                    <mat-icon mat-list-icon>folder</mat-icon>
                     <p mat-line> Notes </p>
                   </mat-list-item>
                 </button>
@@ -57,14 +57,20 @@
                       <p mat-line> Reminder</p>
                     </mat-list-item>
                     <mat-divider></mat-divider>
-                    <mat-list-item >
-                        <mat-icon mat-list-icon>folder</mat-icon>
-                        <p mat-line> Label1 </p>
-                      </mat-list-item>
+
+                    <button mat-button (click)="onEdit()">
                       <mat-list-item >
-                          <mat-icon mat-list-icon>folder</mat-icon>
-                          <p mat-line> Label2 </p>
+                          <mat-icon mat-list-icon>create</mat-icon>
+                          <p mat-line> Edit Labels</p>
                         </mat-list-item>
+                      </button> 
+
+                      <mat-list-item *ngFor="let label of labels">
+                          <mat-icon mat-list-icon>label</mat-icon>
+                        {{label.label}}
+                      </mat-list-item>
+                   
+                     
                   <mat-divider></mat-divider>
                   <button mat-button (click)="gotoArchive()">
                   <mat-list-item >

@@ -16,6 +16,7 @@ import { AuthService } from './services/auth.service';
 import { GotoNotesComponent } from './component/goto-notes/goto-notes.component';
 import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
 import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
+import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
@@ -23,6 +24,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'resetpassword/:token', component: ResetPasswordComponent},
+  {path: 'dailog-box', component: DialogBoxComponent},
+
   {path: '', component: DashboardComponent, canActivate: [AuthGuard],
   children: [
     {

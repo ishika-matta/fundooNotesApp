@@ -19,4 +19,7 @@ return this.http.post(url, data, options);
 getCallWithToken(url, options) {
   return this.http.get(url, options);
 }
+deleteCallWithToken(url,options){
+  return this.http.delete(url,options);
+}
 }

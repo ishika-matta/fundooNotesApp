@@ -60,9 +60,10 @@ export class LoginComponent implements OnInit {
 
     this.userService.postWithoutToken(options).subscribe((response: any) => {
       console.log(response);
-      localStorage.setItem('id', response.id);
-      this.auth.sendToken(response.id);
+      localStorage.setItem('userId', response.userId);
+      this.auth.sendToken(response.userId);
       this.router.navigate(['/goto-notes']);
+      console.log(response.userId);
     }, (error) => {
       console.log(error.statusText);
     });
