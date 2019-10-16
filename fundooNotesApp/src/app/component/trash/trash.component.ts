@@ -36,19 +36,19 @@ export class TrashComponent implements OnInit {
 
   }
 
-  getNotes() {
-    const options = {
-      purpose: 'getNotesList',
-    };
-    this.noteService.getWithToken(options).subscribe((response: any) => {
+  // getNotes() {
+  //   const options = {
+  //     purpose: 'getNotesList',
+  //   };
+  //   this.noteService.getWithToken(options).subscribe((response: any) => {
 
-      this.notes = response.data.data.reverse();
-      console.log(response);
-    }, (error) => {
-      console.log(error.statusText);
-    });
+  //     this.notes = response.data.data.reverse();
+  //     console.log(response);
+  //   }, (error) => {
+  //     console.log(error.statusText);
+  //   });
 
-  }
+  // }
 
 
 

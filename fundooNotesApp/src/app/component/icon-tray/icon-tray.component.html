@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="start end"  fxLayoutGap="1px">
+     <!-- *ngIf="component=='take-note'"> -->
+<app-remind-me  (messageEvent)="receiveMessage($event)"></app-remind-me>
+<app-collaborator  (messageEvent)="receiveMessage($event)"></app-collaborator>
+<app-change-color [card]="card" (messageEvent)="receiveMessage($event)"></app-change-color>
+<app-add-image  (messageEvent)="receiveMessage($event)"></app-add-image>
+<app-archive-un [card]="card" [archive]="archive" (messageEvent)="receiveMessage($event)"></app-archive-un>
+<app-more-menu  (messageEvent)="receiveMessage($event)"></app-more-menu>
+</div>
+
+

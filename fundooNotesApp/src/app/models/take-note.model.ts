@@ -8,5 +8,5 @@ export class TakeNote {
     id?: String;
     // userId: "string";
     service?: String;
-    label?:String;
+    label?: String;
 }

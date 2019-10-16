@@ -5,8 +5,8 @@
      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        placeholder="Take a note..." [formControl]="description"></textarea>
      <div fxLayout="row" fxLayoutAlign="space-between">
-       <app-icon (messageEvent)="receiveMessage($event)"></app-icon>
-       <div><button mat-button class="info-button" (click)="receiveNotes()">Close</button></div>
+       <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
+       <div><button mat-button class="info-button" (click)="postNotes()">Close</button></div>
      </div>
    </mat-card>
  </div>

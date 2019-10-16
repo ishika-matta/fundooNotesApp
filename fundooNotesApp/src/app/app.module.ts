@@ -33,7 +33,17 @@ import { GotoTrashComponent } from './component/goto-trash/goto-trash.component'
 import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
 import { ArchiveComponent } from './component/archive/archive.component';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
-
+import { FilterPipe } from './filter.pipe';
+import { IconTrayComponent } from './component/icon-tray/icon-tray.component';
+import { MoreMenuComponent } from './component/more-menu/more-menu.component';
+import { RemindMeComponent } from './component/remind-me/remind-me.component';
+import { CollaboratorComponent } from './component/collaborator/collaborator.component';
+import { ChangeColorComponent } from './component/change-color/change-color.component';
+import { AddImageComponent } from './component/add-image/add-image.component';
+import { ArchiveUnComponent } from './component/archive-un/archive-un.component';
+import { UploadProfilePicComponent } from './component/upload-profile-pic/upload-profile-pic.component';
+import { ImageModule } from 'ngx-image';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -54,6 +64,15 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
     GotoArchiveComponent,
     ArchiveComponent,
     DialogBoxComponent,
+    FilterPipe,
+    IconTrayComponent,
+    MoreMenuComponent,
+    RemindMeComponent,
+    CollaboratorComponent,
+    ChangeColorComponent,
+    AddImageComponent,
+    ArchiveUnComponent,
+    UploadProfilePicComponent
 
   ],
   imports: [
@@ -66,7 +85,10 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
     FormsModule,
     ReactiveFormsModule,
     ColorPickerModule,
-    MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule
+    MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule,
+    ImageModule,
+    ImageCropperModule
+    
 
 
   ],
@@ -79,7 +101,7 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
     NoteService,
     NoteLabelService
   ],
-  entryComponents: [DialogCardComponent],
+  entryComponents: [DialogCardComponent,UploadProfilePicComponent],
   bootstrap: [AppComponent]
 })
 

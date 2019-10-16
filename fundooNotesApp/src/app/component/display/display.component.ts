@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NoteService } from '../../services/note.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DialogCardComponent } from '../dialog-card/dialog-card.component';
 import { TakeNote } from 'src/app/models/take-note.model';
-import { MatDialog, MatDialogConfig } from '@angular/material';
-import { FormControl } from '@angular/forms';
-import { DataService } from '../../services/data.service';
+import { MatDialog } from '@angular/material';
+
 
 @Component({
   selector: 'app-display',
@@ -12,83 +10,56 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent implements OnInit {
-  notes: any;
+  
 
   note: any = new TakeNote();
   message: any;
   noteObj: any;
   options: any;
   hover: false;
-  flag: any='true';
+  flag: any = 'true';
   result1: any;
 
 
+  @Input() notes: any;
+  @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private noteService: NoteService, public dialog: MatDialog, private data: DataService) { }
+
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.getNotes();
-    this.data.currentMessage.subscribe((res) => {
-      this.getNotes();
-    });
-
-
-  }
-
-  getNotes() {
-    const options = {
-          purpose: 'getNotesList',
-        };
-      this.noteService.getWithToken(options).subscribe((response: any) => {
-        this.result1 = this.getFilter(response.data.data);
-
-            this.notes = this.result1.reverse();
-            console.log(response);
-          }, (error) => {
-            console.log(error.statusText);
-          });
-
-  }
-
-  getFilter(result) {
-    const pass = result.filter(function(result) {
-      return (result.isDeleted == false && result.isArchived == false);
-    });
-    return pass;
-  }
-
-
-  receiveMessage($event) {
-    console.log($event);
-
-    this.getNotes();
   }
 
 
 
   openDialog(note): void {
 
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.data = {
-    //   title: notes.title,
-    //   description: notes.description
-    // };
-
     const dialogRef = this.dialog.open(DialogCardComponent,
       {data:
       {
         card: note.id,
         title: note.title,
-      description: note.description
+        description: note.description,
+        color:note.color
+
       }
       });
     dialogRef.afterClosed().subscribe(
       result => {
         console.log('Dialog output:', result);
-        this.getNotes();
-      }
-    );
+        this.messageEvent.emit(this.message);
+    
 
   }
+    )
+
+ 
+}
+
+receiveMessage($event) {
+  this.message = $event
+  this.messageEvent.emit(this.message);
+}
+
 }

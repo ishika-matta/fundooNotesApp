@@ -129,7 +129,7 @@ export class IconComponent implements OnInit {
       console.log(error);
     });
   }
-  
+
   onUnArchive(card) {
     this.noteObj = {
       'isArchived': false,

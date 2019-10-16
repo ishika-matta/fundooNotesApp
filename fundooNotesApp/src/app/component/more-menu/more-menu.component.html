@@ -1,0 +1,26 @@
+<div>
+  <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="main">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</div>
+
+  <div *ngIf="'isDeleted'=='true'">
+      <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="del">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+
+
+<mat-menu #del>
+    <button mat-menu-item (click)="onTrash(card)">Trash Note</button>
+  <button mat-menu-item (click)="onDeleteForever(card)">Delete Note</button>
+   
+  </mat-menu>
+
+  <mat-menu #main>
+
+  <button mat-menu-item>Add label</button>
+  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item>Show checkboxes</button>
+
+</mat-menu>

@@ -11,9 +11,9 @@ export class ArchiveComponent implements OnInit {
   options: any;
   result1: any;
   messageTrash = 'Note Trash';
-  messageUnArchive='Note Unarchive';
-  flag='false';
-  @Output() messageEvent = new EventEmitter<string>();
+  messageUnArchive = 'Note Unarchive';
+  flag = 'false';
+  // @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private noteService: NoteService) { }
 
@@ -51,57 +51,57 @@ export class ArchiveComponent implements OnInit {
     return pass;
   }
 
-  getNotes() {
-    const options = {
-          purpose: 'getNotesList',
-        };
-      this.noteService.getWithToken(options).subscribe((response: any) => {
+  // getNotes() {
+  //   const options = {
+  //         purpose: 'getNotesList',
+  //       };
+  //     this.noteService.getWithToken(options).subscribe((response: any) => {
 
-            this.notes = response.data.data.reverse();
-            console.log(response);
-          }, (error) => {
-            console.log(error.statusText);
-          });
+  //           this.notes = response.data.data.reverse();
+  //           console.log(response);
+  //         }, (error) => {
+  //           console.log(error.statusText);
+  //         });
 
-  }
+  // }
 
-  onTrash(card) {
-    this.noteObj = {
-      'isDeleted': true,
-      'noteIdList': [card]
-      };
-    this.options = {
-      data: this.noteObj,
-      purpose: 'trashNotes',
+  // onTrash(card) {
+  //   this.noteObj = {
+  //     'isDeleted': true,
+  //     'noteIdList': [card]
+  //     };
+  //   this.options = {
+  //     data: this.noteObj,
+  //     purpose: 'trashNotes',
 
-    };
+  //   };
 
-    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-       console.log(response);
-        this.messageEvent.emit(this.messageTrash);
-        this.getArchiveNotes();
-    }, (error) => {
-      console.log(error);
-    });
-  }
+  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+  //      console.log(response);
+  //       this.messageEvent.emit(this.messageTrash);
+  //       this.getArchiveNotes();
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
 
 
-  onUnArchive(card) {
-    this.noteObj = {
-      'isArchived': false,
-      'noteIdList': [card]
-      };
-    this.options = {
-      data: this.noteObj,
-      purpose: 'archiveNotes',
+  // onUnArchive(card) {
+  //   this.noteObj = {
+  //     'isArchived': false,
+  //     'noteIdList': [card]
+  //     };
+  //   this.options = {
+  //     data: this.noteObj,
+  //     purpose: 'archiveNotes',
 
-    };
+  //   };
 
-    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-       console.log(response);
-        this.messageEvent.emit(this.messageUnArchive);
-    }, (error) => {
-      console.log(error);
-    });
-  }
+  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+  //      console.log(response);
+  //       this.messageEvent.emit(this.messageUnArchive);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
 }

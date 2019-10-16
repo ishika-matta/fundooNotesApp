@@ -1,4 +1,11 @@
+<div class="trash-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
+    <app-display [notes]="notes" (messageEvent)="receiveMessage($event)"></app-display>
 
+
+</div>
+
+
+<!-- 
 <div class="trash-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
   <mat-card class="trash-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="25"
    (mouseover)="hover=true" (mouseleave)="hover=false">
@@ -18,4 +25,4 @@
   </mat-card>
   </div>
 
- 
+  -->

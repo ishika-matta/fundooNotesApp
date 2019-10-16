@@ -11,10 +11,14 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class TakeNoteComponent implements OnInit {
   takeNoteObj: TakeNote = new TakeNote();
-  message: string;
-  title = new FormControl();
-  description = new FormControl();
+  message: string="Fundoo";
+  title= new FormControl();
+  description= new FormControl();
   show = true;
+  component='take-note';
+
+  @Output() messageEvent = new EventEmitter<string>();
+  
 
 
 
@@ -27,27 +31,8 @@ export class TakeNoteComponent implements OnInit {
   toggle() {
     this.show = !this.show;
   }
-  // receiveMessage($event){
-  //   console.log("27......");
-  //   this.message=$event;
-  //   this.takeNoteObj={
-  //     title:this.title.value,
-  //     description:this.description.value,
-  //   }
-  //   let options = {
-  //     data: this.takeNoteObj,
-  //     purpose: 'addNotes',
-  //   }
-  //   console.log(this.takeNoteObj);
 
-  //   this.noteService.postWithTokenWithEncoded(options).subscribe((response) => {
-  //     console.log(response);
-  //   },(error)=>{
-  //     console.log(error.statusText);
-  //   })
-
-  // }
-  receiveNotes() {
+  postNotes() {
     this.takeNoteObj = {
       title: this.title.value,
       description: this.description.value
@@ -57,14 +42,21 @@ export class TakeNoteComponent implements OnInit {
         data: this.takeNoteObj,
         purpose: 'addNotes'
       };
+
       this.noteService.postWithTokenWithEncoded(options).subscribe((response: any) => {
         console.log(response);
         this.toggle();
-        this.data.changeMessage('saved');
+        this.messageEvent.emit(this.message);
+       // this.data.changeMessage('saved');
+        
       }, (error) => {
         console.log(error);
       });
 
+  }
+
+  receiveMessage($event) {
+    this.message = $event
   }
 
 }

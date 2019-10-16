@@ -68,13 +68,13 @@ export class NoteLabelService {
     return formBody.join('&');
   }
 
-  deleteWithToken(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('id')
+  deleteWithToken(options) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('id')
       })
-    }
-    return this.httpSvc.deleteCallWithToken(this.baseUrlNoteLabel+options.data.id+options.purpose,httpOptions)  
+    };
+    return this.httpSvc.deleteCallWithToken(this.baseUrlNoteLabel + options.data.id + options.purpose, httpOptions);
   }
 }
