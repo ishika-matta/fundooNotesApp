@@ -19,9 +19,12 @@ export class DisplayComponent implements OnInit {
   hover: false;
   flag: any = 'true';
   result1: any;
+  
 
 
   @Input() notes: any;
+  @Input() component: any;
+
   @Output() messageEvent = new EventEmitter<string>();
 
 
@@ -58,7 +61,7 @@ export class DisplayComponent implements OnInit {
 }
 
 receiveMessage($event) {
-  this.message = $event
+  this.message = $event;
   this.messageEvent.emit(this.message);
 }
 

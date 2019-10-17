@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { NoteService } from '../../services/note.service';
+import { NoteService } from '../../services/noteServices/note.service';
 
 @Component({
   selector: 'app-archive-un',
@@ -25,13 +25,8 @@ export class ArchiveUnComponent implements OnInit {
       'isArchived': true,
       'noteIdList': [card]
       };
-    this.options = {
-      data: this.noteObj,
-      purpose: 'archiveNotes',
 
-    };
-
-    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+    this.noteService.archiveNotes(this.noteObj).subscribe((response: any) => {
        console.log(response);
         this.messageEvent.emit(this.message);
     }, (error) => {
@@ -39,23 +34,23 @@ export class ArchiveUnComponent implements OnInit {
     });
   }
 
-  onUnArchive(card) {
-    this.noteObj = {
-      'isArchived': false,
-      'noteIdList': [card]
-      };
-    this.options = {
-      data: this.noteObj,
-      purpose: 'archiveNotes',
+  // onUnArchive(card) {
+  //   this.noteObj = {
+  //     'isArchived': false,
+  //     'noteIdList': [card]
+  //     };
+  //   this.options = {
+  //     data: this.noteObj,
+  //     purpose: 'archiveNotes',
 
-    };
+  //   };
 
-    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-       console.log(response);
-        this.messageEvent.emit(this.message);
-    }, (error) => {
-      console.log(error);
-    });
-  }
+  //   this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
+  //      console.log(response);
+  //       this.messageEvent.emit(this.message);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
 
 }

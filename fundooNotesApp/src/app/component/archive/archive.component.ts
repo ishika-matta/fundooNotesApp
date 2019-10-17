@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NoteService } from '../../services/note.service';
+import { NoteService } from '../../services/noteServices/note.service';
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
@@ -13,7 +13,8 @@ export class ArchiveComponent implements OnInit {
   messageTrash = 'Note Trash';
   messageUnArchive = 'Note Unarchive';
   flag = 'false';
-  // @Output() messageEvent = new EventEmitter<string>();
+  component='archive';
+  @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private noteService: NoteService) { }
 
@@ -29,10 +30,7 @@ export class ArchiveComponent implements OnInit {
 
   getArchiveNotes() {
     console.log('inside archive notes');
-    const options = {
-          purpose: 'getArchiveNotesList',
-        };
-      this.noteService.getWithToken(options).subscribe((response: any) => {
+      this.noteService.archiveNotesList().subscribe((response: any) => {
         this.result1 = this.getFilter(response.data.data);
 
             this.notes = this.result1.reverse();

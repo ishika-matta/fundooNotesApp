@@ -2,9 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DisplayComponent } from '../display/display.component';
 import { Inject } from '@angular/core';
-import { NoteService } from '../../services/note.service';
-import { DataService } from '../../services/data.service';
-import { TakeNote } from 'src/app/models/take-note.model';
+import { NoteService } from '../../services/noteServices/note.service';
+import { TakeNote } from '../../models/take-note.model';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -61,14 +60,9 @@ export class DialogCardComponent implements OnInit {
       this.noteObj1.description = 'Empty Note';
       }
     this.dialogRef.close(this.noteObj1);
-    this.options = {
-      data: this.noteObj1,
-      purpose: 'updateNotes'
-    };
 
+    this.noteService.updateNotes(this.noteObj1).subscribe((response) => {
 
-    this.noteService.postWithTokenWithEncoded(this.options).subscribe((response) => {
-      console.log('inside dailog box....47');
       console.log(response);
       this.messageEvent.emit(this.message);
       //this.dataService.changeMessage(this.noteUpdateMessage);

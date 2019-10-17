@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ResetPassword } from '../../models/reset-password-model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/userServices/user.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -51,11 +51,7 @@ export class ResetPasswordComponent implements OnInit {
       // confirmPassword: this.confirmPassword.value,
       // service: "basic"
     };
-    const options = {
-      data: this.userObj,
-      purpose: 'reset-password',
-    };
-    this.userService.postWithToken(options).subscribe((response) => {
+    this.userService.resetPassword(this.userObj ).subscribe((response) => {
       console.log(response);
     }, (error) => {
       console.log(error.statusText);

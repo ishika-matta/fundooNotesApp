@@ -1,5 +1,5 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
-import { NoteService } from '../../services/note.service';
+import { NoteService } from '../../services/noteServices/note.service';
 
 @Component({
   selector: 'app-change-color',
@@ -30,12 +30,8 @@ export class ChangeColorComponent implements OnInit {
         'noteIdList': [card],
         'color': colors,
       };
-      const options = {
-        data: this.noteObj,
-        purpose: 'changesColorNotes',
 
-      };
-      this.noteService.postWithTokenNotEncoded(options).subscribe((response: any) => {
+      this.noteService.changeColorNotes(this.noteObj).subscribe((response: any) => {
         console.log(response);
         //get notes
         this.messageEvent.emit(this.messageColor);

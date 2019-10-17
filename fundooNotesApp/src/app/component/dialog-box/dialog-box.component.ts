@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-import { NoteLabelService } from '../../services/note-label.service';
-import { DataService } from '../../services/data.service';
-import { TakeNote } from 'src/app/models/take-note.model';
+import { NoteLabelService } from '../../services/noteLabelServices/note-label.service';
+import { DataService } from '../../services/dataServices/data.service';
+import { TakeNote } from '../../models/take-note.model';
 import { FormControl } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/authServices/auth.service';
 
 @Component({
   selector: 'app-dialog-box',
@@ -35,10 +35,7 @@ export class DialogBoxComponent implements OnInit {
 
   getNoteLabels() {
 
-      const options = {
-            purpose: '/getNoteLabelList',
-          };
-        this.noteLabelService.getWithToken(options).subscribe((response: any) => {
+        this.noteLabelService.getNoteLabels().subscribe((response: any) => {
           this.labels = response.data.details.reverse();
               console.log(response.data.details);
 
@@ -56,13 +53,7 @@ export class DialogBoxComponent implements OnInit {
     };
 
 
-    this.options = {
-      data: this.noteObj1,
-      purpose: ''
-    };
-
-
-    this.noteLabelService.postWithTokenNotEncoded(this.options).subscribe((response) => {
+    this.noteLabelService.createNoteLabel(this.noteObj1).subscribe((response) => {
       console.log('inside dailog box....47');
       console.log(response);
       this.getNoteLabels();
@@ -75,22 +66,19 @@ export class DialogBoxComponent implements OnInit {
     this.dialogRef.close('Closed');
   }
 
-  onDelete(label) {
-    this.noteObj1 = {
-      id: label.id,
-    };
-    const options = {
-      data: this.noteObj1,
-      purpose: '/deleteNoteLabel'
-    };
-    return this.noteLabelService.deleteWithToken(options).subscribe((response: any) => {
-      console.log(response);
-      this.getNoteLabels();
-      this.dataService.changeMessage(this.delLabelMessage);
-    }, (error) => {
-      console.log(error);
-    });
-  }
+  // onDelete(label) {
+  //   this.noteObj1 = {
+  //     id: label.id,
+  //   };
+
+  //   return this.noteLabelService.deleteNoteLabel(this.noteObj1).subscribe((response: any) => {
+  //     console.log(response);
+  //     this.getNoteLabels();
+  //     this.dataService.changeMessage(this.delLabelMessage);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
 
   }
 

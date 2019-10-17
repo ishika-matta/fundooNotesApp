@@ -8,7 +8,7 @@
 </div>
     <mat-divider></mat-divider>
 
-    <input type="file" (change)="fileChangeEvent($event)" accept="image/*">
+    <input type="file" (change)="fileChangeEvent($event)">
     <image-cropper
     [imageChangedEvent]="imageChangedEvent"
     [maintainAspectRatio]="true"
@@ -17,7 +17,7 @@
     format="png"
     (imageCropped)="imageCropped($event)">
 </image-cropper>
-<img [src]="croppedImage" />
+
 
 <button type="button" (click)="onUpload()">upload</button>
 </div>

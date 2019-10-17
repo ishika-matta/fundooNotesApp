@@ -1,21 +1,32 @@
-<div>
+ <div *ngIf="component=='take-note'">
   <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="main">
     <mat-icon>more_vert</mat-icon>
   </button>
 </div>
 
-  <div *ngIf="'isDeleted'=='true'">
-      <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="del">
+<div *ngIf="component=='archive'">
+  <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="display">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="component=='display'">
+    <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="display">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="component=='trash'">
+      <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu_trash">
         <mat-icon>more_vert</mat-icon>
       </button>
     </div>
 
 
-<mat-menu #del>
-    <button mat-menu-item (click)="onTrash(card)">Trash Note</button>
-  <button mat-menu-item (click)="onDeleteForever(card)">Delete Note</button>
-   
-  </mat-menu>
+    <mat-menu #menu_trash>
+        <button mat-menu-item (click)="onDeleteForever(card)">Delete Forever</button>
+        <button mat-menu-item (click)="onRestore(card)">Restore</button>
+      </mat-menu>
 
   <mat-menu #main>
 
@@ -23,4 +34,14 @@
   <button mat-menu-item>Add drawing</button>
   <button mat-menu-item>Show checkboxes</button>
 
-</mat-menu>
+</mat-menu> 
+
+<mat-menu #display>
+    <button mat-menu-item (click)="onTrash(card)">Delete Note</button>
+
+  <button mat-menu-item>Add label</button>
+  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item>Make a copy</button>
+  <button mat-menu-item>Show checkboxes</button>
+
+</mat-menu> 

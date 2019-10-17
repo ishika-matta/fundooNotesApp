@@ -7,16 +7,17 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { TakeNoteComponent } from './component/take-note/take-note.component';
-import { IconComponent } from './component/icon/icon.component';
+// import { IconComponent } from './component/icon/icon.component';
 import { DisplayComponent } from './component/display/display.component';
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 import { AuthGuard } from './component/auth.guard';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/authServices/auth.service';
 // import { TrashComponent } from './component/trash/trash.component';
 import { GotoNotesComponent } from './component/goto-notes/goto-notes.component';
 import { GotoTrashComponent } from './component/goto-trash/goto-trash.component';
 import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
+import { SearchBarComponent } from './component/search-bar/search-bar.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
@@ -36,6 +37,9 @@ const routes: Routes = [
     },
     {
       path: 'goto-archive', component: GotoArchiveComponent
+    },
+    {
+      path: 'search-bar', component: SearchBarComponent
     }
    ]
 },

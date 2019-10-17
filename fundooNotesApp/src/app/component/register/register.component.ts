@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/userServices/user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/register.model';
 @Component({
@@ -67,13 +67,10 @@ export class RegisterComponent implements OnInit {
       password: this.password.value,
       service: 'advance'
     };
-    const options = {
-      data: this.userObj,
-      purpose: 'userSignUp',
-    };
-    this.result = this.userService.postWithoutToken(options);
 
-    this.userService.postWithoutToken(options).subscribe((response) => {
+    this.result = this.userService.registerUser(this.userObj);
+
+    this.userService.registerUser(this.userObj).subscribe((response) => {
       console.log(response);
     }, (error) => {
       console.log(error.statusText);

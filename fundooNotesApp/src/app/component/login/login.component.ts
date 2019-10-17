@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/userServices/user.service';
 import { User } from '../../models/login.model';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/authServices/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -56,9 +56,9 @@ export class LoginComponent implements OnInit {
       data: this.userObj,
       purpose: 'login',
     };
-    this.result = this.userService.postWithoutToken(options);
+    this.result = this.userService.loginUser(this.userObj);
 
-    this.userService.postWithoutToken(options).subscribe((response: any) => {
+    this.userService.loginUser(this.userObj).subscribe((response: any) => {
       console.log(response);
       localStorage.setItem('id', response.id);
       localStorage.setItem('email', response.email);

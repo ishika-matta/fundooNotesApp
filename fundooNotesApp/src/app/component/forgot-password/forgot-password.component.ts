@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/userServices/user.service';
 import { User } from '../../models/forgot-password.model';
 @Component({
   selector: 'app-forgot-password',
@@ -34,11 +34,7 @@ export class ForgotPasswordComponent implements OnInit {
       email: this.email.value,
       service: 'advance'
     };
-    const options = {
-      data: this.userObj,
-      purpose: 'reset',
-    };
-   this.userService.postWithoutToken(options).subscribe((response) => {
+   this.userService.forgotPassword(this.userObj).subscribe((response) => {
       console.log(response);
     }, (error) => {
       console.log(error.statusText);

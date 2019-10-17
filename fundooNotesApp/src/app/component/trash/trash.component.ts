@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { NoteService } from '../../services/note.service';
+import { NoteService } from '../../services/noteServices/note.service';
 
 @Component({
   selector: 'app-trash',
@@ -12,6 +12,7 @@ export class TrashComponent implements OnInit {
   messageDelFor = 'Deleted Forever';
   messageTrash = 'Note Trash';
   options: any;
+  component='trash';
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
@@ -23,10 +24,8 @@ export class TrashComponent implements OnInit {
 
   getTrashNotes() {
     console.log('inside trash notes');
-    const options = {
-      purpose: 'getTrashNotesList',
-    };
-    this.noteService.getWithToken(options).subscribe((response: any) => {
+
+    this.noteService.trashNotesList().subscribe((response: any) => {
       this.notes = response.data.data.reverse();
       console.log(response);
 
@@ -35,21 +34,6 @@ export class TrashComponent implements OnInit {
     });
 
   }
-
-  // getNotes() {
-  //   const options = {
-  //     purpose: 'getNotesList',
-  //   };
-  //   this.noteService.getWithToken(options).subscribe((response: any) => {
-
-  //     this.notes = response.data.data.reverse();
-  //     console.log(response);
-  //   }, (error) => {
-  //     console.log(error.statusText);
-  //   });
-
-  // }
-
 
 
 
@@ -61,47 +45,5 @@ export class TrashComponent implements OnInit {
 
 
 
-  onDeleteForever(card) {
-    console.log('id', card);
-
-    this.noteObj = {
-      'isDeleted': true,
-      'noteIdList': [card]
-    };
-    const options = {
-      data: this.noteObj,
-      purpose: 'deleteForeverNotes',
-
-    };
-    this.noteService.postWithTokenNotEncoded(options).subscribe((response: any) => {
-      console.log(response);
-      this.messageEvent.emit(this.messageDelFor);
-      this.getTrashNotes();
-    }, (error) => {
-      console.log(error);
-    });
-
-  }
-
-  onRestore(card) {
-    this.noteObj = {
-      'isDeleted': false,
-      'noteIdList': [card]
-    };
-
-    this.options = {
-      data: this.noteObj,
-      purpose: 'trashNotes',
-
-    };
-
-    this.noteService.postWithTokenNotEncoded(this.options).subscribe((response: any) => {
-      console.log(response);
-      this.messageEvent.emit(this.messageTrash);
-      this.getTrashNotes();
-    }, (error) => {
-      console.log(error);
-    });
-  }
 
 }

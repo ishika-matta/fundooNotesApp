@@ -1,5 +1,5 @@
 <div class="trash-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
-    <app-display [notes]="notes" (messageEvent)="receiveMessage($event)"></app-display>
+    <app-display [notes]="notes" [component]="component" (messageEvent)="receiveMessage($event)"></app-display>
 
 
 </div>

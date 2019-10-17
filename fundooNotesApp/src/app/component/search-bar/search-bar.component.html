@@ -1,0 +1,14 @@
+
+<div class="search-bar-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
+        <mat-card class="search-bar-mat-card" *ngFor="let note of notes | search:searchText" [ngStyle]="{background:note.color}" fxFlex="25"
+         (mouseover)="hover=true" (mouseleave)="hover=false">
+        <div (click)="openDialog(note)">
+            <p style=" word-break: break-all">{{note.title}}</p>
+            <p style=" word-break: break-all">{{note.description}}</p>
+           </div>
+            <div fxLayoutAlign="start start">
+            <app-icon-tray [card]=note.id [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
+         </div>
+        </mat-card>
+        </div>
+     

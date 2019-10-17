@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NoteService } from '../../services/note.service';
+import { NoteService } from '../../services/noteServices/note.service';
 import { FormControl } from '@angular/forms';
 import { TakeNote } from 'src/app/models/take-note.model';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-take-note',
@@ -38,12 +38,8 @@ export class TakeNoteComponent implements OnInit {
       description: this.description.value
     };
     console.log(this.takeNoteObj);
-    const  options = {
-        data: this.takeNoteObj,
-        purpose: 'addNotes'
-      };
 
-      this.noteService.postWithTokenWithEncoded(options).subscribe((response: any) => {
+      this.noteService.addNotes(this.takeNoteObj).subscribe((response: any) => {
         console.log(response);
         this.toggle();
         this.messageEvent.emit(this.message);

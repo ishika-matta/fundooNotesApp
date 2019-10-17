@@ -1,4 +1,4 @@
 <div class="gotoNotes">
     <app-take-note (messageEvent)="receiveMessage($event)"></app-take-note> 
-    <app-display [notes]="notes" (messageEvent)="receiveMessage($event)"></app-display>
+    <app-display [notes]="notes" (messageEvent)="receiveMessage($event)" [component]="component"></app-display>
 </div>

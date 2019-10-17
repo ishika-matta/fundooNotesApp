@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NoteService } from '../../services/note.service';
-import { FormControl } from '@angular/forms';
+import { NoteService } from '../../services/noteServices/note.service';
 import { TakeNote } from 'src/app/models/take-note.model';
-import { DataService } from '../../services/data.service';
+
 
 @Component({
   selector: 'app-goto-notes',
@@ -19,6 +18,7 @@ export class GotoNotesComponent implements OnInit {
   hover: false;
   flag: any = 'true';
   result1: any;
+  component='display';
  
 
   constructor(private noteService: NoteService) { }
@@ -33,12 +33,9 @@ export class GotoNotesComponent implements OnInit {
   }
 
   getNotes() {
-    const options = {
-          purpose: 'getNotesList',
-        };
-      this.noteService.getWithToken(options).subscribe((response: any) => {
-        this.result1 = this.getFilter(response.data.data);
 
+      this.noteService.allNotesList().subscribe((response: any) => {
+        this.result1 = this.getFilter(response.data.data);
             this.notes = this.result1.reverse();
             console.log(response);
           }, (error) => {

@@ -2,10 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DisplayComponent } from '../display/display.component';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/userServices/user.service';
 
 import { Image } from 'ngx-image';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-upload-profile-pic',
@@ -16,13 +17,17 @@ export class UploadProfilePicComponent implements OnInit {
   selectedFile: File=null;
   imageChangedEvent: any = '';
     croppedImage: any = '';
+    message:string='upload';
 
  
 
   constructor(public dialogRef: MatDialogRef<DisplayComponent>,
-    @Inject(MAT_DIALOG_DATA) dialogData, private userService: UserService, private http: HttpClient) { }
+    @Inject(MAT_DIALOG_DATA) dialogData, private userService: UserService,
+     private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(
+      message => this.message = message);
   }
 
 
@@ -30,8 +35,8 @@ export class UploadProfilePicComponent implements OnInit {
     this.imageChangedEvent = event;
 }
 imageCropped(event: ImageCroppedEvent) {
-   this.croppedImage = event.base64;
-   return this.croppedImage;
+  console.log(event);
+   this.croppedImage = event.file;
 }
 
 
@@ -40,17 +45,17 @@ imageCropped(event: ImageCroppedEvent) {
     console.log('dffgdsfg')
     const fd=new FormData();
     
-    fd.append('image', this.croppedImage);
+    fd.append('file', this.croppedImage);
 
     console.log('sdcsadcdsc')
 
-    const  options = {
-      data: fd,
-      purpose: 'uploadProfileImage'
-    };
+  
 
-    this.userService.postWithTokenNotEncoded(options).subscribe((response: any) => {
-      console.log('done',response);
+    this.userService.uploadPic(fd).subscribe((response: any) => {
+      console.log('done',response.status.imageUrl);
+      localStorage.setItem('pic', response.status.imageUrl);
+      this.dataService.changeMessage(this.message);
+      this.dialogRef.close();
       
     }, (error) => {
       console.log('err',error);

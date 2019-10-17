@@ -10,6 +10,7 @@ export class IconTrayComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
   @Input() component:any;
+  @Input() isDeleted:any;
   
 
   constructor() { }

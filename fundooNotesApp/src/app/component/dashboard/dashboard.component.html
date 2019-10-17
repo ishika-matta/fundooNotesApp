@@ -8,13 +8,16 @@
           </mat-icon>
           <img src="../../../assets/keep.png" class="dashboard-image">
           <p>FUNDOO NOTES</p>
-          <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
-              <mat-icon matPrefix>search</mat-icon>
+           <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
+              <button mat-button (click)="onSearchClick()" routerLink="/search-bar">
+              <mat-icon matPrefix>search</mat-icon></button>
               
               <input matInput [(ngModel)]="searchText"
                type="text" cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype" >
               
           </mat-card>
+
+          
               
 
               <button mat-button class="toolbar-refresh" matTooltip="Refresh">
@@ -28,7 +31,7 @@
                   </button>
                   
                   <button mat-button [matMenuTriggerFor]="userMenu" >
-                  <img mat-card-avatar src="../../../../src/assets/user.png" class="avatar-img" height="20px" width="20px">
+                  <img mat-card-avatar [src]="url" class="avatar-img" height="20px" width="20px">
 
                   </button>
                  <mat-menu #userMenu="matMenu" yPosition="below" [overlapTrigger]="false">
@@ -40,7 +43,7 @@
                       <div>
                         
 
-                         <img mat-card-avatar src="../../../../src/assets/user.png"
+                         <img mat-card-avatar [src]="url"
                          class="avatar-img" height="70px" width="50px" (click)="openDialog1()">
 
                          
@@ -94,6 +97,7 @@
                       <mat-list-item *ngFor="let label of labels">
                           <mat-icon mat-list-icon>label</mat-icon>
                         {{label.label}}
+                        
                       </mat-list-item>
                    
                      
