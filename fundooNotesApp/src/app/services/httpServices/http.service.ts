@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class HttpService {
   baseUrl = environment.baseUrl;
-  baseUrlPic = environment.baseUrlPic;
+  
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,10 +23,16 @@ export class HttpService {
       'Authorization': localStorage.getItem('id')
     })
   };
-  httpOptionsNoteLabel = {
+  // httpOptionsNoteLabel = {
+  //   headers: new HttpHeaders({
+  //     'Content-type': 'application/x-www-form-urlencoded',
+  //     'Authorization': localStorage.getItem('id')
+  //   })
+  // };
+  httpOptionsReset = {
     headers: new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded',
-      'Authorization': localStorage.getItem('id')
+      'Authorization': localStorage.getItem('token')
     })
   };
 
@@ -43,6 +49,11 @@ export class HttpService {
 
     postCallPic(data,url){
       return this.http.post(this.baseUrl+url, data, this.httpOptionsPic);
+
+    }
+
+    postCallResetPassword(data,url){
+      return this.http.post(this.baseUrl+url, data, this.httpOptionsReset);
 
     }
 
@@ -69,7 +80,33 @@ export class HttpService {
       else
       return this.http.get(this.baseUrl+url, this.httpOptions);
       }
+    
+
+    // getCallNoteLabel(url, auth) {
+    //   if(auth==false){
+    //     return this.http.get(this.baseUrl+url);
+    //   }
+      
+    //   else
+    //   return this.http.get(this.baseUrl+url, this.httpOptions);
+    //   }
+
+
+      deleteCall(url){
+        return this.http.delete(this.baseUrl+url, this.httpOptions);
+        }
     }
+
+
+
+    // getWithToken(options) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-type': 'application/x-www-form-urlencoded',
+  //       'Authorization': localStorage.getItem('id')
+  //     })
+  //   };
+  //   return this.httpSvc.getCallWithToken(this.baseUrlNoteLabel + options.purpose, httpOptions);
 
 // postCallWithToken(url, data, options) {                       
 // return this.http.post(url, data, options);
@@ -81,10 +118,4 @@ export class HttpService {
 // }
 // }
 
-// deleteCall(url, auth){
-//   if(auth==false){
-//     return this.http.delete(this.baseUrl+url);
-//   }
-//   else
-//   return this.http.delete(this.baseUrl+url, this.httpOptions);
-//   }
+

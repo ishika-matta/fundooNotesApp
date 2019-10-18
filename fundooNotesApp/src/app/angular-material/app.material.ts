@@ -15,6 +15,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
       MatTooltipModule,
       MatMenuModule,
       MatGridListModule,
-      MatDialogModule
+      MatDialogModule,
+      MatTabsModule
 
 
     ],
@@ -58,7 +60,8 @@ import {MatDialogModule} from '@angular/material/dialog';
       MatTooltipModule,
       MatMenuModule,
       MatGridListModule,
-      MatDialogModule
+      MatDialogModule,
+      MatTabsModule
 
 
     ],

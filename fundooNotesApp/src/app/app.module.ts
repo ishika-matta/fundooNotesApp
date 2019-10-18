@@ -45,6 +45,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { UnArchiveComponent } from './component/un-archive/un-archive.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,7 @@ import { SearchBarComponent } from './component/search-bar/search-bar.component'
     FormsModule,
     ReactiveFormsModule,
     ColorPickerModule,
-    MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule,
+    MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule,MatTabsModule,
     ImageModule,
     ImageCropperModule
     

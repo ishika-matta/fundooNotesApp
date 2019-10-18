@@ -60,11 +60,15 @@ export class LoginComponent implements OnInit {
 
     this.userService.loginUser(this.userObj).subscribe((response: any) => {
       console.log(response);
+      localStorage.setItem('userId', response.userId);
       localStorage.setItem('id', response.id);
       localStorage.setItem('email', response.email);
       localStorage.setItem('firstName', response.firstName);
       localStorage.setItem('lastName', response.lastName);
-      this.auth.sendToken(response.userId);
+      localStorage.setItem('pic', response.imageUrl);
+     // this.auth.sendToken(response.userId);
+       this.auth.sendToken(response.id);
+       
       this.router.navigate(['/goto-notes']);
       console.log(response.userId);
     }, (error) => {

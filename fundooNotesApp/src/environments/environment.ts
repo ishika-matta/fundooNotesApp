@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrlUser: 'http://fundoonotes.incubation.bridgelabz.com/api/user/',
-  baseUrlNotes: 'http://fundoonotes.incubation.bridgelabz.com/api/notes/',
-  baseUrlNoteLabel: 'http://fundoonotes.incubation.bridgelabz.com/api/noteLabels/',
+  // baseUrlUser: 'http://fundoonotes.incubation.bridgelabz.com/api/user/',
+  // baseUrlNotes: 'http://fundoonotes.incubation.bridgelabz.com/api/notes/',
+  // baseUrlNoteLabel: 'http://fundoonotes.incubation.bridgelabz.com/api/noteLabels/',
   baseUrl: 'http://fundoonotes.incubation.bridgelabz.com/api/',
   baseUrlPic: 'http://fundoonotes.incubation.bridgelabz.com/'
 

@@ -42,15 +42,9 @@ imageCropped(event: ImageCroppedEvent) {
 
 
   onUpload(){
-    console.log('dffgdsfg')
     const fd=new FormData();
     
     fd.append('file', this.croppedImage);
-
-    console.log('sdcsadcdsc')
-
-  
-
     this.userService.uploadPic(fd).subscribe((response: any) => {
       console.log('done',response.status.imageUrl);
       localStorage.setItem('pic', response.status.imageUrl);

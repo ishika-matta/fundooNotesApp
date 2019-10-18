@@ -1,127 +1,128 @@
 <div class="main-container" fxFlex="100">
 
-<mat-toolbar  class="dashboard-toolbar" fxflex="100">
+  <mat-toolbar class="dashboard-toolbar" fxflex="100">
     <mat-toolbar-row autosize>
-        <mat-icon class="dashboard-icon" aria-hidden="false" 
-        type="button" mat-icon-button (click)="drawer.toggle()">
-            menu
-          </mat-icon>
-          <img src="../../../assets/keep.png" class="dashboard-image">
-          <p>FUNDOO NOTES</p>
-           <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
-              <button mat-button (click)="onSearchClick()" routerLink="/search-bar">
-              <mat-icon matPrefix>search</mat-icon></button>
-              
-              <input matInput [(ngModel)]="searchText"
-               type="text" cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype" >
-              
-          </mat-card>
+      <mat-icon class="dashboard-icon" aria-hidden="false" type="button" mat-icon-button (click)="drawer.toggle()">
+        menu
+      </mat-icon>
+      <img src="../../../assets/keep.png" class="dashboard-image">
+      <p>FUNDOO NOTES</p>
+      <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
 
-          
-              
+        <mat-icon matPrefix>search</mat-icon>
 
-              <button mat-button class="toolbar-refresh" matTooltip="Refresh">
-                  <mat-icon >refresh</mat-icon>
-                  </button>
-                  <button mat-button class="toolbar-list" matTooltip="List View">
-                  <mat-icon>list</mat-icon>
-                  </button>
-                  <button mat-button class="toolbar-settings" matTooltip="Settings">
-                  <mat-icon>settings</mat-icon>
-                  </button>
-                  
-                  <button mat-button [matMenuTriggerFor]="userMenu" >
-                  <img mat-card-avatar [src]="url" class="avatar-img" height="20px" width="20px">
 
-                  </button>
-                 <mat-menu #userMenu="matMenu" yPosition="below" [overlapTrigger]="false">
-                   
-                    <!-- <button mat-menu-item *ngIf="!auth.isLoggednIn()" routerLink="/login">Login</button> -->
 
-                    <div>
-                      <div fxLayout="row">
-                      <div>
-                        
 
-                         <img mat-card-avatar [src]="url"
-                         class="avatar-img" height="70px" width="50px" (click)="openDialog1()">
+        <input matInput [(ngModel)]="searchText" routerLink="/search-bar" (keyup)="onKeyUp($event)" type="text"
+          cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype">
 
-                         
+      </mat-card>
 
-                      </div>
-                      <div fxLayout="column">
-                          {{firstName}} {{lastName}}
-                          {{email}}
 
-                      </div>
-                      </div>
-                      
-                      <mat-divider></mat-divider>
-                      <mat-list-item fxLayout="row" fxLayoutAlign="space-around center">
-                        <button (click)="addAccount()">Add Account</button>
-                          <button *ngIf="auth.isLoggednIn()" (click)="auth.logout()">LogOut</button>
 
-                      </mat-list-item>
-                    </div>
-                    
-                  </mat-menu>
-                </mat-toolbar-row>
-        
-      </mat-toolbar>
 
-      
-      <span class="dashboard-spacer"></span>
-      <mat-drawer-container class="dashboard-container" autosize fxShow="true" fxLayout="column" fxLayoutAlign="start start">
-          <mat-drawer #drawer class="dashboard-sidenav"  fxShow="true"  mode="side" opened >
-              <mat-list>
-                  <button mat-button (click)="gotoNotes()">
-                  <mat-list-item>
-                    <mat-icon mat-list-icon>folder</mat-icon>
-                    <p mat-line> Notes </p>
-                  </mat-list-item>
-                </button>
+      <button mat-button class="toolbar-refresh" matTooltip="Refresh">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-button class="toolbar-list" matTooltip="List View">
+        <mat-icon>list</mat-icon>
+      </button>
+      <button mat-button class="toolbar-settings" matTooltip="Settings">
+        <mat-icon>settings</mat-icon>
+      </button>
 
-                  <mat-list-item >
-                      <mat-icon mat-list-icon>notifications</mat-icon>
-                      <p mat-line> Reminder</p>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <img mat-card-avatar [src]="url" class="avatar-img" height="20px" width="20px">
 
-                    <button mat-button (click)="onEdit()">
-                      <mat-list-item >
-                          <mat-icon mat-list-icon>create</mat-icon>
-                          <p mat-line> Edit Labels</p>
-                        </mat-list-item>
-                      </button> 
+      </button>
+      <mat-menu #userMenu="matMenu" yPosition="below" [overlapTrigger]="false">
 
-                      <mat-list-item *ngFor="let label of labels">
-                          <mat-icon mat-list-icon>label</mat-icon>
-                        {{label.label}}
-                        
-                      </mat-list-item>
-                   
-                     
-                  <mat-divider></mat-divider>
-                  <button mat-button (click)="gotoArchive()">
-                  <mat-list-item >
-                      <mat-icon mat-list-icon>archive</mat-icon>
-                      <p mat-line> Archive </p>
-                    </mat-list-item>
-                  </button>
-                    <button mat-button (click)="gotoTrash()">
-                    <mat-list-item>
-                        <mat-icon mat-list-icon>delete</mat-icon>
-                        <p mat-line> Trash </p>
-                      </mat-list-item>
-                    </button>
-                  
-                </mat-list>
-          </mat-drawer>
-          <router-outlet></router-outlet>
-    
-          <!-- <app-take-note></app-take-note> 
+        <!-- <button mat-menu-item *ngIf="!auth.isLoggednIn()" routerLink="/login">Login</button> -->
+
+        <div>
+          <div fxLayout="row">
+            <div>
+
+
+              <img mat-card-avatar [src]="url" class="avatar-img" height="70px" width="50px" (click)="openDialog1()">
+
+
+
+            </div>
+            <div fxLayout="column">
+              {{firstName}} {{lastName}}
+              {{email}}
+
+            </div>
+          </div>
+
+          <mat-divider></mat-divider>
+          <mat-list-item fxLayout="row" fxLayoutAlign="space-around center">
+            <button (click)="addAccount()">Add Account</button>
+            <button *ngIf="auth.isLoggednIn()" (click)="auth.logout()">LogOut</button>
+
+          </mat-list-item>
+        </div>
+
+      </mat-menu>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+
+  <span class="dashboard-spacer"></span>
+  <mat-drawer-container class="dashboard-container" autosize fxShow="true" fxLayout="column"
+    fxLayoutAlign="start start">
+    <mat-drawer #drawer class="dashboard-sidenav" fxShow="true" mode="side" opened>
+      <mat-list>
+        <button mat-button (click)="gotoNotes()">
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <p mat-line> Notes </p>
+          </mat-list-item>
+        </button>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>notifications</mat-icon>
+          <p mat-line> Reminder</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <button mat-button (click)="onEdit()">
+          <mat-list-item>
+            <mat-icon mat-list-icon>create</mat-icon>
+            <p mat-line> Edit Labels</p>
+          </mat-list-item>
+        </button>
+
+        <mat-list-item *ngFor="let label of labels">
+          <mat-icon mat-list-icon>label</mat-icon>
+          {{label.label}}
+
+        </mat-list-item>
+
+
+        <mat-divider></mat-divider>
+        <button mat-button (click)="gotoArchive()">
+          <mat-list-item>
+            <mat-icon mat-list-icon>archive</mat-icon>
+            <p mat-line> Archive </p>
+          </mat-list-item>
+        </button>
+        <button mat-button (click)="gotoTrash()">
+          <mat-list-item>
+            <mat-icon mat-list-icon>delete</mat-icon>
+            <p mat-line> Trash </p>
+          </mat-list-item>
+        </button>
+
+      </mat-list>
+    </mat-drawer>
+    <router-outlet></router-outlet>
+
+    <!-- <app-take-note></app-take-note> 
           <app-display></app-display> -->
-        </mat-drawer-container>
-        
-      </div> 
-   
+  </mat-drawer-container>
+
+</div>

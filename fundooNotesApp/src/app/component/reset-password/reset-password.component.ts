@@ -52,7 +52,7 @@ export class ResetPasswordComponent implements OnInit {
       // service: "basic"
     };
     this.userService.resetPassword(this.userObj ).subscribe((response) => {
-      console.log(response);
+      //console.log(response);
     }, (error) => {
       console.log(error.statusText);
     });

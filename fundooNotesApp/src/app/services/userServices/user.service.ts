@@ -13,7 +13,7 @@ export class UserService {
   constructor(private httpSvc: HttpService) { }
   loginUser(data){
     this.url='user/login';
-    this.auth=false;
+    this.auth=true;
     return this.httpSvc.postCall(data,this.url,this.auth);
   }
 
@@ -32,7 +32,7 @@ export class UserService {
   resetPassword(data){
     this.url='user/reset-password';
     this.auth=true;
-    return this.httpSvc.postCall(this.getEncodedData(data),this.url,this.auth);
+    return this.httpSvc.postCallResetPassword(this.getEncodedData(data),this.url);
 
   }
 

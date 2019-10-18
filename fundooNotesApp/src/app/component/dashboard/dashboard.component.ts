@@ -74,20 +74,27 @@ export class DashboardComponent implements OnInit {
         {
         });
 
-  
    
   }
 
   getPic(){
     this.pic=localStorage.getItem('pic');
     this.url=this.baseUrlPic+this.pic;
+    console.log('imageeee',this.url);
+    
 
   }
 
-  onSearchClick(){
-    this.dataService.changeMessage(this.searchText);
-    // this.router.navigate(['/search-bar']);
-  }
+  // onSearchClick(){
+  //   this.dataService.changeMessage(this.searchText);
+  //   // this.router.navigate(['/search-bar']);
+  // }
+
+  onKeyUp(event: any) {
+    this.searchText = event.target.value;
+    console.log(this.searchText);
+    this.dataService.changeMessage(this.searchText)
+    };
   
   
 }

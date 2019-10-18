@@ -49,7 +49,7 @@ export class DialogBoxComponent implements OnInit {
     this.noteObj1 = {
       'label': this.labelValue.value,
       'isDeleted': false,
-      'userId': this.authService.getToken()
+      'userId': localStorage.getItem('userId')
     };
 
 
@@ -66,19 +66,19 @@ export class DialogBoxComponent implements OnInit {
     this.dialogRef.close('Closed');
   }
 
-  // onDelete(label) {
-  //   this.noteObj1 = {
-  //     id: label.id,
-  //   };
+  onDelete(label) {
+    this.noteObj1 = {
+      id: label.id,
+    };
 
-  //   return this.noteLabelService.deleteNoteLabel(this.noteObj1).subscribe((response: any) => {
-  //     console.log(response);
-  //     this.getNoteLabels();
-  //     this.dataService.changeMessage(this.delLabelMessage);
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
+    return this.noteLabelService.deleteNoteLabel(this.noteObj1).subscribe((response: any) => {
+      console.log(response);
+      this.getNoteLabels();
+      this.dataService.changeMessage(this.delLabelMessage);
+    }, (error) => {
+      console.log(error);
+    });
+  }
 
   }
 
