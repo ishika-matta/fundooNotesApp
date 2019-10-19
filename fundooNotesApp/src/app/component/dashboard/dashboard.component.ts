@@ -15,19 +15,19 @@ import { UploadProfilePicComponent } from '../upload-profile-pic/upload-profile-
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  searchText:any;
+  searchText: any;
   labels: any;
-  url:any;
-  pic:any;
+  url: any;
+  pic: any;
   baseUrlPic = environment.baseUrlPic;
-  email= localStorage.getItem('email');
-  firstName= localStorage.getItem('firstName');
-  lastName= localStorage.getItem('lastName');
+  email = localStorage.getItem('email');
+  firstName = localStorage.getItem('firstName');
+  lastName = localStorage.getItem('lastName');
 
   constructor(private auth: AuthService, private router: Router,
-     public dialog: MatDialog, private noteLabelService: NoteLabelService,
-     private dataService: DataService) { }
-     
+    public dialog: MatDialog, private noteLabelService: NoteLabelService,
+    private dataService: DataService) { }
+
 
   ngOnInit() {
     this.getNotesLabels();
@@ -38,14 +38,14 @@ export class DashboardComponent implements OnInit {
   }
 
   getNotesLabels() {
-    
-      this.noteLabelService.getNoteLabels() .subscribe((response: any) => {
-        this.labels = response.data.details.reverse();
-            console.log(response.data.details);
-          }, (error) => {
-            console.log(error.statusText);
-          });
-}
+
+    this.noteLabelService.getNoteLabels().subscribe((response: any) => {
+      this.labels = response.data.details.reverse();
+      console.log(response.data.details);
+    }, (error) => {
+      console.log(error.statusText);
+    });
+  }
 
   gotoNotes() {
     this.router.navigate(['/goto-notes']);
@@ -58,44 +58,37 @@ export class DashboardComponent implements OnInit {
   }
   onEdit() {
     //open dialog box
-      const dialogRef = this.dialog.open(DialogBoxComponent);
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '25%',
+      panelClass: 'custom-modalbox'
+    });
 
-      dialogRef.afterClosed().subscribe(
-        result => {
-          console.log('Dialog output:', result);
-
-        }
-      );
-    }
-
-    openDialog1(): void {
-
-      const dialogRef = this.dialog.open(UploadProfilePicComponent,
-        {
-        });
-
-   
+    dialogRef.afterClosed().subscribe(
+      result => {
+        console.log('Dialog output:', result);
+      }
+    );
   }
 
-  getPic(){
-    this.pic=localStorage.getItem('pic');
-    this.url=this.baseUrlPic+this.pic;
-    console.log('imageeee',this.url);
-    
+  openDialog1(): void {
+    const dialogRef = this.dialog.open(UploadProfilePicComponent, {
+    });
 
   }
 
-  // onSearchClick(){
-  //   this.dataService.changeMessage(this.searchText);
-  //   // this.router.navigate(['/search-bar']);
-  // }
+  getPic() {
+    this.pic = localStorage.getItem('pic');
+    this.url = this.baseUrlPic + this.pic;
+    console.log('imageeee', this.url);
+
+
+  }
 
   onKeyUp(event: any) {
     this.searchText = event.target.value;
     console.log(this.searchText);
     this.dataService.changeMessage(this.searchText)
-    };
-  
-  
+  };
+
 }
 

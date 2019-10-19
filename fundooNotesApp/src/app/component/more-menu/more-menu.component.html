@@ -10,7 +10,7 @@
   </button>
 </div>
 
-<div *ngIf="component=='display'">
+<div *ngIf="component=='display'|| component=='dialog-card' || component=='search-bar'">
     <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="display">
       <mat-icon>more_vert</mat-icon>
     </button>
@@ -30,7 +30,7 @@
 
   <mat-menu #main>
 
-  <button mat-menu-item>Add label</button>
+  <button mat-menu-item [matMenuTriggerFor]="labels_checklist">Add label</button>
   <button mat-menu-item>Add drawing</button>
   <button mat-menu-item>Show checkboxes</button>
 
@@ -39,9 +39,19 @@
 <mat-menu #display>
     <button mat-menu-item (click)="onTrash(card)">Delete Note</button>
 
-  <button mat-menu-item>Add label</button>
+  <button mat-menu-item [matMenuTriggerFor]="labels_checklist">Add label</button>
   <button mat-menu-item>Add drawing</button>
   <button mat-menu-item>Make a copy</button>
   <button mat-menu-item>Show checkboxes</button>
 
 </mat-menu> 
+
+<mat-menu #labels_checklist>
+  <p>Label Note</p>
+  <mat-selection-list>
+    <mat-list-option *ngFor="let label of labels" (click)="onOpenAddLabel(label.id)">
+        {{label.label}}
+    </mat-list-option>
+</mat-selection-list>
+
+</mat-menu>

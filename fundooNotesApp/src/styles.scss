@@ -3,3 +3,10 @@
 html, body{
     height: 100vh;
 }
+.custom-modalbox {
+    mat-dialog-container {
+        max-height: 500px;
+        // min-height: 300px;
+    }
+}
+

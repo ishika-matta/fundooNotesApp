@@ -5,7 +5,7 @@
     <p><textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value={{noteObj.title}}></textarea></p>
     <p><textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="description" value={{noteObj.description}}></textarea></p>
     <div fxLayout="row" fxLayoutAlign="space-between">
-        <app-icon-tray></app-icon-tray>
+        <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
         <div><button mat-button (click)="onUpdateNote()">Close</button></div>
       </div>
     

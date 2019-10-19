@@ -37,7 +37,7 @@ export class GotoNotesComponent implements OnInit {
       this.noteService.allNotesList().subscribe((response: any) => {
         this.result1 = this.getFilter(response.data.data);
             this.notes = this.result1.reverse();
-            console.log(response);
+            console.log("notes",this.result1);
           }, (error) => {
             console.log(error.statusText);
           });

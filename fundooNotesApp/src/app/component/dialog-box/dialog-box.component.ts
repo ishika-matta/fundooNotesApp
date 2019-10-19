@@ -18,9 +18,11 @@ export class DialogBoxComponent implements OnInit {
   noteObj: any = new TakeNote();
   noteObj1: any;
   labelValue: any = new FormControl();
+  updateLabel: any = new FormControl();
   labels: any;
-  labelMessage = ' label added';
+  labelMessage = ' label created';
   delLabelMessage = 'label deleted';
+  updateLabelMessage = 'label updated';
    @Output() noteMessageEvent = new EventEmitter<string>();
 
   constructor( public dialogRef: MatDialogRef<DashboardComponent>,
@@ -30,10 +32,10 @@ export class DialogBoxComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.getNoteLabels();
+    this.getAllLabels();
   }
 
-  getNoteLabels() {
+  getAllLabels() {
 
         this.noteLabelService.getNoteLabels().subscribe((response: any) => {
           this.labels = response.data.details.reverse();
@@ -46,22 +48,24 @@ export class DialogBoxComponent implements OnInit {
 
   onCreateLabel(){
 
-    this.noteObj1 = {
+    let create = {
       'label': this.labelValue.value,
       'isDeleted': false,
       'userId': localStorage.getItem('userId')
     };
 
 
-    this.noteLabelService.createNoteLabel(this.noteObj1).subscribe((response) => {
+    this.noteLabelService.createNoteLabel(create).subscribe((response) => {
       console.log('inside dailog box....47');
       console.log(response);
-      this.getNoteLabels();
       this.dataService.changeMessage(this.labelMessage);
+      this.getAllLabels();
+      
     }, (error) => {
       console.log(error);
     });
   }
+
   onDone() {
     this.dialogRef.close('Closed');
   }
@@ -73,13 +77,27 @@ export class DialogBoxComponent implements OnInit {
 
     return this.noteLabelService.deleteNoteLabel(this.noteObj1).subscribe((response: any) => {
       console.log(response);
-      this.getNoteLabels();
+      this.getAllLabels();
       this.dataService.changeMessage(this.delLabelMessage);
     }, (error) => {
       console.log(error);
     });
   }
 
+  onUpdateNoteLabel(label){
+      let update = {
+      label : this.updateLabel.value,
+      id : label.id,
+      }
+      this.noteLabelService.updateNoteLabel(update).subscribe((response) => { 
+      console.log(response);
+      this.getAllLabels();
+      this.dataService.changeMessage(this.updateLabelMessage);
+      }, (error) => {
+        console.log(error);
+      });
+
   }
 
-
+ 
+}

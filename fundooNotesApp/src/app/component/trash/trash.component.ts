@@ -32,18 +32,10 @@ export class TrashComponent implements OnInit {
     }, (error) => {
       console.log(error.statusText);
     });
-
   }
-
-
 
   receiveMessage($event) {
     console.log($event);
     this.getTrashNotes();
   }
-
-
-
-
-
 }

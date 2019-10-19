@@ -1,10 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DisplayComponent } from '../display/display.component';
-import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../services/userServices/user.service';
-
-import { Image } from 'ngx-image';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DataService } from 'src/app/services/dataServices/data.service';
 

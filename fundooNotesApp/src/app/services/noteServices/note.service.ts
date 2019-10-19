@@ -71,5 +71,11 @@ export class NoteService {
     return this.httpSvc.getCall(this.url,this.auth);
 
   }
+
+  addLabelToNotes(data){
+    this.url='notes/'+data.noteId+'/addLabelToNotes/'+data.labelId+'/add';
+    this.auth=true;
+    return this.httpSvc.postCall(data,this.url,this.auth)
+  }
 }
 

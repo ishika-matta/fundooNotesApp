@@ -14,7 +14,7 @@
 
 
 
-        <input matInput [(ngModel)]="searchText" routerLink="/search-bar" (keyup)="onKeyUp($event)" type="text"
+        <input matInput routerLink="/search-bar" (keyup)="onKeyUp($event)" type="text" [(ngModel)]="searchText"
           cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype">
 
       </mat-card>
@@ -23,7 +23,7 @@
 
 
       <button mat-button class="toolbar-refresh" matTooltip="Refresh">
-        <mat-icon>refresh</mat-icon>
+        <mat-icon >refresh</mat-icon>
       </button>
       <button mat-button class="toolbar-list" matTooltip="List View">
         <mat-icon>list</mat-icon>
@@ -58,11 +58,11 @@
           </div>
 
           <mat-divider></mat-divider>
-          <mat-list-item fxLayout="row" fxLayoutAlign="space-around center">
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20">
             <button (click)="addAccount()">Add Account</button>
             <button *ngIf="auth.isLoggednIn()" (click)="auth.logout()">LogOut</button>
 
-          </mat-list-item>
+          </div>
         </div>
 
       </mat-menu>
@@ -76,18 +76,27 @@
     fxLayoutAlign="start start">
     <mat-drawer #drawer class="dashboard-sidenav" fxShow="true" mode="side" opened>
       <mat-list>
-        <button mat-button (click)="gotoNotes()">
-          <mat-list-item>
+        <button mat-button >
+          <mat-list-item (click)="gotoNotes()">
             <mat-icon mat-list-icon>folder</mat-icon>
             <p mat-line> Notes </p>
           </mat-list-item>
         </button>
 
+        <button mat-button>
         <mat-list-item>
           <mat-icon mat-list-icon>notifications</mat-icon>
           <p mat-line> Reminder</p>
         </mat-list-item>
+      </button>
         <mat-divider></mat-divider>
+        <p mat-list-item style="color: grey; font-size: 12px">LABELS</p>
+
+        <mat-list-item *ngFor="let label of labels">
+            <button mat-button> 
+              <mat-icon mat-list-icon>label</mat-icon>
+           {{label.label}} </button>
+        </mat-list-item>
 
         <button mat-button (click)="onEdit()">
           <mat-list-item>
@@ -96,12 +105,9 @@
           </mat-list-item>
         </button>
 
-        <mat-list-item *ngFor="let label of labels">
-          <mat-icon mat-list-icon>label</mat-icon>
-          {{label.label}}
-
-        </mat-list-item>
-
+        
+        
+      
 
         <mat-divider></mat-divider>
         <button mat-button (click)="gotoArchive()">

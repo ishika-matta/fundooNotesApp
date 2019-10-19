@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='take-note'">
+<div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='take-note' || component=='dialog-card'">
   <app-remind-me (messageEvent)="receiveMessage($event)"></app-remind-me>
   <app-collaborator (messageEvent)="receiveMessage($event)"></app-collaborator>
   <app-change-color [card]="card" (messageEvent)="receiveMessage($event)"></app-change-color>

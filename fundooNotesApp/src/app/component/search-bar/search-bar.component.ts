@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NoteService } from 'src/app/services/noteServices/note.service';
 import { DataService } from 'src/app/services/dataServices/data.service';
 import { SearchPipe } from 'src/app/pipe/search.pipe';
@@ -10,17 +10,14 @@ import { SearchPipe } from 'src/app/pipe/search.pipe';
 })
 export class SearchBarComponent implements OnInit {
 
-  @Input() searchModel;
   component='search-bar';
-
-  @Output() searchModelChange: EventEmitter<any> = new EventEmitter();
+  searchNote:any;
   @Output() messageEvent = new EventEmitter<string>();
   
 
   constructor(private noteService:NoteService, private dataService:DataService) { }
   result1:any;
   notes:any;
-  // message:string='searchText';
   searchText:any;
   message:any;
 
@@ -34,20 +31,19 @@ export class SearchBarComponent implements OnInit {
   getNotes() {
     this.dataService.currentMessage.subscribe((searchText) => {
       this.searchText = searchText
-    });
-    console.log('insiide search bar c........',this.searchText);
+    
+    console.log('inside search bar c........',this.searchText);
 
-    this.noteService.allNotesList().subscribe((response: any) => {
+    return this.noteService.allNotesList().subscribe((response: any) => {
       this.result1 = this.getFilter(response.data.data);
           this.notes = this.result1.reverse();
           this.filteredRecords=this.filterPipe.transform(this.notes,this.searchText);
-
-          
-          console.log(response);
+          this.searchNote=this.filteredRecords;
+          console.log("responfvdzgvdzfvdfvdxfvd", this.searchNote);
         }, (error) => {
           console.log(error.statusText);
         });
-
+      });
 }
 
 getFilter(result) {
@@ -56,11 +52,4 @@ getFilter(result) {
   });
   return pass;
 }
-
-receiveMessage($event) {
-  this.message = $event;
-  this.messageEvent.emit(this.message);
-
-}
-
 }

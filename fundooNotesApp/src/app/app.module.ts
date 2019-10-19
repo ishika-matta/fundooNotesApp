@@ -1,6 +1,5 @@
 import  'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,7 +44,11 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { UnArchiveComponent } from './component/un-archive/un-archive.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
+//import {MatTabsModule} from '@angular/material/tabs';
+
 import {MatTabsModule} from '@angular/material/tabs';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 @NgModule({
   declarations: [
@@ -89,9 +92,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     FormsModule,
     ReactiveFormsModule,
     ColorPickerModule,
-    MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule,MatTabsModule,
+    MatIconModule,
     ImageModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatTabsModule
     
 
 
@@ -104,6 +108,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     NoteService,
     NoteLabelService
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   entryComponents: [DialogCardComponent,UploadProfilePicComponent],
   bootstrap: [AppComponent]
 })

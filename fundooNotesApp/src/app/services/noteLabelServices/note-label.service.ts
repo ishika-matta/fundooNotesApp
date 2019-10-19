@@ -10,12 +10,7 @@ export class NoteLabelService {
   url:any;
   auth:boolean=false;
 
-
-
-
   constructor(private httpSvc: HttpService) { }
-
-
 
   createNoteLabel(data) {
     this.url='noteLabels';
@@ -29,11 +24,19 @@ export class NoteLabelService {
     return this.httpSvc.getCall(this.url, this.auth);
   }
 
+
   deleteNoteLabel(data) {
     this.url='noteLabels/'+data.id+'/deleteNoteLabel';
     return this.httpSvc.deleteCall(this.url);
   }
-  
+
+
+  updateNoteLabel(data) {
+  this.url= 'noteLabels/' + data.id + '/updateNoteLabel';
+  this.auth = true;
+  return this.httpSvc.postCall(data,this.url,this.auth);
+  }
+}
 
 
 
@@ -99,4 +102,4 @@ export class NoteLabelService {
   //   };
   //   return this.httpSvc.deleteCallWithToken(this.baseUrlNoteLabel + options.data.id + options.purpose, httpOptions);
   // }
-}
+//}
