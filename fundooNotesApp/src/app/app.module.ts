@@ -46,6 +46,7 @@ import { SearchPipe } from './pipe/search.pipe';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AutosizeModule } from 'ngx-autosize';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatIconModule,
     ImageModule,
     ImageCropperModule,
-    MatTabsModule
+    MatTabsModule,
+    AutosizeModule
   ],
 
   providers: [

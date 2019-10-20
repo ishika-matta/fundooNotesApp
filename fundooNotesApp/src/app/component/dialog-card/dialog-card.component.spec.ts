@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AutosizeModule } from 'ngx-autosize';
 
 
 import { DialogCardComponent } from './dialog-card.component';
@@ -10,7 +11,8 @@ describe('DialogCardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DialogCardComponent ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [ AutosizeModule ]
     })
     .compileComponents();
   }));
