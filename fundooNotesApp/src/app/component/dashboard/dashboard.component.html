@@ -5,8 +5,8 @@
       <mat-icon class="dashboard-icon" aria-hidden="false" type="button" mat-icon-button (click)="drawer.toggle()">
         menu
       </mat-icon>
-      <img src="../../../assets/keep.png" class="dashboard-image">
-      <p>FUNDOO NOTES</p>
+      <img src="../../../assets/keep.png" class="logo-image">
+      <p class="title">FUNDOO NOTES</p>
       <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
 
         <mat-icon matPrefix>search</mat-icon>
@@ -22,18 +22,18 @@
 
 
 
-      <button mat-button class="toolbar-refresh" matTooltip="Refresh">
+      <button mat-button class="toolbar-icons" matTooltip="Refresh">
         <mat-icon >refresh</mat-icon>
       </button>
-      <button mat-button class="toolbar-list" matTooltip="List View">
+      <button mat-button class="toolbar-icons" matTooltip="List View">
         <mat-icon>list</mat-icon>
       </button>
-      <button mat-button class="toolbar-settings" matTooltip="Settings">
+      <button mat-button class="toolbar-icons" matTooltip="Settings">
         <mat-icon>settings</mat-icon>
       </button>
 
-      <button mat-button [matMenuTriggerFor]="userMenu">
-        <img mat-card-avatar [src]="url" class="avatar-img" height="20px" width="20px">
+      <button mat-button [matMenuTriggerFor]="userMenu" class="avatar-img">
+        <img mat-card-avatar [src]="url">
 
       </button>
       <mat-menu #userMenu="matMenu" yPosition="below" [overlapTrigger]="false">
@@ -43,14 +43,9 @@
         <div>
           <div fxLayout="row">
             <div>
-
-
-              <img mat-card-avatar [src]="url" class="avatar-img" height="70px" width="50px" (click)="openDialog1()">
-
-
-
+              <img mat-card-avatar [src]="url" (click)="openDialog1()">
             </div>
-            <div fxLayout="column">
+            <div fxLayout="column" fxLayoutAlign="center start">
               {{firstName}} {{lastName}}
               {{email}}
 

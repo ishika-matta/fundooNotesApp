@@ -47,16 +47,42 @@
 //   transform: translateY(-1.1em) scale(.75);
   
 
+.logo-image {
+  height: 40px;
+  width: 50px;
+  margin-bottom: 4px;
+  padding-right: 4px;
+}
+
+.title {
+  font-family: 'Product Sans', Arial, sans-serif;
+  padding-left: 4px;
+  color: #5f6368;
+  font-weight: bold;
+}
+
 .dashboard-searchbar
 {
-width : 40%;
-transform: scaleY(0.65); 
-border-radius: 10px;
-font-size: 20px;
-height: 40%;
-margin-right: 10%;
-margin-left:10%;
+ width : 50%;
+ //transform: scaleY(0.65); 
+// border-radius: 10px;
+// font-size: 20px;
+// height: 40%;
+// margin-right: 10%;
+// margin-left:10%;
+
+font: normal 16px Google Sans, Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+border-radius: 8px;
+color: #5f6368;
+font-size: 18px;
+padding: 0;
+margin-left: 20px;
+//margin-right: 30px;
+background: #f1f3f4;
+box-shadow: none !important;
+height: 40px;
 }
+
 .dashboard-searchtype
 {
 width : 95%;
@@ -67,8 +93,11 @@ font-size: 18px;
 }
 
 
-.toolbar-refresh{
+.toolbar-icons{
   color:black;
+  padding:0px;
+  border-radius: 50%;
+
 }
 
 .dashboard-image{
@@ -79,114 +108,15 @@ font-size: 18px;
   // height: 80px;
   // width: 80px;
   position:relative;
+  border-radius: 50%;
 }
 
+.user-name {
+  font-size: 13px;
+  font-weight: bold;
+}
+.user-email {
+  font-size: 13px;
+  color: #666;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-// @import '/home/user/projects/fundooNotesApp/src/app/app.styles/color.scss';
-// @import '/home/user/projects/fundooNotesApp/src/app/app.styles/constant.scss';
-
-// .dashboard{
-//   @include main-class-div;
-// }
-  
-// .dashboard-title{
-//   @include title;
-// }
-  
-// .dashboard-subtitle{  
-//   @include subtitle; 
-// }
-
-// .dashboard-avatar-img{
-//   @include avatar-img;
-//   height:80px;
-//   width:80px;
-// }
-
-// .dashboard-field{
-//   @include field;   
-// }
-
-// .dashboard-container {
-//     width: 500px;
-//     height: 300px;
-//     border: 1px solid rgba(0, 0, 0, 0.5);
-//   }
-  
-//   .dashboard-sidenav-content {
-//     display: flex;
-//     height: 100%;
-//     align-items: center;
-//     justify-content: center;
-//   }
-  
-//   .dashboard-sidenav {
-//     padding: 20px;
-//   }
-
-// button{
-//   @include button;   
-// }
-
-// button:hover{
-//   @include button-hover;
-// }
-  
-  // @media(min-width:600px){
-      
-  //   .register-title{
-  //     font-size:1.30rem;
-  //   }
-  //   .register-subtitle{
-  //     font-size:1.25rem;
-  //   }
-  //   .register-field{   
-  //     font-size:1rem;
-  // }
-  // }
-  
-//   @media(min-width:800px){
-  
-//   .forgot-password-title{
-//     font-size:1.5rem;
-//     line-height: 1;
-//   }
-//   .forgot-password-subtitle{
-//     font-size:1.25rem;
-//     line-height: 1;
-//   }
-//   .forgot-password-field{   
-//     font-size:1rem;
-//         line-height: 1;
-//   }
-  
-  
-    
-//   }
-//   @media(max-width:500px){
-      
-//     .forgot-password-title{
-//       font-size:1rem;
-//       line-height: 0.75;
-//     }
-//     .forgot-password-subtitle{
-//       font-size:0.75rem;
-//       line-height: 0.75;
-//     }
-//     .forgot-password-field{   
-//       font-size:0.7rem;
-//           line-height: 0.75;
-//   }
-//   }
