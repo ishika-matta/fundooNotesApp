@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GotoNotesComponent } from './goto-notes.component';
+import { NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('GotoNotesComponent', () => {
   let component: GotoNotesComponent;
@@ -8,7 +10,9 @@ describe('GotoNotesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GotoNotesComponent ]
+      declarations: [ GotoNotesComponent ],
+      schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   }));

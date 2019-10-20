@@ -44,9 +44,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { UnArchiveComponent } from './component/un-archive/un-archive.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
-//import {MatTabsModule} from '@angular/material/tabs';
-
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
@@ -59,8 +57,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     DashboardComponent,
-    TakeNoteComponent,
-    
+    TakeNoteComponent,   
     DisplayComponent,
     DialogCardComponent,
     TrashComponent,
@@ -80,8 +77,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     UnArchiveComponent,
     SearchPipe,
     SearchBarComponent
-
   ],
+
   imports: [
     FlexLayoutModule,
     BrowserModule,
@@ -96,10 +93,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     ImageModule,
     ImageCropperModule,
     MatTabsModule
-    
-
-
   ],
+
   providers: [
     AuthGuard,
     AuthService,
@@ -108,9 +103,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     NoteService,
     NoteLabelService
   ],
+
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  entryComponents: [DialogCardComponent,UploadProfilePicComponent],
-  bootstrap: [AppComponent]
+  entryComponents: [ DialogCardComponent,UploadProfilePicComponent ],
+  bootstrap: [ AppComponent ]
 })
 
 export class AppModule { }

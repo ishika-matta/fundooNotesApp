@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoreMenuComponent } from './more-menu.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatMenuModule} from '@angular/material/menu';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MoreMenuComponent', () => {
   let component: MoreMenuComponent;
@@ -8,7 +11,9 @@ describe('MoreMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoreMenuComponent ]
+      declarations: [ MoreMenuComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [ MatMenuModule, HttpClientTestingModule ]
     })
     .compileComponents();
   }));

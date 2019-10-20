@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IconTrayComponent } from './icon-tray.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('IconTrayComponent', () => {
   let component: IconTrayComponent;
@@ -8,7 +10,9 @@ describe('IconTrayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconTrayComponent ]
+      declarations: [ IconTrayComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [ HttpClientTestingModule]
     })
     .compileComponents();
   }));

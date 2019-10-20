@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DisplayComponent } from './display.component';
+import { NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 describe('DisplayComponent', () => {
   let component: DisplayComponent;
@@ -8,7 +11,11 @@ describe('DisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayComponent ]
+      imports: [HttpClientTestingModule], 
+      declarations: [ DisplayComponent ],
+     providers: [{ provide: MatDialog, useValue: {} },
+                {provide: MatDialogRef, useValue: {}},],
+     schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ]
       
     })
     .compileComponents();

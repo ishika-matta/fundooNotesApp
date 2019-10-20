@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
+import { RouterModule } from '@angular/router'; 
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: [ AuthService ],
+      imports: [ RouterModule, RouterTestingModule.withRoutes([]) ]
     });
   });
 
@@ -13,3 +16,4 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   }));
 });
+

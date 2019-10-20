@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TakeNoteComponent } from './take-note.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('TakeNoteComponent', () => {
   let component: TakeNoteComponent;
@@ -8,7 +10,9 @@ describe('TakeNoteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TakeNoteComponent ]
+      declarations: [ TakeNoteComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [ FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
   }));

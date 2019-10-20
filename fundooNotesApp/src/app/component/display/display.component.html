@@ -1,6 +1,6 @@
 
 <div class="display-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
-   <mat-card class="display-mat-card" *ngFor="let note of notes|search:searchText" [ngStyle]="{background:note.color}" fxFlex="25">
+   <mat-card class="display-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="25">
    <div (click)="openDialog(note)">
        <p style=" word-break: break-all">{{note.title}}</p>
        <p style=" word-break: break-all">{{note.description}}</p>
@@ -14,8 +14,3 @@
     </div>
    </mat-card>
    </div>
-
-
-
-       
-    

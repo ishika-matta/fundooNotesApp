@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UnArchiveComponent } from './un-archive.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UnArchiveComponent', () => {
   let component: UnArchiveComponent;
@@ -8,7 +10,9 @@ describe('UnArchiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UnArchiveComponent ]
+      declarations: [ UnArchiveComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
   }));
