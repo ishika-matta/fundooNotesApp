@@ -16,6 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -23,7 +24,6 @@ import {MatIconModule} from '@angular/material/icon';
 @NgModule({
 
     imports: [
-
       MatButtonModule,
       MatInputModule,
       MatDividerModule,
@@ -40,13 +40,11 @@ import {MatIconModule} from '@angular/material/icon';
       MatMenuModule,
       MatGridListModule,
       MatDialogModule,
-      MatTabsModule
-
-
+      MatTabsModule,
+      MatSnackBarModule
     ],
 
     exports: [
-
       MatButtonModule,
       MatInputModule,
       MatDividerModule,
@@ -63,10 +61,10 @@ import {MatIconModule} from '@angular/material/icon';
       MatMenuModule,
       MatGridListModule,
       MatDialogModule,
-      MatTabsModule
-
-
+      MatTabsModule,
+      MatSnackBarModule
     ],
+
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 
   })

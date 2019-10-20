@@ -4,6 +4,7 @@ import { MoreMenuComponent } from './more-menu.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatMenuModule} from '@angular/material/menu';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material';
 
 describe('MoreMenuComponent', () => {
   let component: MoreMenuComponent;
@@ -13,7 +14,7 @@ describe('MoreMenuComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MoreMenuComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      imports: [ MatMenuModule, HttpClientTestingModule ]
+      imports: [ MatMenuModule, HttpClientTestingModule, MatSnackBarModule ]
     })
     .compileComponents();
   }));

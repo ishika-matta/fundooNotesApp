@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NoteService } from '../../services/noteServices/note.service';
 import { NoteLabelService } from 'src/app/services/noteLabelServices/note-label.service';
 import { DataService } from 'src/app/services/dataServices/data.service';
+import { MatSnackBar } from '@angular/material';
+
 @Component({
   selector: 'app-more-menu',
   templateUrl: './more-menu.component.html',
@@ -17,12 +19,13 @@ export class MoreMenuComponent implements OnInit {
   options: any;
   labels:any;
   message:any;
+  durationInSeconds = 5;
 
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
   constructor(private noteService: NoteService, private noteLabelService:NoteLabelService,
-    private dataService: DataService) { }
+    private dataService: DataService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message)
@@ -40,6 +43,7 @@ export class MoreMenuComponent implements OnInit {
 
     this.noteService.deleteForeverNotes(this.noteObj).subscribe((response: any) => {
       console.log(response);
+      this.openSnackBar('Note deleted permanently', 'Dismiss');
       this.messageEvent.emit(this.messageDelFor);
       
     }, (error) => {
@@ -56,6 +60,7 @@ export class MoreMenuComponent implements OnInit {
 
     this.noteService.trashNotes(this.noteObj).subscribe((response: any) => {
       console.log(response);
+      this.openSnackBar('Note restored', 'Dismiss');
       this.messageEvent.emit(this.messageTrash);
   
     }, (error) => {
@@ -72,6 +77,7 @@ export class MoreMenuComponent implements OnInit {
     this.noteService.trashNotes(this.noteObj).subscribe((response: any) => {
        console.log(response);
        //snackbar implementation
+       this.openSnackBar('Note deleted', 'Dismiss');
         this.messageEvent.emit(this.messageTrash);
     }, (error) => {
       console.log(error);
@@ -101,6 +107,10 @@ export class MoreMenuComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+
+  openSnackBar(msg,action){
+    this.snackBar.open(msg,action);
   }
 
 }

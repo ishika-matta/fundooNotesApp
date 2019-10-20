@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { NoteService } from '../../services/noteServices/note.service';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-un-archive',
@@ -15,7 +17,7 @@ export class UnArchiveComponent implements OnInit {
 
   @Output() messageEvent = new EventEmitter<string>()
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -28,11 +30,17 @@ export class UnArchiveComponent implements OnInit {
 
     this.noteService. archiveNotes(this.noteObj).subscribe((response: any) => {
        console.log(response);
+       this.openSnackBar('Note unarchived', 'Dismiss');
         this.messageEvent.emit(this.message);
     }, (error) => {
       console.log(error);
     });
   }
+
+  openSnackBar(msg,action){
+    this.snackBar.open(msg,action);
+  }
+
 
 
 }

@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ArchiveUnComponent } from './archive-un.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material';
 
 describe('ArchiveUnComponent', () => {
   let component: ArchiveUnComponent;
@@ -9,9 +10,9 @@ describe('ArchiveUnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule], 
+      imports: [ HttpClientTestingModule , MatSnackBarModule], 
       declarations: [ ArchiveUnComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
     .compileComponents();
   }));
