@@ -1,20 +1,21 @@
- <div *ngIf="!show" fxLayoutAlign="start center" class="takeNote">
-   <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px" >
-     <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+ <div *ngIf="!show" fxLayoutAlign="start center" class="takeNote" class="take-note">
+   <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px">
+     <textarea matInput type="text"[(ngModel)]="til" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        [formControl]="title" placeholder="Title"></textarea>
      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-       placeholder="Take a note..." [formControl]="description"></textarea>
+       placeholder="Take a note..." [(ngModel)]="des" [formControl]="description"></textarea>
      <div fxLayout="row" fxLayoutAlign="space-between">
        <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
        <div><button mat-button class="info-button" (click)="postNotes()">Close</button></div>
      </div>
    </mat-card>
  </div>
- <div *ngIf="show" (click)="toggle()" fxLayoutAlign="start center">
-   <mat-card fxFlex="70" fxLayout="column">
+
+ <div *ngIf="show" (click)="toggle()" fxLayoutAlign="start center" class="take-note">
+   <mat-card fxFlex="70" fxLayout="column" class="take-mat-card">
      <mat-form-field>
        <textarea input type="text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-         placeholder="Take a note..." [formControl]="description"></textarea>
+         placeholder="Take a note..." [(ngModel)]="des" [formControl]="description"></textarea>
      </mat-form-field>
    </mat-card>
  </div>

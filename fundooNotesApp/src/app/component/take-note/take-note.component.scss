@@ -4,12 +4,28 @@
     border-radius: 12px;
     margin-right: 2%;
     margin-left: 2.7%;
-    //padding:1% 2%;
+    //padding:1% 2%; 
+}
+
+.take-mat-card{
+    border-radius: 12px;
+    margin-right: 2%;
+    margin-left: 2.7%;
+    transform: scaleY(0.75);
+    font-weight: bold;
 }
 .mat-form-field{
-    width:100%;
-    outline:none;
+    width: 100%;
+    outline: none;
 }
 .info-button{
-    font-weight:bold;
+    font-weight: bold;
+}
+
+.take-note{
+    width:50%;
+    height:8%;
+    margin-left:270px;
+    margin-right:270px;
+    padding:0px;
 }

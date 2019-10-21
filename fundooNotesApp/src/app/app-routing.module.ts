@@ -18,6 +18,8 @@ import { GotoTrashComponent } from './component/goto-trash/goto-trash.component'
 import { GotoArchiveComponent } from './component/goto-archive/goto-archive.component';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
+import { LabelsComponent } from './component/labels/labels.component';
+import { ReminderComponent } from './component/reminder/reminder.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
@@ -30,16 +32,22 @@ const routes: Routes = [
   {path: '', component: DashboardComponent, canActivate: [AuthGuard],
   children: [
     {
-      path: 'goto-notes', component: GotoNotesComponent
+      path: 'home', component: GotoNotesComponent
     },
     {
-      path: 'goto-trash', component: GotoTrashComponent
+      path: 'trash', component: GotoTrashComponent
     },
     {
-      path: 'goto-archive', component: GotoArchiveComponent
+      path: 'archive', component: GotoArchiveComponent
     },
     {
       path: 'search-bar', component: SearchBarComponent
+    },
+    {
+      path: 'labels/:label', component: LabelsComponent
+    },
+    {
+      path: 'reminder', component: ReminderComponent
     }
    ]
 },

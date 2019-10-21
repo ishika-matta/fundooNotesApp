@@ -16,6 +16,8 @@ export class TakeNoteComponent implements OnInit {
   description= new FormControl();
   show = true;
   component='take-note';
+  til:any;
+  des:any;
 
   @Output() messageEvent = new EventEmitter<string>();
   
@@ -41,6 +43,8 @@ export class TakeNoteComponent implements OnInit {
 
       this.noteService.addNotes(this.takeNoteObj).subscribe((response: any) => {
         console.log(response);
+        this.til="";
+        this.des="";
         this.toggle();
         this.messageEvent.emit(this.message);
        // this.data.changeMessage('saved');
@@ -54,5 +58,4 @@ export class TakeNoteComponent implements OnInit {
   receiveMessage($event) {
     this.message = $event
   }
-
 }

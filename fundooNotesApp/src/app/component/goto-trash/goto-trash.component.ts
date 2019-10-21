@@ -14,18 +14,4 @@ export class GotoTrashComponent implements OnInit {
 
   ngOnInit() {
   }
-  // getTrashNotes() {
-  //   console.log('inside trash notes');
-  //   const options = {
-  //         purpose: 'getTrashNotesList',
-  //       };
-  //     this.noteService.getWithToken(options).subscribe((response: any) => {
-  //           this.notes = response.data.data.reverse();
-  //           console.log(response);
-  //         }, (error) => {
-  //           console.log(error.statusText);
-  //         });
-
-  // }
-
 }

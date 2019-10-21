@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./icon-tray.component.scss']
 })
 export class IconTrayComponent implements OnInit {
-  message:string;
+  message:any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
   @Input() component:any;

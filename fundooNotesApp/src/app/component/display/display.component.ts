@@ -3,7 +3,7 @@ import { DialogCardComponent } from '../dialog-card/dialog-card.component';
 import { TakeNote } from 'src/app/models/take-note.model';
 import { MatDialog } from '@angular/material';
 import { DataService } from 'src/app/services/dataServices/data.service';
-
+import { NoteService } from 'src/app/services/noteServices/note.service';
 
 @Component({
   selector: 'app-display',
@@ -21,6 +21,7 @@ export class DisplayComponent implements OnInit {
   hover: false;
   flag: any = 'true';
   result1: any;
+  noteLabel:any;
 
 
 
@@ -31,9 +32,10 @@ export class DisplayComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog, private dataService: DataService) { }
+  constructor(public dialog: MatDialog, private dataService: DataService, private noteService: NoteService) { }
 
   ngOnInit() {
+  
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message
     });
@@ -63,5 +65,20 @@ export class DisplayComponent implements OnInit {
   receiveMessage($event) {
     this.message = $event;
     this.messageEvent.emit(this.message);
+  }
+
+  onChipClick(labelId,noteId){
+    let obj = {
+      'noteId': noteId,
+      'labelId': labelId
+    };
+      this.noteService.removeLabelToNote(obj).subscribe((response: any) => {
+        console.log(response);
+        this.messageEvent.emit(this.message);
+        
+      
+      }, (error) => {
+        console.log(error);
+      });
   }
 }

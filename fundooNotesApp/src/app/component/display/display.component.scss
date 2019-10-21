@@ -7,7 +7,16 @@
 .display-mat-card{
     border-radius:12px;
     margin:1%;
-
+    transform: scaleX(0.94) scaleY(0.8);
+    min-width:280px;
 }
 
+
+.hide-icon mat-icon{
+    display: none;
+  }
+
+.hide-icon:hover mat-icon{
+    display: block;
+  }
 

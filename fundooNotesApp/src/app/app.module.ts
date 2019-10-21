@@ -47,6 +47,8 @@ import { SearchBarComponent } from './component/search-bar/search-bar.component'
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AutosizeModule } from 'ngx-autosize';
+import { LabelsComponent } from './component/labels/labels.component';
+import { ReminderComponent } from './component/reminder/reminder.component';
 
 
 @NgModule({
@@ -77,7 +79,9 @@ import { AutosizeModule } from 'ngx-autosize';
     UploadProfilePicComponent,
     UnArchiveComponent,
     SearchPipe,
-    SearchBarComponent
+    SearchBarComponent,
+    LabelsComponent,
+    ReminderComponent
   ],
 
   imports: [

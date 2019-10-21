@@ -39,7 +39,6 @@ export class SearchBarComponent implements OnInit {
           this.notes = this.result1.reverse();
           this.filteredRecords=this.filterPipe.transform(this.notes,this.searchText);
           this.searchNote=this.filteredRecords;
-          console.log("responfvdzgvdzfvdfvdxfvd", this.searchNote);
         }, (error) => {
           console.log(error.statusText);
         });

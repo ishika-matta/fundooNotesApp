@@ -34,7 +34,7 @@ export class ChangeColorComponent implements OnInit {
       this.noteService.changeColorNotes(this.noteObj).subscribe((response: any) => {
         console.log(response);
         //get notes
-        this.messageEvent.emit(this.messageColor);
+        this.messageEvent.emit(colors);
 
 
       }, (error) => {

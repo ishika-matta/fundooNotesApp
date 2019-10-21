@@ -38,7 +38,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getNotesLabels() {
-
     this.noteLabelService.getNoteLabels().subscribe((response: any) => {
       this.labels = response.data.details.reverse();
       console.log(response.data.details);
@@ -48,13 +47,16 @@ export class DashboardComponent implements OnInit {
   }
 
   gotoNotes() {
-    this.router.navigate(['/goto-notes']);
+    this.router.navigate(['/home']);
   }
   gotoTrash() {
-    this.router.navigate(['/goto-trash']);
+    this.router.navigate(['/trash']);
   }
   gotoArchive() {
-    this.router.navigate(['/goto-archive']);
+    this.router.navigate(['/archive']);
+  }
+  gotoReminder() {
+    this.router.navigate(['/reminder']);
   }
   onEdit() {
     //open dialog box
@@ -73,15 +75,12 @@ export class DashboardComponent implements OnInit {
   openDialog1(): void {
     const dialogRef = this.dialog.open(UploadProfilePicComponent, {
     });
-
   }
 
   getPic() {
     this.pic = localStorage.getItem('pic');
     this.url = this.baseUrlPic + this.pic;
     console.log('imageeee', this.url);
-
-
   }
 
   onKeyUp(event: any) {
@@ -90,5 +89,9 @@ export class DashboardComponent implements OnInit {
     this.dataService.changeMessage(this.searchText)
   };
 
+  onLabelClick(label){
+    this.router.navigate(['/labels/' +label]);
+    this.dataService.changeMessage(label);
+  }
 }
 

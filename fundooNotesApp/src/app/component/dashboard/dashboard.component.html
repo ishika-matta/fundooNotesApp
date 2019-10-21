@@ -43,26 +43,23 @@
         <div>
           <div fxLayout="row">
             <div>
-              <img mat-card-avatar [src]="url" (click)="openDialog1()">
+              <img class="pic" [src]="url" (click)="openDialog1()">
             </div>
             <div fxLayout="column" fxLayoutAlign="center start">
-              {{firstName}} {{lastName}}
-              {{email}}
-
+             <span class="user-name">{{firstName}} {{lastName}}</span> 
+             <span class="user-email">{{email}}</span> 
             </div>
           </div>
 
           <mat-divider></mat-divider>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20">
-            <button (click)="addAccount()">Add Account</button>
-            <button *ngIf="auth.isLoggednIn()" (click)="auth.logout()">LogOut</button>
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="25px">
+            <button mat-button class="card-button" (click)="addAccount()">Add Account</button>
+            <button mat-button class="card-button" *ngIf="auth.isLoggednIn()" (click)="auth.logout()">LogOut</button>
 
           </div>
         </div>
-
       </mat-menu>
     </mat-toolbar-row>
-
   </mat-toolbar>
 
 
@@ -71,59 +68,59 @@
     fxLayoutAlign="start start">
     <mat-drawer #drawer class="dashboard-sidenav" fxShow="true" mode="side" opened>
       <mat-list>
-        <button mat-button >
+        <button mat-button class="sidenav-button">
           <mat-list-item (click)="gotoNotes()">
-            <mat-icon mat-list-icon>folder</mat-icon>
-            <p mat-line> Notes </p>
+            <mat-icon mat-list-icon >folder</mat-icon>
+            <mat-line style="padding-left:10px"> Notes</mat-line> 
           </mat-list-item>
         </button>
 
-        <button mat-button>
-        <mat-list-item>
+        <button mat-button class="sidenav-button">
+        <mat-list-item (click)="gotoReminder()">
           <mat-icon mat-list-icon>notifications</mat-icon>
-          <p mat-line> Reminder</p>
+          <mat-line style="padding-left:10px"> Reminder</mat-line>
         </mat-list-item>
       </button>
-        <mat-divider></mat-divider>
-        <p mat-list-item style="color: grey; font-size: 12px">LABELS</p>
 
-        <mat-list-item *ngFor="let label of labels">
-            <button mat-button> 
-              <mat-icon mat-list-icon>label</mat-icon>
-           {{label.label}} </button>
+        <mat-divider></mat-divider>
+        <mat-list-item style="color: grey; font-size: 12px">LABELS
         </mat-list-item>
 
-        <button mat-button (click)="onEdit()">
-          <mat-list-item>
-            <mat-icon mat-list-icon>create</mat-icon>
-            <p mat-line> Edit Labels</p>
-          </mat-list-item>
-        </button>
 
         
-        
+        <mat-list-item  *ngFor="let label of labels" fxLayout="start start">
+            <button mat-button  (click)="onLabelClick(label.label)" class="sidenav-button"> 
+              <mat-icon mat-list-icon>label</mat-icon>
+              <mat-line> {{label.label}} </mat-line>
+            </button>
+          
+        </mat-list-item >
       
 
-        <mat-divider></mat-divider>
-        <button mat-button (click)="gotoArchive()">
+        <button mat-button (click)="onEdit()" class="sidenav-button">
           <mat-list-item>
-            <mat-icon mat-list-icon>archive</mat-icon>
-            <p mat-line> Archive </p>
+            <mat-icon mat-list-icon>create</mat-icon>
+            <mat-line style="padding-left:10px"> Edit Labels</mat-line>
           </mat-list-item>
         </button>
-        <button mat-button (click)="gotoTrash()">
+
+        <mat-divider></mat-divider>
+        <button mat-button (click)="gotoArchive()" class="sidenav-button">
+          <mat-list-item>
+            <mat-icon mat-list-icon>archive</mat-icon>
+            <mat-line style="padding-left:10px"> Archive </mat-line>
+          </mat-list-item>
+        </button>
+
+        <button mat-button (click)="gotoTrash()" class="sidenav-button">
           <mat-list-item>
             <mat-icon mat-list-icon>delete</mat-icon>
-            <p mat-line> Trash </p>
+            <mat-line style="padding-left:10px"> Trash </mat-line>
           </mat-list-item>
         </button>
 
       </mat-list>
     </mat-drawer>
     <router-outlet></router-outlet>
-
-    <!-- <app-take-note></app-take-note> 
-          <app-display></app-display> -->
   </mat-drawer-container>
-
 </div>
