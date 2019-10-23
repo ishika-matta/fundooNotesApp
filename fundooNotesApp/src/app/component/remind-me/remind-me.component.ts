@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NoteService } from 'src/app/services/noteServices/note.service';
 
 @Component({
@@ -8,31 +8,39 @@ import { NoteService } from 'src/app/services/noteServices/note.service';
 })
 export class RemindMeComponent implements OnInit {
   @Input() card: any;
-  @Input() reminder: any;
+  @Output() messageEvent = new EventEmitter<string>();
+  message: string = 'Reminder';
+  date: Date;
 
   constructor(private noteService: NoteService) { }
 
   ngOnInit() {
   }
 
-  onRemind(card,reminderValue){
+  onSave(card, picker) {
+    this.date=picker._validSelected;
     let remindMeObj = {
       'noteIdList': [card],
-      'reminder':reminderValue
-     
+      'reminder': this.date
     };
 
-
-      this.noteService.addUpdateReminderNotes(remindMeObj).subscribe((response: any) => {
-        console.log('inside remind me',response);
-      }, (error) => {
-        console.log(error);
-      });
-
-    
-
+    this.noteService.addUpdateReminderNotes(remindMeObj).subscribe((response: any) => {
+      this.messageEvent.emit(this.message);
+      this.getDateResponse();
+    }, (error) => {
+      console.log(error);
+    });
   }
 
-
-
+  getDateResponse() {
+    return this.noteService.reminderNotesList().subscribe((response: any) => {
+      this.messageEvent.emit(this.message);
+    }, (error) => {
+      console.log(error.statusText);
+    });
+  }
 }
+
+
+
+

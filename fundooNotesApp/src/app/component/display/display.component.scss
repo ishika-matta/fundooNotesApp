@@ -1,14 +1,14 @@
 .display-container{
+    display: flex;
     padding:2%;
     margin-right: 3%;
     margin-left: 1%;
-
 }
 .display-mat-card{
     border-radius:12px;
     margin:1%;
     transform: scaleX(0.94) scaleY(0.8);
-    min-width:280px;
+    min-width:280px; 
 }
 
 
@@ -19,4 +19,25 @@
 .hide-icon:hover mat-icon{
     display: block;
   }
+
+  ::ng-deep .mat-chip.hide-icon.mat-chip.mat-primary.mat-standard-chip {
+    padding: 0px ;
+    padding-left: 10px;
+  }
+  // ::ng-deep .mat-icon-button{
+  //   height:20px;
+  //   width:20px;
+  // }
+
+  .display-mat-card {
+    .icon-tray{
+        opacity: 0;
+    }
+    &:hover{
+        .icon-tray{
+            opacity: 1;
+        }
+    }
+    margin-bottom: 14px;
+}
 

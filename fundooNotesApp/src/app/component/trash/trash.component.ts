@@ -12,7 +12,7 @@ export class TrashComponent implements OnInit {
   messageDelFor = 'Deleted Forever';
   messageTrash = 'Note Trash';
   options: any;
-  component='trash';
+  component = 'trash';
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 

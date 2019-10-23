@@ -17,6 +17,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 
@@ -41,7 +45,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       MatGridListModule,
       MatDialogModule,
       MatTabsModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatAutocompleteModule
     ],
 
     exports: [
@@ -62,7 +69,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       MatGridListModule,
       MatDialogModule,
       MatTabsModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatAutocompleteModule
     ],
 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

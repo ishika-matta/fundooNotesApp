@@ -22,13 +22,13 @@ export class HttpService {
   postCall(data, url, auth) {
     if (auth == false) {
       return this.http.post(this.baseUrl + url, data);
-    }
-    else
+    } else {
       return this.http.post(this.baseUrl + url, data, this.httpOptions);
+    }
   }
 
   postCallPic(data, url) {
-    let httpOptionsPic = {
+    const httpOptionsPic = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('id')
       })
@@ -37,7 +37,7 @@ export class HttpService {
   }
 
   postCallResetPassword(data, url) {
-    let httpOptionsReset = {
+    const httpOptionsReset = {
       headers: new HttpHeaders({
         'Content-type': 'application/x-www-form-urlencoded',
         'Authorization': localStorage.getItem('token')
@@ -49,9 +49,9 @@ export class HttpService {
   getCall(url, auth) {
     if (auth == false) {
       return this.http.get(this.baseUrl + url);
-    }
-    else
+    } else {
       return this.http.get(this.baseUrl + url, this.httpOptions);
+    }
   }
 
   deleteCall(url) {

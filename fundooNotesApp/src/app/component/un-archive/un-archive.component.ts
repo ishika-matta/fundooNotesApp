@@ -9,13 +9,13 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./un-archive.component.scss']
 })
 export class UnArchiveComponent implements OnInit {
-  noteObj:any;
-  options:any;
-  message:string;
+  noteObj: any;
+  options: any;
+  message: string;
   @Input() card: any;
   @Input() archive: any;
 
-  @Output() messageEvent = new EventEmitter<string>()
+  @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private noteService: NoteService, private snackBar: MatSnackBar) { }
 
@@ -37,8 +37,8 @@ export class UnArchiveComponent implements OnInit {
     });
   }
 
-  openSnackBar(msg,action){
-    this.snackBar.open(msg,action);
+  openSnackBar(msg, action) {
+    this.snackBar.open(msg, action);
   }
 
 

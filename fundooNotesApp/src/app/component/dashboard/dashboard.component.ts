@@ -80,17 +80,16 @@ export class DashboardComponent implements OnInit {
   getPic() {
     this.pic = localStorage.getItem('pic');
     this.url = this.baseUrlPic + this.pic;
-    console.log('imageeee', this.url);
   }
 
   onKeyUp(event: any) {
     this.searchText = event.target.value;
     console.log(this.searchText);
-    this.dataService.changeMessage(this.searchText)
-  };
+    this.dataService.changeMessage(this.searchText);
+  }
 
-  onLabelClick(label){
-    this.router.navigate(['/labels/' +label]);
+  onLabelClick(label) {
+    this.router.navigate(['/labels/' + label]);
     this.dataService.changeMessage(label);
   }
 }

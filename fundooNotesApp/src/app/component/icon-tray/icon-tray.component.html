@@ -1,6 +1,6 @@
-<div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='take-note' || component=='dialog-card'">
+<div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='take-note'">
   <app-remind-me [card]="card" (messageEvent)="receiveMessage($event)"></app-remind-me>
-  <app-collaborator (messageEvent)="receiveMessage($event)"></app-collaborator>
+  <app-collaborator [card]="card" (messageEvent)="receiveMessage($event)"></app-collaborator>
   <app-change-color [card]="card" (messageEvent)="receiveMessage($event)"></app-change-color>
   <app-add-image (messageEvent)="receiveMessage($event)"></app-add-image>
   <app-archive-un [card]="card" [archive]="archive" (messageEvent)="receiveMessage($event)"></app-archive-un>
@@ -15,16 +15,16 @@
 
 <div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='archive'">
   <app-remind-me [card]="card" (messageEvent)="receiveMessage($event)"></app-remind-me>
-  <app-collaborator (messageEvent)="receiveMessage($event)"></app-collaborator>
+  <app-collaborator [card]="card" (messageEvent)="receiveMessage($event)"></app-collaborator>
   <app-change-color [card]="card" (messageEvent)="receiveMessage($event)"></app-change-color>
   <app-add-image (messageEvent)="receiveMessage($event)"></app-add-image>
   <app-un-archive [card]="card" [archive]="archive" (messageEvent)="receiveMessage($event)"></app-un-archive>
   <app-more-menu [component]="component" [card]="card" (messageEvent)="receiveMessage($event)"></app-more-menu>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='display' || component=='search-bar' ||component=='labels'" >
+<div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='display' || component=='search-bar' ||component=='labels' ||component=='reminder'" >
   <app-remind-me [card]="card" (messageEvent)="receiveMessage($event)"></app-remind-me>
-  <app-collaborator (messageEvent)="receiveMessage($event)"></app-collaborator>
+  <app-collaborator [card]="card" (messageEvent)="receiveMessage($event)"></app-collaborator>
   <app-change-color [card]="card" (messageEvent)="receiveMessage($event)"></app-change-color>
   <app-add-image (messageEvent)="receiveMessage($event)"></app-add-image>
   <app-archive-un [card]="card" [archive]="archive" (messageEvent)="receiveMessage($event)"></app-archive-un>

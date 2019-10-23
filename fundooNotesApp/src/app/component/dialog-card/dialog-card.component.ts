@@ -17,24 +17,27 @@ export class DialogCardComponent implements OnInit {
   noteObj1: any;
   title: any = new FormControl();
   description: any = new FormControl();
-  message:string="dailog card"
+  message = 'dailog card';
+  dialogColor:any;
+  
 
   noteUpdateMessage = 'Note updated';
-  component='dialog-card';
+  //component = 'dialog-card';
   @Output() messageEvent = new EventEmitter<string>();
-
-
-
+ 
 
   constructor(
     public dialogRef: MatDialogRef<DisplayComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData , private noteService: NoteService) {
     this.noteObj = {
       noteId: dialogData.card,
+      noteIdList: dialogData.card,
       title: dialogData.title,
       description: dialogData.description,
-      color: dialogData.color
+      color: dialogData.color,
+      component2:dialogData.component1,
     };
+    this.dialogColor=this.noteObj.color;
   }
 
   ngOnInit() {
@@ -45,7 +48,7 @@ export class DialogCardComponent implements OnInit {
       'noteId': this.noteObj.noteId,
       'title': this.title.value,
       'description': this.description.value,
-      
+
     };
 
 
@@ -73,7 +76,8 @@ export class DialogCardComponent implements OnInit {
   }
 
   receiveMessage($event) {
-    this.message = $event
+    this.message = $event;
+    this.dialogColor=$event;
   }
 }
 

@@ -1,0 +1,37 @@
+<div class="collab-box">
+  <h1>Collaborators</h1>
+  <mat-divider></mat-divider>
+  <div fxLayout="row">
+      <div>
+        <img class="pic" [src]="userPic">
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center start">
+       <span class="user-name">{{firstName}} {{lastName}}</span> 
+       <span class="user-email">{{email}}</span> 
+      </div>
+    </div>
+
+    <div fxLayout="row">
+        <div>
+          <img class="pic" [src]="userPic">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center start">
+         <span class="user-name">
+           <input matInput placeholder="Person or email to share with" [formControl]="collab_user" (keyup)="onKeyUp($event)" [matAutocomplete]="auto">
+           <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let user1 of searchUsers" [value]="user1">
+                {{user1}}
+              </mat-option>
+            </mat-autocomplete>
+         
+          </span> 
+         <div fxLayoutAlign="end end"><button mat-button (click)="onCreateCollab()">
+            <mat-icon matSuffix> done </mat-icon>
+      </button>
+    </div>
+        </div>
+      </div>
+
+
+ 
+  </div>

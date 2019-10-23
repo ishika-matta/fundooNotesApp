@@ -10,7 +10,7 @@ describe('ChangeColorComponent', () => {
   let fixture: ComponentFixture<ChangeColorComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({   
+    TestBed.configureTestingModule({
       declarations: [ ChangeColorComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       imports: [MatMenuModule, HttpClientTestingModule]

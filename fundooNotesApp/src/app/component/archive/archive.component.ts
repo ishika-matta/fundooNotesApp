@@ -13,7 +13,7 @@ export class ArchiveComponent implements OnInit {
   messageTrash = 'Note Trash';
   messageUnArchive = 'Note Unarchive';
   flag = 'false';
-  component='archive';
+  component = 'archive';
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private noteService: NoteService) { }

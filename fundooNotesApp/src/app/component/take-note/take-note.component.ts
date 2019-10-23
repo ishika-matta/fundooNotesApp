@@ -11,16 +11,16 @@ import { DataService } from 'src/app/services/dataServices/data.service';
 })
 export class TakeNoteComponent implements OnInit {
   takeNoteObj: TakeNote = new TakeNote();
-  message: string="Fundoo";
-  title= new FormControl();
-  description= new FormControl();
+  message = 'Fundoo';
+  title = new FormControl();
+  description = new FormControl();
   show = true;
-  component='take-note';
-  til:any;
-  des:any;
+  component = 'take-note';
+  til: any;
+  des: any;
 
   @Output() messageEvent = new EventEmitter<string>();
-  
+
 
 
 
@@ -43,12 +43,12 @@ export class TakeNoteComponent implements OnInit {
 
       this.noteService.addNotes(this.takeNoteObj).subscribe((response: any) => {
         console.log(response);
-        this.til="";
-        this.des="";
+        this.til = '';
+        this.des = '';
         this.toggle();
         this.messageEvent.emit(this.message);
        // this.data.changeMessage('saved');
-        
+
       }, (error) => {
         console.log(error);
       });
@@ -56,6 +56,6 @@ export class TakeNoteComponent implements OnInit {
   }
 
   receiveMessage($event) {
-    this.message = $event
+    this.message = $event;
   }
 }

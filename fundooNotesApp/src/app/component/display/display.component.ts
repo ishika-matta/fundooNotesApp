@@ -11,7 +11,7 @@ import { NoteService } from 'src/app/services/noteServices/note.service';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent implements OnInit {
-  note: any= new TakeNote();
+  note: any = new TakeNote();
 
 
 
@@ -21,7 +21,7 @@ export class DisplayComponent implements OnInit {
   hover: false;
   flag: any = 'true';
   result1: any;
-  noteLabel:any;
+  noteLabel: any;
 
 
 
@@ -35,9 +35,9 @@ export class DisplayComponent implements OnInit {
   constructor(public dialog: MatDialog, private dataService: DataService, private noteService: NoteService) { }
 
   ngOnInit() {
-  
+
     this.dataService.currentMessage.subscribe((message) => {
-      this.message = message
+      this.message = message;
     });
   }
 
@@ -52,14 +52,15 @@ export class DisplayComponent implements OnInit {
           card: note.id,
           title: note.title,
           description: note.description,
-          color: note.color
+          color: note.color,
+          component1:this.component,
         }
       });
     dialogRef.afterClosed().subscribe(
       result => {
         console.log('Dialog output:', result);
         this.messageEvent.emit(this.message);
-      })
+      });
   }
 
   receiveMessage($event) {
@@ -67,18 +68,35 @@ export class DisplayComponent implements OnInit {
     this.messageEvent.emit(this.message);
   }
 
-  onChipClick(labelId,noteId){
-    let obj = {
+  onChipClick(labelId, noteId) {
+    const obj = {
       'noteId': noteId,
       'labelId': labelId
     };
       this.noteService.removeLabelToNote(obj).subscribe((response: any) => {
         console.log(response);
         this.messageEvent.emit(this.message);
-        
-      
+
+
       }, (error) => {
         console.log(error);
       });
   }
+
+  onReminderClick(reminderId, noteId) {
+    const obj = {
+      'noteIdList': [noteId],
+      'reminder': reminderId
+    };
+      this.noteService.removeReminderToNote(obj).subscribe((response: any) => {
+        console.log(response);
+        this.messageEvent.emit(this.message);
+
+
+      }, (error) => {
+        console.log(error);
+      });
+  }
+
+
 }

@@ -11,12 +11,12 @@ import { DataService } from 'src/app/services/dataServices/data.service';
   styleUrls: ['./upload-profile-pic.component.scss']
 })
 export class UploadProfilePicComponent implements OnInit {
-  selectedFile: File=null;
+  selectedFile: File = null;
   imageChangedEvent: any = '';
     croppedImage: any = '';
-    message:string='upload';
+    message = 'upload';
 
- 
+
 
   constructor(public dialogRef: MatDialogRef<DisplayComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData, private userService: UserService,
@@ -38,18 +38,18 @@ imageCropped(event: ImageCroppedEvent) {
 
 
 
-  onUpload(){
-    const fd=new FormData();
-    
+  onUpload() {
+    const fd = new FormData();
+
     fd.append('file', this.croppedImage);
     this.userService.uploadPic(fd).subscribe((response: any) => {
-      console.log('done',response.status.imageUrl);
+      console.log('done', response.status.imageUrl);
       localStorage.setItem('pic', response.status.imageUrl);
       this.dataService.changeMessage(this.message);
       this.dialogRef.close();
-      
+
     }, (error) => {
-      console.log('err',error);
+      console.log('err', error);
     });
 
 

@@ -1,5 +1,25 @@
-<div> 
-    <button mat-icon-button (click)="onRemind(card,reminderValue)">
+ <div> 
+     <button mat-icon-button [matMenuTriggerFor]="reminderMenu">
     <mat-icon matTooltip="Remind me">notifications</mat-icon>
 </button>
 </div>
+
+<mat-menu #reminderMenu="matMenu" yPosition="below">
+  <button mat-menu-item [matMenuTriggerFor]="date">Pick date</button>
+  <!-- <button mat-menu-item>Pick time</button> -->
+</mat-menu>
+
+
+ 
+
+
+
+<mat-menu #date="matMenu">
+        <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <button mat-button (click)="onSave(card,picker)">Save</button>
+</mat-menu>

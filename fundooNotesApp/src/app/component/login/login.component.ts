@@ -52,10 +52,6 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
       service: 'advance'
     };
-    const options = {
-      data: this.userObj,
-      purpose: 'login',
-    };
     this.result = this.userService.loginUser(this.userObj);
 
     this.userService.loginUser(this.userObj).subscribe((response: any) => {
@@ -68,8 +64,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('pic', response.imageUrl);
      // this.auth.sendToken(response.userId);
        this.auth.sendToken(response.id);
-       
-      this.router.navigate(['/goto-notes']);
+
+      this.router.navigate(['/home']);
       console.log(response.userId);
     }, (error) => {
       console.log(error.statusText);

@@ -46,9 +46,9 @@ export class DialogBoxComponent implements OnInit {
             });
   }
 
-  onCreateLabel(){
+  onCreateLabel() {
 
-    let create = {
+    const create = {
       'label': this.labelValue.value,
       'isDeleted': false,
       'userId': localStorage.getItem('userId')
@@ -60,7 +60,7 @@ export class DialogBoxComponent implements OnInit {
       console.log(response);
       this.dataService.changeMessage(this.labelMessage);
       this.getAllLabels();
-      
+
     }, (error) => {
       console.log(error);
     });
@@ -84,20 +84,17 @@ export class DialogBoxComponent implements OnInit {
     });
   }
 
-  onUpdateNoteLabel(label){
-      let update = {
+  onUpdateNoteLabel(label) {
+      const update = {
       label : this.updateLabel.value,
       id : label.id,
-      }
-      this.noteLabelService.updateNoteLabel(update).subscribe((response) => { 
+      };
+      this.noteLabelService.updateNoteLabel(update).subscribe((response) => {
       console.log(response);
       this.getAllLabels();
       this.dataService.changeMessage(this.updateLabelMessage);
       }, (error) => {
         console.log(error);
       });
-
   }
-
- 
 }

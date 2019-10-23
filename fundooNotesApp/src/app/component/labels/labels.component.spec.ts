@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LabelsComponent } from './labels.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing'; 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LabelsComponent', () => {
   let component: LabelsComponent;

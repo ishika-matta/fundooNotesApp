@@ -23,8 +23,7 @@ export class LabelsComponent implements OnInit {
   getNotesByLabels() {
 
     this.dataService.currentMessage.subscribe((res: any) => {
-      console.log('dcecxdecx', res)
-      let label = {
+      const label = {
         labelName: res
       };
       this.noteService.notesListByLabel(label).subscribe((response: any) => {

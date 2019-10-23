@@ -4,7 +4,7 @@ import { RemindMeComponent } from './remind-me.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 describe('RemindMeComponent', () => {
   let component: RemindMeComponent;

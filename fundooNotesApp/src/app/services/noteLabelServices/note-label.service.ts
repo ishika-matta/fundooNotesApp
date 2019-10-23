@@ -7,33 +7,33 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NoteLabelService {
-  url:any;
-  auth:boolean=false;
+  url: any;
+  auth = false;
 
   constructor(private httpSvc: HttpService) { }
 
   createNoteLabel(data) {
-    this.url='noteLabels';
-    this.auth=true;
+    this.url = 'noteLabels';
+    this.auth = true;
     return this.httpSvc.postCall( data, this.url, this.auth);
   }
 
   getNoteLabels() {
-    this.url='noteLabels/getNoteLabelList';
-    this.auth=true;
+    this.url = 'noteLabels/getNoteLabelList';
+    this.auth = true;
     return this.httpSvc.getCall(this.url, this.auth);
   }
 
 
   deleteNoteLabel(data) {
-    this.url='noteLabels/'+data.id+'/deleteNoteLabel';
+    this.url = 'noteLabels/' + data.id + '/deleteNoteLabel';
     return this.httpSvc.deleteCall(this.url);
   }
 
 
   updateNoteLabel(data) {
-  this.url= 'noteLabels/' + data.id + '/updateNoteLabel';
+  this.url = 'noteLabels/' + data.id + '/updateNoteLabel';
   this.auth = true;
-  return this.httpSvc.postCall(data,this.url,this.auth);
+  return this.httpSvc.postCall(data, this.url, this.auth);
   }
 }

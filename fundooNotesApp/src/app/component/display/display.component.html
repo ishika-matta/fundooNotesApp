@@ -1,6 +1,6 @@
 
 <div class="display-container" fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" >
-   <mat-card class="display-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="25">
+   <mat-card class="display-mat-card" *ngFor="let note of notes" [ngStyle]="{background:note.color}" fxFlex="25" fxFLex.sm="45">
    <div (click)="openDialog(note)">
        <p style=" word-break: break-all">{{note.title}}</p>
        <p style=" word-break: break-all">{{note.description}}</p>
@@ -15,9 +15,22 @@
             <span></span>
           </mat-chip-list>
         </div>
+        
+        <div *ngFor="let remindMe of note.reminder">
+        <mat-chip-list>
+            <mat-chip class="hide-icon">{{remindMe}}
+                <button mat-icon-button  (click)="onReminderClick(note.reminder,note.id)">
+                    <mat-icon>close</mat-icon> 
+                  </button>
+          </mat-chip>
+          </mat-chip-list>
+        <div>
+          </div>
+
+        </div>
       
        <div fxLayoutAlign="start start">
-       <app-icon-tray [card]=note.id [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
+       <app-icon-tray class="icon-tray" [card]=note.id [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
     </div>
    </mat-card>
    </div>

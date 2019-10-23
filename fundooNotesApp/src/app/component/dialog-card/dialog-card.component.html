@@ -1,10 +1,10 @@
-<div [ngStyle]="{background:noteObj.color}">
-  <p><textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title"
-      value={{noteObj.title}}></textarea></p>
-  <p><textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-      [formControl]="description" value={{noteObj.description}}></textarea></p>
+<div [ngStyle]="{background:dialogColor}" class="dialog-card-container">
+  <textarea class="textarea" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title"
+      value={{noteObj.title}}></textarea>
+  <textarea class="textarea" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      [formControl]="description" value={{noteObj.description}}></textarea>
   <div fxLayout="row" fxLayoutAlign="space-between">
-    <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
+    <app-icon-tray [card]="noteObj.noteId" [component]="noteObj.component2" (messageEvent)="receiveMessage($event)"></app-icon-tray>
     <div><button mat-button (click)="onUpdateNote()">Close</button></div>
   </div>
 </div>

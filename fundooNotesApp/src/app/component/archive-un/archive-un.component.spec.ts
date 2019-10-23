@@ -10,7 +10,7 @@ describe('ArchiveUnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule , MatSnackBarModule], 
+      imports: [ HttpClientTestingModule , MatSnackBarModule],
       declarations: [ ArchiveUnComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })

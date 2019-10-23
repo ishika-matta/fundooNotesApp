@@ -18,8 +18,8 @@ export class GotoNotesComponent implements OnInit {
   hover: false;
   flag: any = 'true';
   result1: any;
-  component='display';
- 
+  component = 'display';
+
 
   constructor(private noteService: NoteService) { }
 
@@ -37,7 +37,7 @@ export class GotoNotesComponent implements OnInit {
       this.noteService.allNotesList().subscribe((response: any) => {
         this.result1 = this.getFilter(response.data.data);
             this.notes = this.result1.reverse();
-            console.log("notes",this.result1);
+            console.log('notes', this.result1);
           }, (error) => {
             console.log(error.statusText);
           });
@@ -53,10 +53,7 @@ export class GotoNotesComponent implements OnInit {
 
 
   receiveMessage($event) {
-    console.log('fdvgbdvgbdbvdf', $event);
-
+    console.log('event received is: ', $event);
     this.getNotes();
   }
-
-
 }

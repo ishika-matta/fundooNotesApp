@@ -1,4 +1,4 @@
-import  'hammerjs';
+import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +21,7 @@ import { TakeNoteComponent } from './component/take-note/take-note.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 // import { IconComponent } from './component/icon/icon.component';
 import { DisplayComponent } from './component/display/display.component';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatDatepickerModule } from '@angular/material';
 import { DialogCardComponent } from './component/dialog-card/dialog-card.component';
 import { AuthService } from './services/authServices/auth.service';
 import { AuthGuard } from './component/auth.guard';
@@ -49,6 +49,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AutosizeModule } from 'ngx-autosize';
 import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
+import { CollabDialogBoxComponent } from './component/collab-dialog-box/collab-dialog-box.component';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { ReminderComponent } from './component/reminder/reminder.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     DashboardComponent,
-    TakeNoteComponent,   
+    TakeNoteComponent,
     DisplayComponent,
     DialogCardComponent,
     TrashComponent,
@@ -81,7 +82,8 @@ import { ReminderComponent } from './component/reminder/reminder.component';
     SearchPipe,
     SearchBarComponent,
     LabelsComponent,
-    ReminderComponent
+    ReminderComponent,
+    CollabDialogBoxComponent
   ],
 
   imports: [
@@ -98,7 +100,8 @@ import { ReminderComponent } from './component/reminder/reminder.component';
     ImageModule,
     ImageCropperModule,
     MatTabsModule,
-    AutosizeModule
+    AutosizeModule,
+    MatDatepickerModule
   ],
 
   providers: [
@@ -107,11 +110,12 @@ import { ReminderComponent } from './component/reminder/reminder.component';
     HttpService,
     UserService,
     NoteService,
-    NoteLabelService
+    NoteLabelService,
+    MatDatepickerModule
   ],
 
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  entryComponents: [ DialogCardComponent,UploadProfilePicComponent ],
+  entryComponents: [ DialogCardComponent, UploadProfilePicComponent, CollabDialogBoxComponent ],
   bootstrap: [ AppComponent ]
 })
 

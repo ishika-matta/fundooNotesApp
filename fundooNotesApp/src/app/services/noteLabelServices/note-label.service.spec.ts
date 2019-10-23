@@ -7,7 +7,7 @@ describe('NoteLabelService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [ NoteLabelService ],
-      imports: [ HttpClientTestingModule ] 
+      imports: [ HttpClientTestingModule ]
     });
   });
 

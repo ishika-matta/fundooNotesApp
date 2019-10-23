@@ -12,7 +12,7 @@ export class ChangeColorComponent implements OnInit {
   noteObj: any;
   @Input() card: any;
 
-  @Output() messageEvent = new EventEmitter<string>()
+  @Output() messageEvent = new EventEmitter<string>();
 
   colorArray: any = [
     { color: '#ECEEEE' }, { color: '#F28B82' }, { color: '#F7BC04' }, { color: '#FAF474' },
@@ -35,16 +35,11 @@ export class ChangeColorComponent implements OnInit {
         console.log(response);
         //get notes
         this.messageEvent.emit(colors);
-
-
       }, (error) => {
         console.log(error);
       });
-
     } catch (err) {
       return err;
     }
-
   }
-
 }

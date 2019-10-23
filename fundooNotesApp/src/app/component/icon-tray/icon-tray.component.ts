@@ -6,12 +6,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./icon-tray.component.scss']
 })
 export class IconTrayComponent implements OnInit {
-  message:any;
+  message: any;
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
-  @Input() component:any;
-  @Input() isDeleted:any;
-  
+  @Input() component: any;
+  @Input() isDeleted: any;
+
 
   constructor() { }
 
@@ -22,5 +22,4 @@ export class IconTrayComponent implements OnInit {
     this.message = $event;
     this.messageEvent.emit(this.message);
   }
-
 }
