@@ -1,10 +1,14 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+
+import { Component, OnInit, Input, Inject, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { NoteService } from 'src/app/services/noteServices/note.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { UserService } from 'src/app/services/userServices/user.service';
+
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-collab-dialog-box',
@@ -13,6 +17,7 @@ import { UserService } from 'src/app/services/userServices/user.service';
 })
 export class CollabDialogBoxComponent implements OnInit {
   @Input() card: any;
+  @Output() messageEvent = new EventEmitter<string>();
   
   firstName = localStorage.getItem('firstName');
   lastName = localStorage.getItem('lastName');
@@ -22,7 +27,12 @@ export class CollabDialogBoxComponent implements OnInit {
   userPic:any;
   collab_user= new FormControl();
   cObj:any;
+  coll:any;
   searchUsers:any;
+  filteredSearchUsers:Observable<any>;
+  collab_value:any;
+  message:any;
+
 
   constructor( public dialogRef: MatDialogRef<CollaboratorComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData , private noteService: NoteService, private userService: UserService) {
@@ -34,23 +44,36 @@ export class CollabDialogBoxComponent implements OnInit {
     
 
   ngOnInit() {
-    
+ 
   }
 
-  getPic() {
-    this.pic = localStorage.getItem('pic');
-    this.userPic = this.baseUrlPic + this.pic;
+  private filter(value: string): string[] {
+    this.collab_value= this.searchUsers.filter(user1 => user1.email.toString().toLowerCase().includes(value.toString().toLowerCase()));
+    return this.collab_value;
   }
 
-  onKeyUp(event: any) {
+  
+
+  searchList(collab) {
     const obj = {
-      searchWord: event,
+      'searchWord': collab,
     };
     
 
     this.userService.searchUser(obj).subscribe((response: any) => {
+      
       this.searchUsers=response.data.details;
-      console.log(this.searchUsers);
+      
+      console.log('SearchUsers   ',this.searchUsers);
+      this.filteredSearchUsers = this.collab_user.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this.filter(value))
+      );
+      
+      
+      console.log('filteredSearchUsers  ',this.filteredSearchUsers);
+
       console.log(response);
     }, (error) => {
       console.log(error);
@@ -59,19 +82,29 @@ export class CollabDialogBoxComponent implements OnInit {
 
   onCreateCollab() {
     let collabObj = {
-      'noteIdList': this.cObj.noteId,
-      'collaborators': this.collab_user.value,
-      
+      'email':this.collab_value[0].email,
+      'firstName':this.collab_value[0].firstName,
+      'lastName':this.collab_value[0].lastName,
+      'userId':this.collab_value[0].userId,
       };
-
-    this.noteService.addCollabToNotes(collabObj).subscribe((response: any) => {
-       console.log('collab .............', response);
       
-       // this.messageEvent.emit(this.message);
+      
+
+    this.noteService.addCollabToNotes(collabObj,this.cObj.noteId).subscribe((response: any) => {
+       console.log('collab .............', response);   
+       this.messageEvent.emit(this.message);
     }, (error) => {
       console.log(error);
     });
   }
 
+  onSave() {
+    this.dialogRef.close('Closed');
+  }
+
+  getPic() {
+    this.pic = localStorage.getItem('pic');
+    this.userPic = this.baseUrlPic + this.pic;
+  }
 
 }

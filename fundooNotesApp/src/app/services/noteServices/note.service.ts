@@ -99,8 +99,8 @@ export class NoteService {
     this.auth = true;
     return this.httpSvc.postCall(data, this.url, this.auth);
   }
-  addCollabToNotes(data){
-    this.url = 'notes/' + data.noteId + '/AddcollaboratorsNotes/';
+  addCollabToNotes(data,noteId){
+    this.url = 'notes/' + noteId + '/AddcollaboratorsNotes/';
     this.auth = true;
     return this.httpSvc.postCall(data, this.url, this.auth);
 

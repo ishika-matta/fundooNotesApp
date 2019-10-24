@@ -17,10 +17,10 @@
         </div>
         <div fxLayout="column" fxLayoutAlign="center start">
          <span class="user-name">
-           <input matInput placeholder="Person or email to share with" [formControl]="collab_user" (keyup)="onKeyUp($event)" [matAutocomplete]="auto">
+           <input matInput placeholder="Person or email to share with" [(ngModel)]="coll" [formControl]="collab_user" (keyup)="searchList(coll)" [matAutocomplete]="auto">
            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let user1 of searchUsers" [value]="user1">
-                {{user1}}
+              <mat-option *ngFor="let user1 of filteredSearchUsers | async" [value]="user1.email">
+                {{user1.email}}
               </mat-option>
             </mat-autocomplete>
          
@@ -30,6 +30,11 @@
       </button>
     </div>
         </div>
+      </div>
+
+      <mat-divider></mat-divider>
+      <div  fxLayout="row" fxLayoutAlign="end end" >
+        <button mat-button mat-button (click)="onSave()">Done</button>
       </div>
 
 
