@@ -32,6 +32,22 @@
         </div>
       </div>
 
+
+      <div fxLayout="row" *ngFor="let collab of collabs">
+        <div>
+          <img class="pic" [src]="userPic">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center start">
+          <span class="user-name"> {{collab.firstName}} {{collab.lastName}} </span>
+          <span class="user-name"> {{collab.email}}  </span>
+
+         <div fxLayoutAlign="end end"><button mat-button (click)="onDeleteCollab(collab.userId)">
+            <mat-icon matSuffix> close </mat-icon>
+      </button>
+    </div>
+        </div>
+      </div>
+
       <mat-divider></mat-divider>
       <div  fxLayout="row" fxLayoutAlign="end end" >
         <button mat-button mat-button (click)="onSave()">Done</button>

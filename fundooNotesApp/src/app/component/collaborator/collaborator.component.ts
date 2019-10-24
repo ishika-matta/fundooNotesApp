@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material';
 })
 export class CollaboratorComponent implements OnInit {
   @Input() card:any;
+  message:any;
 
   constructor(public dialog: MatDialog) { }
 
@@ -26,6 +27,13 @@ export class CollaboratorComponent implements OnInit {
       }
     });
     }
+
+    receiveMessage($event) {
+      this.message = $event;
+      //this.messageEvent.emit(this.message);
+    }
+
+
 
   }
 

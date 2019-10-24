@@ -27,6 +27,14 @@ export class HttpService {
     }
   }
 
+  patchCall(data, url, auth) {
+    if (auth == false) {
+      return this.http.patch(this.baseUrl + url, data);
+    } else {
+      return this.http.patch(this.baseUrl + url, data, this.httpOptions);
+    }
+  }
+
   postCallPic(data, url) {
     const httpOptionsPic = {
       headers: new HttpHeaders({

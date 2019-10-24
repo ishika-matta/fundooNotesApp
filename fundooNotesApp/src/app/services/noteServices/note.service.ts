@@ -105,4 +105,13 @@ export class NoteService {
     return this.httpSvc.postCall(data, this.url, this.auth);
 
   }
+  patchCollabToNotes(data){
+    this.url = 'notes/' + data.id;
+    this.auth = true;
+    return this.httpSvc.patchCall(data,this.url, this.auth);
+  }
+  deleteCollabToNotes(data){
+    this.url = 'notes/' + data.id + '/removeCollaboratorsNotes/' + data.userId ;
+    return this.httpSvc.deleteCall(this.url);
+  }
 }

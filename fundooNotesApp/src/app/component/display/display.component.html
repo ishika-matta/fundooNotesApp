@@ -28,16 +28,11 @@
           </div>
         </div>
 
-        <div *ngFor="let collabName of note.firstname">
-          <mat-chip-list>
-              <mat-chip class="hide-icon">{{collabName}}
-                  <button mat-icon-button  (click)="onReminderClick(note.reminder,note.id)">
-                      <mat-icon>close</mat-icon> 
-                    </button>
-            </mat-chip>
-            </mat-chip-list>
-          <div>
-            </div>
+        <div fxLayout="column" *ngFor="let collabName of note.collaborators">
+   
+          <button fxLayout="column" mat-mini-fab (click)="onReminderClick(note.reminder,note.id)">
+            {{collabName.firstName}}</button>
+
           </div>
       
        <div fxLayoutAlign="start start">
