@@ -51,7 +51,6 @@ import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { CollabDialogBoxComponent } from './component/collab-dialog-box/collab-dialog-box.component';
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -103,8 +102,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ImageCropperModule,
     MatTabsModule,
     AutosizeModule,
-    MatDatepickerModule,
-    AngularEditorModule
+    MatDatepickerModule
   ],
 
   providers: [

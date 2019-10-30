@@ -26,6 +26,7 @@ export class QuestionAnswerComponent implements OnInit {
   localstor:any;
   url:any;
   recordsques:any;
+  dataQues:any;
 
   constructor(private dataService: DataService, 
               private questionAnswerService: QuestionAnswerService,
@@ -73,7 +74,9 @@ export class QuestionAnswerComponent implements OnInit {
     }
     this.noteService.getNoteDetail(this.options).subscribe((response:any) => {
       this.notedetails= response.data.data;
+      this.dataQues=this.notedetails.questionAndAnswerNotes;
       console.log('///////',this.notedetails);
+      console.log('///////',this.dataQues);
     }, (error) => {
       console.log(error);
     });
@@ -88,24 +91,14 @@ export class QuestionAnswerComponent implements OnInit {
     }
     this.questionAnswerService.addQuestionAndAnswer(options).subscribe((response) => {
       console.log('id..........',response);
+      this.toggle();
+     
        
     }, (error) => {
       console.log(error);
     });
   }
 
-  getQues(id){
-    let options = {
-     
-      "notesId": id
-    }
-    this.questionAnswerService.getQuestion(options).subscribe((response:any) => {
-      console.log(response);
-      this.recordsques=response;
-    }, (error) => {
-      console.log(error);
-    });
-  }
 
   }
 
