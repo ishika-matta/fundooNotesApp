@@ -20,6 +20,7 @@ export class DisplayComponent implements OnInit {
   result1: any;
   noteLabel: any;
   view: any;
+  ques:any;
   @Input() notes: any;
   @Input() component: any;
   @Output() messageEvent = new EventEmitter<string>();
@@ -29,12 +30,16 @@ export class DisplayComponent implements OnInit {
   constructor(public dialog: MatDialog, private dataService: DataService, private noteService: NoteService) { }
 
   ngOnInit() {
-
+    
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message;
     });
     this.dataService.viewMessage.subscribe((res)=>{
       this.view=res;
+    })
+
+    this.dataService.quesMessage.subscribe((res)=>{
+      this.ques=res;
     })
   }
 

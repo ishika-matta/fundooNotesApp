@@ -22,6 +22,7 @@ import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
 
+
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},

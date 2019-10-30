@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/services/dataServices/data.service';
 import { NoteService } from 'src/app/services/noteServices/note.service';
-import { FormControl } from '@angular/forms';
 import { QuestionAnswerService } from 'src/app/services/questionAnswerServices/question-answer.service';
 import { ActivatedRoute } from '@angular/router';
-import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-question-answer',
   templateUrl: './question-answer.component.html',
@@ -15,37 +14,31 @@ export class QuestionAnswerComponent implements OnInit {
   firstName = localStorage.getItem('firstName');
   lastName = localStorage.getItem('lastName');
   noteData: any;
-  quesValue:any;
-  AnsValue:any;
+  quesValue: any;
+  AnsValue: any;
   TokenAuth: boolean = true;
-  options:any;
-  notedetails:any;
-  quesToken:any;
+  options: any;
+  noteDetails: any;
+  quesToken: any;
   show: boolean = true;
   showReply: boolean = false;
-  localstor:any;
-  url:any;
-  recordsques:any;
-  dataQues:any;
+  localstor: any;
+  url: any;
 
-  constructor(private dataService: DataService, 
-              private questionAnswerService: QuestionAnswerService,
-              private route: ActivatedRoute,
-              private noteService: NoteService) { }
+  constructor(private dataService: DataService,
+    private questionAnswerService: QuestionAnswerService,
+    private route: ActivatedRoute,
+    private noteService: NoteService) { }
 
-  ngOnInit() {  
-    
-    console.log('dateee',this.today);
-    
+  ngOnInit() {
     this.quesToken = this.route.snapshot.paramMap.get('noteId');
-    this.GetNoteDetails(this.quesToken); 
+    this.getNoteDetails(this.quesToken);
   }
 
 
 
-  QuestionReply(quesid)
-  {
-    let options=
+  questionReply(quesid) {
+    let options =
     {
       "message": this.AnsValue,
       "quesId": quesid
@@ -53,13 +46,14 @@ export class QuestionAnswerComponent implements OnInit {
     this.questionAnswerService.replyQuestion(options).subscribe((response) => {
       console.log(response);
       this.toggleReply();
-      this.AnsValue='';
+      this.getNoteDetails(this.quesToken);
+      this.AnsValue = '';
     }, (error) => {
       console.log(error);
     });
 
   }
- 
+
   toggleReply() {
     this.showReply = !this.showReply;
   }
@@ -67,22 +61,18 @@ export class QuestionAnswerComponent implements OnInit {
     this.show = !this.show;
   }
 
-  GetNoteDetails(card)
-  {
-    this.options={
+  getNoteDetails(card) {
+    this.options = {
       noteIdList: [card]
     }
-    this.noteService.getNoteDetail(this.options).subscribe((response:any) => {
-      this.notedetails= response.data.data;
-      this.dataQues=this.notedetails.questionAndAnswerNotes;
-      console.log('///////',this.notedetails);
-      console.log('///////',this.dataQues);
+    this.noteService.getNoteDetail(this.options).subscribe((response: any) => {
+      this.noteDetails = response.data.data;
+      
     }, (error) => {
       console.log(error);
     });
-    
   }
- 
+
 
   askQues(id) {
     let options = {
@@ -90,15 +80,13 @@ export class QuestionAnswerComponent implements OnInit {
       "notesId": id
     }
     this.questionAnswerService.addQuestionAndAnswer(options).subscribe((response) => {
-      console.log('id..........',response);
+      console.log('id..........', response);
+      this.dataService.changeMessage("Question added");
       this.toggle();
-     
-       
+      this.getNoteDetails(this.quesToken);
     }, (error) => {
       console.log(error);
     });
   }
-
-
-  }
+}
 

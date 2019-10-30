@@ -1,45 +1,45 @@
-<div *ngIf="show">
-  <div *ngFor="let ques of notedetails ">
+<div *ngIf="show" class="qa">
+  <div *ngFor="let ques of noteDetails">
     <div>
-      <p> {{ques.title}}</p>
-      <p> {{ques.description}}</p>
+      <p class="title"> {{ques.title}}</p>
+      <p class="description"> {{ques.description}}</p>
       <mat-divider></mat-divider>
     </div>
 
 
     <div>
-      <h3>Ask a Question</h3>
-      <p><input matInput [placeholder]="'Enter text here...'" [(ngModel)]="quesValue"></p>
+      <h3 class="description">Ask a Question</h3>
+      <div><input matInput [placeholder]="'Enter text here...'" [(ngModel)]="quesValue"></div>
     </div>
-    <div fxLayoutAlign="end end">
+    <div>
       <button mat-button (click)=askQues(ques.id)>Submit</button>
     </div>
   </div>
 </div>
 
 
-<div *ngIf="!show">
-  <div *ngFor="let ques of notedetails ">
+<div *ngIf="!show" class="qa">
+  <div *ngFor="let quora of noteDetails ">
     <div>
-      <p> {{ques.title}}</p>
-      <p> {{ques.description}}</p>
+      <p class="title"> {{quora.title}}</p>
+      <p class="description"> {{quora.description}}</p>
       <mat-divider></mat-divider>
     </div>
     <div>
       <h3>Question Asked</h3>
-      <p>{{ques.questionAndAnswerNotes[0].message}}</p>
+      <p>{{quora.questionAndAnswerNotes[0].message}}</p>
       <mat-divider></mat-divider>
     </div>
-    <div class='center' fxLayout='row' fxLayoutGap=20px>
+    <div class='qa' fxLayout='row' fxLayoutGap=20px>
       <div>
-        <img mat-card-avatar [src]="url">
+        <button mat-mini-fab color="warn">{{firstName[0] | uppercase}}</button>
       </div>
       <div fxLayout='column' fxLayoutGap=12px>
         <div fxLayout='row' fxLayoutGap=7px>
-          <div>
+          <div class="details">
             {{firstName+' '+lastName}}
           </div>
-          <div>
+          <div class="details">
             {{ today | date:'medium' }}
           </div>
           <div>
@@ -49,11 +49,11 @@
           </div>
         </div>
         <div>
-          {{ques.questionAndAnswerNotes[0].message}}
+          {{quora.questionAndAnswerNotes[0].message}}
         </div>
         <div *ngIf='showReply' >
            <p><input matInput [placeholder]="'Enter text here...'" [(ngModel)]="AnsValue"></p>
-           <button  mat-button (click)=QuestionReply(ques.questionAndAnswerNotes[0].id) >Reply </button>
+           <button  mat-button (click)=questionReply(quora.questionAndAnswerNotes[0].id) >Reply </button>
           </div>
 
 
