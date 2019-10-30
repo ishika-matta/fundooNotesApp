@@ -4,9 +4,10 @@
   </button>
 </div>
 
-    <mat-menu #menu_color>
+<mat-menu #menu_color>
 
-      <div class="pallete" >
-          <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" (click)="changeColor(color1.color,card)" class= "icon-palette"></button>
-      </div>  
-    </mat-menu>
+  <div class="pallete">
+    <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}"
+      (click)="changeColor(color1.color,card)" class="icon-palette"></button>
+  </div>
+</mat-menu>

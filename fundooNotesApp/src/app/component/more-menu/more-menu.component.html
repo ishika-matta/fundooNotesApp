@@ -31,7 +31,7 @@
   <mat-menu #main>
 
   <button mat-menu-item [matMenuTriggerFor]="labels_checklist">Add label</button>
-  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item (click)="onQA(card)">Ask a Question</button>
   <button mat-menu-item>Show checkboxes</button>
 
 </mat-menu> 
@@ -40,7 +40,7 @@
     <button mat-menu-item (click)="onTrash(card)">Delete Note</button>
 
   <button mat-menu-item [matMenuTriggerFor]="labels_checklist">Add label</button>
-  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item (click)= "onQA(card)">Ask a Question</button>
   <button mat-menu-item>Make a copy</button>
   <button mat-menu-item>Show checkboxes</button>
 

@@ -114,4 +114,11 @@ export class NoteService {
     this.url = 'notes/' + data.id + '/removeCollaboratorsNotes/' + data.userId ;
     return this.httpSvc.deleteCall(this.url);
   }
+
+  getNoteDetail(data) {
+    this.url = 'notes/getNotesDetail/' + data.noteIdList;
+    this.auth = true;
+    return this.httpSvc.getCall( this.url, this.auth);
+  }
+
 }

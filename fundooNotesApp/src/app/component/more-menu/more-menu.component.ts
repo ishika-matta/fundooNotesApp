@@ -3,6 +3,7 @@ import { NoteService } from '../../services/noteServices/note.service';
 import { NoteLabelService } from 'src/app/services/noteLabelServices/note-label.service';
 import { DataService } from 'src/app/services/dataServices/data.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-more-menu',
@@ -20,11 +21,12 @@ export class MoreMenuComponent implements OnInit {
   labels: any;
   message: any;
   durationInSeconds = 5;
+  noteDetails: any;
 
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
 
-  constructor(private noteService: NoteService, private noteLabelService: NoteLabelService,
+  constructor(private router:Router, private noteService: NoteService, private noteLabelService: NoteLabelService,
     private dataService: DataService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -34,22 +36,17 @@ export class MoreMenuComponent implements OnInit {
 
 
   onDeleteForever(card) {
-    console.log('id', card);
-
     this.noteObj = {
       'isDeleted': true,
       'noteIdList': [card]
     };
-
     this.noteService.deleteForeverNotes(this.noteObj).subscribe((response: any) => {
       console.log(response);
       this.openSnackBar('Note deleted permanently', 'Dismiss');
       this.messageEvent.emit(this.messageDelFor);
-
     }, (error) => {
       console.log(error);
     });
-
   }
 
   onRestore(card) {
@@ -62,7 +59,6 @@ export class MoreMenuComponent implements OnInit {
       console.log(response);
       this.openSnackBar('Note restored', 'Dismiss');
       this.messageEvent.emit(this.messageTrash);
-
     }, (error) => {
       console.log(error);
     });
@@ -73,7 +69,6 @@ export class MoreMenuComponent implements OnInit {
       'isDeleted': true,
       'noteIdList': [card]
       };
-
     this.noteService.trashNotes(this.noteObj).subscribe((response: any) => {
        console.log(response);
        //snackbar implementation
@@ -113,4 +108,17 @@ export class MoreMenuComponent implements OnInit {
     this.snackBar.open(msg, action);
   }
 
+  onQA(card){
+    this.router.navigate(['/question-answer/'+ card]);
+    this.options={
+      noteIdList: [card]
+    }
+    this.noteService.getNoteDetail(this.options).subscribe((response:any) => {
+      this.noteDetails= response.data.data;
+      //this.notedetails= Array.of(this.notedetails); 
+      this.dataService.askQuestion(this.noteDetails) 
+    }, (error) => {
+      console.log(error);
+    });
+  }
 }

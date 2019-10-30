@@ -12,9 +12,6 @@ import { NoteService } from 'src/app/services/noteServices/note.service';
 })
 export class DisplayComponent implements OnInit {
   note: any = new TakeNote();
-
-
-
   message: any;
   noteObj: any;
   options: any;
@@ -22,12 +19,9 @@ export class DisplayComponent implements OnInit {
   flag: any = 'true';
   result1: any;
   noteLabel: any;
-
-
-
+  view: any;
   @Input() notes: any;
   @Input() component: any;
-
   @Output() messageEvent = new EventEmitter<string>();
 
 
@@ -39,12 +33,13 @@ export class DisplayComponent implements OnInit {
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message;
     });
+    this.dataService.viewMessage.subscribe((res)=>{
+      this.view=res;
+    })
   }
 
 
-
   openDialog(note): void {
-
     const dialogRef = this.dialog.open(DialogCardComponent,
       {
         data:
@@ -76,8 +71,6 @@ export class DisplayComponent implements OnInit {
       this.noteService.removeLabelToNote(obj).subscribe((response: any) => {
         console.log(response);
         this.messageEvent.emit(this.message);
-
-
       }, (error) => {
         console.log(error);
       });
@@ -91,12 +84,8 @@ export class DisplayComponent implements OnInit {
       this.noteService.removeReminderToNote(obj).subscribe((response: any) => {
         console.log(response);
         this.messageEvent.emit(this.message);
-
-
       }, (error) => {
         console.log(error);
       });
   }
-
-
 }

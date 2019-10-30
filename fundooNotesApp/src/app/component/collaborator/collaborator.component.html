@@ -1,5 +1,5 @@
 <div>
-    <button mat-icon-button (click)="onCollab(card)">
+    <button mat-icon-button (click)="onCollab(card)" (messageEvent)="receiveMessage($event)">
         <mat-icon matTooltip="Collaborator">person_add</mat-icon>
     </button>
 </div>

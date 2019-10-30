@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { CollabDialogBoxComponent } from '../collab-dialog-box/collab-dialog-box.component';
 import { MatDialog } from '@angular/material';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-collaborator',
@@ -9,32 +10,37 @@ import { MatDialog } from '@angular/material';
 })
 export class CollaboratorComponent implements OnInit {
   @Input() card:any;
+  private dialogRef;
   message:any;
+  updatedMessage: any;
+  @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe((message) => {
+      this.updatedMessage=message;
+    });
   }
   //open dialog box
 
   onCollab(card){
     console.log('dscdscsc..', card);
 
-    this.dialog.open(CollabDialogBoxComponent, {
+    this.dialogRef =  this.dialog.open(CollabDialogBoxComponent, {
       data:
       {
         card: card,
       }
     });
-    }
 
-    receiveMessage($event) {
-      this.message = $event;
-      //this.messageEvent.emit(this.message);
-    }
+    this.dialogRef.afterClosed().subscribe(
+      data =>{ console.log("Dialog output:", data)
+      this.messageEvent.emit(this.updatedMessage);
 
-
+    })
 
   }
+}
 
 

@@ -52,7 +52,6 @@ export class TakeNoteComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
-
   }
 
   receiveMessage($event) {

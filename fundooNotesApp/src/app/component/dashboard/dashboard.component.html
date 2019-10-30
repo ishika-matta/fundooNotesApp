@@ -25,9 +25,19 @@
       <button mat-button class="toolbar-icons" matTooltip="Refresh">
         <mat-icon >refresh</mat-icon>
       </button>
-      <button mat-button class="toolbar-icons" matTooltip="List View">
+      <div *ngIf="show">
+      <button mat-button class="toolbar-icons" matTooltip="List View" mat-button (click)="toggle()">
         <mat-icon>list</mat-icon>
       </button>
+    </div>
+
+    <div *ngIf="!show">
+      <button mat-button class="toolbar-icons" matTooltip="Grid View" (click)="toggle()">
+        <mat-icon>border_all</mat-icon>
+      </button>
+    </div>
+
+
       <button mat-button class="toolbar-icons" matTooltip="Settings">
         <mat-icon>settings</mat-icon>
       </button>

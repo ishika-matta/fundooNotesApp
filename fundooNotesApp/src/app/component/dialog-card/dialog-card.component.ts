@@ -48,7 +48,6 @@ export class DialogCardComponent implements OnInit {
       'noteId': this.noteObj.noteId,
       'title': this.title.value,
       'description': this.description.value,
-
     };
 
 

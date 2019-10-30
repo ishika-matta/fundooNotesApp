@@ -2,18 +2,18 @@
   <h1>Collaborators</h1>
   <mat-divider></mat-divider>
   <div fxLayout="row">
-      <div>
-        <img class="pic" [src]="userPic">
+      <div fxFlex="8">
+        <button mat-fab color="primary">{{firstName}}</button>
       </div>
       <div fxLayout="column" fxLayoutAlign="center start">
-       <span class="user-name">{{firstName}} {{lastName}}</span> 
+       <span class="user-name">{{firstName}} {{lastName}} (owner)</span> 
        <span class="user-email">{{email}}</span> 
       </div>
     </div>
 
     <div fxLayout="row">
-        <div>
-          <img class="pic" [src]="userPic">
+        <div fxFlex="8">
+          <button mat-fab color="primary"></button>
         </div>
         <div fxLayout="column" fxLayoutAlign="center start">
          <span class="user-name">
@@ -25,31 +25,33 @@
             </mat-autocomplete>
          
           </span> 
-         <div fxLayoutAlign="end end"><button mat-button (click)="onCreateCollab()">
+        </div>
+         <div fxLayoutAlign="end end" fxLayout="row"><button mat-button (click)="onCreateCollab()">
             <mat-icon matSuffix> done </mat-icon>
       </button>
     </div>
-        </div>
+        
       </div>
 
 
       <div fxLayout="row" *ngFor="let collab of collabs">
-        <div>
-          <img class="pic" [src]="userPic">
+        <div fxFlex="8">
+          <button mat-fab color="primary">{{collab.firstName[0] | uppercase}}</button>
         </div>
         <div fxLayout="column" fxLayoutAlign="center start">
           <span class="user-name"> {{collab.firstName}} {{collab.lastName}} </span>
           <span class="user-name"> {{collab.email}}  </span>
+        </div>
 
          <div fxLayoutAlign="end end"><button mat-button (click)="onDeleteCollab(collab.userId)">
             <mat-icon matSuffix> close </mat-icon>
       </button>
     </div>
-        </div>
+        
       </div>
 
       <mat-divider></mat-divider>
-      <div  fxLayout="row" fxLayoutAlign="end end" >
+      <div  fxLayout="row" fxLayoutAlign="end end">
         <button mat-button mat-button (click)="onSave()">Done</button>
       </div>
 

@@ -13,14 +13,14 @@ import { DataService } from 'src/app/services/dataServices/data.service';
 export class UploadProfilePicComponent implements OnInit {
   selectedFile: File = null;
   imageChangedEvent: any = '';
-    croppedImage: any = '';
-    message = 'upload';
+  croppedImage: any = '';
+  message = 'upload';
 
 
 
   constructor(public dialogRef: MatDialogRef<DisplayComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData, private userService: UserService,
-     private dataService: DataService) { }
+    private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(
@@ -30,29 +30,24 @@ export class UploadProfilePicComponent implements OnInit {
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
-}
-imageCropped(event: ImageCroppedEvent) {
-  console.log(event);
-   this.croppedImage = event.file;
-}
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    console.log(event);
+    this.croppedImage = event.file;
+  }
 
 
 
   onUpload() {
     const fd = new FormData();
-
     fd.append('file', this.croppedImage);
     this.userService.uploadPic(fd).subscribe((response: any) => {
       console.log('done', response.status.imageUrl);
       localStorage.setItem('pic', response.status.imageUrl);
       this.dataService.changeMessage(this.message);
       this.dialogRef.close();
-
     }, (error) => {
       console.log('err', error);
     });
-
-
   }
-
 }

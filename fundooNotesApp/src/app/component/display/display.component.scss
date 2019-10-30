@@ -1,14 +1,27 @@
-.display-container{
+.display-container-list{
     display: flex;
     padding:2%;
     margin-right: 3%;
     margin-left: 1%;
 }
-.display-mat-card{
+.display-mat-card-list{
     border-radius:12px;
     margin:1%;
     transform: scaleX(0.94) scaleY(0.8);
     min-width:280px; 
+}
+
+.display-container-grid{
+    display: flex;
+    padding:1%;
+    margin-right: 3%;
+    margin-left: 1%;
+}
+.display-mat-card-grid{
+    border-radius:12px;
+    margin:1%;
+    transform: scaleX(0.94) scaleY(0.8);
+    max-width:800px; 
 }
 
 
@@ -39,5 +52,9 @@
         }
     }
     margin-bottom: 14px;
+}
+
+.hover-collab:hover{
+    color: blue;
 }
 

@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   labels: any;
   url: any;
   pic: any;
+  show: any;
   baseUrlPic = environment.baseUrlPic;
   email = localStorage.getItem('email');
   firstName = localStorage.getItem('firstName');
@@ -35,6 +36,11 @@ export class DashboardComponent implements OnInit {
       this.getNotesLabels();
       this.getPic();
     });
+  }
+
+  toggle() {
+    this.show = !this.show;
+    this.dataService.viewList(this.show);
   }
 
   getNotesLabels() {

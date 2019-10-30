@@ -20,6 +20,7 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
 import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
+import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
@@ -48,6 +49,9 @@ const routes: Routes = [
     },
     {
       path: 'reminder', component: ReminderComponent
+    },
+    {
+      path: 'question-answer/:noteId', component: QuestionAnswerComponent
     }
    ]
 },

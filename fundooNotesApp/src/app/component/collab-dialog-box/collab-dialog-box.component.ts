@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/userServices/user.service';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-collab-dialog-box',
@@ -22,7 +23,6 @@ export class CollabDialogBoxComponent implements OnInit {
   firstName = localStorage.getItem('firstName');
   lastName = localStorage.getItem('lastName');
   email = localStorage.getItem('email');
-  pic = localStorage.getItem('pic');
   baseUrlPic = environment.baseUrlPic;
   userPic: any;
   collab_user = new FormControl();
@@ -36,7 +36,8 @@ export class CollabDialogBoxComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<CollaboratorComponent>,
-    @Inject(MAT_DIALOG_DATA) dialogData, private noteService: NoteService, private userService: UserService) {
+    @Inject(MAT_DIALOG_DATA) dialogData, private dataService: DataService,
+     private noteService: NoteService, private userService: UserService) {
 
     this.cObj = { noteId: dialogData.card };
     console.log('dscdscs...', this.cObj);
@@ -86,6 +87,7 @@ export class CollabDialogBoxComponent implements OnInit {
 
     this.noteService.addCollabToNotes(collabObj, this.cObj.noteId).subscribe((response: any) => {
       console.log('collab .............', response);
+      this.dataService.changeMessage("Collaborator added");
       this.getCollabUsers();
     }, (error) => {
       console.log(error);
@@ -96,17 +98,13 @@ export class CollabDialogBoxComponent implements OnInit {
     this.dialogRef.close('Closed');
   }
 
-  getPic() {
-    this.pic = localStorage.getItem('pic');
-    this.userPic = this.baseUrlPic + this.pic;
-  }
-
   getCollabUsers() {
     let data = {
       'id': this.cObj.noteId,
     };
     this.noteService.patchCollabToNotes(data).subscribe((response: any) => {
       console.log('patched usersssss', response);
+      this.messageEvent.emit(response);
 
       this.collabs = response.collaborators;
     }, (error) => {
@@ -121,6 +119,7 @@ export class CollabDialogBoxComponent implements OnInit {
     };
     this.noteService.deleteCollabToNotes(data).subscribe((response: any) => {
       console.log('delted usersssss', response);
+      this.dataService.changeMessage("Collaborator deleted");
       this.getCollabUsers();
 
     }, (error) => {
