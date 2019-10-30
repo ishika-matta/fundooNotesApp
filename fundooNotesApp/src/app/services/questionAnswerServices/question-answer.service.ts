@@ -27,4 +27,16 @@ export class QuestionAnswerService {
     this.auth = true;
     return this.httpSvc.postCall(data, this.url, this.auth);
 }
+
+addLike(data){
+  this.url = 'questionAndAnswerNotes/like/'+data.notesId;
+  this.auth = true;
+  return this.httpSvc.postCall(data, this.url, this.auth);
+}
+
+addRatings(data){
+  this.url = 'questionAndAnswerNotes/rate/'+data.notesId;
+  this.auth = true;
+  return this.httpSvc.postCall(data, this.url, this.auth);
+}
 }

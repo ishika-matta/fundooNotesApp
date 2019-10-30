@@ -9,7 +9,8 @@
 
     <div>
       <h3 class="description">Ask a Question</h3>
-      <div><input matInput [placeholder]="'Enter text here...'" [(ngModel)]="quesValue"></div>
+      <div [froalaEditor] [(froalaModel)]="quesValue">
+      </div>
     </div>
     <div>
       <button mat-button (click)=askQues(ques.id)>Submit</button>
@@ -27,7 +28,7 @@
     </div>
     <div>
       <h3>Question Asked</h3>
-      <p>{{quora.questionAndAnswerNotes[0].message}}</p>
+      <div innerHTML="{{quora.questionAndAnswerNotes[0].message}}"></div>
       <mat-divider></mat-divider>
     </div>
     <div class='qa' fxLayout='row' fxLayoutGap=20px>
@@ -46,13 +47,17 @@
             <button matTooltip="reply" mat-button (click)=toggleReply()>
               <mat-icon>reply</mat-icon>
             </button>
+            <button matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes[0].id)>
+                <mat-icon>thumb_up_alt</mat-icon>
+              </button>
+              <button matTooltip="rate" mat-button (click)=onRate(quora.questionAndAnswerNotes[0].id,no)>
+                  <mat-icon>rate</mat-icon>
+                </button>
           </div>
         </div>
-        <div>
-          {{quora.questionAndAnswerNotes[0].message}}
-        </div>
+        <div innerHTML="{{quora.questionAndAnswerNotes[0].message}}"></div>
         <div *ngIf='showReply' >
-           <p><input matInput [placeholder]="'Enter text here...'" [(ngModel)]="AnsValue"></p>
+          <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
            <button  mat-button (click)=questionReply(quora.questionAndAnswerNotes[0].id) >Reply </button>
           </div>
 

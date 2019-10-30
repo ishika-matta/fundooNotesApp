@@ -88,5 +88,35 @@ export class QuestionAnswerComponent implements OnInit {
       console.log(error);
     });
   }
+
+  onLike(id){
+    let options = {
+      "like": true,
+      "notesId": id
+    }
+    this.questionAnswerService.addLike(options).subscribe((response) => {
+      console.log('id..........', response);
+      this.dataService.changeMessage("Question added");
+      this.toggle();
+      this.getNoteDetails(this.quesToken);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  onRate(id,no){
+    let options = {
+      "rate": no,
+      "notesId": id
+    }
+    this.questionAnswerService.addRatings(options).subscribe((response) => {
+      console.log('id..........', response);
+      this.dataService.changeMessage("Question added");
+      this.toggle();
+      this.getNoteDetails(this.quesToken);
+    }, (error) => {
+      console.log(error);
+    });
+  }
 }
 

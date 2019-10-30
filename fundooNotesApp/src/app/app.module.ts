@@ -51,7 +51,7 @@ import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { CollabDialogBoxComponent } from './component/collab-dialog-box/collab-dialog-box.component';
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
-//import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -104,8 +104,8 @@ import { QuestionAnswerComponent } from './component/question-answer/question-an
     MatTabsModule,
     AutosizeModule,
     MatDatepickerModule,
-    //FroalaEditorModule.forRoot(), 
-    //FroalaViewModule.forRoot()
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot()
   ],
 
   providers: [

@@ -44,7 +44,7 @@
      <div *ngIf="note.questionAndAnswerNotes.length>0">
         <mat-divider></mat-divider>
         <span class="ques">Question asked</span>
-       <br><span class="ans">{{note.questionAndAnswerNotes[0].message}}</span> 
+       <br><span class="ans" innerHTML="{{note.questionAndAnswerNotes[0].message}}"></span> 
 
     </div>  
    </mat-card>
