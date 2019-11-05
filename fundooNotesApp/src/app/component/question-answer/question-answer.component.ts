@@ -24,6 +24,7 @@ export class QuestionAnswerComponent implements OnInit {
   showReply: boolean = false;
   localstor: any;
   url: any;
+  quesAnsLength:any;
 
   constructor(private dataService: DataService,
     private questionAnswerService: QuestionAnswerService,
@@ -67,7 +68,8 @@ export class QuestionAnswerComponent implements OnInit {
     }
     this.noteService.getNoteDetail(this.options).subscribe((response: any) => {
       this.noteDetails = response.data.data;
-      
+      this.quesAnsLength= this.noteDetails[0].questionAndAnswerNotes.length;
+      console.log(this.noteDetails);
     }, (error) => {
       console.log(error);
     });

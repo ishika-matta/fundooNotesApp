@@ -1,0 +1,36 @@
+<mat-toolbar class="main-header"  fxflex="100">Fundoo Notes App</mat-toolbar>
+
+<div class="title" fxLayout="row" fxLayoutAlign="center center">
+  fundooNotes offered. Choose below service to Register.
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" >
+  <div fxFlex="50">
+    <mat-card>
+      <span>price: $99 per month</span>
+      <span>advance</span>
+      <div fxLayout="column">
+        <span>$99/month</span>
+          <span>
+            Ability to add title, description, images, labels, checklist and colors</span>
+      </div>
+    </mat-card>
+  </div>
+
+  <div fxflex=50>
+    <mat-card>
+      <span>price: $49 per month</span>
+      <span>basic</span>
+      <div fxLayout="column">
+        <span>$49/month</span>
+          <span>
+            Ability to add only title and description</span>
+      </div>
+    </mat-card>
+  </div>
+
+</div>
+
+<div class="sign" fxLayout="row" fxLayoutAlign="center center">
+  <a [routerLink]="[ '/login' ]" routerLinkActive="active"> Sign in instead</a>
+</div>

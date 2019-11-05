@@ -22,6 +22,7 @@ export class MoreMenuComponent implements OnInit {
   message: any;
   durationInSeconds = 5;
   noteDetails: any;
+  onAskQuesAns: any;
 
   @Output() messageEvent = new EventEmitter<string>();
   @Input() card: any;
@@ -32,7 +33,11 @@ export class MoreMenuComponent implements OnInit {
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message);
     this. getAllLabels();
-  }
+
+    this.dataService.quesMessage.subscribe((res) => {
+      this.onAskQuesAns = res;
+  });
+}
 
 
   onDeleteForever(card) {

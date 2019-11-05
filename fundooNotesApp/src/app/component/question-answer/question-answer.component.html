@@ -1,4 +1,4 @@
-<div *ngIf="show" class="qa">
+<div *ngIf="quesAnsLength=='0'" class="qa">
   <div *ngFor="let ques of noteDetails">
     <div>
       <p class="title"> {{ques.title}}</p>
@@ -19,7 +19,7 @@
 </div>
 
 
-<div *ngIf="!show" class="qa">
+<div *ngIf="quesAnsLength>='1'" class="qa">
   <div *ngFor="let quora of noteDetails ">
     <div>
       <p class="title"> {{quora.title}}</p>
@@ -44,10 +44,10 @@
             {{ today | date:'medium' }}
           </div>
           <div>
-            <button matTooltip="reply" mat-button (click)=toggleReply()>
+            <button class="btn" matTooltip="reply" mat-button (click)=toggleReply()>
               <mat-icon>reply</mat-icon>
             </button>
-            <button matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes[0].id)>
+            <button class="btn" matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes[0].id)>
                 <mat-icon>thumb_up_alt</mat-icon>
               </button>
               <button matTooltip="rate" mat-button (click)=onRate(quora.questionAndAnswerNotes[0].id,no)>
