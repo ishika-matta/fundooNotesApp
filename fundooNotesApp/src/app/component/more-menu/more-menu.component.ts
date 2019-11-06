@@ -110,8 +110,10 @@ export class MoreMenuComponent implements OnInit {
   }
 
   openSnackBar(msg, action) {
-    this.snackBar.open(msg, action);
+    this.snackBar.open(msg, action, {
+      duration: 2000})
   }
+
 
   onQA(card){
     this.router.navigate(['/question-answer/'+ card]);

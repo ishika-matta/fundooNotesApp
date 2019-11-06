@@ -8,11 +8,12 @@ export class DataService {
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
 
-  private quesSource = new BehaviorSubject('default message');
-  quesMessage = this.quesSource.asObservable();
 
   private viewSource = new BehaviorSubject('default message');
   viewMessage = this.viewSource.asObservable();
+
+  private quesSource = new BehaviorSubject('0');
+  quesMessage = this.quesSource.asObservable();
 
   message: string;
 
@@ -29,4 +30,5 @@ export class DataService {
   {
     this.viewSource.next(message);
   }
+  
 }

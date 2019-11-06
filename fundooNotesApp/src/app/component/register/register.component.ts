@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/userServices/user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/register.model';
+import { MatSnackBar } from '@angular/material';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  
+  choices: string[] = ['Advance', 'Basic'];
+  cardChoice: any;
 
   userObj: User;
   result: any;
@@ -50,7 +55,7 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private snackBar: MatSnackBar) {
 
   }
 
@@ -65,16 +70,21 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastName.value,
       email: this.email.value,
       password: this.password.value,
-      service: 'advance'
+      service: this.cardChoice
     };
 
     this.result = this.userService.registerUser(this.userObj);
 
     this.userService.registerUser(this.userObj).subscribe((response) => {
       console.log(response);
+      this.openSnackBar('User registered successfully', 'Dismiss');
     }, (error) => {
       console.log(error.statusText);
     });
+  }
+  openSnackBar(msg, action) {
+    this.snackBar.open(msg, action, {
+      duration: 2000})
   }
 }
 

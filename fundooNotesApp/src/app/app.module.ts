@@ -52,6 +52,8 @@ import { ReminderComponent } from './component/reminder/reminder.component';
 import { CollabDialogBoxComponent } from './component/collab-dialog-box/collab-dialog-box.component';
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { CardComponent } from './component/card/card.component';
+
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     LabelsComponent,
     ReminderComponent,
     CollabDialogBoxComponent,
-    QuestionAnswerComponent
+    QuestionAnswerComponent,
+    CardComponent,
+   
   ],
 
   imports: [
@@ -105,7 +109,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AutosizeModule,
     MatDatepickerModule,
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    
   ],
 
   providers: [

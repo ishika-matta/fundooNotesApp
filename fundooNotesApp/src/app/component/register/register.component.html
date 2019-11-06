@@ -36,6 +36,15 @@
           </button>
           <mat-hint>Password must be 8 characters long</mat-hint>
         </mat-form-field>
+
+        <label class="choices">Select choice of cards</label>
+<mat-radio-group 
+  [(ngModel)]="cardChoice">
+  <mat-radio-button class="choices" *ngFor="let choice of choices" [value]="choice">
+    {{choice}}
+  </mat-radio-button>
+</mat-radio-group>
+<!-- <div>Your favorite season is: {{favoriteSeason}}</div> -->
       
         
         <button  mat-button (click)="onRegister()">Register</button>

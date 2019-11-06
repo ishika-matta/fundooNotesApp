@@ -12,11 +12,39 @@
     max-width:100%;
     box-sizing: border-box;
     font-weight:bold;
-
-
+    margin-top:3%;
+    font-size: 25px;
 }
 
 .sign{
     font-family: 16px Roboto, sans-serif;
+}
 
+.price{
+    font-weight: bold;
+    font-family: 26px;
+}
+
+.choice{
+    color:blue;
+}
+
+.card{
+    height:20vh;
+    width: 30vw;
+
+}
+
+.card-div1{
+    margin-right:2%;
+    margin-left:20%;
+    margin-top:5%;
+    margin-bottom: 3%;
+}
+
+.card-div2{
+    margin-right:20%;
+    margin-left:2%;
+    margin-top:5%;
+    margin-bottom: 3%;
 }

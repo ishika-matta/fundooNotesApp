@@ -18,8 +18,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import {MatNativeDateModule} from '@angular/material';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -48,7 +49,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       MatSnackBarModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      MatAutocompleteModule
+      MatAutocompleteModule,
+      MatRadioModule
     ],
 
     exports: [
@@ -72,7 +74,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       MatSnackBarModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      MatAutocompleteModule
+      MatAutocompleteModule,
+      MatRadioModule
     ],
 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ResetPassword } from '../../models/reset-password-model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/userServices/user.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +16,8 @@ export class ResetPasswordComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.password.value)]);
 
-  constructor(private userService: UserService, private routing: Router, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private routing: Router, 
+    private route: ActivatedRoute, private snackBar: MatSnackBar) {
 
   }
 
@@ -53,9 +55,17 @@ export class ResetPasswordComponent implements OnInit {
     };
     this.userService.resetPassword(this.userObj ).subscribe((response) => {
       //console.log(response);
+      this.openSnackBar('Reset Password done', 'Dismiss');
+
     }, (error) => {
       console.log(error.statusText);
+      this.openSnackBar('Error in doing Reset Password', 'Dismiss');
     });
+  }
+
+  openSnackBar(msg, action) {
+    this.snackBar.open(msg, action, {
+      duration: 2000})
   }
 
   }

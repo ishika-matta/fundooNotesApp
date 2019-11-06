@@ -21,12 +21,14 @@ import { SearchBarComponent } from './component/search-bar/search-bar.component'
 import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
+import { CardComponent } from './component/card/card.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/register', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'card', component: CardComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'resetpassword/:token', component: ResetPasswordComponent},
   {path: 'dailog-box', component: DialogBoxComponent},

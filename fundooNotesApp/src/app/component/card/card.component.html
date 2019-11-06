@@ -4,11 +4,11 @@
   fundooNotes offered. Choose below service to Register.
 </div>
 
-<div fxLayout="row" fxLayoutAlign="center center" >
-  <div fxFlex="50">
-    <mat-card>
-      <span>price: $99 per month</span>
-      <span>advance</span>
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <div class="card-div1" fxLayoutAlign="center center">
+    <mat-card [routerLink]="['/register']"  class="card">
+      <span class="price">price: $99 per month</span>
+      <br><span class="choice">advance</span>
       <div fxLayout="column">
         <span>$99/month</span>
           <span>
@@ -17,10 +17,10 @@
     </mat-card>
   </div>
 
-  <div fxflex=50>
-    <mat-card>
-      <span>price: $49 per month</span>
-      <span>basic</span>
+  <div class="card-div2" fxLayoutAlign="center center">
+    <mat-card [routerLink]="['/register']"  class="card">
+      <span class="price"> price: $49 per month</span>
+      <br><span class="choice">basic</span>
       <div fxLayout="column">
         <span>$49/month</span>
           <span>
