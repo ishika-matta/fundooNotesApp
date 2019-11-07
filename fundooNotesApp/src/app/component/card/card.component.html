@@ -6,7 +6,7 @@
 
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
   <div class="card-div1" fxLayoutAlign="center center">
-    <mat-card [routerLink]="['/register']"  class="card">
+    <mat-card   class="card" (click)="onChoice('advance')">
       <span class="price">price: $99 per month</span>
       <br><span class="choice">advance</span>
       <div fxLayout="column">
@@ -18,7 +18,7 @@
   </div>
 
   <div class="card-div2" fxLayoutAlign="center center">
-    <mat-card [routerLink]="['/register']"  class="card">
+    <mat-card   class="card"  (click)="onChoice('basic')">
       <span class="price"> price: $49 per month</span>
       <br><span class="choice">basic</span>
       <div fxLayout="column">

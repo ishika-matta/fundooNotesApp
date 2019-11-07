@@ -33,7 +33,6 @@ export class GotoNotesComponent implements OnInit {
   }
 
   getNotes() {
-
       this.noteService.allNotesList().subscribe((response: any) => {
         this.result1 = this.getFilter(response.data.data);
             this.notes = this.result1.reverse();
@@ -41,7 +40,6 @@ export class GotoNotesComponent implements OnInit {
           }, (error) => {
             console.log(error.statusText);
           });
-
   }
 
   getFilter(result) {

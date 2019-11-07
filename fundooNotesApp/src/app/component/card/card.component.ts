@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/dataServices/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  onChoice(data){
+    console.log('card choice', data)
+    this.dataService.changeMessage(data);
+    this.router.navigate(['/register']);
+  }
 }

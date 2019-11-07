@@ -18,8 +18,11 @@ export class TakeNoteComponent implements OnInit {
   component = 'take-note';
   til: any;
   des: any;
+  color : any ="#ffffff";
+  reminder: any;
 
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() reminderEvent = new EventEmitter<string>();
 
 
 
@@ -37,7 +40,9 @@ export class TakeNoteComponent implements OnInit {
   postNotes() {
     this.takeNoteObj = {
       title: this.title.value,
-      description: this.description.value
+      description: this.description.value,
+      color: this.color,
+      //reminder: this.reminder,      
     };
     console.log(this.takeNoteObj);
 
@@ -45,6 +50,8 @@ export class TakeNoteComponent implements OnInit {
         console.log(response);
         this.til = '';
         this.des = '';
+        this.color='';
+       // this.reminder='';
         this.toggle();
         this.messageEvent.emit(this.message);
        // this.data.changeMessage('saved');
@@ -55,6 +62,14 @@ export class TakeNoteComponent implements OnInit {
   }
 
   receiveMessage($event) {
-    this.message = $event;
+    this.color = $event;
+    console.log('event received in take note', this.color);
+    this.messageEvent.emit(this.color);
   }
+
+  // receiveReminderMessage($event) {
+  //   this.reminder = $event;
+  //   console.log('event received in take note', this.reminder);
+  //   //this.reminderEvent.emit(this.reminder);
+  // }
 }

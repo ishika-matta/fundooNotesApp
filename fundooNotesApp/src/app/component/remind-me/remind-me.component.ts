@@ -8,9 +8,12 @@ import { NoteService } from 'src/app/services/noteServices/note.service';
 })
 export class RemindMeComponent implements OnInit {
   @Input() card: any;
-  @Output() messageEvent = new EventEmitter<string>();
-  message: string = 'Reminder';
-  date: Date;
+  @Output() reminderEvent = new EventEmitter();
+  @Output() messageEvent = new EventEmitter();
+  message: any = 'Reminder';
+  date: any;
+
+  public selectedMoment = new Date();
 
   constructor(private noteService: NoteService) { }
 
@@ -19,6 +22,7 @@ export class RemindMeComponent implements OnInit {
 
   onSave(card, picker) {
     this.date=picker._validSelected;
+    if(card){  
     let remindMeObj = {
       'noteIdList': [card],
       'reminder': this.date
@@ -30,6 +34,11 @@ export class RemindMeComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  else{
+    console.log('without note id date emit', this.date)
+      this.messageEvent.emit(this.date);
+  }
   }
 
   getDateResponse() {

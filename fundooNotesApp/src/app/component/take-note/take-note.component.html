@@ -1,11 +1,19 @@
  <div *ngIf="!show" fxLayoutAlign="start center" class="takeNote" class="take-note">
-   <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px">
+   <mat-card fxFlex="70" fxLayout="column" fxLayoutGap="8px"  [ngStyle]="{background:color}">
      <textarea matInput type="text"[(ngModel)]="til" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        [formControl]="title" placeholder="Title"></textarea>
      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        placeholder="Take a note..." [(ngModel)]="des" [formControl]="description"></textarea>
+       <!-- <div>
+        <mat-chip-list>
+          <mat-chip class="hide-icon">{{reminder}}
+          </mat-chip>
+        </mat-chip-list>
+        <div>
+        </div>
+      </div> -->
      <div fxLayout="row" fxLayoutAlign="space-between">
-       <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)"></app-icon-tray>
+       <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)" (reminderEvent)="receiveReminderMessage($event)"></app-icon-tray>
        <div><button mat-button class="info-button" (click)="postNotes()">Close</button></div>
      </div>
    </mat-card>

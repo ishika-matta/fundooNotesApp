@@ -6,6 +6,7 @@ export class TakeNote {
     isDeleted?: Boolean;
     color?: 'string';
     id?: String;
+    reminder?:any;
     // userId: "string";
     service?: String;
     label?: String;

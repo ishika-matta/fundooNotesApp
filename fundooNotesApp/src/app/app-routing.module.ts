@@ -22,10 +22,11 @@ import { LabelsComponent } from './component/labels/labels.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
 import { CardComponent } from './component/card/card.component';
+import { CartComponent } from './component/cart/cart.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/register', pathMatch: 'full'},
+  {path: '', redirectTo: '/card', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'card', component: CardComponent},
@@ -55,7 +56,10 @@ const routes: Routes = [
     },
     {
       path: 'question-answer/:noteId', component: QuestionAnswerComponent
-    }
+    },
+    {
+      path: 'cart', component: CartComponent
+    },
    ]
 },
 
@@ -64,7 +68,7 @@ const routes: Routes = [
   {path: 'page-not-found', component: PageNotFoundComponent},
   // {path:'dash', component:DashComponent},
 
-  {path: '**', redirectTo: '/register'}
+  {path: '**', redirectTo: '/card'}
 ];
 
 

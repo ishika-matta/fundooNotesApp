@@ -21,4 +21,11 @@ export class ProductCartService {
     this.auth = true;
     return this.httpSvc.postCall(data, this.url, this.auth);
   }
+
+  addtoCart(data) {
+    this.url = 'productcarts/addToCart';
+    this.auth = true;
+    return this.httpSvc.postCall(data, this.url, this.auth);
+
+  }
 }

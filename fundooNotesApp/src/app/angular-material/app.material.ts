@@ -21,10 +21,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatRadioModule} from '@angular/material/radio';
-
-
-
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
 
@@ -50,7 +47,8 @@ import {MatRadioModule} from '@angular/material/radio';
       MatDatepickerModule,
       MatNativeDateModule,
       MatAutocompleteModule,
-      MatRadioModule
+      MatRadioModule,
+      MatStepperModule
     ],
 
     exports: [
@@ -75,7 +73,8 @@ import {MatRadioModule} from '@angular/material/radio';
       MatDatepickerModule,
       MatNativeDateModule,
       MatAutocompleteModule,
-      MatRadioModule
+      MatRadioModule,
+      MatStepperModule
     ],
 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

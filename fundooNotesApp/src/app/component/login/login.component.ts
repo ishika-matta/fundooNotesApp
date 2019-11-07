@@ -52,13 +52,11 @@ export class LoginComponent implements OnInit {
     this.userObj = {
       email: this.email.value,
       password: this.password.value,
-      service: 'advance'
     };
     this.result = this.userService.loginUser(this.userObj);
 
     this.userService.loginUser(this.userObj).subscribe((response: any) => {
       console.log(response);
-      this.openSnackBar('Login successfull', 'Dismiss');
       localStorage.setItem('userId', response.userId);
       localStorage.setItem('id', response.id);
       localStorage.setItem('email', response.email);

@@ -4,14 +4,11 @@
 </button>
 </div>
 
-<mat-menu #reminderMenu="matMenu" yPosition="below">
+<!-- <owl-date-time-inline [(ngModel)]="selectedMoment"></owl-date-time-inline> -->
+
+ <mat-menu #reminderMenu="matMenu" yPosition="below">
   <button mat-menu-item [matMenuTriggerFor]="date">Pick date</button>
-  <!-- <button mat-menu-item>Pick time</button> -->
-</mat-menu>
-
-
- 
-
+ </mat-menu>
 
 
 <mat-menu #date="matMenu">
@@ -22,4 +19,4 @@
               </mat-form-field>
 
               <button mat-button (click)="onSave(card,picker)">Save</button>
-</mat-menu>
+</mat-menu> 

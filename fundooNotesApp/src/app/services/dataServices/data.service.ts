@@ -15,6 +15,7 @@ export class DataService {
   private quesSource = new BehaviorSubject('0');
   quesMessage = this.quesSource.asObservable();
 
+ 
   message: string;
 
   constructor() { }

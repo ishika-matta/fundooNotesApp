@@ -52,6 +52,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  gotoCart(){
+    this.router.navigate(['/cart']);
+  }
+
   gotoNotes() {
     this.router.navigate(['/home']);
   }

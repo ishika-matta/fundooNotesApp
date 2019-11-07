@@ -22,8 +22,8 @@
 
 
 
-      <button mat-button class="toolbar-icons" matTooltip="Refresh">
-        <mat-icon >refresh</mat-icon>
+      <button mat-button class="toolbar-icons" matTooltip="Cart" (click)="gotoCart()">
+        <mat-icon >shopping_cart</mat-icon>
       </button>
       <div *ngIf="show">
       <button mat-button class="toolbar-icons" matTooltip="List View" mat-button (click)="toggle()">

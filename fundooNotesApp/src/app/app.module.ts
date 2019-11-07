@@ -13,6 +13,7 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
 import { HttpService } from './services/httpServices/http.service';
 import { UserService } from './services/userServices/user.service';
 import { NoteService } from './services/noteServices/note.service';
+import { ProductCartService } from './services/productCartServices/product-cart.service';
 import { NoteLabelService } from './services/noteLabelServices/note-label.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -53,6 +54,8 @@ import { CollabDialogBoxComponent } from './component/collab-dialog-box/collab-d
 import { QuestionAnswerComponent } from './component/question-answer/question-answer.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { CardComponent } from './component/card/card.component';
+import { CartComponent } from './component/cart/cart.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -89,6 +92,7 @@ import { CardComponent } from './component/card/card.component';
     CollabDialogBoxComponent,
     QuestionAnswerComponent,
     CardComponent,
+    CartComponent,
    
   ],
 
@@ -107,6 +111,7 @@ import { CardComponent } from './component/card/card.component';
     ImageCropperModule,
     MatTabsModule,
     AutosizeModule,
+    MatTooltipModule,
     MatDatepickerModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
@@ -120,6 +125,7 @@ import { CardComponent } from './component/card/card.component';
     UserService,
     NoteService,
     NoteLabelService,
+    ProductCartService,
     MatDatepickerModule
   ],
 

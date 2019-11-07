@@ -1,0 +1,196 @@
+<div *ngIf="productId=='5bfe361553c3df0040d852a6'">
+<div class="stepper" fxFlex='100'>
+  <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Sign in</ng-template>
+        <span class="title">Shopping Cart</span>
+        <mat-divider></mat-divider>
+        <div class="s1" fxLayout="row">
+          <mat-card>$99 per month
+            advance</mat-card>
+          <div class="next">
+            <span class="choice">advance Pack Details</span>
+            <br><span class="details">*Ability to add title, description, images, labels, checklist and colors</span>
+          </div>
+          <div class="next">
+            <span class="top">price</span>
+            <br><span class="choice">$ 99</span>
+          </div>
+          <div class="next">
+            <span class="top">validity</span>
+            <br><span class="choice"> per month</span>
+          </div>
+
+          <div class="next-step" fxLayout="column" fxLayoutAlign="center center">
+            <span class="details">Subtotal(1 item) : $99</span>
+            <button mat-button matStepperNext color="primary">Proceed to Checkout</button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <span class="sub">Subtotal ( 1 item ): $99</span>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" >
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Review</ng-template>
+        <span class="title">Review your Order</span>
+        <mat-divider></mat-divider>
+        <div class="s1" fxLayout="row">
+          <mat-card>$99 per month
+            advance</mat-card>
+          <div class="next">
+            <span class="choice">advance Pack Details</span>
+            <br><span class="details">*Ability to add title, description, images, labels, checklist and colors</span>
+          </div>
+          <div class="next">
+            <span class="top">price</span>
+            <br><span class="choice">$ 99</span>
+          </div>
+          <div class="next">
+            <span class="top">validity</span>
+            <br><span class="choice"> per month</span>
+          </div>
+
+          <div class="next-step" fxLayout="column" fxLayoutAlign="center center">
+            <button mat-button matStepperNext color="primary" (click)="onOrder()">Place your order</button>
+            <span class="details">Subtotal(1 item) : $99</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="footer" fxLayout="row">
+          <div class="textbox">
+            <textarea rows="6" cols="30" placeholder="enter billing address" [formControl]="address" required></textarea>
+          </div>
+          <div fxLayout="column">
+            <span class="details">
+              payment method
+            </span>
+            <span class="choice">Cash on Delivery</span>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step isEditable = false;>
+      <ng-template matStepLabel>Complete</ng-template>
+      <span class="title">Order List</span>
+      <mat-divider></mat-divider>
+      <div class="s1" fxLayout="row">
+        <mat-card>$99 per month
+          advance</mat-card>
+        <div class="next">
+          <span class="choice">advance Pack Details</span>
+          <br><span class="details">*Ability to add title, description, images, labels, checklist and colors</span>
+        </div>
+        <div class="next">
+          <span class="choice">$ 99</span>
+          <br><span class="top">per month</span>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+</div>
+
+
+
+<div *ngIf="productId=='5bfe362b53c3df0040d852a7'">
+        <div class="stepper" fxFlex='100'>
+          <mat-horizontal-stepper labelPosition="bottom" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Sign in</ng-template>
+                <span class="title">Shopping Cart</span>
+                <mat-divider></mat-divider>
+                <div class="s1" fxLayout="row">
+                  <mat-card>$49 per month
+                    basic</mat-card>
+                  <div class="next">
+                    <span class="choice">Basic Pack Details</span>
+                    <br><span class="details">*Ability to add only title and description</span>
+                  </div>
+                  <div class="next">
+                    <span class="top">price</span>
+                    <br><span class="choice">$ 49</span>
+                  </div>
+                  <div class="next">
+                    <span class="top">validity</span>
+                    <br><span class="choice"> per month</span>
+                  </div>
+        
+                  <div class="next-step" fxLayout="column" fxLayoutAlign="center center">
+                    <span class="details">Subtotal(1 item) : $49</span>
+                    <button mat-button matStepperNext color="primary">Proceed to Checkout</button>
+                  </div>
+                </div>
+                <mat-divider></mat-divider>
+                <span class="sub">Subtotal ( 1 item ): $49</span>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Review</ng-template>
+                <span class="title">Review your Order</span>
+                <mat-divider></mat-divider>
+                <div class="s1" fxLayout="row">
+                  <mat-card>$49 per month
+                    basic</mat-card>
+                  <div class="next">
+                    <span class="choice">Basic Pack Details</span>
+                    <br><span class="details">*Ability to add only title and description</span>
+                  </div>
+                  <div class="next">
+                    <span class="top">price</span>
+                    <br><span class="choice">$ 49</span>
+                  </div>
+                  <div class="next">
+                    <span class="top">validity</span>
+                    <br><span class="choice"> per month</span>
+                  </div>
+        
+                  <div class="next-step" fxLayout="column" fxLayoutAlign="center center">
+                    <button mat-button matStepperNext color="primary" (click)="onOrder()">Place your order</button>
+                    <span class="details">Subtotal(1 item) : $49</span>
+                  </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="footer" fxLayout="row">
+                  <div class="textbox">
+                    <textarea rows="6" cols="30" placeholder="enter billing address" [formControl]="address" required></textarea>
+                  </div>
+                  <div fxLayout="column">
+                    <span class="details">
+                      payment method
+                    </span>
+                    <span class="choice">Cash on Delivery</span>
+                  </div>
+                </div>
+                
+              </form>
+            </mat-step>
+            <mat-step isEditable = false;>
+              <ng-template matStepLabel>Complete</ng-template>
+              <span class="title">Order List</span>
+              <mat-divider></mat-divider>
+              <div class="s1" fxLayout="row">
+                <mat-card>$49 per month
+                  basic</mat-card>
+                <div class="next">
+                  <span class="choice">Basic Pack Details</span>
+                  <br><span class="details">*Ability to add only title and description</span>
+                </div>
+                <div class="next">
+                  <span class="choice">$ 49</span>
+                  <br><span class="top">per month</span>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+        </div>
+
+        <div>
+          <h1>The cart is empty</h1>
+        </div>

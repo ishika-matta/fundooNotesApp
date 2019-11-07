@@ -23,14 +23,15 @@ export class ChangeColorComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
   changeColor(colors, card) {
     try {
+      if(card){
       this.noteObj = {
         'noteIdList': [card],
         'color': colors,
       };
-
       this.noteService.changeColorNotes(this.noteObj).subscribe((response: any) => {
         console.log(response);
         //get notes
@@ -38,6 +39,11 @@ export class ChangeColorComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
+    }
+    else{
+      console.log('without note id color emit', colors)
+      this.messageEvent.emit(colors);
+    }
     } catch (err) {
       return err;
     }
