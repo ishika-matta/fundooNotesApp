@@ -40,9 +40,9 @@
           <div class="details">
             {{firstName+' '+lastName}}
           </div>
-          <div class="details">
+          <!-- <div class="details">
             {{ today | date:'medium' }}
-          </div>
+          </div> -->
           <div>
             <button class="btn" matTooltip="reply" mat-button (click)=toggleReply()>
               <mat-icon>reply</mat-icon>
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div innerHTML="{{quora.questionAndAnswerNotes[0].message}}"></div>
-        <div *ngIf='showReply' >
+        <div *ngIf='showReply==true' >
           <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
            <button  mat-button (click)=questionReply(quora.questionAndAnswerNotes[0].id) >Reply </button>
           </div>
@@ -67,4 +67,52 @@
 
   </div>
 
+</div>
+
+
+
+
+
+
+
+
+
+
+<div *ngFor="let quora of quesAns ">
+    <div *ngIf="quora.isApproved==true && quora.parentId" class="qa">
+<div class='qa' fxLayout='row' fxLayoutGap=20px>
+  <div>
+    <button mat-mini-fab color="warn">{{firstName[0] | uppercase}}</button>
+  </div>
+  <div fxLayout='column' fxLayoutGap=12px>
+    <div fxLayout='row' fxLayoutGap=7px>
+      <div class="details">
+        {{firstName+' '+lastName}}
+      </div>
+      <!-- <div class="details">
+        {{ today | date:'medium' }}
+      </div> -->
+      <div>
+        <button class="btn" matTooltip="reply" mat-button (click)=toggleReply()>
+          <mat-icon>reply</mat-icon>
+        </button>
+        <button class="btn" matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes.id)>
+            <mat-icon>thumb_up_alt</mat-icon>
+          </button>
+          <button matTooltip="rate" mat-button (click)=onRate(quora.questionAndAnswerNotes.id,no)>
+              <mat-icon>rate</mat-icon>
+            </button>
+      </div>
+    </div>
+    <div innerHTML="{{quora.message}}"></div>
+    
+    <div *ngIf='showReply== true'>
+      <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
+       <button  mat-button (click)=questionReply(quora.id) >Reply </button>
+      </div>
+
+
+  </div>
+</div>
+</div>
 </div>
