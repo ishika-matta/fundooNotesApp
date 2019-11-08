@@ -5,9 +5,9 @@
       <div fxFlex="8">
         <button mat-fab color="primary">{{firstName}}</button>
       </div>
-      <div fxLayout="column" fxLayoutAlign="center start">
-       <span class="user-name">{{firstName}} {{lastName}} (owner)</span> 
-       <span class="user-email">{{email}}</span> 
+      <div fxLayout="column">
+       <span class="user-name" fxLayoutAlign="center center">{{firstName}} {{lastName}} (owner)</span> 
+       <span class="user-email" fxLayoutAlign="center center">{{email}}</span> 
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <div fxFlex="8">
           <button mat-fab color="primary"></button>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center start">
+        <div fxLayout="column">
          <span class="user-name">
            <input matInput placeholder="Person or email to share with" [(ngModel)]="coll" [formControl]="collab_user" (keyup)="searchList(coll)" [matAutocomplete]="auto">
            <mat-autocomplete #auto="matAutocomplete">
@@ -26,35 +26,30 @@
          
           </span> 
         </div>
-         <div fxLayoutAlign="end end" fxLayout="row"><button mat-button (click)="onCreateCollab()">
+         <div fxLayoutAlign="end end" fxLayout="row"><button mat-icon-button (click)="onCreateCollab()">
             <mat-icon matSuffix> done </mat-icon>
       </button>
-    </div>
-        
+    </div>   
       </div>
 
 
       <div fxLayout="row" *ngFor="let collab of collabs">
-        <div fxFlex="8">
+        <div fxFlex="4">
           <button mat-fab color="primary">{{collab.firstName[0] | uppercase}}</button>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center start">
-          <span class="user-name"> {{collab.firstName}} {{collab.lastName}} </span>
-          <span class="user-name"> {{collab.email}}  </span>
+        <div fxLayout="column">
+          <span class="user-name" fxLayoutAlign="center center"> {{collab.firstName}} {{collab.lastName}} </span>
+          <span class="user-name" fxLayoutAlign="center center"> {{collab.email}}  </span>
         </div>
 
-         <div fxLayoutAlign="end end"><button mat-button (click)="onDeleteCollab(collab.userId)">
+         <div fxLayoutAlign="end end"><button mat-icon-button (click)="onDeleteCollab(collab.userId)">
             <mat-icon matSuffix> close </mat-icon>
       </button>
-    </div>
-        
+    </div>        
       </div>
 
       <mat-divider></mat-divider>
       <div  fxLayout="row" fxLayoutAlign="end end">
         <button mat-button mat-button (click)="onSave()">Done</button>
       </div>
-
-
- 
   </div>

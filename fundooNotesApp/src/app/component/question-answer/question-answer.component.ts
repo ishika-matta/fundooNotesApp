@@ -26,6 +26,9 @@ export class QuestionAnswerComponent implements OnInit {
   url: any;
   quesAnsLength:any;
   quesAns:any;
+  likes:number=0;
+  dislikes:number=0;
+  replyhere:any;
   
   constructor(private dataService: DataService,
     private questionAnswerService: QuestionAnswerService,
@@ -47,6 +50,8 @@ export class QuestionAnswerComponent implements OnInit {
     }
     this.questionAnswerService.replyQuestion(options).subscribe((response) => {
       console.log(response);
+      this.replyhere=response;
+      console.log(this.replyhere);
       this.toggleReply();
       this.getNoteDetails(this.quesToken);
       this.AnsValue = '';
@@ -94,14 +99,32 @@ export class QuestionAnswerComponent implements OnInit {
     });
   }
 
+  onReply(id)
+  {
+    console.log('id',id);
+    console.log('length of qa',this.quesAnsLength);
+    
+    for (var i = 0; i < this.quesAnsLength; i++) {
+      if (this.quesAns[i].id == id) {
+      this.replyhere = this.quesAns[i].id;
+      console.log('opening reply',this.replyhere);      
+      this.toggleReply();
+      return;
+      }
+  }
+}
+
+
   onLike(id){
     let options = {
       "like": true,
       "notesId": id
     }
     this.questionAnswerService.addLike(options).subscribe((response) => {
-      console.log('id..........', response);
-      this.dataService.changeMessage("Question added");
+      console.log('likes', response);
+      this.likes=response.data.details.count;
+      console.log('likes in no ', this.likes);
+      this.dataService.changeMessage("Like added");
       this.toggle();
       this.getNoteDetails(this.quesToken);
     }, (error) => {
@@ -109,19 +132,36 @@ export class QuestionAnswerComponent implements OnInit {
     });
   }
 
-  onRate(id,no){
+  onDislike(id){
     let options = {
-      "rate": no,
+      "like": false,
       "notesId": id
     }
-    this.questionAnswerService.addRatings(options).subscribe((response) => {
-      console.log('id..........', response);
-      this.dataService.changeMessage("Question added");
+    this.questionAnswerService.addLike(options).subscribe((response) => {
+      console.log('dislikes', response);
+      this.dislikes=response.data.details.count;
+      console.log('dislikes in no ', this.dislikes);
+      this.dataService.changeMessage("Like added");
       this.toggle();
       this.getNoteDetails(this.quesToken);
     }, (error) => {
       console.log(error);
     });
   }
+
+  // onRate(id,no){
+  //   let options = {
+  //     "rate": no,
+  //     "notesId": id
+  //   }
+  //   this.questionAnswerService.addRatings(options).subscribe((response) => {
+  //     console.log('id..........', response);
+  //     this.dataService.changeMessage("Ratings added");
+  //     this.toggle();
+  //     this.getNoteDetails(this.quesToken);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
 }
 
