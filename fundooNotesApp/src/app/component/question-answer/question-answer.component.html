@@ -47,15 +47,15 @@
             <button mat-icon-button class="btn" matTooltip="reply" mat-button (click)=onReply(quora.questionAndAnswerNotes[0].id)>
               <mat-icon>reply</mat-icon>
             </button>
-            <button mat-icon-button class="btn" matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes[0].id)>
+            <!-- <button mat-icon-button class="btn" matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes[0].id)>
                 <mat-icon>thumb_up_alt</mat-icon>
-              </button>
-              <button mat-icon-button class="btn" matTooltip="dislike" mat-button (click)=onDislike(quora.questionAndAnswerNotes[0].id)>
+              </button> -->
+              <!-- <button mat-icon-button class="btn" matTooltip="dislike" mat-button (click)=onDislike(quora.questionAndAnswerNotes[0].id)>
                 <mat-icon>thumb_down_alt</mat-icon>
-              </button>
-              <div *ngIf='likes!=0 || dislikes!=0 '>
+              </button> -->
+              <!-- <div *ngIf='likes!=0 || dislikes!=0 '>
                 Count of likes:{{likes-dislikes}}
-              </div>
+              </div> -->
               <!-- <button matTooltip="rate" mat-button (click)=onRate(quora.questionAndAnswerNotes[0].id,no)>
                   <mat-icon>rate</mat-icon>
                 </button> -->
@@ -104,6 +104,10 @@
           <button mat-icon-button class="btn" matTooltip="dislike" mat-button (click)=onDislike(quora.id)>
             <mat-icon>thumb_down_alt</mat-icon>
           </button>
+          <div *ngIf="quora.like.length != 0 && counter(quora.id)">
+            <span> total no of likes</span>
+            {{countLikes}}
+            </div>
           <!-- <div *ngIf='likes!=0'>
             Count of likes:{{likes}}
           </div>  -->
@@ -112,7 +116,9 @@
             </button> -->
       </div>
     </div>
+   
     <div innerHTML="{{quora.message}}"></div>
+    <!-- <div>cvdfv dfv d vzd{{quora.like.length}}</div> -->
     
     <div *ngIf='showReply== true && replyhere == quora.id'>
       <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
