@@ -37,7 +37,7 @@ export class RemindMeComponent implements OnInit {
   }
   else{
     console.log('without note id date emit', this.date)
-      this.messageEvent.emit(this.date);
+      this.reminderEvent.emit(this.date);
   }
   }
 

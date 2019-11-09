@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class IconTrayComponent implements OnInit {
   message: any;
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() reminderEvent = new EventEmitter<string>();
+  @Output() labelEvent = new EventEmitter<string>();
   @Input() card: any;
   @Input() component: any;
   @Input() isDeleted: any;
@@ -21,5 +23,15 @@ export class IconTrayComponent implements OnInit {
   receiveMessage($event) {
     this.message = $event;
     this.messageEvent.emit(this.message);
+  }
+
+  receiveReminderMessage($event) {
+    this.reminderEvent.emit($event);
+    console.log($event)
+  }
+
+  receiveLabelMessage($event) {
+    this.labelEvent.emit($event);
+    console.log($event)
   }
 }

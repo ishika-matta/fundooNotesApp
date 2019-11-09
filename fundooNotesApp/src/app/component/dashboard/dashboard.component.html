@@ -6,14 +6,10 @@
         menu
       </mat-icon>
       <img src="../../../assets/keep.png" class="logo-image">
-      <p class="title">FUNDOO NOTES</p>
+      <p class="title" (click)="gotoNotes()">FUNDOO NOTES</p>
       <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
 
         <mat-icon matPrefix>search</mat-icon>
-
-
-
-
         <input matInput routerLink="/search-bar" (keyup)="onKeyUp($event)" type="text" 
           cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype">
 

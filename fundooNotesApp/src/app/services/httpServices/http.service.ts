@@ -26,6 +26,15 @@ export class HttpService {
       return this.http.post(this.baseUrl + url, data, this.httpOptions);
     }
   }
+  postCallAddNotes(data, url) {
+    const httpOptionsAddNotes = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Authorization': localStorage.getItem('id')
+      })
+    };
+    return this.http.post(this.baseUrl + url, data, httpOptionsAddNotes);
+  }
 
   patchCall(data, url, auth) {
     if (auth == false) {

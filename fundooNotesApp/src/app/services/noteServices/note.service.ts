@@ -13,8 +13,17 @@ export class NoteService {
 
   addNotes(data) {
     this.url = 'notes/addNotes';
-    this.auth = true;
-    return this.httpSvc.postCall(data, this.url, this.auth);
+    //this.auth = true;
+    return this.httpSvc.postCallAddNotes(this.getEncodedData(data), this.url);
+  }
+  getEncodedData(data) {
+    const formBody = [];
+    for (const property in data) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(data[property]);
+      formBody.push(encodedKey + '=' + encodedValue);
+    }
+    return formBody.join ('&');
   }
 
   archiveNotes(data) {
@@ -121,4 +130,22 @@ export class NoteService {
     return this.httpSvc.getCall( this.url, this.auth);
   }
 
+  addCheckList(data,noteId){
+    this.url = 'notes/' + noteId+'/checklist/add';
+    this.auth = true;
+    return this.httpSvc.postCall(data, this.url, this.auth);
+  }
+
+  removeCheckList(data){
+    this.url = 'notes/' + data.noteId +'/checklist/'+ data.checkListId +'/remove';
+    this.auth = true;
+    return this.httpSvc.postCall(data, this.url, this.auth);
+
+  }
+
+  updateCheckList(data){
+    this.url = 'notes/' + data.noteId +'/checklist/'+ data.checkListId +'/update';
+    this.auth = true;
+    return this.httpSvc.postCall(data, this.url, this.auth);
+  }
 }

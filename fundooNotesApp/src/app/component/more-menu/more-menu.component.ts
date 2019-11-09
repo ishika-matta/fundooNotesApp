@@ -23,8 +23,11 @@ export class MoreMenuComponent implements OnInit {
   durationInSeconds = 5;
   noteDetails: any;
   onAskQuesAns: any;
+  showCheckbox: boolean=false;
+  messageShowCheckboxes=' Note Checkboxes';
 
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() labelEvent = new EventEmitter();
   @Input() card: any;
 
   constructor(private router:Router, private noteService: NoteService, private noteLabelService: NoteLabelService,
@@ -84,24 +87,34 @@ export class MoreMenuComponent implements OnInit {
     });
   }
 
-  onOpenAddLabel(labelid) {
-    console.log('note', this.card);
+  onOpenAddLabel(labelid,labelname) {
+    if(!this.card){
+      console.log('adding a label without note id');
+      let data={
+        labelid,
+        labelname
+      }
+      console.log('adding a label without note id', data);
+      this.labelEvent.emit(data);
+
+    }else{
     this.noteObj = {
       labelId: labelid,
       noteId: this.card
     };
      this.noteService.addLabelToNotes(this.noteObj).subscribe((response: any) => {
-      console.log(response);
+      console.log('adding a label',response);
       this.messageEvent.emit(this.messageLabels);
     }, (error) => {
       console.log(error);
     });
   }
+}
 
 
   getAllLabels() {
     this.noteLabelService.getNoteLabels().subscribe((response: any) => {
-      console.log(response);
+     // console.log(response);
       this.labels = response.data.details.reverse();
       // this.dataService.changeMessage("fundoo")
     }, (error) => {
@@ -128,4 +141,24 @@ export class MoreMenuComponent implements OnInit {
       console.log(error);
     });
   }
-}
+
+  
+
+    onShowCheckboxes(card){
+      this.showCheckbox = !this.showCheckbox;
+      if(card){   
+      console.log('showwww', this.showCheckbox)
+      this.options={
+        noteIdList: [card],
+        show:this.showCheckbox
+      }
+      this.dataService.viewCheckbox(this.options);
+    }
+    else{
+      console.log('not card')
+      this.dataService.viewCheckbox(this.showCheckbox);
+    }
+  }
+  
+  }
+

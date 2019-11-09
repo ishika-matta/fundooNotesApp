@@ -1,6 +1,6 @@
 export class TakeNote {
-    title: String;
-    description: 'string';
+    title?: String;
+    description?: 'string';
     // isPined:"boolean";
     // isArchived: "boolean";
     isDeleted?: Boolean;
@@ -10,4 +10,6 @@ export class TakeNote {
     // userId: "string";
     service?: String;
     label?: String;
+    labelIdList?:any;
+    checklist?:any;
 }

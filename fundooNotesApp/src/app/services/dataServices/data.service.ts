@@ -15,6 +15,9 @@ export class DataService {
   private quesSource = new BehaviorSubject('0');
   quesMessage = this.quesSource.asObservable();
 
+  private viewCheckSource = new BehaviorSubject('default message');
+  viewCheckMessage = this.viewCheckSource.asObservable();
+
  
   message: string;
 
@@ -30,6 +33,11 @@ export class DataService {
   viewList(message:any)
   {
     this.viewSource.next(message);
+  }
+
+  viewCheckbox(message:any)
+  {
+    this.viewCheckSource.next(message);
   }
   
 }

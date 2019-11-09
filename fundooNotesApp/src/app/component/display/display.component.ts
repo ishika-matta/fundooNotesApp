@@ -4,6 +4,7 @@ import { TakeNote } from 'src/app/models/take-note.model';
 import { MatDialog } from '@angular/material';
 import { DataService } from 'src/app/services/dataServices/data.service';
 import { NoteService } from 'src/app/services/noteServices/note.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-display',
@@ -20,26 +21,41 @@ export class DisplayComponent implements OnInit {
   result1: any;
   noteLabel: any;
   view: any;
-  ques:any;
+  ques: any;
+  showCheckbox: any;
+  cardParticularId: any;
+  appCheckListItem: any;
+  item: any;
   @Input() notes: any;
   @Input() component: any;
   @Output() messageEvent = new EventEmitter<string>();
+  checkListItem = new FormControl();
+  checked = false;
 
 
 
   constructor(public dialog: MatDialog, private dataService: DataService, private noteService: NoteService) { }
 
   ngOnInit() {
-    
+
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message;
     });
-    this.dataService.viewMessage.subscribe((res)=>{
-      this.view=res;
+
+    this.dataService.viewMessage.subscribe((res) => {
+      this.view = res;
     })
 
-    this.dataService.quesMessage.subscribe((res)=>{
-      this.ques=res;
+    this.dataService.quesMessage.subscribe((res) => {
+      this.ques = res;
+    })
+
+    this.dataService.viewCheckMessage.subscribe((res: any) => {
+      this.cardParticularId = res.noteIdList;
+      console.log(this.cardParticularId)
+      if (res.show == true) {
+        this.showCheckbox = res.show;
+      }
     })
   }
 
@@ -53,7 +69,7 @@ export class DisplayComponent implements OnInit {
           title: note.title,
           description: note.description,
           color: note.color,
-          component1:this.component,
+          component1: this.component,
         }
       });
     dialogRef.afterClosed().subscribe(
@@ -73,12 +89,12 @@ export class DisplayComponent implements OnInit {
       'noteId': noteId,
       'labelId': labelId
     };
-      this.noteService.removeLabelToNote(obj).subscribe((response: any) => {
-        console.log(response);
-        this.messageEvent.emit(this.message);
-      }, (error) => {
-        console.log(error);
-      });
+    this.noteService.removeLabelToNote(obj).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.message);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   onReminderClick(reminderId, noteId) {
@@ -86,11 +102,74 @@ export class DisplayComponent implements OnInit {
       'noteIdList': [noteId],
       'reminder': reminderId
     };
-      this.noteService.removeReminderToNote(obj).subscribe((response: any) => {
+    this.noteService.removeReminderToNote(obj).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.message);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  onAddCheckList(noteId) {
+    const obj = {
+      'itemName': this.checkListItem.value,
+      'status': 'open'
+    };
+    this.noteService.addCheckList(obj, noteId).subscribe((response: any) => {
+      console.log(response);
+      this.item = '';
+      this.showCheckbox = true;
+      this.messageEvent.emit(this.message);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  onRemoveCheckList(noteId, checkListId) {
+    const obj = {
+      'noteId': noteId,
+      'checkListId': checkListId
+    };
+    this.noteService.removeCheckList(obj).subscribe((response: any) => {
+      console.log(response);
+      this.item = '';
+      this.messageEvent.emit(this.message);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  onUpdateCheckList(noteId, checkListId, status, itemName) {
+    if (status == 'open') {
+      const obj = {
+        'noteId': noteId,
+        'checkListId': checkListId,
+        'itemName': itemName,
+        'status': 'close'
+      };
+      this.noteService.updateCheckList(obj).subscribe((response: any) => {
         console.log(response);
+        this.item = '';
         this.messageEvent.emit(this.message);
       }, (error) => {
         console.log(error);
       });
+    }
+
+    if (status == 'close') {
+      const obj = {
+        'noteId': noteId,
+        'checkListId': checkListId,
+        'itemName': itemName,
+        'status': 'open'
+      };
+      this.noteService.updateCheckList(obj).subscribe((response: any) => {
+        console.log(response);
+        this.item = '';
+        this.messageEvent.emit(this.message);
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 }

@@ -19,9 +19,9 @@
       <div *ngFor="let remindMe of note.reminder">
         <mat-chip-list>
           <mat-chip class="hide-icon">{{remindMe |  date:'short'}}
-            <button mat-icon-button (click)="onReminderClick(note.reminder,note.id)">
+             <button mat-icon-button (click)="onReminderClick(note.reminder,note.id)">
               <mat-icon>close</mat-icon>
-            </button>
+            </button> 
           </mat-chip>
         </mat-chip-list>
         <div>
@@ -34,6 +34,44 @@
             {{collabName.firstName[0] | uppercase}}</button>
         </div>
       </div>
+
+      
+       <div *ngFor="let particularCheckListItem of note.noteCheckLists">
+          <div fxLayout="row" *ngIf="particularCheckListItem.isDeleted== false &&  particularCheckListItem.status=='open'">  
+          <div fxFlex="20">
+              <button mat-icon-button (click)="onUpdateCheckList(note.id,particularCheckListItem.id,particularCheckListItem.status,particularCheckListItem.itemName)">
+            <mat-icon>check_box_outline_blank</mat-icon> </button></div>
+            <div fxFlex="60" fxLayoutAlign="center center"> {{particularCheckListItem.itemName}}</div>
+              <div fxFlex="20" fxLayoutAlign="end end">
+              <button mat-icon-button (click)="onRemoveCheckList(note.id,particularCheckListItem.id)">
+                <mat-icon>close</mat-icon>
+                </button>
+              </div>
+         </div> 
+
+         <div fxLayout="row" *ngIf="particularCheckListItem.isDeleted== false &&  particularCheckListItem.status=='close'">  
+            <div fxFlex="20">
+                <button mat-icon-button (click)="onUpdateCheckList(note.id,particularCheckListItem.id,particularCheckListItem.status,particularCheckListItem.itemName)">
+              <mat-icon>check_box</mat-icon> </button></div>
+              <div fxFlex="60" fxLayoutAlign="center center"><s>{{particularCheckListItem.itemName}}</s> </div>
+                <div fxFlex="20" fxLayoutAlign="end end">
+                <button mat-icon-button (click)="onRemoveCheckList(note.id,particularCheckListItem.id)">
+                  <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+           </div> 
+
+      </div>
+
+        <div *ngIf="showCheckbox && cardParticularId==note.id">
+            <div fxLayout="row">
+                <div fxFlex="25"><mat-icon>add</mat-icon></div>
+                <div fxFlex="66" fxLayoutAlign="center center">
+                  <input matInput type="text" placeholder="list item" [(ngModel)]="item" [formControl]="checkListItem">  </div>
+                  <div fxFlex="8"> <mat-icon (click)="onAddCheckList(note.id)">create</mat-icon></div>
+            </div>   
+            </div> 
+    
       <div fxLayoutAlign="start start">
         <app-icon-tray class="icon-tray" [card]=note.id [component]="component" (messageEvent)="receiveMessage($event)">
         </app-icon-tray>
@@ -83,6 +121,40 @@
             {{collabName.firstName[0] | uppercase}}</button>
         </div>
       </div>
+      <div *ngFor="let particularCheckListItem of note.noteCheckLists">
+          <div fxLayout="row" *ngIf="particularCheckListItem.isDeleted== false &&  particularCheckListItem.status=='open'">  
+          <div fxFlex="20">
+              <button mat-icon-button (click)="onUpdateCheckList(note.id,particularCheckListItem.id,particularCheckListItem.status,particularCheckListItem.itemName)">
+            <mat-icon>check_box_outline_blank</mat-icon> </button></div>
+            <div fxFlex="60" fxLayoutAlign="center center"> {{particularCheckListItem.itemName}}</div>
+              <div fxFlex="20" fxLayoutAlign="end end">
+              <button mat-icon-button (click)="onRemoveCheckList(note.id,particularCheckListItem.id)">
+                <mat-icon>close</mat-icon>
+                </button>
+              </div>
+         </div> 
+
+         <div fxLayout="row" *ngIf="particularCheckListItem.isDeleted== false &&  particularCheckListItem.status=='close'">  
+            <div fxFlex="20">
+                <button mat-icon-button (click)="onUpdateCheckList(note.id,particularCheckListItem.id,particularCheckListItem.status,particularCheckListItem.itemName)">
+              <mat-icon>check_box</mat-icon> </button></div>
+              <div fxFlex="60" fxLayoutAlign="center center"><s>{{particularCheckListItem.itemName}}</s> </div>
+                <div fxFlex="20" fxLayoutAlign="end end">
+                <button mat-icon-button (click)="onRemoveCheckList(note.id,particularCheckListItem.id)">
+                  <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+           </div> 
+      </div>
+    
+      <div *ngIf="showCheckbox && cardParticularId==note.id">
+          <div fxLayout="row">
+              <div fxFlex="25"><mat-icon>add</mat-icon></div>
+              <div fxFlex="66" fxLayoutAlign="center center">
+                <input matInput type="text" placeholder="list item" [(ngModel)]="item" [formControl]="checkListItem">  </div>
+                <div fxFlex="8"> <mat-icon (click)="onAddCheckList(note.id)">create</mat-icon></div>
+          </div>   
+          </div> 
       <div fxLayoutAlign="start start">
         <app-icon-tray class="icon-tray" [card]=note.id [component]="component" (messageEvent)="receiveMessage($event)">
         </app-icon-tray>

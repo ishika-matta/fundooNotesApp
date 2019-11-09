@@ -22,6 +22,7 @@ import {MatNativeDateModule} from '@angular/material';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
 
@@ -48,7 +49,8 @@ import {MatStepperModule} from '@angular/material/stepper';
       MatNativeDateModule,
       MatAutocompleteModule,
       MatRadioModule,
-      MatStepperModule
+      MatStepperModule,
+      MatCheckboxModule
     ],
 
     exports: [
@@ -74,7 +76,8 @@ import {MatStepperModule} from '@angular/material/stepper';
       MatNativeDateModule,
       MatAutocompleteModule,
       MatRadioModule,
-      MatStepperModule
+      MatStepperModule,
+      MatCheckboxModule
     ],
 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

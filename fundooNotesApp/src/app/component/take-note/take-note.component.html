@@ -4,16 +4,85 @@
        [formControl]="title" placeholder="Title"></textarea>
      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
        placeholder="Take a note..." [(ngModel)]="des" [formControl]="description"></textarea>
-       <!-- <div>
+       
+       <!--reminder-->
+       <div *ngIf="reminder!= ''">
         <mat-chip-list>
-          <mat-chip class="hide-icon">{{reminder}}
+          <mat-chip class="hide-icon">{{reminder |  date:'short'}}
+              <button mat-icon-button (click)="onClearReminder()">
+                  <mat-icon>close</mat-icon>
+                </button>    
           </mat-chip>
         </mat-chip-list>
         <div>
         </div>
-      </div> -->
+      </div> 
+
+      <!--label-->
+         <div fxLayout="column">
+            <div *ngIf="labelName!= ''">
+          <div *ngFor="let labelName of labelNameArray">
+          <mat-chip-list>
+            <mat-chip class="hide-icon">{{labelName}}
+             <!-- <button mat-icon-button (click)="onClearLabel()">
+                <mat-icon>close</mat-icon>
+              </button>     -->
+            </mat-chip>
+            <span></span>
+          </mat-chip-list>
+        </div>
+        </div>   
+      </div>
+
+
+      <!--checkboxes-->
+      
+
+      <!-- adding-->
+      <div *ngIf="showCheckbox">
+          <div fxLayout="row">
+              <div fxFlex="25"><mat-icon>add</mat-icon></div>
+              <div fxFlex="66" fxLayoutAlign="center center">
+                  <input matInput type="text" placeholder="list item" [formControl]="item"  [(ngModel)]="itemModel">  </div>
+                  <div fxFlex="8"> <mat-icon (click)="onAddCheckList()">create</mat-icon></div>
+            </div>   
+        </div>
+      
+  
+        <!-- to show  -->
+  
+        <div *ngFor="let particularCheckListItem of checkListArray">
+            <div fxLayout="row" *ngIf=" particularCheckListItem.status=='open'">
+                <div fxFlex="20">
+                    <button mat-icon-button (click)="onUpdateCheckList(particularCheckListItem.status,particularCheckListItem.itemName)">
+                  <mat-icon>check_box_outline_blank</mat-icon> </button></div>
+                  <div fxFlex="60" fxLayoutAlign="center center"> {{particularCheckListItem.itemName}}</div>
+  
+            <div fxFlex="20" fxLayoutAlign="end end">
+                <button mat-icon-button (click)="onRemoveCheckList(particularCheckListItem.itemName)">
+                  <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+            
+          </div>
+
+         <div fxLayout="row" *ngIf="particularCheckListItem.status=='close'">  
+            <div fxFlex="20">
+                <button mat-icon-button (click)="onUpdateCheckList(particularCheckListItem.status,particularCheckListItem.itemName)">
+              <mat-icon>check_box</mat-icon> </button></div>
+              <div fxFlex="60" fxLayoutAlign="center center"><s>{{particularCheckListItem.itemName}}</s> </div>
+                <div fxFlex="20" fxLayoutAlign="end end">
+                <button mat-icon-button (click)="onRemoveCheckList(particularCheckListItem.itemName)">
+                  <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+           </div> 
+      </div> 
+     
+  
+      
      <div fxLayout="row" fxLayoutAlign="space-between">
-       <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)" (reminderEvent)="receiveReminderMessage($event)"></app-icon-tray>
+       <app-icon-tray [component]="component" (messageEvent)="receiveMessage($event)" (reminderEvent)="receiveReminderMessage($event)" (labelEvent)="receiveLabelMessage($event)"></app-icon-tray>
        <div><button mat-button class="info-button" (click)="postNotes()">Close</button></div>
      </div>
    </mat-card>
@@ -21,9 +90,9 @@
 
  <div *ngIf="show" (click)="toggle()" fxLayoutAlign="start center" class="take-note">
    <mat-card fxFlex="70" fxLayout="column" class="take-mat-card">
-     <mat-form-field>
-       <textarea input type="text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+     
+       <textarea rows="1" input type="text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
          placeholder="Take a note..." [(ngModel)]="des" [formControl]="description"></textarea>
-     </mat-form-field>
+     
    </mat-card>
  </div>
