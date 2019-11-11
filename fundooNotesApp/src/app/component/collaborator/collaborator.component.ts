@@ -33,13 +33,10 @@ export class CollaboratorComponent implements OnInit {
         card: card,
       }
     });
-
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
       this.messageEvent.emit(this.updatedMessage);
-
     })
-
   }
 }
 

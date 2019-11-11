@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NoteService } from 'src/app/services/noteServices/note.service';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-remind-me',
@@ -15,7 +16,7 @@ export class RemindMeComponent implements OnInit {
 
   public selectedMoment = new Date();
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,8 @@ export class RemindMeComponent implements OnInit {
 
     this.noteService.addUpdateReminderNotes(remindMeObj).subscribe((response: any) => {
       this.messageEvent.emit(this.message);
+      this.reminderEvent.emit(this.message);
+     // this.dataService.reminderMessage(this.date);
       this.getDateResponse();
     }, (error) => {
       console.log(error);

@@ -116,7 +116,6 @@
       </div>
       <div fxLayout="row wrap">
         <div *ngFor="let collabName of note.collaborators">
-
           <button matTooltip="{{collabName.email}}" mat-mini-fab class="hover-collab">
             {{collabName.firstName[0] | uppercase}}</button>
         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { NoteService } from '../../services/noteServices/note.service';
 import { MatSnackBar } from '@angular/material';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-archive-un',
@@ -16,12 +17,14 @@ export class ArchiveUnComponent implements OnInit {
 
   @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private noteService: NoteService, private snackBar: MatSnackBar) { }
+  constructor(private noteService: NoteService, private snackBar: MatSnackBar,
+    private dataService: DataService) { }
 
   ngOnInit() {
   }
 
   onArchive(card) {
+    if(card){
     this.noteObj = {
       'isArchived': true,
       'noteIdList': [card]
@@ -35,30 +38,14 @@ export class ArchiveUnComponent implements OnInit {
       console.log(error);
     });
   }
-
-  openSnackBar(msg, action) {
-    this.snackBar.open(msg, action);
+  else{
+      console.log('not card');
+      this.dataService.changeMessage(true);
+      this.openSnackBar('Note archived', 'Dismiss');
   }
-
-    
-      // onUnArchive(card) {
-      //   this.noteObj = {
-      //     'isArchived': false,
-      //     'noteIdList': [card]
-      //     };
-      //   this.options = {
-      //     data: this.noteObj,
-      //     purpose: 'archiveNotes',
-    
-      //   };
-      //     this.noteService. archiveNotes(this.noteObj).subscribe((response: any) => {
-      //        console.log(response);
-      //        this.openSnackBar('Note unarchived', 'Dismiss');
-      //         this.messageEvent.emit(this.message);
-      //     }, (error) => {
-      //       console.log(error);
-      //     });
-      //   }
-    
-
+}
+  openSnackBar(msg, action) {
+    this.snackBar.open(msg, action, {
+      duration: 2000});
+  }
 }

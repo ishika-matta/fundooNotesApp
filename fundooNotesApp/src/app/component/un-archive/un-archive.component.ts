@@ -38,9 +38,7 @@ export class UnArchiveComponent implements OnInit {
   }
 
   openSnackBar(msg, action) {
-    this.snackBar.open(msg, action);
+    this.snackBar.open(msg, action, {
+      duration: 2000});
   }
-
-
-
 }

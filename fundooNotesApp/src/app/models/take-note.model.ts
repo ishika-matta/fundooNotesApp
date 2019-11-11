@@ -12,4 +12,6 @@ export class TakeNote {
     label?: String;
     labelIdList?:any;
     checklist?:any;
+    isArchived?:any;
+    collaberators?:any;
 }

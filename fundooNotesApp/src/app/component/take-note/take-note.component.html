@@ -18,6 +18,15 @@
         </div>
       </div> 
 
+      <!--collaborators-->
+     <div fxLayout="row wrap">
+        <div *ngFor="let collab of collaboratorsArray">
+         <button matTooltip="{{collab.email}}" mat-mini-fab class="hover-collab">
+           {{collab.firstName[0] | uppercase}}</button>
+        </div>
+      </div> 
+     
+
       <!--label-->
          <div fxLayout="column">
             <div *ngIf="labelName!= ''">

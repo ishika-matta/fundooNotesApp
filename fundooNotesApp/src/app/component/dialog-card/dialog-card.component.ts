@@ -5,6 +5,7 @@ import { Inject } from '@angular/core';
 import { NoteService } from '../../services/noteServices/note.service';
 import { TakeNote } from '../../models/take-note.model';
 import { FormControl } from '@angular/forms';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-dialog-card',
@@ -19,14 +20,17 @@ export class DialogCardComponent implements OnInit {
   description: any = new FormControl();
   message = 'dailog card';
   dialogColor:any;
+  reminder:any;
   
 
   noteUpdateMessage = 'Note updated';
-  //component = 'dialog-card';
+  component = 'dialog-card';
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() reminderEvent = new EventEmitter<string>();
  
 
   constructor(
+    private dataService: DataService,
     public dialogRef: MatDialogRef<DisplayComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData , private noteService: NoteService) {
     this.noteObj = {
@@ -35,12 +39,23 @@ export class DialogCardComponent implements OnInit {
       title: dialogData.title,
       description: dialogData.description,
       color: dialogData.color,
+      reminder: dialogData.reminder,
       component2:dialogData.component1,
     };
     this.dialogColor=this.noteObj.color;
   }
 
   ngOnInit() {
+    //reminder
+    // this.dataService.viewCheckMessage.subscribe((res: any) => {
+    //   console.log(res);
+    //   if (res) {
+    //     this.reminder = res;
+    //     console.log('showwww in if', this.reminder)
+    //   }
+    //   else
+    //     console.log('showwww in else', this.reminder)
+    // });
   }
 
   onUpdateNote() {
@@ -77,6 +92,18 @@ export class DialogCardComponent implements OnInit {
   receiveMessage($event) {
     this.message = $event;
     this.dialogColor=$event;
+  }
+
+  receiveReminderMessage($event) {
+    this.reminder = $event;
+    console.log('event received in take note', this.reminder);
+    // this.reminderEvent.emit(this.reminder);
+  }
+
+  
+
+  onClearReminder() {
+    this.reminder = '';
   }
 }
 

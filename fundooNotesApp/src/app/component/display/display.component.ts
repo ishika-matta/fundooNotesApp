@@ -69,6 +69,7 @@ export class DisplayComponent implements OnInit {
           title: note.title,
           description: note.description,
           color: note.color,
+          reminder: note.reminder,
           component1: this.component,
         }
       });

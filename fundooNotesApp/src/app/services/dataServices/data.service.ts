@@ -18,6 +18,12 @@ export class DataService {
   private viewCheckSource = new BehaviorSubject('default message');
   viewCheckMessage = this.viewCheckSource.asObservable();
 
+  private collabSource = new BehaviorSubject('');
+  collabCurrentMessage = this.collabSource.asObservable();
+
+  private reminderSource = new BehaviorSubject('');
+  reminderCurrentMessage = this.collabSource.asObservable();
+
  
   message: string;
 
@@ -38,6 +44,14 @@ export class DataService {
   viewCheckbox(message:any)
   {
     this.viewCheckSource.next(message);
+  }
+
+  collabMessage(message:any) {
+    this.collabSource.next(message);
+  }
+
+  reminderMessage(message:any) {
+    this.reminderSource.next(message);
   }
   
 }

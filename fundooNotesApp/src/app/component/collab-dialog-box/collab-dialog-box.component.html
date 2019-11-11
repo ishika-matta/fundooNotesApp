@@ -47,9 +47,28 @@
       </button>
     </div>        
       </div>
+    
+
+
+      
+      <div fxLayout="row" *ngFor="let collab of collabArray" fxLayoutAlign="space-between center">
+          <div fxFlex="10">
+            <button mat-fab color="primary">{{collab.firstName[0] | uppercase}}</button> 
+          </div>
+          <div fxLayout="column" fxFlex="72">
+            <span class="user-name"> {{collab.firstName}} {{collab.lastName}} </span>
+            <span class="user-name"> {{collab.email}}  </span>
+          </div> 
+  
+           <!-- <div fxLayoutAlign="end end"><button mat-icon-button (click)="onDeleteCollab(collab.userId)">
+              <mat-icon matSuffix> close </mat-icon>
+        </button>
+      </div>    -->
+        
+      </div> 
 
       <mat-divider></mat-divider>
       <div  fxLayout="row" fxLayoutAlign="end end">
         <button mat-button mat-button (click)="onSave()">Done</button>
       </div>
-  </div>
+

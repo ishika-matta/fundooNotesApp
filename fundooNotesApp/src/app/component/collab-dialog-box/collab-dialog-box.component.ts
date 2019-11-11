@@ -32,7 +32,10 @@ export class CollabDialogBoxComponent implements OnInit {
   filteredSearchUsers: Observable<any>;
   collab_value: any;
   message: any;
-  collabs: any;
+  collabs: any = [];
+  collabObjWithoutNote : any;
+  collabArray = [];
+  collabIndex:any;
 
 
   constructor(public dialogRef: MatDialogRef<CollaboratorComponent>,
@@ -40,14 +43,11 @@ export class CollabDialogBoxComponent implements OnInit {
      private noteService: NoteService, private userService: UserService) {
 
     this.cObj = { noteId: dialogData.card };
-    console.log('dscdscs...', this.cObj);
-
   }
 
 
   ngOnInit() {
     this.getCollabUsers();
-
   }
 
   private filter(value: string): string[] {
@@ -78,6 +78,7 @@ export class CollabDialogBoxComponent implements OnInit {
   }
 
   onCreateCollab() {
+    if(this.cObj.noteId){
     let collabObj = {
       'email': this.collab_value[0].email,
       'firstName': this.collab_value[0].firstName,
@@ -87,18 +88,37 @@ export class CollabDialogBoxComponent implements OnInit {
 
     this.noteService.addCollabToNotes(collabObj, this.cObj.noteId).subscribe((response: any) => {
       console.log('collab .............', response);
-      this.dataService.changeMessage("Collaborator added");
       this.getCollabUsers();
     }, (error) => {
       console.log(error);
     });
   }
+  else{
+    console.log('without card id',this.collab_value[0].email);
+    if(this.collab_value[0].email){
+    this.collabObjWithoutNote = {
+      'email': this.collab_value[0].email,
+      'firstName': this.collab_value[0].firstName,
+      'lastName': this.collab_value[0].lastName,
+      'userId': this.collab_value[0].userId,
+    };
+    this.dataService.collabMessage(this.collabObjWithoutNote);
+   
+    this.getCollabUsers();
+
+  }
+}
+
+
+}
+
 
   onSave() {
     this.dialogRef.close('Closed');
   }
 
   getCollabUsers() {
+    if(this.cObj.noteId){
     let data = {
       'id': this.cObj.noteId,
     };
@@ -107,12 +127,27 @@ export class CollabDialogBoxComponent implements OnInit {
       this.messageEvent.emit(response);
 
       this.collabs = response.collaborators;
+      console.log(this.collabs);
     }, (error) => {
       console.log(error);
     });
   }
+  else{
+    console.log('not inb card');
+   // this.collabs =this.collabObjWithoutNote;
+   console.log("v0bcvb c0",this.collabObjWithoutNote);
+   if(this.collabObjWithoutNote){
+    //this.dataService.collabMessage(this.collabObjWithoutNote);
+    this.collabArray.push(this.collabObjWithoutNote);
+   // console.log(this.collabs);
+    console.log(this.collabArray);
+  }
+  }
+}
+
 
   onDeleteCollab(collabUserId) {
+    if(this.cObj.noteId){
     let data = {
       'id': this.cObj.noteId,
       'userId': collabUserId,
@@ -126,4 +161,11 @@ export class CollabDialogBoxComponent implements OnInit {
       console.log(error);
     });
   }
+
+// else{
+//   this.collabIndex = this.collabArray.findIndex(i => i.collabUserId === this.collabObjWithoutNote.collabUserId);
+//     console.log("index....", this.collabArray.findIndex(i => i.collabUserId === this.collabObjWithoutNote.collabUserId));
+//     this.collabArray.splice(this.collabIndex, 1);
+// }
+}
 }

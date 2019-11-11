@@ -21,13 +21,17 @@ export class TakeNoteComponent implements OnInit {
   des: any;
   color: any = "#ffffff";
   reminder: any;
+  archived: false;
+  collaberators: any;
   label: any;
   labelName: any;
+  collabName :any;
   labelId: any;
   showCheckbox: any;
   labelIdArray: any = [];
   labelNameArray: any = [];
   checkListArray: any = [];
+  collaboratorsArray: any = [];
   item = new FormControl;
   itemModel: any;
   checklistIndex: any;
@@ -45,29 +49,58 @@ export class TakeNoteComponent implements OnInit {
 
   ngOnInit() {
     console.log('hereee')
+    //checkboxes
     this.dataService.viewCheckMessage.subscribe((res: any) => {
       console.log(res);
-
       if (res == true) {
         this.showCheckbox = res;
-
         console.log('showwww in if', this.showCheckbox)
       }
       else
         console.log('showwww in else', this.showCheckbox)
+    });
 
-    })
+    //archive notes
+    this.dataService.currentMessage.subscribe((res: any) => {
+      console.log(res);
+      if (res == true) {
+        this.archived = res;
+        this.postNotes();
+        console.log('showwww in if', this.archived);
+      }
+      else{
+        this.archived = false;
+        console.log('showwww in else', this.archived);
+      }    
+    });
+
+    //add collab
+    this.dataService.collabCurrentMessage.subscribe((res: any) => {
+      console.log(res);
+      if (res!=undefined) {
+        this.collaberators = res;
+        
+        this.collabName = this.collaberators.firstName;
+        if(this.collaberators!=''){
+        this.collaboratorsArray.push(this.collaberators);
+        console.log(this.collaboratorsArray);}
+        console.log('showwww in if', this.collaberators);
+      }
+      else{
+        console.log('showwww in else', this.collaberators);
+      }    
+    });
 
   }
+
   toggle() {
     this.til = '';
     this.des = '';
     this.color = '';
     this.reminder = '';
     this.labelName = '';
-    console.log('toggleddd');
-
-
+    this.itemModel = '';
+    this.checkListArray = [];
     this.show = !this.show;
   }
 
@@ -82,6 +115,8 @@ export class TakeNoteComponent implements OnInit {
         description: this.description.value,
         color: this.color,
         reminder: this.reminder,
+        isArchived: this.archived,
+        collaberators: JSON.stringify(this.collaboratorsArray),
         labelIdList: JSON.stringify(this.labelIdArray),
         checklist: JSON.stringify(this.checkListArray),
       };
