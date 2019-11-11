@@ -19,6 +19,7 @@ export class MoreMenuComponent implements OnInit {
   messageLabels = 'Note labels';
   options: any;
   labels: any;
+  labelData:any;
   message: any;
   durationInSeconds = 5;
   noteDetails: any;
@@ -82,6 +83,8 @@ export class MoreMenuComponent implements OnInit {
        //snackbar implementation
        this.openSnackBar('Note deleted', 'Dismiss');
         this.messageEvent.emit(this.messageTrash);
+        this.dataService.trashMessage(this.messageTrash);
+
     }, (error) => {
       console.log(error);
     });
@@ -90,14 +93,14 @@ export class MoreMenuComponent implements OnInit {
   onOpenAddLabel(labelid,labelname) {
     if(!this.card){
       console.log('adding a label without note id');
-      let data={
+      this.labelData={
         labelid,
         labelname
       }
-      console.log('adding a label without note id', data);
-      this.labelEvent.emit(data);
-
-    }else{
+      console.log('adding a label without note id',this.labelData);
+      this.labelEvent.emit(this.labelData);
+    }
+    else{
     this.noteObj = {
       labelId: labelid,
       noteId: this.card
@@ -105,6 +108,7 @@ export class MoreMenuComponent implements OnInit {
      this.noteService.addLabelToNotes(this.noteObj).subscribe((response: any) => {
       console.log('adding a label',response);
       this.messageEvent.emit(this.messageLabels);
+      this.dataService.labelMessage(labelname);
     }, (error) => {
       console.log(error);
     });

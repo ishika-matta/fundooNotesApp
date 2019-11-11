@@ -31,8 +31,7 @@ export class RemindMeComponent implements OnInit {
 
     this.noteService.addUpdateReminderNotes(remindMeObj).subscribe((response: any) => {
       this.messageEvent.emit(this.message);
-      this.reminderEvent.emit(this.message);
-     // this.dataService.reminderMessage(this.date);
+     this.dataService.reminderMessage(this.date);
       this.getDateResponse();
     }, (error) => {
       console.log(error);

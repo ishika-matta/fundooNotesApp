@@ -22,7 +22,16 @@ export class DataService {
   collabCurrentMessage = this.collabSource.asObservable();
 
   private reminderSource = new BehaviorSubject('');
-  reminderCurrentMessage = this.collabSource.asObservable();
+  reminderCurrentMessage = this.reminderSource .asObservable();
+
+  private labelSource = new BehaviorSubject('');
+  labelCurrentMessage = this.labelSource .asObservable();
+
+  private trashSource = new BehaviorSubject('');
+  trashCurrentMessage = this.trashSource .asObservable();
+
+  private archiveSource = new BehaviorSubject('');
+  archiveCurrentMessage = this.archiveSource .asObservable();
 
  
   message: string;
@@ -52,6 +61,18 @@ export class DataService {
 
   reminderMessage(message:any) {
     this.reminderSource.next(message);
+  }
+
+  labelMessage(message:any) {
+    this.labelSource.next(message);
+  }
+
+  trashMessage(message:any) {
+    this.trashSource.next(message);
+  }
+
+  archiveMessage(message:any) {
+    this.archiveSource.next(message);
   }
   
 }

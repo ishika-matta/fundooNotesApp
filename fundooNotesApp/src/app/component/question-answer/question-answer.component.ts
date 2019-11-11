@@ -164,21 +164,6 @@ export class QuestionAnswerComponent implements OnInit {
     }
     return this.countLikes;
   }
-
-  // onRate(id,no){
-  //   let options = {
-  //     "rate": no,
-  //     "notesId": id
-  //   }
-  //   this.questionAnswerService.addRatings(options).subscribe((response) => {
-  //     console.log('id..........', response);
-  //     this.dataService.changeMessage("Ratings added");
-  //     this.toggle();
-  //     this.getNoteDetails(this.quesToken);
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
 }
 
 

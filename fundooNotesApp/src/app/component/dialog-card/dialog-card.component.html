@@ -4,9 +4,8 @@
   <textarea class="textarea" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
       [formControl]="description" value={{noteObj.description}}></textarea>
 
-<!-- <div value={{noteObj.reminder}}></div> -->
       <!--reminder-->
-       <div *ngIf="reminder!= ''">
+       <div *ngIf="reminder!=''">
           <mat-chip-list>
             <mat-chip class="hide-icon">{{reminder |  date:'short'}}
                 <button mat-icon-button (click)="onClearReminder()">
@@ -16,7 +15,32 @@
           </mat-chip-list>
           <div>
           </div>
-        </div>  
+        </div>
+        
+
+        <!--collaborators-->
+     <div fxLayout="row wrap">
+        <div *ngFor="let collab of collaboratorsArray">
+         <button matTooltip="{{collab.email}}" mat-mini-fab class="hover-collab">
+           {{collab.firstName[0] | uppercase}}</button>
+        </div>
+      </div> 
+     
+
+      <!--label-->
+         <div fxLayout="column">    
+        <div *ngFor="let labelName of noteLabelsArray">
+          <mat-chip-list>
+            <mat-chip class="hide-icon">{{labelName.label}}
+             <!-- <button mat-icon-button (click)="onClearLabel()">
+                <mat-icon>close</mat-icon>
+              </button>     -->
+            </mat-chip>
+            <span></span>
+          </mat-chip-list>
+        </div> 
+      </div>
+
 
   <div fxLayout="row" fxLayoutAlign="space-between">
     <app-icon-tray [card]="noteObj.noteId" [component]="noteObj.component2" (messageEvent)="receiveMessage($event)"></app-icon-tray>

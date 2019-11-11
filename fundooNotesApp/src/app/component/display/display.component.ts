@@ -70,6 +70,8 @@ export class DisplayComponent implements OnInit {
           description: note.description,
           color: note.color,
           reminder: note.reminder,
+          collaborators: note.collaborators,
+          noteLabels: note.noteLabels,
           component1: this.component,
         }
       });

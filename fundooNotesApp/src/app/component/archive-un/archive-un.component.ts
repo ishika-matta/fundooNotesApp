@@ -34,6 +34,7 @@ export class ArchiveUnComponent implements OnInit {
        console.log(response);
        this.openSnackBar('Note archived', 'Dismiss');
         this.messageEvent.emit(this.message);
+        this.dataService.trashMessage(this.message);
     }, (error) => {
       console.log(error);
     });

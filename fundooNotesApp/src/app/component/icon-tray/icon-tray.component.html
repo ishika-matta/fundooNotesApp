@@ -22,7 +22,7 @@
 </div>
 
 <div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1px" *ngIf="component=='display' || component=='search-bar' ||component=='labels' ||component=='reminder'" >
-  <app-remind-me [card]="card" (messageEvent)="receiveMessage($event)"></app-remind-me>
+  <app-remind-me [card]="card" (messageEvent)="receiveMessage($event)" (reminderEvent)="receiveReminderMessage($event)"></app-remind-me>
   <app-collaborator [card]="card" (messageEvent)="receiveMessage($event)"></app-collaborator>
   <app-change-color [card]="card" (messageEvent)="receiveMessage($event)"></app-change-color>
   <app-add-image (messageEvent)="receiveMessage($event)"></app-add-image>

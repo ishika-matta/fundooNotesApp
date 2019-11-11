@@ -19,44 +19,85 @@ export class DialogCardComponent implements OnInit {
   title: any = new FormControl();
   description: any = new FormControl();
   message = 'dailog card';
-  dialogColor:any;
-  reminder:any;
-  
+  dialogColor: any;
+  reminder: any;
+  collaboratorsArray: any = [];
+  noteLabelsArray: any = [];
+
 
   noteUpdateMessage = 'Note updated';
   component = 'dialog-card';
   @Output() messageEvent = new EventEmitter<string>();
   @Output() reminderEvent = new EventEmitter<string>();
- 
+
 
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DisplayComponent>,
-    @Inject(MAT_DIALOG_DATA) dialogData , private noteService: NoteService) {
+    @Inject(MAT_DIALOG_DATA) dialogData, private noteService: NoteService) {
     this.noteObj = {
       noteId: dialogData.card,
       noteIdList: dialogData.card,
       title: dialogData.title,
       description: dialogData.description,
       color: dialogData.color,
-      reminder: dialogData.reminder,
-      component2:dialogData.component1,
+
+
+
+      component2: dialogData.component1,
     };
-    this.dialogColor=this.noteObj.color;
+    this.reminder = dialogData.reminder,
+      this.collaboratorsArray = dialogData.collaborators,
+      this.noteLabelsArray = dialogData.noteLabels,
+      console.log(this.noteLabelsArray);
+    this.dialogColor = this.noteObj.color;
+
   }
 
   ngOnInit() {
     //reminder
-    // this.dataService.viewCheckMessage.subscribe((res: any) => {
-    //   console.log(res);
-    //   if (res) {
-    //     this.reminder = res;
-    //     console.log('showwww in if', this.reminder)
-    //   }
-    //   else
-    //     console.log('showwww in else', this.reminder)
-    // });
+    this.dataService.reminderCurrentMessage.subscribe((res: any) => {
+      console.log(res);
+      if (res) {
+        this.reminder = res;
+        console.log('showwww in if', this.reminder)
+      }
+    });
+
+    //labels
+    this.dataService.labelCurrentMessage.subscribe((res: any) => {
+      console.log(res);
+      if (res) {
+        let labelData = {
+          label: res
+        }
+        this.noteLabelsArray.push(labelData);
+        console.log('showwww in if', this.noteLabelsArray)
+      }
+    });
+
+    //trash
+    this.dataService.trashCurrentMessage.subscribe((res: any) => {
+      if (res != ''){
+        this.dialogRef.close(res);
+        res='';
+      }
+        
+        else
+        console.log(res);
+    });
+
+    //archive
+    this.dataService.archiveCurrentMessage.subscribe((res: any) => {
+      if (res != ''){
+        this.dialogRef.close(res);
+        res='';}
+        else
+        console.log(res);
+    });
   }
+
+
 
   onUpdateNote() {
     this.noteObj1 = {
@@ -68,15 +109,15 @@ export class DialogCardComponent implements OnInit {
 
     if ((this.noteObj1.title == null) && (this.noteObj.title != null)) {
       this.noteObj1.title = this.noteObj.title;
-      }
-      if ((this.noteObj1.description == null) && (this.noteObj.description != null)) {
+    }
+    if ((this.noteObj1.description == null) && (this.noteObj.description != null)) {
       this.noteObj1.description = this.noteObj.description;
-      }
+    }
 
-      if ((this.noteObj1.title == '') && (this.noteObj1.description == '')) {
+    if ((this.noteObj1.title == '') && (this.noteObj1.description == '')) {
       this.noteObj1.title = 'Empty Note';
       this.noteObj1.description = 'Empty Note';
-      }
+    }
     this.dialogRef.close(this.noteObj1);
 
     this.noteService.updateNotes(this.noteObj1).subscribe((response) => {
@@ -91,22 +132,6 @@ export class DialogCardComponent implements OnInit {
 
   receiveMessage($event) {
     this.message = $event;
-    this.dialogColor=$event;
-  }
-
-  receiveReminderMessage($event) {
-    this.reminder = $event;
-    console.log('event received in take note', this.reminder);
-    // this.reminderEvent.emit(this.reminder);
-  }
-
-  
-
-  onClearReminder() {
-    this.reminder = '';
+    this.dialogColor = $event;
   }
 }
-
-
-
-
