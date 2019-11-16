@@ -64,6 +64,18 @@ export class DialogCardComponent implements OnInit {
       }
     });
 
+    //collabs
+    // this.dataService.collabCurrentMessage.subscribe((res: any) => {
+    //   console.log(res);
+    //   if (res) {
+    //     let collabData = {
+    //       collaborators: res
+    //     }
+    //     console.log('showwww in if', this.collaboratorsArray)
+    //     this.collaboratorsArray.push(collabData);}
+    // });
+
+
     //labels
     this.dataService.labelCurrentMessage.subscribe((res: any) => {
       console.log(res);
@@ -78,11 +90,10 @@ export class DialogCardComponent implements OnInit {
 
     //trash
     this.dataService.trashCurrentMessage.subscribe((res: any) => {
-      if (res != ''){
-        this.dialogRef.close(res);
-        res='';
+      if (res != 'save'){
+        this.dialogRef.close();
+        res='save';
       }
-        
         else
         console.log(res);
     });

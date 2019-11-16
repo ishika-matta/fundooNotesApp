@@ -75,6 +75,7 @@ export class DisplayComponent implements OnInit {
           component1: this.component,
         }
       });
+      this.dataService.trashMessage('save');
     dialogRef.afterClosed().subscribe(
       result => {
         console.log('Dialog output:', result);

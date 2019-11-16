@@ -27,7 +27,6 @@ export class QuestionAnswerComponent implements OnInit {
   quesAnsLength:any;
   quesAns:any;
   likes:number=0;
-  dislikes:number=0;
   countLikes:number=0;
   replyhere:any;
   
@@ -123,8 +122,6 @@ export class QuestionAnswerComponent implements OnInit {
     }
     this.questionAnswerService.addLike(options).subscribe((response) => {
       console.log('likes', response);
-      //this.likes=response.data.details.count;
-     // console.log('likes in no ', this.likes);
       this.dataService.changeMessage("Like added");
       this.toggle();
       this.getNoteDetails(this.quesToken);
@@ -140,8 +137,6 @@ export class QuestionAnswerComponent implements OnInit {
     }
     this.questionAnswerService.addLike(options).subscribe((response) => {
       console.log('dislikes', response);
-     // this.dislikes=response.data.details.count;
-      //console.log('dislikes in no ', this.dislikes);
       this.dataService.changeMessage("Like added");
       this.toggle();
       this.getNoteDetails(this.quesToken);
@@ -151,7 +146,6 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   counter(id) {
-    //console.log('inisde counter of likes')
     this.countLikes = 0;
     for (var i = 1; i < this.quesAnsLength; i++) {
       if (this.quesAns[i].id == id) {

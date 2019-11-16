@@ -27,7 +27,7 @@ export class DataService {
   private labelSource = new BehaviorSubject('');
   labelCurrentMessage = this.labelSource .asObservable();
 
-  private trashSource = new BehaviorSubject('');
+  private trashSource = new BehaviorSubject('save');
   trashCurrentMessage = this.trashSource .asObservable();
 
   private archiveSource = new BehaviorSubject('');
