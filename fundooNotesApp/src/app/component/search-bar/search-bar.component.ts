@@ -48,5 +48,12 @@ export class SearchBarComponent implements OnInit {
     });
     return pass;
   }
+
+  receiveMessage($event) {
+    console.log('event received is: ', $event);
+    this.message = $event;
+    this.messageEvent.emit(this.message);
+    this.getNotes();
+  }
 }
 

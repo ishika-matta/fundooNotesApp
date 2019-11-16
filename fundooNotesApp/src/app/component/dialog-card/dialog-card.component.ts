@@ -80,24 +80,18 @@ export class DialogCardComponent implements OnInit {
 
 
     //labels
-    this.dataService.labelCurrentMessage.subscribe((res: any) => {
-      console.log(res);
-      if (res=='') {
-        let labelData = {
-          label: res
-        }
-        // for(var i=0;i<this.noteLabelsArray.length;i++){
-        //   if(this.noteLabelsArray[i]==labelData){
-        //     console.log('no');
-        //   }
-        //   else
-          this.noteLabelsArray.push(labelData);
-          
+    // this.dataService.labelCurrentMessage.subscribe((res: any) => {
+    //   console.log(res);
+    //   if (res) {
+    //     // let labelData = {
+    //     //   label: res
+    //     // }
+    //       this.noteLabelsArray.push(res);
         
-        
-        console.log('showwww in if', this.noteLabelsArray)
-      }
-    });
+  
+    //     console.log('showwww in if', this.noteLabelsArray)
+    //   }
+    // });
 
     //trash
     this.dataService.trashCurrentMessage.subscribe((res: any) => {

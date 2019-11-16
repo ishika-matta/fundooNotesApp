@@ -6,6 +6,7 @@
         <p style=" word-break: break-all">{{note.title}}</p>
         <p style=" word-break: break-all">{{note.description}}</p>
       </div>
+      <div fxLayout="row wrap">
       <div *ngFor="let noteLabel of note.noteLabels">
         <mat-chip-list>
           <mat-chip class="hide-icon">{{noteLabel.label}}
@@ -16,6 +17,7 @@
           <span></span>
         </mat-chip-list>
       </div>
+    </div>
       <div *ngFor="let remindMe of note.reminder">
         <mat-chip-list>
           <mat-chip class="hide-icon">{{remindMe |  date:'short'}}
@@ -95,7 +97,8 @@
         <p style=" word-break: break-all">{{note.title}}</p>
         <p style=" word-break: break-all">{{note.description}}</p>
       </div>
-      <div *ngFor="let noteLabel of note.noteLabels" fxLayout="column">
+      <div fxLayout="row wrap">
+      <div *ngFor="let noteLabel of note.noteLabels">
         <mat-chip-list>
           <mat-chip class="hide-icon">{{noteLabel.label}}
             <button mat-icon-button (click)="onChipClick(noteLabel.id,note.id)">
@@ -104,6 +107,7 @@
           </mat-chip>
           <span></span>
         </mat-chip-list>
+      </div>
       </div>
       <div fxLayout="column" *ngFor="let remindMe of note.reminder">
         <mat-chip-list>
