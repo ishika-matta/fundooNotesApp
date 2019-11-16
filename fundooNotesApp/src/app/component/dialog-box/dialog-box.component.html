@@ -2,7 +2,7 @@
   <div fxLayout="row">
       
       <div> <mat-icon matPrefix matToolTip="Cancel">clear</mat-icon></div>
-        <div> <input matInput [formControl]="labelValue" placeholder="create a new label" value={{noteObj.label}}></div>
+        <div> <input matInput [(ngModel)]="lValue" [formControl]="labelValue" placeholder="create a new label" value={{noteObj.label}}></div>
           <div fxLayoutAlign="end end"><button mat-button (click)="onCreateLabel()" matToolTip="Create Label">
             <mat-icon matSuffix >
           

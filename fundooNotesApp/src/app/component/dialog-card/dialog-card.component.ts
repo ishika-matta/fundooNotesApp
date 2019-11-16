@@ -21,6 +21,8 @@ export class DialogCardComponent implements OnInit {
   message = 'dailog card';
   dialogColor: any;
   reminder: any;
+  noteIdList: any;
+  noteLabelIndex: any;
   collaboratorsArray: any = [];
   noteLabelsArray: any = [];
 
@@ -37,7 +39,7 @@ export class DialogCardComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) dialogData, private noteService: NoteService) {
     this.noteObj = {
       noteId: dialogData.card,
-      noteIdList: dialogData.card,
+      
       title: dialogData.title,
       description: dialogData.description,
       color: dialogData.color,
@@ -46,6 +48,7 @@ export class DialogCardComponent implements OnInit {
 
       component2: dialogData.component1,
     };
+    this.noteIdList=dialogData.card,
     this.reminder = dialogData.reminder,
       this.collaboratorsArray = dialogData.collaborators,
       this.noteLabelsArray = dialogData.noteLabels,
@@ -79,11 +82,19 @@ export class DialogCardComponent implements OnInit {
     //labels
     this.dataService.labelCurrentMessage.subscribe((res: any) => {
       console.log(res);
-      if (res) {
+      if (res=='') {
         let labelData = {
           label: res
         }
-        this.noteLabelsArray.push(labelData);
+        // for(var i=0;i<this.noteLabelsArray.length;i++){
+        //   if(this.noteLabelsArray[i]==labelData){
+        //     console.log('no');
+        //   }
+        //   else
+          this.noteLabelsArray.push(labelData);
+          
+        
+        
         console.log('showwww in if', this.noteLabelsArray)
       }
     });
@@ -103,6 +114,35 @@ export class DialogCardComponent implements OnInit {
       if (res != ''){
         this.dialogRef.close(res);
         res='';}
+        else
+        console.log(res);
+    });
+
+    //unarchive
+    this.dataService.unarchiveCurrentMessage.subscribe((res: any) => {
+      if (res != ''){
+        this.dialogRef.close(res);
+        res='';}
+        else
+        console.log(res);
+    });
+
+    //delforever
+    this.dataService.delForeverCurrentMessage.subscribe((res: any) => {
+      if (res != ''){
+        this.dialogRef.close();
+        res='';
+      }
+        else
+        console.log(res);
+    });
+
+    //restore
+    this.dataService.restoreCurrentMessage.subscribe((res: any) => {
+      if (res != ''){
+        this.dialogRef.close();
+        res='';
+      }
         else
         console.log(res);
     });
@@ -144,5 +184,39 @@ export class DialogCardComponent implements OnInit {
   receiveMessage($event) {
     this.message = $event;
     this.dialogColor = $event;
+  }
+
+  onClearReminder() {
+    const obj = {
+      'noteIdList': [this.noteObj.noteId],
+      'reminder': [this.reminder]
+    };
+    console.log('dfdrevfgerve', obj);
+    this.noteService.removeReminderToNote(obj).subscribe((response: any) => {
+      console.log(response);
+      this.reminder='';
+    }, (error) => {
+      console.log(error);
+    }); 
+  }
+
+  onClearLabel(labelId,labelName) {
+    console.log('fdvdzs', labelId);
+    const obj = {
+      'noteId': this.noteObj.noteId,
+      'labelId': labelId
+    };
+    console.log('dsfcsdc',obj);
+    this.noteService.removeLabelToNote(obj).subscribe((response: any) => {
+      console.log(response);
+     //removing label name from dialog box
+     this.noteLabelIndex = this.noteLabelsArray.findIndex(i => i.label === labelName);
+    console.log("index....", this.noteLabelsArray.findIndex(i => i.label === labelName));
+    
+    this.noteLabelsArray.splice(this.noteLabelIndex, 1);
+    }, (error) => {
+      console.log(error);
+    });
+
   }
 }

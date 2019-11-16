@@ -33,6 +33,15 @@ export class DataService {
   private archiveSource = new BehaviorSubject('');
   archiveCurrentMessage = this.archiveSource .asObservable();
 
+  private unarchiveSource = new BehaviorSubject('');
+  unarchiveCurrentMessage = this.unarchiveSource .asObservable();
+
+  private delForeverSource = new BehaviorSubject('');
+  delForeverCurrentMessage = this.delForeverSource .asObservable();
+
+  private restoreSource = new BehaviorSubject('');
+  restoreCurrentMessage = this.restoreSource .asObservable();
+
  
   message: string;
 
@@ -73,6 +82,18 @@ export class DataService {
 
   archiveMessage(message:any) {
     this.archiveSource.next(message);
+  }
+
+  unarchiveMessage(message:any) {
+    this.unarchiveSource.next(message);
+  }
+
+  delForeverMessage(message:any) {
+    this.unarchiveSource.next(message);
+  }
+
+  restoreMessage(message:any) {
+    this.unarchiveSource.next(message);
   }
   
 }

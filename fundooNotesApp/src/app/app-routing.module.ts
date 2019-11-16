@@ -26,10 +26,10 @@ import { CartComponent } from './component/cart/cart.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/card', pathMatch: 'full'},
+  {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'card', component: CardComponent},
+  {path: 'products', component: CardComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'resetpassword/:token', component: ResetPasswordComponent},
   {path: 'dailog-box', component: DialogBoxComponent},
@@ -68,7 +68,7 @@ const routes: Routes = [
   {path: 'page-not-found', component: PageNotFoundComponent},
   // {path:'dash', component:DashComponent},
 
-  {path: '**', redirectTo: '/card'}
+  {path: '**', redirectTo: '/products'}
 ];
 
 

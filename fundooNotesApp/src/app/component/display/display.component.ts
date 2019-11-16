@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { DataService } from 'src/app/services/dataServices/data.service';
 import { NoteService } from 'src/app/services/noteServices/note.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display',
@@ -34,7 +35,8 @@ export class DisplayComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog, private dataService: DataService, private noteService: NoteService) { }
+  constructor(public dialog: MatDialog, private dataService: DataService, 
+    private noteService: NoteService, private router: Router) { }
 
   ngOnInit() {
 
@@ -58,7 +60,12 @@ export class DisplayComponent implements OnInit {
       }
     })
   }
-
+  
+  onQA(card){
+    console.log('hereeeee');
+    this.router.navigate(['/question-answer/'+ card]);
+   
+  }
 
   openDialog(note): void {
     const dialogRef = this.dialog.open(DialogCardComponent,
@@ -106,6 +113,7 @@ export class DisplayComponent implements OnInit {
       'noteIdList': [noteId],
       'reminder': reminderId
     };
+    console.log('dfcdefce', obj);
     this.noteService.removeReminderToNote(obj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.message);

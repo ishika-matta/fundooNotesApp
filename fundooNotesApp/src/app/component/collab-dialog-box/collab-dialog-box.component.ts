@@ -88,6 +88,7 @@ export class CollabDialogBoxComponent implements OnInit {
 
     this.noteService.addCollabToNotes(collabObj, this.cObj.noteId).subscribe((response: any) => {
       console.log('collab .............', response);
+      this.coll='';
       this.getCollabUsers();
     }, (error) => {
       console.log(error);
@@ -102,6 +103,7 @@ export class CollabDialogBoxComponent implements OnInit {
       'lastName': this.collab_value[0].lastName,
       'userId': this.collab_value[0].userId,
     };
+    this.coll='';
     this.dataService.collabMessage(this.collabObjWithoutNote);
    
     this.getCollabUsers();

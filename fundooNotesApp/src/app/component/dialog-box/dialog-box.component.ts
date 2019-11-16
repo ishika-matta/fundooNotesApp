@@ -20,6 +20,7 @@ export class DialogBoxComponent implements OnInit {
   labelValue: any = new FormControl();
   updateLabel: any = new FormControl();
   labels: any;
+  lValue: any;
   labelMessage = ' label created';
   delLabelMessage = 'label deleted';
   updateLabelMessage = 'label updated';
@@ -58,6 +59,7 @@ export class DialogBoxComponent implements OnInit {
     this.noteLabelService.createNoteLabel(create).subscribe((response) => {
       console.log('inside dailog box....47');
       console.log(response);
+      this.lValue='';
       this.dataService.changeMessage(this.labelMessage);
       this.getAllLabels();
 

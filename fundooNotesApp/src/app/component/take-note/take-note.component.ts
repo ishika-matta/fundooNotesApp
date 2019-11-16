@@ -35,6 +35,7 @@ export class TakeNoteComponent implements OnInit {
   item = new FormControl;
   itemModel: any;
   checklistIndex: any;
+  noteLabelIndex: any;
 
 
   @Output() messageEvent = new EventEmitter<string>();
@@ -101,6 +102,8 @@ export class TakeNoteComponent implements OnInit {
     this.labelName = '';
     this.itemModel = '';
     this.checkListArray = [];
+    this.labelNameArray = [];
+    this.labelIdArray = [];
     this.show = !this.show;
   }
 
@@ -157,9 +160,19 @@ export class TakeNoteComponent implements OnInit {
     this.labelId = this.label.labelid;
     this.labelIdArray.push(this.labelId);
     this.labelNameArray.push(this.labelName);
-    console.log('label anme', this.labelId);
 
     // this.labelEvent.emit(this.label);
+  }
+
+  onClearLabel(labelName){
+    console.log(labelName);
+    for(var i=0;i<this.labelNameArray.length;i++){
+      console.log('inised for');
+      if(this.labelNameArray[i]==labelName){
+        this.labelNameArray.splice(i, 1);
+        this.labelIdArray.splice(i, 1);
+      }
+    }
   }
 
 

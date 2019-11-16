@@ -78,9 +78,11 @@
       </div>
       <div *ngIf="note.questionAndAnswerNotes.length>0">
         <mat-divider></mat-divider>
+        <div (click)="onQA(note.id)">
         <span class="ques">Question asked</span>
         <br><span class="ans" innerHTML="{{note.questionAndAnswerNotes[0].message}}"></span>
       </div>
+    </div>
     </mat-card>
   </div>
 </div>
@@ -158,11 +160,13 @@
         <app-icon-tray class="icon-tray" [card]=note.id [component]="component" (messageEvent)="receiveMessage($event)">
         </app-icon-tray>
       </div>
-      <div *ngIf="note.questionAndAnswerNotes.length>0">
+      <div *ngIf="note.questionAndAnswerNotes.length>0">    
         <mat-divider></mat-divider>
-        <span class="ques">Question asked</span>
+        <div (click)="onQA(note.id)">
+        <span  class="ques">Question asked</span>
         <br><span class="ans" innerHTML="{{note.questionAndAnswerNotes[0].message}}"></span>
       </div>
+    </div>
     </mat-card>
   </div>
 </div>

@@ -8,9 +8,9 @@
        <div *ngIf="reminder!=''">
           <mat-chip-list>
             <mat-chip class="hide-icon">{{reminder |  date:'short'}}
-                <!-- <button mat-icon-button (click)="onClearReminder()">
+              <button mat-icon-button (click)="onClearReminder()">
                     <mat-icon>close</mat-icon>
-                  </button>     -->
+                  </button>    
             </mat-chip>
           </mat-chip-list>
           <div>
@@ -32,9 +32,9 @@
         <div *ngFor="let labelName of noteLabelsArray">
           <mat-chip-list>
             <mat-chip class="hide-icon">{{labelName.label}}
-             <!-- <button mat-icon-button (click)="onClearLabel()">
+             <button mat-icon-button (click)="onClearLabel(labelName.id,labelName.label)">
                 <mat-icon>close</mat-icon>
-              </button>     -->
+              </button>    
             </mat-chip>
             <span></span>
           </mat-chip-list>

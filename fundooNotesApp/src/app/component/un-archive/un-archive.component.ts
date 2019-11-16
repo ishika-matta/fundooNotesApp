@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { NoteService } from '../../services/noteServices/note.service';
 import { MatSnackBar } from '@angular/material';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class UnArchiveComponent implements OnInit {
 
   @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private noteService: NoteService, private snackBar: MatSnackBar) { }
+  constructor(private noteService: NoteService, private snackBar: MatSnackBar,
+    private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -32,6 +34,7 @@ export class UnArchiveComponent implements OnInit {
        console.log(response);
        this.openSnackBar('Note unarchived', 'Dismiss');
         this.messageEvent.emit(this.message);
+        this.dataService.trashMessage(this.message);
     }, (error) => {
       console.log(error);
     });

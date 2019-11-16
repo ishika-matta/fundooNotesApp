@@ -53,6 +53,7 @@ export class MoreMenuComponent implements OnInit {
       console.log(response);
       this.openSnackBar('Note deleted permanently', 'Dismiss');
       this.messageEvent.emit(this.messageDelFor);
+      this.dataService.trashMessage(this.message);
     }, (error) => {
       console.log(error);
     });
@@ -68,6 +69,7 @@ export class MoreMenuComponent implements OnInit {
       console.log(response);
       this.openSnackBar('Note restored', 'Dismiss');
       this.messageEvent.emit(this.messageTrash);
+      this.dataService.trashMessage(this.message);
     }, (error) => {
       console.log(error);
     });
@@ -106,9 +108,10 @@ export class MoreMenuComponent implements OnInit {
       noteId: this.card
     };
      this.noteService.addLabelToNotes(this.noteObj).subscribe((response: any) => {
-      console.log('adding a label',response);
+      console.log('adding a label..before data service',response);
       this.messageEvent.emit(this.messageLabels);
       this.dataService.labelMessage(labelname);
+      console.log('after data service', response);
     }, (error) => {
       console.log(error);
     });

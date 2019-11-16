@@ -33,9 +33,9 @@
           <div *ngFor="let labelName of labelNameArray">
           <mat-chip-list>
             <mat-chip class="hide-icon">{{labelName}}
-             <!-- <button mat-icon-button (click)="onClearLabel()">
+              <button mat-icon-button (click)="onClearLabel(labelName)">
                 <mat-icon>close</mat-icon>
-              </button>     -->
+              </button>     
             </mat-chip>
             <span></span>
           </mat-chip-list>
