@@ -25,11 +25,6 @@ export class GotoNotesComponent implements OnInit {
 
   ngOnInit() {
     this.getNotes();
-    // this.data.currentMessage.subscribe((res) => {
-    //   this.getNotes();
-    // });
-
-
   }
 
   getNotes() {

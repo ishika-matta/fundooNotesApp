@@ -10,8 +10,8 @@
       <mat-card class="dashboard-searchbar" fxHide.xs="true" fxShow="true">
 
         <mat-icon matPrefix>search</mat-icon>
-        <input matInput routerLink="/search-bar" (keyup)="onKeyUp($event)" type="text" 
-          cdkTextareaAutosize placeholder="Search" class="dashboard-searchtype">
+        <input matInput routerLink="/search-bar" (keyup)="onKeyUp($event)" type="text" cdkTextareaAutosize
+          placeholder="Search" class="dashboard-searchtype">
 
       </mat-card>
 
@@ -19,19 +19,19 @@
 
 
       <button mat-button class="toolbar-icons" matTooltip="Cart" (click)="gotoCart()">
-        <mat-icon >shopping_cart</mat-icon>
+        <mat-icon>shopping_cart</mat-icon>
       </button>
       <div *ngIf="show">
-      <button mat-button class="toolbar-icons" matTooltip="List View" mat-button (click)="toggle()">
-        <mat-icon>list</mat-icon>
-      </button>
-    </div>
+        <button mat-button class="toolbar-icons" matTooltip="List View" mat-button (click)="toggle()">
+          <mat-icon>list</mat-icon>
+        </button>
+      </div>
 
-    <div *ngIf="!show">
-      <button mat-button class="toolbar-icons" matTooltip="Grid View" (click)="toggle()">
-        <mat-icon>border_all</mat-icon>
-      </button>
-    </div>
+      <div *ngIf="!show">
+        <button mat-button class="toolbar-icons" matTooltip="Grid View" (click)="toggle()">
+          <mat-icon>border_all</mat-icon>
+        </button>
+      </div>
 
 
       <button mat-button class="toolbar-icons" matTooltip="Settings">
@@ -52,8 +52,8 @@
               <img class="pic" [src]="url" (click)="openDialog1()">
             </div>
             <div fxLayout="column" fxLayoutAlign="center start">
-             <span class="user-name">{{firstName}} {{lastName}}</span> 
-             <span class="user-email">{{email}}</span> 
+              <span class="user-name">{{firstName}} {{lastName}}</span>
+              <span class="user-email">{{email}}</span>
             </div>
           </div>
 
@@ -76,32 +76,29 @@
       <mat-list>
         <button mat-button class="sidenav-button">
           <mat-list-item (click)="gotoNotes()">
-            <mat-icon mat-list-icon >folder</mat-icon>
-            <mat-line style="padding-left:10px"> Notes</mat-line> 
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <mat-line style="padding-left:10px"> Notes</mat-line>
           </mat-list-item>
         </button>
 
         <button mat-button class="sidenav-button">
-        <mat-list-item (click)="gotoReminder()">
-          <mat-icon mat-list-icon>notifications</mat-icon>
-          <mat-line style="padding-left:10px"> Reminder</mat-line>
-        </mat-list-item>
-      </button>
+          <mat-list-item (click)="gotoReminder()">
+            <mat-icon mat-list-icon>notifications</mat-icon>
+            <mat-line style="padding-left:10px"> Reminder</mat-line>
+          </mat-list-item>
+        </button>
 
         <mat-divider></mat-divider>
         <mat-list-item style="color: grey; font-size: 12px">LABELS
         </mat-list-item>
 
+        <mat-list-item *ngFor="let label of labels" fxLayout="start start">
+          <button mat-button (click)="onLabelClick(label.label)" class="sidenav-button">
+            <mat-icon mat-list-icon>label</mat-icon>
+            <mat-line> {{label.label}} </mat-line>
+          </button>
+        </mat-list-item>
 
-        
-        <mat-list-item  *ngFor="let label of labels" fxLayout="start start">
-            <button mat-button  (click)="onLabelClick(label.label)" class="sidenav-button"> 
-              <mat-icon mat-list-icon>label</mat-icon>
-              <mat-line> {{label.label}} </mat-line>
-            </button>
-          
-        </mat-list-item >
-      
 
         <button mat-button (click)="onEdit()" class="sidenav-button">
           <mat-list-item>

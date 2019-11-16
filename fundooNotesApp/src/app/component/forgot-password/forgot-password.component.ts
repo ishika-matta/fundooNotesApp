@@ -13,7 +13,7 @@ export class ForgotPasswordComponent implements OnInit {
   userObj: User = new User();
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private userService: UserService,  private snackBar: MatSnackBar) {
+  constructor(private userService: UserService, private snackBar: MatSnackBar) {
 
   }
 
@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
       email: this.email.value,
       service: 'advance'
     };
-   this.userService.forgotPassword(this.userObj).subscribe((response) => {
+    this.userService.forgotPassword(this.userObj).subscribe((response) => {
       console.log(response);
       this.openSnackBar('Reset Password link sent', 'Dismiss');
     }, (error) => {
@@ -47,9 +47,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   openSnackBar(msg, action) {
     this.snackBar.open(msg, action, {
-      duration: 2000})
+      duration: 2000
+    })
   }
-
-  }
-
-
+}

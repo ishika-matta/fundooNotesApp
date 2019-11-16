@@ -6,7 +6,6 @@
       <mat-divider></mat-divider>
     </div>
 
-
     <div>
       <h3 class="description">Ask a Question</h3>
       <div class="editor" [froalaEditor] [(froalaModel)]="quesValue">
@@ -40,93 +39,60 @@
           <div class="details">
             {{firstName+' '+lastName}}
           </div>
-          <!-- <div class="details">
-            {{ today | date:'medium' }}
-          </div> -->
           <div>
-            <button mat-icon-button class="btn" matTooltip="reply" mat-button (click)=onReply(quora.questionAndAnswerNotes[0].id)>
+            <button mat-icon-button class="btn" matTooltip="reply" mat-button
+              (click)=onReply(quora.questionAndAnswerNotes[0].id)>
               <mat-icon>reply</mat-icon>
             </button>
-            <!-- <button mat-icon-button class="btn" matTooltip="like" mat-button (click)=onLike(quora.questionAndAnswerNotes[0].id)>
-                <mat-icon>thumb_up_alt</mat-icon>
-              </button> -->
-              <!-- <button mat-icon-button class="btn" matTooltip="dislike" mat-button (click)=onDislike(quora.questionAndAnswerNotes[0].id)>
-                <mat-icon>thumb_down_alt</mat-icon>
-              </button> -->
-              <!-- <div *ngIf='likes!=0 || dislikes!=0 '>
-                Count of likes:{{likes-dislikes}}
-              </div> -->
-              <!-- <button matTooltip="rate" mat-button (click)=onRate(quora.questionAndAnswerNotes[0].id,no)>
-                  <mat-icon>rate</mat-icon>
-                </button> -->
           </div>
         </div>
         <div innerHTML="{{quora.questionAndAnswerNotes[0].message}}"></div>
         <div *ngIf='showReply==true && replyhere == quora.questionAndAnswerNotes[0].id'>
           <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
-           <button  mat-button (click)=questionReply(quora.questionAndAnswerNotes[0].id) >Reply </button>
-          </div>
+          <button mat-button (click)=questionReply(quora.questionAndAnswerNotes[0].id)>Reply </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 
 
 
 <div *ngFor="let quora of quesAns ">
-    <div *ngIf="quora.isApproved==true && quora.parentId" class="qa">
-<div class='qa' fxLayout='row' fxLayoutGap=20px>
-  <div>
-    <button mat-mini-fab color="warn">{{firstName[0] | uppercase}}</button>
-  </div>
-  <div fxLayout='column' fxLayoutGap=12px>
-    <div fxLayout='row' fxLayoutGap=7px>
-      <div class="details">
-        {{firstName+' '+lastName}}
-      </div>
-      <!-- <div class="details">
-        {{ today | date:'medium' }}
-      </div> -->
+  <div *ngIf="quora.isApproved==true && quora.parentId" class="qa">
+    <div class='qa' fxLayout='row' fxLayoutGap=20px>
       <div>
-        <button mat-icon-button class="btn" matTooltip="reply" mat-button (click)=onReply(quora.id)>
-          <mat-icon>reply</mat-icon>
-        </button>  
-         <button mat-icon-button class="btn" matTooltip="like" mat-button (click)=onLike(quora.id)>
-            <mat-icon>thumb_up_alt</mat-icon>
-          </button>
-          <button mat-icon-button class="btn" matTooltip="dislike" mat-button (click)=onDislike(quora.id)>
-            <mat-icon>thumb_down_alt</mat-icon>
-          </button>
-          <div *ngIf="quora.like.length != 0 && counter(quora.id)">
-            <span> total no of likes</span>
-            {{countLikes}}
+        <button mat-mini-fab color="warn">{{firstName[0] | uppercase}}</button>
+      </div>
+      <div fxLayout='column' fxLayoutGap=12px>
+        <div fxLayout='row' fxLayoutGap=7px>
+          <div class="details">
+            {{firstName+' '+lastName}}
+          </div>
+          <div>
+            <button mat-icon-button class="btn" matTooltip="reply" mat-button (click)=onReply(quora.id)>
+              <mat-icon>reply</mat-icon>
+            </button>
+            <button mat-icon-button class="btn" matTooltip="like" mat-button (click)=onLike(quora.id)>
+              <mat-icon>thumb_up_alt</mat-icon>
+            </button>
+            <button mat-icon-button class="btn" matTooltip="dislike" mat-button (click)=onDislike(quora.id)>
+              <mat-icon>thumb_down_alt</mat-icon>
+            </button>
+            <div *ngIf="quora.like.length != 0 && counter(quora.id)">
+              <span> total no of likes</span>
+              {{countLikes}}
             </div>
-          <!-- <div *ngIf='likes!=0'>
-            Count of likes:{{likes}}
-          </div>  -->
-          <!-- <button matTooltip="rate" mat-button (click)=onRate(quora.id,no)>
-              <mat-icon>rate</mat-icon>
-            </button> -->
+          </div>
+        </div>
+
+        <div innerHTML="{{quora.message}}"></div>
+        <div *ngIf='showReply== true && replyhere == quora.id'>
+          <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
+          <button mat-button (click)=questionReply(quora.id)>Reply </button>
+        </div>
       </div>
     </div>
-   
-    <div innerHTML="{{quora.message}}"></div>
-    <!-- <div>cvdfv dfv d vzd{{quora.like.length}}</div> -->
-    
-    <div *ngIf='showReply== true && replyhere == quora.id'>
-      <div div [froalaEditor] [(froalaModel)]="AnsValue"></div>
-       <button mat-button (click)=questionReply(quora.id) >Reply </button>
-      </div>
-
-
   </div>
-</div>
-</div>
 </div>

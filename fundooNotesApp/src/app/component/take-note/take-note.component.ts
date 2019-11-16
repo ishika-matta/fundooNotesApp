@@ -145,14 +145,13 @@ export class TakeNoteComponent implements OnInit {
   receiveMessage($event) {
     this.color = $event;
     console.log('event received in take note', this.color);
-    // this.messageEvent.emit(this.color);
   }
 
   receiveReminderMessage($event) {
     this.reminder = $event;
     console.log('event received in take note', this.reminder);
-    // this.reminderEvent.emit(this.reminder);
   }
+
   receiveLabelMessage($event) {
     this.label = $event;
     console.log('event received in take note', this.label);
@@ -160,8 +159,6 @@ export class TakeNoteComponent implements OnInit {
     this.labelId = this.label.labelid;
     this.labelIdArray.push(this.labelId);
     this.labelNameArray.push(this.labelName);
-
-    // this.labelEvent.emit(this.label);
   }
 
   onClearLabel(labelName){
@@ -174,8 +171,6 @@ export class TakeNoteComponent implements OnInit {
       }
     }
   }
-
-
 
   deletechecklist(itemName) {
     this.checklistIndex = this.checkListArray.findIndex(i => i.itemName === itemName);
