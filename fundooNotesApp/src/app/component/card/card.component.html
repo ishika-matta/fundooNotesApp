@@ -1,36 +1,39 @@
-<mat-toolbar class="main-header"  fxflex="100">Fundoo Notes App</mat-toolbar>
+<mat-toolbar class="main-header" fxflex="100">Fundoo Notes App</mat-toolbar>
 
 <div class="title" fxLayout="row" fxLayoutAlign="center center">
-  fundooNotes offered. Choose below service to Register.
-</div>
 
-<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-  <div class="card-div1" fxLayoutAlign="center center">
-    <mat-card   class="card" (click)="onChoice('advance')">
-      <span class="price">price: $99 per month</span>
-      <br><span class="choice">advance</span>
-      <div fxLayout="column">
-        <span>$99/month</span>
-          <span>
-            Ability to add title, description, images, labels, checklist and colors</span>
-      </div>
+  fundooNotes offered. Choose below service to Register.</div>
+<br><br><br><br>
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="80px">
+  <div class="hover" (click)="openProductDialog('advance')">
+    <mat-card class="back">
+      <br><br><br><br><br><br><br><br><br>
+      Add to Cart
+    </mat-card>
+    <mat-card class="card">
+      <h4>Advance Package</h4>
+      Price: $99 per month
+      <ul>
+        <li>$99/month</li>
+        <li> Ability to add title, description, images, labels, checklist and colors</li>
+      </ul>
     </mat-card>
   </div>
-
-  <div class="card-div2" fxLayoutAlign="center center">
-    <mat-card   class="card"  (click)="onChoice('basic')">
-      <span class="price"> price: $49 per month</span>
-      <br><span class="choice">basic</span>
-      <div fxLayout="column">
-        <span>$49/month</span>
-          <span>
-            Ability to add only title and description</span>
-      </div>
+  <div class="hover" (click)="openProductDialog('basic')">
+    <mat-card class="back">
+      <br><br><br><br><br><br><br><br><br>
+      Add to Cart
+    </mat-card>
+    <mat-card class="card">
+      <h4>Basic Package</h4>
+      Price: $49 per month
+      <ul>
+        <li>$49/month</li>
+        <li> Ability to add title, description</li>
+      </ul>
     </mat-card>
   </div>
-
 </div>
-
 <div class="sign" fxLayout="row" fxLayoutAlign="center center">
   <a [routerLink]="[ '/login' ]" routerLinkActive="active"> Sign in instead</a>
 </div>

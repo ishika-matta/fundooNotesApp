@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from 'src/app/services/dataServices/data.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-card',
@@ -9,14 +11,17 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnInit {
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(@Inject(MatDialog) public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  onChoice(data){
-    console.log('card choice', data)
-    this.dataService.changeMessage(data);
-    this.router.navigate(['/register']);
-  }
+  openProductDialog(choice){
+    console.log('here');
+    this.dialog.open(ProductDialogComponent, {
+    data: {
+    type: choice
+    }, width: '600px'
+    });
+    }
 }

@@ -56,6 +56,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { CardComponent } from './component/card/card.component';
 import { CartComponent } from './component/cart/cart.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProductDialogComponent } from './component/product-dialog/product-dialog.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     QuestionAnswerComponent,
     CardComponent,
     CartComponent,
+    ProductDialogComponent,
    
   ],
 
@@ -130,7 +132,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ],
 
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  entryComponents: [ DialogCardComponent, UploadProfilePicComponent, CollabDialogBoxComponent ],
+  entryComponents: [ DialogCardComponent, UploadProfilePicComponent, CollabDialogBoxComponent,
+    ProductDialogComponent ],
   bootstrap: [ AppComponent ]
 })
 

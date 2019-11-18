@@ -44,7 +44,6 @@ export class GotoNotesComponent implements OnInit {
     return pass;
   }
 
-
   receiveMessage($event) {
     console.log('event received is: ', $event);
     this.getNotes();

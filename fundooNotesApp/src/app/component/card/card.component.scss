@@ -1,50 +1,51 @@
-.main-header{
-    color:black;
-    font-family: 25px Roboto, sans-serif;
-    max-width:100%;
-    box-sizing: border-box;
-    background-color: #F7BB00;
+.main-header {
+  color: black;
+  font-family: 25px Roboto, sans-serif;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: #F7BB00;
 }
 
-.title{
+.title {
 
-    font-family: 25px Roboto, sans-serif;
-    max-width:100%;
-    box-sizing: border-box;
-    font-weight:bold;
-    margin-top:3%;
-    font-size: 25px;
+  font-family: 25px Roboto, sans-serif;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-weight: bold;
+  margin-top: 3%;
+  font-size: 25px;
 }
 
-.sign{
-    font-family: 16px Roboto, sans-serif;
+.sign {
+  font-family: 16px Roboto, sans-serif;
 }
 
-.price{
-    font-weight: bold;
-    font-family: 26px;
+.card {
+  width: 160px;
+  height: 170px;
+  position: relative;
+  top: -260px;
+  right: 20px;
 }
 
-.choice{
-    color:blue;
+.hover {
+  height: 250px;
 }
 
-.card{
-    height:20vh;
-    width: 30vw;
+.hover:hover {
+  transform: scale(1.1);
 
+  .back {
+    background-color: #FFBA33;
+  }
 }
 
-.card-div1{
-    margin-right:2%;
-    margin-left:20%;
-    margin-top:5%;
-    margin-bottom: 3%;
+ul {
+  padding-inline-start: 20px;
 }
 
-.card-div2{
-    margin-right:20%;
-    margin-left:2%;
-    margin-top:5%;
-    margin-bottom: 3%;
+.back {
+  width: 160px;
+  height: 180px;
+  background-color: grey;
 }

@@ -40,5 +40,3 @@ export class LabelsComponent implements OnInit {
     this.getNotesByLabels();
   }
 }
-
-

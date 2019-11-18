@@ -24,10 +24,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.getCartId();
-    
-    
 
-   
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });

@@ -30,6 +30,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
   }
+
   onForgotPassword() {
 
     this.userObj = {
@@ -50,4 +51,5 @@ export class ForgotPasswordComponent implements OnInit {
       duration: 2000
     })
   }
+  
 }
